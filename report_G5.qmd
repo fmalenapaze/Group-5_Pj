@@ -1,10 +1,11 @@
 ---
 title: "Case report: CEDNIK SYNDROME"
 format: docx
+autors: "M. Ewen, M.Gezman, F. Paz"
 editor: source
 bibliography: wes.bib
 ---
-#autors: M. Ewen, M. Gezmen, F. Paz
+
 
 ## Aims
 
@@ -33,8 +34,6 @@ getwd()
 #Table for the complete filtered chromosome
 chromosomes <- read_tsv("corpasome.trio.chr22.snps.filtered.annovar.tsv")
 chromosomes
-#Table for the variants
-variants <- read_tsv("corpasome.trio.chr22.snps.filtered.annovar.tsv", col_types = cols(clinvar_20140702 = "c"))
 ```
 
 ## Introduction
@@ -49,7 +48,15 @@ variants <- read_tsv("corpasome.trio.chr22.snps.filtered.annovar.tsv", col_types
 
 ## Materials and methods
 ```{r}
-
+#Table for the variants
+variants <- read_tsv("corpasome.trio.chr22.snps.filtered.annovar.tsv", col_types = cols(clinvar_20140702 = "c"))
+#Table for AP variants (joints)
+variants_ap <- read_tsv("corpasome.trio.chr22.snps.filtered.annovar.tsv", 
+  col_types = list("clinvar_20140702" = "c")) |>
+  select(Start, End, Ref, Alt,  Gene.refGene, INFO) |> 
+  filter(str_detect(Gene.refGene , "^AP")) |>  
+  distinct()
+variants_ap
 ```
 
 ### Study Participants/Whole exome sequencing
