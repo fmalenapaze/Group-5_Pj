@@ -34,6 +34,7 @@ getwd()
 #Table for the complete filtered chromosome
 chromosomes <- read_tsv("data/corpasome.trio.chr22.snps.filtered.annovar.tsv")
 chromosomes
+#jsdhfja
 ```
 
 ## Introduction
