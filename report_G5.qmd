@@ -50,13 +50,16 @@ chromosomes
 ```{r}
 #Table for the variants
 variants <- read_tsv("corpasome.trio.chr22.snps.filtered.annovar.tsv", col_types = cols(clinvar_20140702 = "c"))
+
 #Table for AP variants (joints)
 variants_ap <- read_tsv("corpasome.trio.chr22.snps.filtered.annovar.tsv", 
   col_types = list("clinvar_20140702" = "c")) |>
   select(Start, End, Ref, Alt,  Gene.refGene, INFO) |> 
   filter(str_detect(Gene.refGene , "^AP")) |>  
   distinct()
-variants_ap
+variants_ap #just to print it
+#skfhdnkdfjd 
+g <- 2+1
 ```
 
 ### Study Participants/Whole exome sequencing
