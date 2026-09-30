@@ -48,6 +48,7 @@ chromosomes
 
 ## Materials and methods
 ```{r}
+#Chunk 0
 #Table for the variants
 variants <- read_tsv("data/corpasome.trio.chr22.snps.filtered.annovar.tsv", col_types = cols(clinvar_20140702 = "c"))
 
@@ -79,11 +80,6 @@ g <- 2+1
     -   Describe the different steps, what are they doing, what is the input/output.
 
 ### Variant annotation and filtering
-```{r}
-#Chunk 2
-ddjdfchnkjhf
-```
-
 
 -   How were variants called?
 -   Which parameter were used?
