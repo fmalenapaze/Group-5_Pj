@@ -49,10 +49,10 @@ chromosomes
 ## Materials and methods
 ```{r}
 #Table for the variants
-variants <- read_tsv("corpasome.trio.chr22.snps.filtered.annovar.tsv", col_types = cols(clinvar_20140702 = "c"))
+variants <- read_tsv("data/corpasome.trio.chr22.snps.filtered.annovar.tsv", col_types = cols(clinvar_20140702 = "c"))
 
 #Table for AP variants (joints)
-variants_ap <- read_tsv("corpasome.trio.chr22.snps.filtered.annovar.tsv", 
+variants_ap <- read_tsv("data/corpasome.trio.chr22.snps.filtered.annovar.tsv", 
   col_types = list("clinvar_20140702" = "c")) |>
   select(Start, End, Ref, Alt,  Gene.refGene, INFO) |> 
   filter(str_detect(Gene.refGene , "^AP")) |>  
@@ -79,6 +79,11 @@ g <- 2+1
     -   Describe the different steps, what are they doing, what is the input/output.
 
 ### Variant annotation and filtering
+```{r}
+#Chunk 2
+ddjdfchnkjhf
+```
+
 
 -   How were variants called?
 -   Which parameter were used?
