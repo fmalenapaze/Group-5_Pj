@@ -26,6 +26,13 @@ Minimally include two graphs and two computed tables in the Results sections tha
 
 ```{r libraries, include = FALSE}
 library(tidyverse)
+getwd()
+#Library from the HPC section
+#Table for the complete filtered chromosome
+chromosomes <- read_tsv("corpasome.trio.chr22.snps.filtered.annovar.tsv")
+chromosomes
+#Table for the variants
+variants <- read_tsv("corpasome.trio.chr22.snps.filtered.annovar.tsv", col_types = cols(clinvar_20140702 = "c"))
 ```
 
 ## Introduction
