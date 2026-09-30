@@ -1,10 +1,10 @@
 ---
 title: "Case report: CEDNIK SYNDROME"
 format: docx
-editor: R Studio - Quatro
-autors: M. Ewen, M. Gezmen, F. Paz
+editor: source
 bibliography: wes.bib
 ---
+#autors: M. Ewen, M. Gezmen, F. Paz
 
 ## Aims
 
@@ -26,6 +26,8 @@ Minimally include two graphs and two computed tables in the Results sections tha
 
 ```{r libraries, include = FALSE}
 library(tidyverse)
+library(ggplot2)
+library(gt)
 getwd()
 #Library from the HPC section
 #Table for the complete filtered chromosome
