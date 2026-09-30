@@ -32,7 +32,7 @@ library(gt)
 getwd()
 #Library from the HPC section
 #Table for the complete filtered chromosome
-chromosomes <- read_tsv("corpasome.trio.chr22.snps.filtered.annovar.tsv")
+chromosomes <- read_tsv("data/corpasome.trio.chr22.snps.filtered.annovar.tsv")
 chromosomes
 ```
 
@@ -59,8 +59,7 @@ variants_ap <- read_tsv("data/corpasome.trio.chr22.snps.filtered.annovar.tsv",
   filter(str_detect(Gene.refGene , "^AP")) |>  
   distinct()
 variants_ap #just to print it
-#skfhdnkdfjd 
-g <- 2+1
+
 ```
 
 ### Study Participants/Whole exome sequencing
