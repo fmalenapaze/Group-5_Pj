@@ -70,9 +70,16 @@ Variant detection and diagnosis have become much more accessible with the advent
 
 In this report, we focus on WES because Sydnik syndrome is a Mendelian monogenic disorder; identifying variations within the exons alone is generally sufficient for its detection. In the case we analyzed, a 3-year-old girl exhibited symptoms of the syndrome while her parents were healthy; therefore, our objective was to perform WES for this family of three and identify the variant by comparing the results against the reference human genome (GRCh37/hg19). This type of analytical method is known as "trio analysis," (Gabriel et al. 2022) and given that this syndrome is an autosomal recessive disorder, we can infer that both parents are heterozygous carriers (Hsu et al. 2017).
 
-#generate the pedigree
+### Study Participants/Whole exome sequencing
 
-The base of our work is publicly available genetic data from a Spanish family, consisting of a father, mother and their daughter, referred to as "the Corpasome" [@corpas_crowdsourced_2015]. In our case the genome of the daughter is synthetically altered and a disease phenotype, caused by these alterations, is described. The parental sequencing reads remain unaltered and their phenotype is unremarkable. [@keser_snap29_2019]
+```{r}
+#Description of the Corpas family project [@corpas_crowdsourced_2015]
+  #Also check https://manuelcorpas.com/2016/05/24/my-personal-exome-analysis-part-i-first-findings-2/ )
+  #Draw pedigree (mark affected child) and give alleles per individual for the variant that you found. You can draw the pedigree by hand but or use a web programs. Pedigrees can be drawn by programs, including R but the effort required is not worth for a trio.
+  #How was the sequencing data generated, on which machine, using which technology, using which sequencing kit, exome array?
+```
+
+The base of our work is publicly available genetic data from a Spanish family, consisting of a father, mother and their daughter, referred to as "the Corpasome" [@corpas_crowdsourced_2015]. In our case the genome of the daughter is synthetically altered and a disease phenotype, caused by these alterations, is described. The parental sequencing reads remain unaltered and their phenotype is unremarkable.
 
 ```{r}
 #| warning: false
@@ -81,7 +88,7 @@ ped <- read_table("data/corpasome.ped",
                   col_types = "ccccii")
 ped2 <- ped |>
   mutate(across(c(id, father, mother), \(x) str_remove(x, "^corpasome_")),
-    father   = na_if(father, "0"),     # 0 = no parent in the file -> NA
+         father   = na_if(father, "0"),     # 0 = no parent in the file -> NA
          mother   = na_if(mother, "0"),
          affected = as.integer(phenotype == 2))  # 2 = affected -> 1, otherwise 0
 
@@ -94,14 +101,20 @@ pedi <- pedigree(id      = ped2$id,
 plot(pedi)
 ```
 
-### Study Participants/Whole exome sequencing
-
-- Description of the Corpas family project [@corpas_crowdsourced_2015]
-  - Also check https://manuelcorpas.com/2016/05/24/my-personal-exome-analysis-part-i-first-findings-2/ )
-- Draw pedigree (mark affected child) and give alleles per individual for the variant that you found. You can draw the pedigree by hand but or use a web programs. Pedigrees can be drawn by programs, including R but the effort required is not worth for a trio.
-- How was the sequencing data generated, on which machine, using which technology, using which sequencing kit, exome array?
-
 ### NGS data preprocessing
+
+```{r}
+#Describe data formats used and give overview of methods with a figure showing the NGS processing workflow (could be from other publications, if so please reference): from raw fastq files to called variants.
+
+#Quality control: describe method and parameters to evaluate quality of the raw sequencing data
+
+#NGS processing:
+
+  #- Describe mapping method that was used, which reference genome, ..
+  #- Describe GATK pipeline (see GATK webpage for documentation)
+  #- Describe the different steps, what are they doing, what is the input/output.
+
+```
 
 Next-Generation Sequencing (NGS) data preprocessing was used to refine and align raw reads prior to downstream Whole-Exome Sequencing (WES) analysis. The input dataset comprised individual raw FASTQ files corresponding to the family trio: mother, father, and affected child, from the Corpasome family. This tools are organized for each person as .fq files as paired-ends reads, 150 bp per read for R1 and R2.
 
@@ -111,37 +124,19 @@ After the confirmation of the good quality of the sequences, we proceed with the
 
 We processed the quantification of bp related to the harmful variants. for finding differential gene expresions.
 
-```{r}
-#Describe data formats used and give overview of methods with a figure showing the NGS processing workflow (could be from other publications, if so please reference): from raw fastq files to called variants.
-
-
-```
-
-- Quality control: describe method and parameters to evaluate quality of the raw sequencing data
-
-- NGS processing:
-
-  - Describe mapping method that was used, which reference genome, ..
-  - Describe GATK pipeline (see GATK webpage for documentation)
-  - Describe the different steps, what are they doing, what is the input/output.
-
-- Describe data formats used and give overview of methods with a figure showing the NGS processing workflow (could be from other publications, if so please reference): from raw fastq files to called variants.
-
-- Quality control: describe method and parameters to evaluate quality of the raw sequencing data
-
-- NGS processing:
-
-  - Describe mapping method that was used, which reference genome, ..
-  - Describe GATK pipeline (see GATK webpage for documentation)
-  - Describe the different steps, what are they doing, what is the input/output.
-
 ### Variant annotation and filtering
 
-- How were variants called?
-- Which parameter were used?
-  - Describe Annovar annotation pipeline. Which annotations and databases were used for annotation?
-- Variant filter strategy:
-  - What annotations/parameters have been used for filtering down the variants?
+```{r}
+#How were variants called?
+
+#Which parameter were used?
+  
+  #Describe Annovar annotation pipeline. Which annotations and databases were used for annotation?
+  
+  #Variant filter strategy:
+  
+  #What annotations/parameters have been used for filtering down the variants?
+```
 
 ## Results
 

@@ -116,65 +116,28 @@ div.csl-indent {
 <p>CEDNIK syndrome is an extremely rare disorder, with an estimated prevalence of less than 1 per 1,000,000 individuals; a reliable population-based incidence has not been established due to the small number of reported cases (Orphanet n.d.).</p>
 <p>Variant detection and diagnosis have become much more accessible with the advent of next-generation sequencing (NGS). Unlike earlier sequencing technologies, NGS enables the simultaneous analysis of anything from a few genes to hundreds of genes, the entire exome, or even the whole genome. NGS systems employ approaches such as whole-genome sequencing (WGS) and whole-exome sequencing (WES) (Brancato et al.&nbsp;2025).</p>
 <p>In this report, we focus on WES because Sydnik syndrome is a Mendelian monogenic disorder; identifying variations within the exons alone is generally sufficient for its detection. In the case we analyzed, a 3-year-old girl exhibited symptoms of the syndrome while her parents were healthy; therefore, our objective was to perform WES for this family of three and identify the variant by comparing the results against the reference human genome (GRCh37/hg19). This type of analytical method is known as “trio analysis,” (Gabriel et al.&nbsp;2022) and given that this syndrome is an autosomal recessive disorder, we can infer that both parents are heterozygous carriers (Hsu et al.&nbsp;2017).</p>
-<p>#generate the pedigree</p>
-<p>The base of our work is publicly available genetic data from a Spanish family, consisting of a father, mother and their daughter, referred to as “the Corpasome”<span class="citation" data-cites="corpas_crowdsourced_2015"><sup><a href="#ref-corpas_crowdsourced_2015" role="doc-biblioref">1</a></sup></span>. In our case the genome of the daughter is synthetically altered and a disease phenotype, caused by these alterations, is described. The parental sequencing reads remain unaltered and their phenotype is unremarkable.<span class="citation" data-cites="keser_snap29_2019"><sup><a href="#ref-keser_snap29_2019" role="doc-biblioref">2</a></sup></span></p>
+<section id="study-participantswhole-exome-sequencing" class="level3">
+<h3 class="anchored" data-anchor-id="study-participantswhole-exome-sequencing">Study Participants/Whole exome sequencing</h3>
+<p>The base of our work is publicly available genetic data from a Spanish family, consisting of a father, mother and their daughter, referred to as “the Corpasome”<span class="citation" data-cites="corpas_crowdsourced_2015"><sup><a href="#ref-corpas_crowdsourced_2015" role="doc-biblioref">1</a></sup></span>. In our case the genome of the daughter is synthetically altered and a disease phenotype, caused by these alterations, is described. The parental sequencing reads remain unaltered and their phenotype is unremarkable.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="report_G5_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="report_G5_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<section id="study-participantswhole-exome-sequencing" class="level3">
-<h3 class="anchored" data-anchor-id="study-participantswhole-exome-sequencing">Study Participants/Whole exome sequencing</h3>
-<ul>
-<li>Description of the Corpas family project<span class="citation" data-cites="corpas_crowdsourced_2015"><sup><a href="#ref-corpas_crowdsourced_2015" role="doc-biblioref">1</a></sup></span>
-<ul>
-<li>Also check https://manuelcorpas.com/2016/05/24/my-personal-exome-analysis-part-i-first-findings-2/ )</li>
-</ul></li>
-<li>Draw pedigree (mark affected child) and give alleles per individual for the variant that you found. You can draw the pedigree by hand but or use a web programs. Pedigrees can be drawn by programs, including R but the effort required is not worth for a trio.</li>
-<li>How was the sequencing data generated, on which machine, using which technology, using which sequencing kit, exome array?</li>
-</ul>
 </section>
 <section id="ngs-data-preprocessing" class="level3">
 <h3 class="anchored" data-anchor-id="ngs-data-preprocessing">NGS data preprocessing</h3>
 <p>Next-Generation Sequencing (NGS) data preprocessing was used to refine and align raw reads prior to downstream Whole-Exome Sequencing (WES) analysis. The input dataset comprised individual raw FASTQ files corresponding to the family trio: mother, father, and affected child, from the Corpasome family. This tools are organized for each person as .fq files as paired-ends reads, 150 bp per read for R1 and R2.</p>
-<p>For the Quality evaluation, we access to the “FastQC Report (version 0.12.1)” for each file. Using the raw data (.fq data files) as an input, we can graph and see the organization of the sequences, %GC percentage and the quality scores. We considerate the Q scores above 30 (Q30), in acordance to the standart Illumina quality trimming sequence<span class="citation" data-cites="illumina"><sup><a href="#ref-illumina" role="doc-biblioref">3</a></sup></span>.</p>
+<p>For the Quality evaluation, we access to the “FastQC Report (version 0.12.1)” for each file. Using the raw data (.fq data files) as an input, we can graph and see the organization of the sequences, %GC percentage and the quality scores. We considerate the Q scores above 30 (Q30), in acordance to the standart Illumina quality trimming sequence<span class="citation" data-cites="illumina"><sup><a href="#ref-illumina" role="doc-biblioref">2</a></sup></span>.</p>
 <p>After the confirmation of the good quality of the sequences, we proceed with the allignment and trimming of information.</p>
 <p>We processed the quantification of bp related to the harmful variants. for finding differential gene expresions.</p>
-<ul>
-<li><p>Quality control: describe method and parameters to evaluate quality of the raw sequencing data</p></li>
-<li><p>NGS processing:</p>
-<ul>
-<li>Describe mapping method that was used, which reference genome, ..</li>
-<li>Describe GATK pipeline (see GATK webpage for documentation)</li>
-<li>Describe the different steps, what are they doing, what is the input/output.</li>
-</ul></li>
-<li><p>Describe data formats used and give overview of methods with a figure showing the NGS processing workflow (could be from other publications, if so please reference): from raw fastq files to called variants.</p></li>
-<li><p>Quality control: describe method and parameters to evaluate quality of the raw sequencing data</p></li>
-<li><p>NGS processing:</p>
-<ul>
-<li>Describe mapping method that was used, which reference genome, ..</li>
-<li>Describe GATK pipeline (see GATK webpage for documentation)</li>
-<li>Describe the different steps, what are they doing, what is the input/output.</li>
-</ul></li>
-</ul>
 </section>
 <section id="variant-annotation-and-filtering" class="level3">
 <h3 class="anchored" data-anchor-id="variant-annotation-and-filtering">Variant annotation and filtering</h3>
-<ul>
-<li>How were variants called?</li>
-<li>Which parameter were used?
-<ul>
-<li>Describe Annovar annotation pipeline. Which annotations and databases were used for annotation?</li>
-</ul></li>
-<li>Variant filter strategy:
-<ul>
-<li>What annotations/parameters have been used for filtering down the variants?</li>
-</ul></li>
-</ul>
 </section>
 </section>
 <section id="results" class="level2">
@@ -183,23 +146,23 @@ div.csl-indent {
 <h3 class="anchored" data-anchor-id="qc">QC</h3>
 <div class="cell">
 <div class="cell-output-display">
-<div id="yqminauzju" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#yqminauzju table {
+<div id="wmnufqfvqs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wmnufqfvqs table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#yqminauzju thead, #yqminauzju tbody, #yqminauzju tfoot, #yqminauzju tr, #yqminauzju td, #yqminauzju th {
+#wmnufqfvqs thead, #wmnufqfvqs tbody, #wmnufqfvqs tfoot, #wmnufqfvqs tr, #wmnufqfvqs td, #wmnufqfvqs th {
   border-style: none;
 }
 
-#yqminauzju p {
+#wmnufqfvqs p {
   margin: 0;
   padding: 0;
 }
 
-#yqminauzju .gt_table {
+#wmnufqfvqs .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -225,12 +188,12 @@ div.csl-indent {
   border-left-color: #D3D3D3;
 }
 
-#yqminauzju .gt_caption {
+#wmnufqfvqs .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#yqminauzju .gt_title {
+#wmnufqfvqs .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -242,7 +205,7 @@ div.csl-indent {
   border-bottom-width: 0;
 }
 
-#yqminauzju .gt_subtitle {
+#wmnufqfvqs .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -254,7 +217,7 @@ div.csl-indent {
   border-top-width: 0;
 }
 
-#yqminauzju .gt_heading {
+#wmnufqfvqs .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -266,13 +229,13 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#yqminauzju .gt_bottom_border {
+#wmnufqfvqs .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#yqminauzju .gt_col_headings {
+#wmnufqfvqs .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -287,7 +250,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#yqminauzju .gt_col_heading {
+#wmnufqfvqs .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -307,7 +270,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#yqminauzju .gt_column_spanner_outer {
+#wmnufqfvqs .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -319,15 +282,15 @@ div.csl-indent {
   padding-right: 4px;
 }
 
-#yqminauzju .gt_column_spanner_outer:first-child {
+#wmnufqfvqs .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#yqminauzju .gt_column_spanner_outer:last-child {
+#wmnufqfvqs .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#yqminauzju .gt_column_spanner {
+#wmnufqfvqs .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -339,11 +302,11 @@ div.csl-indent {
   width: 100%;
 }
 
-#yqminauzju .gt_spanner_row {
+#wmnufqfvqs .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#yqminauzju .gt_group_heading {
+#wmnufqfvqs .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -369,7 +332,7 @@ div.csl-indent {
   text-align: left;
 }
 
-#yqminauzju .gt_empty_group_heading {
+#wmnufqfvqs .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -384,15 +347,15 @@ div.csl-indent {
   vertical-align: middle;
 }
 
-#yqminauzju .gt_from_md > :first-child {
+#wmnufqfvqs .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#yqminauzju .gt_from_md > :last-child {
+#wmnufqfvqs .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#yqminauzju .gt_row {
+#wmnufqfvqs .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -411,7 +374,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#yqminauzju .gt_stub {
+#wmnufqfvqs .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -424,7 +387,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#yqminauzju .gt_stub_row_group {
+#wmnufqfvqs .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -438,15 +401,15 @@ div.csl-indent {
   vertical-align: top;
 }
 
-#yqminauzju .gt_row_group_first td {
+#wmnufqfvqs .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#yqminauzju .gt_row_group_first th {
+#wmnufqfvqs .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#yqminauzju .gt_summary_row {
+#wmnufqfvqs .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -456,16 +419,16 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#yqminauzju .gt_first_summary_row {
+#wmnufqfvqs .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#yqminauzju .gt_first_summary_row.thick {
+#wmnufqfvqs .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#yqminauzju .gt_last_summary_row {
+#wmnufqfvqs .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -475,7 +438,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#yqminauzju .gt_grand_summary_row {
+#wmnufqfvqs .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -485,7 +448,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#yqminauzju .gt_first_grand_summary_row {
+#wmnufqfvqs .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -495,7 +458,7 @@ div.csl-indent {
   border-top-color: #D3D3D3;
 }
 
-#yqminauzju .gt_last_grand_summary_row_top {
+#wmnufqfvqs .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -505,11 +468,11 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#yqminauzju .gt_striped {
+#wmnufqfvqs .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#yqminauzju .gt_table_body {
+#wmnufqfvqs .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -518,7 +481,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#yqminauzju .gt_footnotes {
+#wmnufqfvqs .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -532,7 +495,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#yqminauzju .gt_footnote {
+#wmnufqfvqs .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -541,7 +504,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#yqminauzju .gt_sourcenotes {
+#wmnufqfvqs .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -555,7 +518,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#yqminauzju .gt_sourcenote {
+#wmnufqfvqs .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -563,72 +526,72 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#yqminauzju .gt_left {
+#wmnufqfvqs .gt_left {
   text-align: left;
 }
 
-#yqminauzju .gt_center {
+#wmnufqfvqs .gt_center {
   text-align: center;
 }
 
-#yqminauzju .gt_right {
+#wmnufqfvqs .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#yqminauzju .gt_font_normal {
+#wmnufqfvqs .gt_font_normal {
   font-weight: normal;
 }
 
-#yqminauzju .gt_font_bold {
+#wmnufqfvqs .gt_font_bold {
   font-weight: bold;
 }
 
-#yqminauzju .gt_font_italic {
+#wmnufqfvqs .gt_font_italic {
   font-style: italic;
 }
 
-#yqminauzju .gt_super {
+#wmnufqfvqs .gt_super {
   font-size: 65%;
 }
 
-#yqminauzju .gt_footnote_marks {
+#wmnufqfvqs .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#yqminauzju .gt_asterisk {
+#wmnufqfvqs .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#yqminauzju .gt_indent_1 {
+#wmnufqfvqs .gt_indent_1 {
   text-indent: 5px;
 }
 
-#yqminauzju .gt_indent_2 {
+#wmnufqfvqs .gt_indent_2 {
   text-indent: 10px;
 }
 
-#yqminauzju .gt_indent_3 {
+#wmnufqfvqs .gt_indent_3 {
   text-indent: 15px;
 }
 
-#yqminauzju .gt_indent_4 {
+#wmnufqfvqs .gt_indent_4 {
   text-indent: 20px;
 }
 
-#yqminauzju .gt_indent_5 {
+#wmnufqfvqs .gt_indent_5 {
   text-indent: 25px;
 }
 
-#yqminauzju .katex-display {
+#wmnufqfvqs .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#yqminauzju div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#wmnufqfvqs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -750,11 +713,8 @@ div.csl-indent {
 <div id="ref-corpas_crowdsourced_2015" class="csl-entry" role="listitem">
 <div class="csl-left-margin">1. </div><div class="csl-right-inline">Corpas, M., Valdivia-Granda, W., Torres, N., Greshake, B., Coletta, A., Knaus, A., Harrison, A.P., Cariaso, M., Moran, F., Nielsen, F., et al. (2015). Crowdsourced direct-to-consumer genomic analysis of a family quartet. BMC Genomics <em>16</em>, 910. <a href="https://doi.org/10.1186/s12864-015-1973-7">https://doi.org/10.1186/s12864-015-1973-7</a>.</div>
 </div>
-<div id="ref-keser_snap29_2019" class="csl-entry" role="listitem">
-<div class="csl-left-margin">2. </div><div class="csl-right-inline">Keser, V., Lachance, J.-F.B., Alam, S.S., Lim, Y., Scarlata, E., Kaur, A., Zhang, T.F., Lv, S., Lachapelle, P., O’Flaherty, C., et al. (2019). Snap29 mutant mice recapitulate neurological and ophthalmological abnormalities associated with 22q11 and <span>CEDNIK</span> syndrome. Communications Biology <em>2</em>, 375. <a href="https://doi.org/10.1038/s42003-019-0601-5">https://doi.org/10.1038/s42003-019-0601-5</a>.</div>
-</div>
 <div id="ref-illumina" class="csl-entry" role="listitem">
-<div class="csl-left-margin">3. </div><div class="csl-right-inline">Illumina Quality scores for next-generation sequencing.</div>
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Illumina Quality scores for next-generation sequencing.</div>
 </div>
 </div></section></div></main>
 <!-- /main column -->
