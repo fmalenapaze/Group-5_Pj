@@ -8,7 +8,6 @@ csl: cell.csl
 echo: false
 ---
 
-
 ## Aims
 
 You will receive a set of exome data for a family trio to identify a disease-causing variant using the tools presented in the course. Your task for this case report is to summarize the steps leading to the causal variant and to reflect on how you get there. Your report should be reproducible using RMarkdown and code where possible.
@@ -17,15 +16,15 @@ Minimally include two graphs and two computed tables in the Results sections tha
 
 ### Extra efforts, not required
 
--   Use of a bibliography
--   All figures produced from code
--   All numbers produced from code
+- Use of a bibliography
+- All figures produced from code
+- All numbers produced from code
 
 ### Collaboration
 
--   You are free to support each other in programming but do not exchange code blocks. There will be questions on the code you wrote. In exceptional cases you can indicate that code was developed by others.
--   If you are stuck, reach out to the tutors.
--   If you collaborate, please indicate in the report.
+- You are free to support each other in programming but do not exchange code blocks. There will be questions on the code you wrote. In exceptional cases you can indicate that code was developed by others.
+- If you are stuck, reach out to the tutors.
+- If you collaborate, please indicate in the report.
 
 ```{r libraries, include = FALSE}
 library(tidyverse)
@@ -42,17 +41,17 @@ chromosomes
 
 ## Introduction
 
--   2-3 sentences
-    -   What is next generation sequencing, whole exome sequencing, and trio sequencing used for? Get some use cases from literature.
--   1-2 sentences about the disease:
-    -   Are there already sequencing studies done for the disease (if yes, which one)?
-    -   Are their already genetic variants known (if yes which one) and where can you find those?
-    -   Incidence of the disease (how often it occurs?).
-    -   What is the mode of inheritance you would expect?
+- 2-3 sentences
+  - What is next generation sequencing, whole exome sequencing, and trio sequencing used for? Get some use cases from literature.
+- 1-2 sentences about the disease:
+  - Are there already sequencing studies done for the disease (if yes, which one)?
+  - Are their already genetic variants known (if yes which one) and where can you find those?
+  - Incidence of the disease (how often it occurs?).
+  - What is the mode of inheritance you would expect?
 
 ## Materials and methods
 
-The base of our work is publicly available genetic data from a Spanish family, consisting of a father, mother and their daughter, referred to as "the Corpasome" [@corpas_crowdsourced_2015]. In our case the genome of the daughter is synthetically altered and a disease phenotype, caused by these alterations, is described. The parental sequencing reads remain unaltered and their phenotype is unremarkable. 
+The base of our work is publicly available genetic data from a Spanish family, consisting of a father, mother and their daughter, referred to as "the Corpasome" [@corpas_crowdsourced_2015]. In our case the genome of the daughter is synthetically altered and a disease phenotype, caused by these alterations, is described. The parental sequencing reads remain unaltered and their phenotype is unremarkable. [@keser_snap29_2019]
 
 ```{r}
 #| warning: false
@@ -78,8 +77,6 @@ pedi <- pedigree(id      = ped2$id,
 plot(pedi)
 ```
 
-
-
 ```{r, include = FALSE}
 #Chunk 0
 #Table for the variants
@@ -97,69 +94,69 @@ variants_ap #just to print it
 
 ### Study Participants/Whole exome sequencing
 
--   Description of the Corpas family project (@corpas_crowdsourced_2015)
-    -   Also check https://manuelcorpas.com/2016/05/24/my-personal-exome-analysis-part-i-first-findings-2/ )
--   Draw pedigree (mark affected child) and give alleles per individual for the variant that you found. You can draw the pedigree by hand but or use a web programs. Pedigrees can be drawn by programs, including R but the effort required is not worth for a trio.
--   How was the sequencing data generated, on which machine, using which technology, using which sequencing kit, exome array?
+- Description of the Corpas family project (@corpas_crowdsourced_2015)
+  - Also check https://manuelcorpas.com/2016/05/24/my-personal-exome-analysis-part-i-first-findings-2/ )
+- Draw pedigree (mark affected child) and give alleles per individual for the variant that you found. You can draw the pedigree by hand but or use a web programs. Pedigrees can be drawn by programs, including R but the effort required is not worth for a trio.
+- How was the sequencing data generated, on which machine, using which technology, using which sequencing kit, exome array?
 
 ### NGS data preprocessing
 
--   Describe data formats used and give overview of methods with a figure showing the NGS processing workflow (could be from other publications, if so please reference): from raw fastq files to called variants.
--   Quality control: describe method and parameters to evaluate quality of the raw sequencing data
--   NGS processing:
-    -   Describe mapping method that was used, which reference genome, ..
-    -   Describe GATK pipeline (see GATK webpage for documentation)
-    -   Describe the different steps, what are they doing, what is the input/output.
+- Describe data formats used and give overview of methods with a figure showing the NGS processing workflow (could be from other publications, if so please reference): from raw fastq files to called variants.
+- Quality control: describe method and parameters to evaluate quality of the raw sequencing data
+- NGS processing:
+  - Describe mapping method that was used, which reference genome, ..
+  - Describe GATK pipeline (see GATK webpage for documentation)
+  - Describe the different steps, what are they doing, what is the input/output.
 
 ### Variant annotation and filtering
 
--   How were variants called?
--   Which parameter were used?
-    -   Describe Annovar annotation pipeline. Which annotations and databases were used for annotation?
--   Variant filter strategy:
-    -   What annotations/parameters have been used for filtering down the variants?
+- How were variants called?
+- Which parameter were used?
+  - Describe Annovar annotation pipeline. Which annotations and databases were used for annotation?
+- Variant filter strategy:
+  - What annotations/parameters have been used for filtering down the variants?
 
 ## Results
 
 ### QC
 
--   Summarize QC results from Fastqc: (1 paragraph)
-    -   one table summarizing read statistics for all three samples and
-    -   show one read quality metric for all samples in one figure.
+- Summarize QC results from Fastqc: (1 paragraph)
+  - one table summarizing read statistics for all three samples and
+  - show one read quality metric for all samples in one figure.
 
 ### Sample processing
 
--   Table with read statistics (read numbers for each processing step including total number, after initial mapping, after duplicate removal, etc.). What is the outcome of the NGS workflow?
+- Table with read statistics (read numbers for each processing step including total number, after initial mapping, after duplicate removal, etc.). What is the outcome of the NGS workflow?
 
 ### Variant calling/filtering
 
--   How many variants were in the raw sample output and then called in the initial `bcf` files, in the `vcf` file filtered for read depth and finally in the demultiplexed `vcf` file? What means demultiplexing here?
--   How many variants were finally called over all samples and annotated using ANNOVAR? How many variants remaining after each filtering step (1 or 2 tables)? Describe impact of each filtering step by number of qualifying variants.
--   How many exonic/intronic variants were called? (1-2 sentences, 1 table). Were there any variants related to alternative splicing?
--   How many different exonic variant types (nonsynonymous/synonymous/frameshift/non-frameshiftindels/etc) were called? (1-2 sentences, 1 table).
--   QC measures: calculate and discuss
-    -   transistion/transversion ratio
-    -   nonsynonymous/synonymous ratio
--   Were variants found in candidate variants genes? If yes, with how many reads covered, what was the allele frequency of the alternative allele. Discuss quality of the calls. Report sequencing depth for all samples for candidate variant.
--   Report gene coverage for all samples for candidate gene.
--   Show variant in IGV from all three family members. Which mode of inheritance you have found and what is the support for it?
--   Describe candidate variant and gene using databases.
--   Check the current allele frequencies in gnoMAD for your variants (web)
--   Annotate your variant with more scores and annotation using [wANNOVAR](http://wannovar.wglab.org/) and discuss if they support the hypothesis that the variant is disease causing
--   Collect data about your variant and gene and the position of your variant from GeneCards, Uniprot, OMIM, GTEX. Is the variant located in a certain protein domain, does it is region where other disease-causing variants are located, is the protein/gene expressed in the tissue that you would expect?
--   Use different tools for variant interpretation like MutationMapper, MuPIT, MTR-viewer, VSranker, ClinVar
--   Have at least one figure that shows the location of the variant on the protein sequence, e.g. using MutationMapper or the R package [G3viz](https://cran.rstudio.com/web/packages/g3viz/vignettes/introduction.html)
+- How many variants were in the raw sample output and then called in the initial `bcf` files, in the `vcf` file filtered for read depth and finally in the demultiplexed `vcf` file? What means demultiplexing here?
+- How many variants were finally called over all samples and annotated using ANNOVAR? How many variants remaining after each filtering step (1 or 2 tables)? Describe impact of each filtering step by number of qualifying variants.
+- How many exonic/intronic variants were called? (1-2 sentences, 1 table). Were there any variants related to alternative splicing?
+- How many different exonic variant types (nonsynonymous/synonymous/frameshift/non-frameshiftindels/etc) were called? (1-2 sentences, 1 table).
+- QC measures: calculate and discuss
+  - transistion/transversion ratio
+  - nonsynonymous/synonymous ratio
+- Were variants found in candidate variants genes? If yes, with how many reads covered, what was the allele frequency of the alternative allele. Discuss quality of the calls. Report sequencing depth for all samples for candidate variant.
+- Report gene coverage for all samples for candidate gene.
+- Show variant in IGV from all three family members. Which mode of inheritance you have found and what is the support for it?
+- Describe candidate variant and gene using databases.
+- Check the current allele frequencies in gnoMAD for your variants (web)
+- Annotate your variant with more scores and annotation using [wANNOVAR](http://wannovar.wglab.org/) and discuss if they support the hypothesis that the variant is disease causing
+- Collect data about your variant and gene and the position of your variant from GeneCards, Uniprot, OMIM, GTEX. Is the variant located in a certain protein domain, does it is region where other disease-causing variants are located, is the protein/gene expressed in the tissue that you would expect?
+- Use different tools for variant interpretation like MutationMapper, MuPIT, MTR-viewer, VSranker, ClinVar
+- Have at least one figure that shows the location of the variant on the protein sequence, e.g. using MutationMapper or the R package [G3viz](https://cran.rstudio.com/web/packages/g3viz/vignettes/introduction.html)
 
 ## Discussion
 
--   Summary of analysis results.
+- Summary of analysis results.
 
--   Which variant and gene been found?
+- Which variant and gene been found?
 
--   Is the mode of inheritance of your variant known or not known?
+- Is the mode of inheritance of your variant known or not known?
 
--   What evidence you have found that supports your hypothesis that you have found a causative variant?
+- What evidence you have found that supports your hypothesis that you have found a causative variant?
 
--   Can you think of experiments that could show that you have found a disease-causing variant?
+- Can you think of experiments that could show that you have found a disease-causing variant?
 
 ## References
