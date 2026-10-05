@@ -52,7 +52,7 @@ chromosomes
 
 ## Materials and methods
 
-The base of our work is publicly available genetic data from a Spanish family, consisting of a father, mother and their daughter, referred to as "the Corpasome" [@corpas_crowdsourced_2015]. In our case the genome of the daughter is synthetically altered and a disease phenotype, caused by these alterations, is described. The parental sequencing reads remain unaltered and their phenotype is unremarkable.
+The base of our work is publicly available genetic data from a Spanish family, consisting of a father, mother and their daughter, referred to as "the Corpasome" [@corpas_crowdsourced_2015]. In our case the genome of the daughter is synthetically altered and a disease phenotype, caused by these alterations, is described. The parental sequencing reads remain unaltered and their phenotype is unremarkable. 
 
 ```{r}
 #| warning: false
