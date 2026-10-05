@@ -104,17 +104,17 @@ variants_ap #just to print it
 
 ### NGS data preprocessing
 
-We use the Next Generation Sequence (NGS) processing to refine and alling the data given before the analysis of the Whole Exome Squencing (WES). The given input data were imported fasta sequences from .fa archive, divided by the mom, dad and child sequences files.
+Next-Generation Sequencing (NGS) data preprocessing was used to refine and align raw reads prior to downstream Whole-Exome Sequencing (WES) analysis. The input dataset comprised individual raw FASTQ files corresponding to the family trio: mother, father, and affected child, from the Corpasome family. This tools are organized for each person as .fq files as paired-ends reads, 150 bp per read for R1 and R2.
 
 ```{r}
 #read <- files
 ```
 
-First is the read of the Quality Control setup from fastq files\[\@ref\]. This tools are organized for each person as .fq files as paired-ends reads for 150 bp read R1 and R2. For the Quality evaluations, we access to the "FastQC Report (version 0.12.1)" for each file.
+For the Quality evaluation, we access to the "FastQC Report (version 0.12.1)" for each file. Using the raw data (.fq data files) as an input, we can graph and see the organization of the sequences, %GC percentage and the quality scores. We considerate the Q scores above 30 (Q30), in acordance to the standart Illumina quality trimming sequence [@illumina].
 
 After the confirmation of the good quality of the sequences, we proceed with the allignment and trimming of information.
 
-We proces the quantification of bp related to the harmful variants. for finding differential gene expresions.
+We processed the quantification of bp related to the harmful variants. for finding differential gene expresions.
 
 ```{r}
 #Describe data formats used and give overview of methods with a figure showing the NGS processing workflow (could be from other publications, if so please reference): from raw fastq files to called variants.
