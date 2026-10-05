@@ -1,0 +1,11 @@
+PASS	Basic Statistics	daughter.chr22.1.fq
+PASS	Per base sequence quality	daughter.chr22.1.fq
+FAIL	Per tile sequence quality	daughter.chr22.1.fq
+PASS	Per sequence quality scores	daughter.chr22.1.fq
+PASS	Per base sequence content	daughter.chr22.1.fq
+WARN	Per sequence GC content	daughter.chr22.1.fq
+PASS	Per base N content	daughter.chr22.1.fq
+PASS	Sequence Length Distribution	daughter.chr22.1.fq
+PASS	Sequence Duplication Levels	daughter.chr22.1.fq
+PASS	Overrepresented sequences	daughter.chr22.1.fq
+PASS	Adapter Content	daughter.chr22.1.fq

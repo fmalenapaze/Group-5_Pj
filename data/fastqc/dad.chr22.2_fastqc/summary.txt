@@ -1,0 +1,11 @@
+PASS	Basic Statistics	dad.chr22.2.fq
+PASS	Per base sequence quality	dad.chr22.2.fq
+FAIL	Per tile sequence quality	dad.chr22.2.fq
+PASS	Per sequence quality scores	dad.chr22.2.fq
+PASS	Per base sequence content	dad.chr22.2.fq
+PASS	Per sequence GC content	dad.chr22.2.fq
+PASS	Per base N content	dad.chr22.2.fq
+PASS	Sequence Length Distribution	dad.chr22.2.fq
+PASS	Sequence Duplication Levels	dad.chr22.2.fq
+PASS	Overrepresented sequences	dad.chr22.2.fq
+PASS	Adapter Content	dad.chr22.2.fq

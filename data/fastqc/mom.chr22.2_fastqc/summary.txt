@@ -1,0 +1,11 @@
+PASS	Basic Statistics	mom.chr22.2.fq
+PASS	Per base sequence quality	mom.chr22.2.fq
+FAIL	Per tile sequence quality	mom.chr22.2.fq
+PASS	Per sequence quality scores	mom.chr22.2.fq
+PASS	Per base sequence content	mom.chr22.2.fq
+WARN	Per sequence GC content	mom.chr22.2.fq
+PASS	Per base N content	mom.chr22.2.fq
+PASS	Sequence Length Distribution	mom.chr22.2.fq
+PASS	Sequence Duplication Levels	mom.chr22.2.fq
+PASS	Overrepresented sequences	mom.chr22.2.fq
+PASS	Adapter Content	mom.chr22.2.fq

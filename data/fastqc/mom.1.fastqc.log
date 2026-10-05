@@ -1,0 +1,29 @@
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "de_DE.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+text/plain
+Started analysis of mom.chr22.1.fq
+Approx 5% complete for mom.chr22.1.fq
+Approx 10% complete for mom.chr22.1.fq
+Approx 15% complete for mom.chr22.1.fq
+Approx 20% complete for mom.chr22.1.fq
+Approx 25% complete for mom.chr22.1.fq
+Approx 30% complete for mom.chr22.1.fq
+Approx 35% complete for mom.chr22.1.fq
+Approx 40% complete for mom.chr22.1.fq
+Approx 45% complete for mom.chr22.1.fq
+Approx 50% complete for mom.chr22.1.fq
+Approx 55% complete for mom.chr22.1.fq
+Approx 60% complete for mom.chr22.1.fq
+Approx 65% complete for mom.chr22.1.fq
+Approx 70% complete for mom.chr22.1.fq
+Approx 75% complete for mom.chr22.1.fq
+Approx 80% complete for mom.chr22.1.fq
+Approx 85% complete for mom.chr22.1.fq
+Approx 90% complete for mom.chr22.1.fq
+Approx 95% complete for mom.chr22.1.fq
+Analysis complete for mom.chr22.1.fq

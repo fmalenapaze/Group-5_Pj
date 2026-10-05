@@ -1,9 +1,11 @@
 ---
 title: "Case report: CEDNIK SYNDROME"
-format: docx
+format: html
 autors: "M. Ewen, M.Gezman, F. Paz"
 editor: source
 bibliography: wes.bib
+csl: cell.csl
+echo: false
 ---
 
 
@@ -48,7 +50,38 @@ chromosomes
     -   What is the mode of inheritance you would expect?
 
 ## Materials and methods
+
+The base of our work is publicly available genetic data from a Spanish family, consisting of a father, mother and their daughter, referred to as "the Corpasome" [@corpas_crowdsourced_2015]. In our case the genome of the daughter is synthetically altered and a disease phenotype, caused by these alterations, is described. The parental sequencing reads remain unaltered and their phenotype is unremarkable.
+
 ```{r}
+#| warning: false
+
+#pedigree
+
+library(kinship2)
+
+ped <- read_table("data/corpasome.ped",
+                  col_names = c("family", "id", "father", "mother", "sex", "phenotype"),
+                  col_types = "ccccii")
+
+ped2 <- ped |>
+  mutate(across(c(id, father, mother), \(x) str_remove(x, "^corpasome_")),
+    father   = na_if(father, "0"),     # 0 = no parent in the file -> NA
+         mother   = na_if(mother, "0"),
+         affected = as.integer(phenotype == 2))  # 2 = affected -> 1, otherwise 0
+
+pedi <- pedigree(id      = ped2$id,
+                 dadid   = ped2$father,
+                 momid   = ped2$mother,
+                 sex     = ped2$sex,          # 1 = male, 2 = female
+                 affected = ped2$affected)
+
+plot(pedi)
+```
+
+
+
+```{r, include = FALSE}
 #Chunk 0
 #Table for the variants
 variants <- read_tsv("data/corpasome.trio.chr22.snps.filtered.annovar.tsv", col_types = cols(clinvar_20140702 = "c"))
