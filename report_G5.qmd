@@ -31,6 +31,7 @@ Minimally include two graphs and two computed tables in the Results sections tha
 library(tidyverse)
 library(ggplot2)
 library(gt)
+library(kinship2)
 getwd()
 #Library from the HPC section
 #Table for the complete filtered chromosome
@@ -56,9 +57,7 @@ The base of our work is publicly available genetic data from a Spanish family, c
 ```{r}
 #| warning: false
 
-#pedigree
-
-library(kinship2)
+#generate the pedigree
 
 ped <- read_table("data/corpasome.ped",
                   col_names = c("family", "id", "father", "mother", "sex", "phenotype"),
