@@ -118,11 +118,43 @@ variants_ap #just to print it
 
 ## Results
 
+
+
+```{r}
+#| label: "fastqc"
+
+# Example folder, change this 
+fastqc_base_dir <- "data/fastqc/"
+
+# the directory fastqc contains other data such as zip and html files
+# 
+valid_dirs <- str_subset(dir(fastqc_base_dir), "fastqc$") #gets directories for relevant folders (with fastqc at the end)
+
+processed <- read_tsv(str_c(fastqc_base_dir, 
+                            valid_dirs, 
+                            "/fastqc_data.txt"), #str_c pastes base dir, each folder in valid dir and txt together --> real all of them and stack together in one table
+        col_names = TRUE, #use third line as columnnames
+        skip = 2, #skips first 2 rows of each file
+        n_max = 8,#read only 8 next lines (basic statistics)
+        id = "file_name_long", #adds column with source file path for each row
+        show_col_types = FALSE) |> #suppresses message about coltypes
+#new column before source path, regex extracts file name  
+  mutate(file_name = str_extract(file_name_long, "/([^/]+?)_", group = 1), .before = file_name_long) |> 
+  select(!file_name_long) |> #drop this column, file name can be used
+  #long to wide: id_cols = file_name gives one row per sample, table is now filled with characters
+  pivot_wider(id_cols = file_name, names_from =`#Measure` , values_from = Value) |> 
+  select(Filename, `Total Sequences`, `Total Bases`, `Sequence length`, `%GC`) #keep only wanted samples
+
+gt(processed) #gt formats a tibble as a presentation table for report
+```
+To begin the WES analysis, it is important to build on raw-read data that fulfills the quality requirements. By assessing the quality of the fastq file, it can be assured that later interpretation is not based on technical errors. Regarding the Corpasome data, the sequence length for all samples is as expected as well as the GC percentage with small variations in the reads of the mother displaying a percentage of 44 compared to 45% in the father and daughter. The number of total sequences as well as the number of bases measured is the same for read 1 and read 2 in each family member, whereas the number varies between different persons. The maximal difference can be found between the father and the daughter where the father has 6.3 Mbp more. These differences, however, lie within the natural range of variation of genome sizes. (check reference!)
+
+
 ### QC
 
 - Summarize QC results from Fastqc: (1 paragraph)
   - one table summarizing read statistics for all three samples and
-  - show one read quality metric for all samples in one figure.
+  - show one read quality metric for all samples in one figure. add GC curves?
 
 ### Sample processing
 
