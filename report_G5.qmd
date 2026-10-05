@@ -30,7 +30,9 @@ Minimally include two graphs and two computed tables in the Results sections tha
 library(tidyverse)
 library(ggplot2)
 library(gt)
+library(quadprog)
 library(kinship2)
+
 #for the workflow graphics
 #library(igraph)
 library(showtext)
