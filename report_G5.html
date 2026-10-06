@@ -111,14 +111,14 @@ div.csl-indent {
 </section>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Neurocutaneous syndrome, characterized by cerebral dysgenesis, neuropathy, ichthyosis, and keratoderma, or CEDNIK syndrome for short, is a autosomal recessive genetic disorder (Hsu et al.&nbsp;2017). This disease is caused by a loss-of-function variant in SNAP29 (synaptosomal-associated protein 29), which encodes a SNARE protein, a vesicular membrane fusion protein (Schiller et al.&nbsp;2016). Symptoms of the disease Microcephaly, Global developmental delay, Ataxia, Ichthyosis, Diffuse palmoplantar hyperkeratosis.</p>
-<p>This syndrome was first discovered in 2005— within the 22q11.2 region and the SNAP29 gene —using homozygosity mapping on two unrelated families with a history of consanguineous marriage that exhibited similar symptoms (Sprecher et al.&nbsp;2005). In the subsequent years, up to 2021, nearly 20 variants of this syndrome were discovered. (Mah-Som et al.&nbsp;2021).</p>
-<p>CEDNIK syndrome is an extremely rare disorder, with an estimated prevalence of less than 1 per 1,000,000 individuals; a reliable population-based incidence has not been established due to the small number of reported cases (Orphanet n.d.).</p>
-<p>Variant detection and diagnosis have become much more accessible with the advent of next-generation sequencing (NGS). Unlike earlier sequencing technologies, NGS enables the simultaneous analysis of anything from a few genes to hundreds of genes, the entire exome, or even the whole genome. NGS systems employ approaches such as whole-genome sequencing (WGS) and whole-exome sequencing (WES) (Brancato et al.&nbsp;2025).</p>
-<p>In this report, we focus on WES because Sydnik syndrome is a Mendelian monogenic disorder; identifying variations within the exons alone is generally sufficient for its detection. In the case we analyzed, a 3-year-old girl exhibited symptoms of the syndrome while her parents were healthy; therefore, our objective was to perform WES for this family of three and identify the variant by comparing the results against the reference human genome (GRCh37/hg19). This type of analytical method is known as “trio analysis,” (Gabriel et al.&nbsp;2022) and given that this syndrome is an autosomal recessive disorder, we can infer that both parents are heterozygous carriers (Hsu et al.&nbsp;2017).</p>
+<p>Neurocutaneous syndrome, characterized by cerebral dysgenesis, neuropathy, ichthyosis, and keratoderma, or CEDNIK syndrome for short, is a autosomal recessive genetic disorder<span class="citation" data-cites="hsu2017cednik"><sup><a href="#ref-hsu2017cednik" role="doc-biblioref">1</a></sup></span>. This disease is caused by a loss-of-function variant in SNAP29 (synaptosomal-associated protein 29), which encodes a SNARE protein, a vesicular membrane fusion protein<span class="citation" data-cites="schiller2016establishment"><sup><a href="#ref-schiller2016establishment" role="doc-biblioref">2</a></sup></span>. Symptoms of the disease Microcephaly, Global developmental delay, Ataxia, Ichthyosis, Diffuse palmoplantar hyperkeratosis.</p>
+<p>This syndrome was first discovered in 2005— within the 22q11.2 region and the SNAP29 gene —using homozygosity mapping on two unrelated families with a history of consanguineous marriage that exhibited similar symptoms<span class="citation" data-cites="sprecher2005mutation"><sup><a href="#ref-sprecher2005mutation" role="doc-biblioref">3</a></sup></span>. In the subsequent years, up to 2021, nearly 20 variants of this syndrome were discovered<span class="citation" data-cites="mah2021new"><sup><a href="#ref-mah2021new" role="doc-biblioref">4</a></sup></span>.</p>
+<p>CEDNIK syndrome is an extremely rare disorder, with an estimated prevalence of less than 1 per 1,000,000 individuals; a reliable population-based incidence has not been established due to the small number of reported cases<span class="citation" data-cites="orphanetcednik"><sup><a href="#ref-orphanetcednik" role="doc-biblioref">5</a></sup></span>.</p>
+<p>Variant detection and diagnosis have become much more accessible with the advent of next-generation sequencing (NGS). Unlike earlier sequencing technologies, NGS enables the simultaneous analysis of anything from a few genes to hundreds of genes, the entire exome, or even the whole genome. NGS systems employ approaches such as whole-genome sequencing (WGS) and whole-exome sequencing (WES)<span class="citation" data-cites="brancato2025ngs"><sup><a href="#ref-brancato2025ngs" role="doc-biblioref">6</a></sup></span>.</p>
+<p>In this report, we focus on WES because Sydnik syndrome is a Mendelian monogenic disorder; identifying variations within the exons alone is generally sufficient for its detection. In the case we analyzed, a 3-year-old girl exhibited symptoms of the syndrome while her parents were healthy; therefore, our objective was to perform WES for this family of three and identify the variant by comparing the results against the reference human genome (GRCh37/hg19). This type of analytical method is known as “trio analysis”<span class="citation" data-cites="gabriel2022trio"><sup><a href="#ref-gabriel2022trio" role="doc-biblioref">7</a></sup></span>, and given that this syndrome is an autosomal recessive disorder, we can infer that both parents are heterozygous carriers<span class="citation" data-cites="hsu2017cednik"><sup><a href="#ref-hsu2017cednik" role="doc-biblioref">1</a></sup></span>.</p>
 <section id="study-participantswhole-exome-sequencing" class="level3">
 <h3 class="anchored" data-anchor-id="study-participantswhole-exome-sequencing">Study Participants/Whole exome sequencing</h3>
-<p>The base of our work is publicly available genetic data from a Spanish family, consisting of a father, mother and their daughter, referred to as “the Corpasome”<span class="citation" data-cites="corpas_crowdsourced_2015"><sup><a href="#ref-corpas_crowdsourced_2015" role="doc-biblioref">1</a></sup></span>. In our case the genome of the daughter is synthetically altered and a disease phenotype, caused by these alterations, is described. The parental sequencing reads remain unaltered and their phenotype is unremarkable.</p>
+<p>The base of our work is publicly available genetic data from a Spanish family, consisting of a father, mother and their daughter, referred to as “the Corpasome”<span class="citation" data-cites="corpas_crowdsourced_2015"><sup><a href="#ref-corpas_crowdsourced_2015" role="doc-biblioref">8</a></sup></span>. In our case the genome of the daughter is synthetically altered and a disease phenotype, caused by these alterations, is described. The parental sequencing reads remain unaltered and their phenotype is unremarkable.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -132,7 +132,7 @@ div.csl-indent {
 <section id="ngs-data-preprocessing" class="level3">
 <h3 class="anchored" data-anchor-id="ngs-data-preprocessing">NGS data preprocessing</h3>
 <p>Next-Generation Sequencing (NGS) data preprocessing was used to refine and align raw reads prior to downstream Whole-Exome Sequencing (WES) analysis. The input dataset comprised individual raw FASTQ files corresponding to the family trio: mother, father, and affected child, from the Corpasome family. This tools are organized for each person as .fq files as paired-ends reads, 150 bp per read for R1 and R2.</p>
-<p>For the Quality evaluation, we access to the “FastQC Report (version 0.12.1)” for each file. Using the raw data (.fq data files) as an input, we can graph and see the organization of the sequences, %GC percentage and the quality scores. We considerate the Q scores above 30 (Q30), in acordance to the standart Illumina quality trimming sequence<span class="citation" data-cites="illumina"><sup><a href="#ref-illumina" role="doc-biblioref">2</a></sup></span>.</p>
+<p>For the Quality evaluation, we access to the “FastQC Report (version 0.12.1)” for each file. Using the raw data (.fq data files) as an input, we can graph and see the organization of the sequences, %GC percentage and the quality scores. We considerate the Q scores above 30 (Q30), in acordance to the standart Illumina quality trimming sequence<span class="citation" data-cites="illumina"><sup><a href="#ref-illumina" role="doc-biblioref">9</a></sup></span>.</p>
 <p>After the confirmation of the good quality of the sequences, we proceed with the allignment and trimming of information.</p>
 <p>We processed the quantification of bp related to the harmful variants. for finding differential gene expresions.</p>
 </section>
@@ -146,23 +146,23 @@ div.csl-indent {
 <h3 class="anchored" data-anchor-id="qc">QC</h3>
 <div class="cell">
 <div class="cell-output-display">
-<div id="wmnufqfvqs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wmnufqfvqs table {
+<div id="yisqcejunk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yisqcejunk table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wmnufqfvqs thead, #wmnufqfvqs tbody, #wmnufqfvqs tfoot, #wmnufqfvqs tr, #wmnufqfvqs td, #wmnufqfvqs th {
+#yisqcejunk thead, #yisqcejunk tbody, #yisqcejunk tfoot, #yisqcejunk tr, #yisqcejunk td, #yisqcejunk th {
   border-style: none;
 }
 
-#wmnufqfvqs p {
+#yisqcejunk p {
   margin: 0;
   padding: 0;
 }
 
-#wmnufqfvqs .gt_table {
+#yisqcejunk .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -188,12 +188,12 @@ div.csl-indent {
   border-left-color: #D3D3D3;
 }
 
-#wmnufqfvqs .gt_caption {
+#yisqcejunk .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wmnufqfvqs .gt_title {
+#yisqcejunk .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -205,7 +205,7 @@ div.csl-indent {
   border-bottom-width: 0;
 }
 
-#wmnufqfvqs .gt_subtitle {
+#yisqcejunk .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -217,7 +217,7 @@ div.csl-indent {
   border-top-width: 0;
 }
 
-#wmnufqfvqs .gt_heading {
+#yisqcejunk .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -229,13 +229,13 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#wmnufqfvqs .gt_bottom_border {
+#yisqcejunk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wmnufqfvqs .gt_col_headings {
+#yisqcejunk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -250,7 +250,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#wmnufqfvqs .gt_col_heading {
+#yisqcejunk .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -270,7 +270,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#wmnufqfvqs .gt_column_spanner_outer {
+#yisqcejunk .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -282,15 +282,15 @@ div.csl-indent {
   padding-right: 4px;
 }
 
-#wmnufqfvqs .gt_column_spanner_outer:first-child {
+#yisqcejunk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wmnufqfvqs .gt_column_spanner_outer:last-child {
+#yisqcejunk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wmnufqfvqs .gt_column_spanner {
+#yisqcejunk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -302,11 +302,11 @@ div.csl-indent {
   width: 100%;
 }
 
-#wmnufqfvqs .gt_spanner_row {
+#yisqcejunk .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wmnufqfvqs .gt_group_heading {
+#yisqcejunk .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -332,7 +332,7 @@ div.csl-indent {
   text-align: left;
 }
 
-#wmnufqfvqs .gt_empty_group_heading {
+#yisqcejunk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -347,15 +347,15 @@ div.csl-indent {
   vertical-align: middle;
 }
 
-#wmnufqfvqs .gt_from_md > :first-child {
+#yisqcejunk .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wmnufqfvqs .gt_from_md > :last-child {
+#yisqcejunk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wmnufqfvqs .gt_row {
+#yisqcejunk .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -374,7 +374,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#wmnufqfvqs .gt_stub {
+#yisqcejunk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -387,7 +387,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#wmnufqfvqs .gt_stub_row_group {
+#yisqcejunk .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -401,15 +401,15 @@ div.csl-indent {
   vertical-align: top;
 }
 
-#wmnufqfvqs .gt_row_group_first td {
+#yisqcejunk .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wmnufqfvqs .gt_row_group_first th {
+#yisqcejunk .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wmnufqfvqs .gt_summary_row {
+#yisqcejunk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -419,16 +419,16 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#wmnufqfvqs .gt_first_summary_row {
+#yisqcejunk .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wmnufqfvqs .gt_first_summary_row.thick {
+#yisqcejunk .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wmnufqfvqs .gt_last_summary_row {
+#yisqcejunk .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -438,7 +438,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#wmnufqfvqs .gt_grand_summary_row {
+#yisqcejunk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -448,7 +448,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#wmnufqfvqs .gt_first_grand_summary_row {
+#yisqcejunk .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -458,7 +458,7 @@ div.csl-indent {
   border-top-color: #D3D3D3;
 }
 
-#wmnufqfvqs .gt_last_grand_summary_row_top {
+#yisqcejunk .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -468,11 +468,11 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#wmnufqfvqs .gt_striped {
+#yisqcejunk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wmnufqfvqs .gt_table_body {
+#yisqcejunk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -481,7 +481,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#wmnufqfvqs .gt_footnotes {
+#yisqcejunk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -495,7 +495,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#wmnufqfvqs .gt_footnote {
+#yisqcejunk .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -504,7 +504,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#wmnufqfvqs .gt_sourcenotes {
+#yisqcejunk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -518,7 +518,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#wmnufqfvqs .gt_sourcenote {
+#yisqcejunk .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -526,72 +526,72 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#wmnufqfvqs .gt_left {
+#yisqcejunk .gt_left {
   text-align: left;
 }
 
-#wmnufqfvqs .gt_center {
+#yisqcejunk .gt_center {
   text-align: center;
 }
 
-#wmnufqfvqs .gt_right {
+#yisqcejunk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wmnufqfvqs .gt_font_normal {
+#yisqcejunk .gt_font_normal {
   font-weight: normal;
 }
 
-#wmnufqfvqs .gt_font_bold {
+#yisqcejunk .gt_font_bold {
   font-weight: bold;
 }
 
-#wmnufqfvqs .gt_font_italic {
+#yisqcejunk .gt_font_italic {
   font-style: italic;
 }
 
-#wmnufqfvqs .gt_super {
+#yisqcejunk .gt_super {
   font-size: 65%;
 }
 
-#wmnufqfvqs .gt_footnote_marks {
+#yisqcejunk .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wmnufqfvqs .gt_asterisk {
+#yisqcejunk .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wmnufqfvqs .gt_indent_1 {
+#yisqcejunk .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wmnufqfvqs .gt_indent_2 {
+#yisqcejunk .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wmnufqfvqs .gt_indent_3 {
+#yisqcejunk .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wmnufqfvqs .gt_indent_4 {
+#yisqcejunk .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wmnufqfvqs .gt_indent_5 {
+#yisqcejunk .gt_indent_5 {
   text-indent: 25px;
 }
 
-#wmnufqfvqs .katex-display {
+#yisqcejunk .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#wmnufqfvqs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#yisqcejunk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -710,11 +710,32 @@ div.csl-indent {
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" role="list">
+<div id="ref-hsu2017cednik" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline"><span class="nocase">Hsu, T., Coughlin, C.C., Monaghan, K.G., et al.</span> (2017). CEDNIK: Phenotypic and molecular characterization of an additional patient and review of the literature. Child Neurology Open <em>4</em>, 2329048X17733214. <a href="https://doi.org/10.1177/2329048X17733214">https://doi.org/10.1177/2329048X17733214</a>.</div>
+</div>
+<div id="ref-schiller2016establishment" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Schiller, S.A., Seebode, C., Wieser, G.L., Goebbels, S., M"obius, W., Horowitz, M., and Emmert, S. (2016). Establishment of two mouse models for CEDNIK syndrome reveals the pivotal role of SNAP29 in epidermal differentiation. Journal of Investigative Dermatology <em>136</em>, 672–679. <a href="https://doi.org/10.1016/j.jid.2015.12.012">https://doi.org/10.1016/j.jid.2015.12.012</a>.</div>
+</div>
+<div id="ref-sprecher2005mutation" class="csl-entry" role="listitem">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Sprecher, E., Ishida-Yamamoto, A., Mizrahi-Koren, M., Rapaport, D., Goldsher, D., Indelman, M., and Mandel, H. (2005). A mutation in SNAP29, coding for a SNARE protein involved in intracellular trafficking, causes a novel neurocutaneous syndrome characterized by cerebral dysgenesis, neuropathy, ichthyosis, and palmoplantar keratoderma. The American Journal of Human Genetics <em>77</em>, 242–251. <a href="https://doi.org/10.1086/432588">https://doi.org/10.1086/432588</a>.</div>
+</div>
+<div id="ref-mah2021new" class="csl-entry" role="listitem">
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Mah-Som, A.Y., Skrypnyk, C., Guerin, A., Seroor Jadah, R.H., Vardhan, V.N., McKinstry, R.C., and Shinawi, M.S. (2021). New cohort of patients with CEDNIK syndrome expands the phenotypic and genotypic spectra. Neurology: Genetics <em>7</em>, e553. <a href="https://doi.org/10.1212/NXG.0000000000000553">https://doi.org/10.1212/NXG.0000000000000553</a>.</div>
+</div>
+<div id="ref-orphanetcednik" class="csl-entry" role="listitem">
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">Orphanet (n.d.). <a href="https://www.orpha.net/en/disease/detail/66631">CEDNIK syndrome</a>.</div>
+</div>
+<div id="ref-brancato2025ngs" class="csl-entry" role="listitem">
+<div class="csl-left-margin">6. </div><div class="csl-right-inline">Brancato, D., Treccarichi, S., Bruno, F., Coniglio, E., Vinci, M., Saccone, S., Cal‘i, F., and Federico, C. (2025). NGS approaches in clinical diagnostics: From workflow to disease-specific applications. International Journal of Molecular Sciences <em>26</em>, 9597. <a href="https://doi.org/10.3390/ijms26199597">https://doi.org/10.3390/ijms26199597</a>.</div>
+</div>
+<div id="ref-gabriel2022trio" class="csl-entry" role="listitem">
+<div class="csl-left-margin">7. </div><div class="csl-right-inline"><span class="nocase">Gabriel, H., Korinth, D., Ritthaler, M., et al.</span> (2022). Trio exome sequencing is highly relevant in prenatal diagnostics. Prenatal Diagnosis <em>42</em>, 845–851. <a href="https://doi.org/10.1002/pd.6081">https://doi.org/10.1002/pd.6081</a>.</div>
+</div>
 <div id="ref-corpas_crowdsourced_2015" class="csl-entry" role="listitem">
-<div class="csl-left-margin">1. </div><div class="csl-right-inline">Corpas, M., Valdivia-Granda, W., Torres, N., Greshake, B., Coletta, A., Knaus, A., Harrison, A.P., Cariaso, M., Moran, F., Nielsen, F., et al. (2015). Crowdsourced direct-to-consumer genomic analysis of a family quartet. BMC Genomics <em>16</em>, 910. <a href="https://doi.org/10.1186/s12864-015-1973-7">https://doi.org/10.1186/s12864-015-1973-7</a>.</div>
+<div class="csl-left-margin">8. </div><div class="csl-right-inline">Corpas, M., Valdivia-Granda, W., Torres, N., Greshake, B., Coletta, A., Knaus, A., Harrison, A.P., Cariaso, M., Moran, F., Nielsen, F., et al. (2015). Crowdsourced direct-to-consumer genomic analysis of a family quartet. BMC Genomics <em>16</em>, 910. <a href="https://doi.org/10.1186/s12864-015-1973-7">https://doi.org/10.1186/s12864-015-1973-7</a>.</div>
 </div>
 <div id="ref-illumina" class="csl-entry" role="listitem">
-<div class="csl-left-margin">2. </div><div class="csl-right-inline">Illumina Quality scores for next-generation sequencing.</div>
+<div class="csl-left-margin">9. </div><div class="csl-right-inline">Illumina Quality scores for next-generation sequencing.</div>
 </div>
 </div></section></div></main>
 <!-- /main column -->
