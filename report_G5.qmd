@@ -232,13 +232,32 @@ The boxplot depicts the mean quality score per position in each read separately 
 
 From the quality control regarding the raw sequencing data, there is no detectable issue that would affect further analysis. Furthermore, in the following steps, more metrics will be assessed to assure correct variant calling.
 
-- Summarize QC results from Fastqc: (1 paragraph)
-  - one table summarizing read statistics for all three samples and
-  - show one read quality metric for all samples in one figure.
 
 ### Sample processing
 
-- Table with read statistics (read numbers for each processing step including total number, after initial mapping, after duplicate removal, etc.). What is the outcome of the NGS workflow?
+
+
+```{r}
+bam_stats <- read_delim("data/bam_statistics.txt", col_names = c("nreads", "file"))
+
+step_labels <- c(
+  "bam"         = "Aligned and sorted",
+  "markdup.bam" = "Duplicates removal",
+  "realn.bam"   = "Indel realignment",
+  "recal.bam"   = "Base quality recalibration"
+)
+
+bam_stats |>
+  mutate(person   = str_extract(file, "^\\w+"),
+         bam_step = str_extract(file, "\\D+$"),
+         bam_step = str_remove(bam_step, "^\\.")) |>
+  pivot_wider(-file, names_from = person, values_from = nreads) |>
+  rename(Filename = bam_step) |>
+  mutate(description = unname(step_labels[file]), .after = file) |>
+  gt()
+```
+
+
 
 ### Variant calling/filtering
 
