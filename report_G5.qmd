@@ -370,6 +370,7 @@ effective <- noncommon |>
   filter(Func.refGene == "exonic") |> 
   filter(ExonicFunc.refGene %in% c("nonsynonymous SNV", "frameshift deletion", "frameshift insertion", "stopgain", "stoploss"))
 
+gt(effective)
 
 tibble(
   Filtering = c("All variants", "Recessive", "Noncommon", "Deleterious"),
