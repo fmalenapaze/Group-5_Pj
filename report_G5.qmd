@@ -338,8 +338,6 @@ Besides ensuring sufficient read depth, the transition-transversion ratio as wel
 
 The tables below provide further information about the location and effect of the variants. Regarding the location, about two third of the variants are located in intergenic or intronic regions. Exonic variants follow with a sixth of all variants. To get a deeper look in the extronic variants, table 2 shows that almost half of the variants are synonymous meaning that the resulting aminoacid does not change in the protein. 
 
-To identify the disease-causing variant, a comparison with the parental genomes is useful to find a possible recessive pattern. Out of the 5,983 variants, 153 were found to be recessive. Additionally, a filter is applied to discard common variants which in this case in only one. Since exonic variants are the most probable kind of variant to alter the gene product namely the protein, they are of biggest interest in this case report. The next filtering step removes all nonexonic variants and further filtering is applied to remove synonymous variants as well as nonframeshift deletions or insertions. Finally, 23 variants in 11 different genes are left.
-
 
 ```{r variant_types}
 variants |> 
@@ -352,6 +350,7 @@ variants |>
   filter(Func.refGene == "exonic") |> 
   count(ExonicFunc.refGene)
 ```
+To identify the disease-causing variant, a comparison with the parental genomes is useful to find a possible recessive pattern. Out of the 5,983 variants, 153 were found to be recessive. Additionally, a filter is applied to discard common variants which in this case in only one variant. Since exonic variants are the most probable kind of variant to alter the gene product namely the protein, they are of biggest interest in this case report. The next filtering step removes all nonexonic variants and further filtering is applied to remove synonymous variants as well as nonframeshift deletions or insertions because their effect on the protein is usually not pathogenic. Finally, 23 variants in 11 different genes are left.
 
 ```{r}
 recessive <- variants |> 
@@ -386,6 +385,11 @@ tibble(
 - QC measures: calculate and discuss
   - transistion/transversion ratio
   - nonsynonymous/synonymous ratio
+  
+  
+###Analysis of the candidate gene
+
+
 - Were variants found in candidate variants genes? If yes, with how many reads covered, what was the allele frequency of the alternative allele. Discuss quality of the calls. Report sequencing depth for all samples for candidate variant.
 - Report gene coverage for all samples for candidate gene.
 - Show variant in IGV from all three family members. Which mode of inheritance you have found and what is the support for it?
