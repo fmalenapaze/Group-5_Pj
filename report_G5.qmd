@@ -182,13 +182,106 @@ To begin the WES analysis, it is important to build on raw-read data that fulfil
 
 ### Variant calling/filtering
 
+<<<<<<< Updated upstream
 - How many variants were in the raw sample output and then called in the initial `bcf` files, in the `vcf` file filtered for read depth and finally in the demultiplexed `vcf` file? What means demultiplexing here?
+=======
+To begin the variant calling, the raw file includes all covered positions in exons which could potentially contain variants. It includes all three samples and displays 1,418,395 positions. After the variant calling 8,803 of these positions are defined as SNPs in the bcf file which is about 0.62% of the positions in the raw file. To refine the variant calling, positions with a read depth below 20 are removed. 5,898 positions remain in the vcf file. These are 5,983 variants if multi-allelic sites are considered and split in separate rows. This process is also called demultiplexing. Further conversion to tsv and annotation using ANNOVAR, does not change the number of variants. The resulting file with 5,983 variants can now be used for downstream analysis and filtering of possible disease-causing variants.
+
+```{r}
+ts_tv <- variants |> 
+  filter(str_detect(Ref, "^[ACTG]$"), str_detect(Alt, "^[ACTG]$")) |>
+  group_by(Ref, Alt) |> 
+  summarise(Count = n(), .groups = "drop") |> 
+  mutate(Type = case_when(
+    (Ref == "A" & Alt %in% c("G")) | (Ref == "G" & Alt %in% c("A")) | # can silence it
+    (Ref == "C" & Alt %in% c("T")) | (Ref == "T" & Alt %in% c("C")) ~ "Transition",
+    TRUE ~ "Transversion")) |> 
+  arrange(Type, Ref, Alt)
+
+gt(ts_tv)
+
+syn_nonsyn <- variants |> 
+  filter(ExonicFunc.refGene %in% c("synonymous SNV", "nonsynonymous SNV")) |> 
+  group_by(ExonicFunc.refGene) |> 
+  summarise(Count = n()) |> 
+  mutate(Type = case_when(
+    ExonicFunc.refGene == "synonymous SNV" ~ "Synonymous",
+    TRUE                                   ~ "Nonsynonymous")) |> 
+  ungroup() |> 
+  select(Type, Count) |> 
+  arrange(Type)
+
+gt(syn_nonsyn)
+
+# Transition/transversion
+n_ts <- sum(ts_tv$Count[ts_tv$Type == "Transition"])
+n_tv <- sum(ts_tv$Count[ts_tv$Type == "Transversion"])
+ts_tv_ratio <- round(n_ts / n_tv, 2)
+
+# Nonsynonymous/synonymous
+n_syn    <- syn_nonsyn$Count[syn_nonsyn$Type == "Synonymous"]
+n_nonsyn <- syn_nonsyn$Count[syn_nonsyn$Type == "Nonsynonymous"]
+nonsyn_syn_ratio <- round(n_nonsyn / n_syn, 2)
+```
+
+Besides ensuring sufficient read depth, the transition-transversion ratio as well as the nonsynonymous/synonymous SNP ratio are quality metrics to control for correct variant calling Since transitions require less energy, the ratio of transition-transversion is expected to be \> 2 which is also reflected in the data presenting a ratio of `r ts_tv_ratio`. Regarding the nonsynonymous/synonymous SNP ratio a 1 to 1.2 ratio is usual. Our data presents a ratio of `r nonsyn_syn_ratio`.
+
+The tables below provide further information about the location and effect of the variants. Regarding the location, about two third of the variants are located in intergenic or intronic regions. Exonic variants follow with a sixth of all variants. To get a deeper look in the extronic variants, table 2 shows that almost half of the variants are synonymous meaning that the resulting aminoacid does not change in the protein.
+
+```{r variant_types}
+variants |> 
+  count(Func.refGene) |> 
+  arrange(desc(n))
+```
+
+```{r exonic_variants}
+variants |> 
+  filter(Func.refGene == "exonic") |> 
+  count(ExonicFunc.refGene)
+```
+
+To identify the disease-causing variant, a comparison with the parental genomes is useful to find a possible recessive pattern. Out of the 5,983 variants, 153 were found to be recessive. Additionally, a filter is applied to discard common variants which in this case in only one variant. Since exonic variants are the most probable kind of variant to alter the gene product namely the protein, they are of biggest interest in this case report. The next filtering step removes all nonexonic variants and further filtering is applied to remove synonymous variants as well as nonframeshift deletions or insertions because their effect on the protein is usually not pathogenic. Finally, 23 variants in 11 different genes are left.
+
+```{r}
+recessive <- variants |> 
+  filter(corpasome_dad == "01") |> 
+  filter(corpasome_mom == "01") |> 
+  filter(corpasome_daughter == "11")
+
+noncommon <- recessive |>
+  filter(is.na(esp6500si_ea)       | esp6500si_ea > 0.05,
+         is.na(`1000g2012apr_eur`) | `1000g2012apr_eur` > 0.05)
+
+effective <- noncommon |> 
+  filter(Func.refGene == "exonic") |> 
+  filter(ExonicFunc.refGene %in% c("nonsynonymous SNV", "frameshift deletion", "frameshift insertion", "stopgain", "stoploss"))
+
+
+tibble(
+  Filtering = c("All variants", "Recessive", "Noncommon", "Deleterious"),
+  Variants = c(nrow(variants), nrow(recessive), nrow(noncommon), nrow(target_noncommon)),
+  Genes = c(n_distinct(variants$Gene.refGene),
+          n_distinct(recessive$Gene.refGene),
+          n_distinct(noncommon$Gene.refGene),
+          n_distinct(target_noncommon$Gene.refGene))
+) |>
+  gt()
+
+```
+
+>>>>>>> Stashed changes
 - How many variants were finally called over all samples and annotated using ANNOVAR? How many variants remaining after each filtering step (1 or 2 tables)? Describe impact of each filtering step by number of qualifying variants.
 - How many exonic/intronic variants were called? (1-2 sentences, 1 table). Were there any variants related to alternative splicing?
 - How many different exonic variant types (nonsynonymous/synonymous/frameshift/non-frameshiftindels/etc) were called? (1-2 sentences, 1 table).
 - QC measures: calculate and discuss
   - transistion/transversion ratio
   - nonsynonymous/synonymous ratio
+<<<<<<< Updated upstream
+=======
+
+###Analysis of the candidate gene
+
+>>>>>>> Stashed changes
 - Were variants found in candidate variants genes? If yes, with how many reads covered, what was the allele frequency of the alternative allele. Discuss quality of the calls. Report sequencing depth for all samples for candidate variant.
 - Report gene coverage for all samples for candidate gene.
 - Show variant in IGV from all three family members. Which mode of inheritance you have found and what is the support for it?
