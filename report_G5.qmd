@@ -122,9 +122,9 @@ plot(pedi)
 
 Next-Generation Sequencing (NGS) data preprocessing was used to refine and align the raw reads given to downstream Whole-Exome Sequencing (WES) analysis. The input dataset comprised individual raw FASTQ (.fq) files corresponding to the family trio: mother, father, and affected child, from the Corpasome family. They are organized for each person as  as paired-ends reads, 150 bp per read for R1 and R2. 
 
-Using the raw data (.fq) as an input, we can graph and see the organization of the sequences, GC percentage and the quality scores through the FastQC Report (version 0.12.1). We considerate the Q scores above 30 (Q30), in acordance to the standart Illumina quality trimming sequence [@illumina].
+Using the raw data (.fq) as an input, we can graph and see the organization of the sequences, GC percentage and the quality scores through the FastQC Report (version 0.12.1) \[ref\] in .fqc files. We considerate the Q scores above 30 (Q30), in acordance to the standart Illumina quality trimming sequence [@illumina].
 
-To proceed with the allignment and trimming of information we access with the tool bwa and samstools for a BAM/SAM convertion file.
+To process the alignments, the "bwa men" tool converts our .fq files into .sam files by comparing the qualities and positions with a reference genome; for this study, "hg19" was used as the reference. With the binary version (.bam), we can easily access specific genomic regions using index files (.bai), for which the reads of each family member are processed and indexed.
 
 ```{r}
 include_graphics("File Organigram.jpeg")
@@ -293,8 +293,7 @@ The table displays the different steps of sample processing and the effect on th
 
 ### Variant calling/filtering
 
-To begin the variant calling, the raw file includes all covered positions in exons which could potentially contain variants. It includes all three samples and displays 1,418,395 positions. After the variant calling 8,803 of these positions are defined as SNPs in the bcf file which is about 0.62% of the positions in the raw file. To refine the variant calling, positions with a read depth below 20 are removed. 5,898 positions remain in the vcf file. These are 5,983 variants if multi-allelic sites are considered and split in separate rows. This process is also called demultiplexing. Further conversion to tsv and annotation using ANNOVAR, does not change the number of variants. The resulting file with 5,983 variants can now be used for downstream analysis and filtering of possible disease-causing variants. Besides ensuring sufficient read depth, the transition-transversion ratio as well as the nonsynonymous/synonymous SNP ratio are quality metrics to control for correct variant filtering. 
-
+To begin the variant calling, the raw file includes all covered positions in exons which could potentially contain variants. It includes all three samples and displays 1,418,395 positions. After the variant calling 8,803 of these positions are defined as SNPs in the bcf file which is about 0.62% of the positions in the raw file. To refine the variant calling, positions with a read depth below 20 are removed. 5,898 positions remain in the vcf file. These are 5,983 variants if multi-allelic sites are considered and split in separate rows. This process is also called demultiplexing. Further conversion to tsv and annotation using ANNOVAR, does not change the number of variants. The resulting file with 5,983 variants can now be used for downstream analysis and filtering of possible disease-causing variants. Besides ensuring sufficient read depth, the transition-transversion ratio as well as the nonsynonymous/synonymous SNP ratio are quality metrics to control for correct variant filtering.
 
 ```{r}
 ts_tv <- variants |> 
@@ -324,14 +323,12 @@ syn_nonsyn <- variants |>
 gt(syn_nonsyn)
 ```
 
-
 ```{r}
 recessive <- variants |> 
   filter(corpasome_dad == "01") |> 
   filter(corpasome_mom == "01") |> 
   filter(corpasome_daughter == "11")
 ```
-
 
 ```{r}
 noncommon <- recessive |>
