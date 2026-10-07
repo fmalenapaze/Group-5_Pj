@@ -32,6 +32,7 @@ library(ggplot2)
 library(gt)
 library(quadprog)
 library(kinship2)
+library(knitr)
 
 #for the workflow graphics
 #library(igraph)
@@ -119,11 +120,15 @@ plot(pedi)
 
 ```
 
-Next-Generation Sequencing (NGS) data preprocessing was used to refine and align raw reads prior to downstream Whole-Exome Sequencing (WES) analysis. The input dataset comprised individual raw FASTQ files corresponding to the family trio: mother, father, and affected child, from the Corpasome family. This tools are organized for each person as .fq files as paired-ends reads, 150 bp per read for R1 and R2.
+Next-Generation Sequencing (NGS) data preprocessing was used to refine and align the raw reads given to downstream Whole-Exome Sequencing (WES) analysis. The input dataset comprised individual raw FASTQ (.fq) files corresponding to the family trio: mother, father, and affected child, from the Corpasome family. They are organized for each person as  as paired-ends reads, 150 bp per read for R1 and R2. 
 
-For the Quality evaluation, we access to the "FastQC Report (version 0.12.1)" for each file. Using the raw data (.fq data files) as an input, we can graph and see the organization of the sequences, %GC percentage and the quality scores. We considerate the Q scores above 30 (Q30), in acordance to the standart Illumina quality trimming sequence [@illumina].
+Using the raw data (.fq) as an input, we can graph and see the organization of the sequences, GC percentage and the quality scores through the FastQC Report (version 0.12.1). We considerate the Q scores above 30 (Q30), in acordance to the standart Illumina quality trimming sequence [@illumina].
 
-After the confirmation of the good quality of the sequences, we proceed with the allignment and trimming of information.
+To proceed with the allignment and trimming of information we access with the tool bwa and samstools for a BAM/SAM convertion file.
+
+```{r}
+include_graphics("File Organigram.jpeg")
+```
 
 We processed the quantification of bp related to the harmful variants. for finding differential gene expresions.
 
@@ -288,8 +293,7 @@ The table displays the different steps of sample processing and the effect on th
 
 ### Variant calling/filtering
 
-To begin the variant calling, the raw file includes all covered positions in exons which could potentially contain variants. It includes all three samples and displays 1,418,395 positions. After the variant calling 8,803 of these positions are defined as SNPs in the bcf file which is about 0.62% of the positions in the raw file. To refine the variant calling, positions with a read depth below 20 are removed. 5,898 positions remain in the vcf file. These are 5,983 variants if multi-allelic sites are considered and split in separate rows. This process is also called demultiplexing. Further conversion to tsv and annotation using ANNOVAR, does not change the number of variants. The resulting file with 5,983 variants can now be used for downstream analysis and filtering of possible disease-causing variants. 
-
+To begin the variant calling, the raw file includes all covered positions in exons which could potentially contain variants. It includes all three samples and displays 1,418,395 positions. After the variant calling 8,803 of these positions are defined as SNPs in the bcf file which is about 0.62% of the positions in the raw file. To refine the variant calling, positions with a read depth below 20 are removed. 5,898 positions remain in the vcf file. These are 5,983 variants if multi-allelic sites are considered and split in separate rows. This process is also called demultiplexing. Further conversion to tsv and annotation using ANNOVAR, does not change the number of variants. The resulting file with 5,983 variants can now be used for downstream analysis and filtering of possible disease-causing variants.
 
 - How many variants were finally called over all samples and annotated using ANNOVAR? How many variants remaining after each filtering step (1 or 2 tables)? Describe impact of each filtering step by number of qualifying variants.
 - How many exonic/intronic variants were called? (1-2 sentences, 1 table). Were there any variants related to alternative splicing?
