@@ -35,8 +35,8 @@ library(kinship2)
 
 #for the workflow graphics
 #library(igraph)
-library(showtext)
-library(rcartocolor)
+#library(showtext)
+#library(rcartocolor)
 getwd()
 #Library from the HPC section/WEScourse/disease/corpasome
 #Table for the complete filtered chromosome
