@@ -385,7 +385,7 @@ tibble(
   gt()
 
 ```
-In order to select the disease-causing gene out of these 11 candidate genes, the varsome database is used to evalute related phenotypes. The SNAP29 gene, however, is related to the CEDNIK syndrome in an autosomal recessive inheritance pattern. Furthermore, related HPO terms, namely ichthyosis, palmoplantar keratoderma and neurophathy, match with the described symptoms of the patient.
+In order to select the disease-causing gene out of these 11 candidate genes, the varsome database is used to evalute related phenotypes. Some of these genes are not associated with a disease phenotype (CCT8L2, ZNF280A) or related with different types of cancer (ATP6V1E1, MED15, RFPL2, XRCC6, NHP2L1, ATP5L2. BRD1, ZBED4). The SNAP29 gene, however, is related to the CEDNIK syndrome - an autosomal recessive inherited disease. Furthermore, related HPO terms, namely ichthyosis, palmoplantar keratoderma and neurophathy, match with the described symptoms of the patient.
 
 
 - How many variants were finally called over all samples and annotated using ANNOVAR? How many variants remaining after each filtering step (1 or 2 tables)? Describe impact of each filtering step by number of qualifying variants.
@@ -397,9 +397,18 @@ In order to select the disease-causing gene out of these 11 candidate genes, the
 
 ### Analysis of the candidate gene
 
+```{r}
+include_graphics("SNAP29_snp_visualisation.svg")
+```
+The identified variant can be found at position 90 where arginine is exchanged by proline due to a transition from guanine to cytosine at position 21,224,656 in the chromosome 22.
+
 - Were variants found in candidate variants genes? If yes, with how many reads covered, what was the allele frequency of the alternative allele. Discuss quality of the calls. Report sequencing depth for all samples for candidate variant.
 - Report gene coverage for all samples for candidate gene.
 - Show variant in IGV from all three family members. Which mode of inheritance you have found and what is the support for it?
+
+
+The variant 22-21224656-G-C has not been reported in the population database gnomAD which hints towards an extremely rare variant. This finding fits well with the observed phenotype as the CEDNIK syndrome is a very rare disease. At this position, variants of G-A and G-T have been reported, but also with a very rare allele frequency which underlines the hypothesis further. 
+
 - Describe candidate variant and gene using databases.
 - Check the current allele frequencies in gnoMAD for your variants (web)
 - Annotate your variant with more scores and annotation using [wANNOVAR](http://wannovar.wglab.org/) and discuss if they support the hypothesis that the variant is disease causing
