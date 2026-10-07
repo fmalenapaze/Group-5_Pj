@@ -133,7 +133,7 @@ Using the refined regions of interest, we call GATK3 (ver 4.1.4.1) to perform va
 Finally, to process the detected genetic variants, the ANNOVAR tool helped merge the resulting variant compilation into a readable table. This table in .tsv format contains genetic annotations, known identifiers, predictive scores, clinical relevance, and genomic coordinates [@wang2010annovar].
 
 ```{r}
-include_graphics("File Organigram.jpeg")
+include_graphics("File Organigram.jpeg")#before changes
 ```
 
 ### Variant annotation and filtering
