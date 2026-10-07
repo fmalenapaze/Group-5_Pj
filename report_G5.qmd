@@ -342,13 +342,15 @@ The tables below provide further information about the location and effect of th
 ```{r variant_types}
 variants |> 
   count(Func.refGene) |> 
-  arrange(desc(n))
+  arrange(desc(n))|>
+  gt()
 ```
 
 ```{r exonic_variants}
 variants |> 
   filter(Func.refGene == "exonic") |> 
-  count(ExonicFunc.refGene)
+  count(ExonicFunc.refGene)|>
+  gt()
 ```
 To identify the disease-causing variant, a comparison with the parental genomes is useful to find a possible recessive pattern. Out of the 5,983 variants, 153 were found to be recessive. Additionally, a filter is applied to discard common variants which in this case in only one variant. Since exonic variants are the most probable kind of variant to alter the gene product namely the protein, they are of biggest interest in this case report. The next filtering step removes all nonexonic variants and further filtering is applied to remove synonymous variants as well as nonframeshift deletions or insertions because their effect on the protein is usually not pathogenic. Finally, 23 variants in 11 different genes are left.
 
@@ -369,11 +371,11 @@ effective <- noncommon |>
 
 tibble(
   Filtering = c("All variants", "Recessive", "Noncommon", "Deleterious"),
-  Variants = c(nrow(variants), nrow(recessive), nrow(noncommon), nrow(target_noncommon)),
+  Variants = c(nrow(variants), nrow(recessive), nrow(noncommon), nrow(effective)),
   Genes = c(n_distinct(variants$Gene.refGene),
           n_distinct(recessive$Gene.refGene),
           n_distinct(noncommon$Gene.refGene),
-          n_distinct(target_noncommon$Gene.refGene))
+          n_distinct(effective$Gene.refGene))
 ) |>
   gt()
 
@@ -383,7 +385,7 @@ tibble(
 - How many exonic/intronic variants were called? (1-2 sentences, 1 table). Were there any variants related to alternative splicing?
 - How many different exonic variant types (nonsynonymous/synonymous/frameshift/non-frameshiftindels/etc) were called? (1-2 sentences, 1 table).
 - QC measures: calculate and discuss
-  - transistion/transversion ratio
+  - transistion/transversion ratio WGS, WES?
   - nonsynonymous/synonymous ratio
   
   
