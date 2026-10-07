@@ -334,6 +334,18 @@ nonsyn_syn_ratio <- round(n_nonsyn / n_syn, 2)
 
 Besides ensuring sufficient read depth, the transition-transversion ratio as well as the nonsynonymous/synonymous SNP ratio are quality metrics to control for correct variant filtering. Since transitions require less energy, the ratio of transition-transversion is expected to be > 2 which is also reflected in the data presenting a ratio of `r ts_tv_ratio`. Regarding the nonsynonymous/synonymous SNP ratio a 1 to 1.2 ratio is usual. Our data presents a ratio of `r nonsyn_syn_ratio`.
 
+```{r variant_types}
+variants |> 
+  count(Func.refGene) |> 
+  arrange(desc(n))
+```
+
+```{r exonic_variants}
+variants |> 
+  filter(Func.refGene == "exonic") |> 
+  count(ExonicFunc.refGene)
+```
+
 ```{r}
 recessive <- variants |> 
   filter(corpasome_dad == "01") |> 
