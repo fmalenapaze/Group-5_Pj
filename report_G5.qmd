@@ -370,7 +370,9 @@ effective <- noncommon |>
   filter(Func.refGene == "exonic") |> 
   filter(ExonicFunc.refGene %in% c("nonsynonymous SNV", "frameshift deletion", "frameshift insertion", "stopgain", "stoploss"))
 
-gt(effective)
+effective |> 
+  select(Chr, POS, Ref, Alt, Gene.refGene, ExonicFunc.refGene)|>
+  gt()
 
 tibble(
   Filtering = c("All variants", "Recessive", "Noncommon", "Deleterious"),
@@ -383,6 +385,8 @@ tibble(
   gt()
 
 ```
+In order to select the disease-causing gene out of these 11 candidate genes, the varsome database is used to evalute related phenotypes. The SNAP29 gene, however, is related to the CEDNIK syndrome in an autosomal recessive inheritance pattern. Furthermore, related HPO terms, namely ichthyosis, palmoplantar keratoderma and neurophathy, match with the described symptoms of the patient.
+
 
 - How many variants were finally called over all samples and annotated using ANNOVAR? How many variants remaining after each filtering step (1 or 2 tables)? Describe impact of each filtering step by number of qualifying variants.
 - How many exonic/intronic variants were called? (1-2 sentences, 1 table). Were there any variants related to alternative splicing?
@@ -391,7 +395,7 @@ tibble(
   - transistion/transversion ratio WGS, WES?
   - nonsynonymous/synonymous ratio
 
-###Analysis of the candidate gene
+### Analysis of the candidate gene
 
 - Were variants found in candidate variants genes? If yes, with how many reads covered, what was the allele frequency of the alternative allele. Discuss quality of the calls. Report sequencing depth for all samples for candidate variant.
 - Report gene coverage for all samples for candidate gene.
