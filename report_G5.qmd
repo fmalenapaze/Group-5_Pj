@@ -293,18 +293,17 @@ The table displays the different steps of sample processing and the effect on th
 
 ### Variant calling/filtering
 
-To begin the variant calling, the raw file includes all covered positions in exons which could potentially contain variants. It includes all three samples and displays 1,418,395 positions. After the variant calling 8,803 of these positions are defined as SNPs in the bcf file which is about 0.62% of the positions in the raw file. To refine the variant calling, positions with a read depth below 20 are removed. 5,898 positions remain in the vcf file. These are 5,983 variants if multi-allelic sites are considered and split in separate rows. This process is also called demultiplexing. Further conversion to tsv and annotation using ANNOVAR, does not change the number of variants. The resulting file with 5,983 variants can now be used for downstream analysis and filtering of possible disease-causing variants. Besides ensuring sufficient read depth, the transition-transversion ratio as well as the nonsynonymous/synonymous SNP ratio are quality metrics to control for correct variant filtering.
+To begin the variant calling, the raw file includes all covered positions in exons which could potentially contain variants. It includes all three samples and displays 1,418,395 positions. After the variant calling 8,803 of these positions are defined as SNPs in the bcf file which is about 0.62% of the positions in the raw file. To refine the variant calling, positions with a read depth below 20 are removed. 5,898 positions remain in the vcf file. These are 5,983 variants if multi-allelic sites are considered and split in separate rows. This process is also called demultiplexing. Further conversion to tsv and annotation using ANNOVAR, does not change the number of variants. The resulting file with 5,983 variants can now be used for downstream analysis and filtering of possible disease-causing variants. 
 
 ```{r}
 ts_tv <- variants |> 
   filter(str_detect(Ref, "^[ACTG]$"), str_detect(Alt, "^[ACTG]$")) |>
   group_by(Ref, Alt) |> 
-  summarise(Count = n()) |> 
+  summarise(Count = n(), .groups = "drop") |> 
   mutate(Type = case_when(
     (Ref == "A" & Alt %in% c("G")) | (Ref == "G" & Alt %in% c("A")) | # can silence it
     (Ref == "C" & Alt %in% c("T")) | (Ref == "T" & Alt %in% c("C")) ~ "Transition",
     TRUE ~ "Transversion")) |> 
-  ungroup() |>
   arrange(Type, Ref, Alt)
 
 gt(ts_tv)
@@ -321,7 +320,19 @@ syn_nonsyn <- variants |>
   arrange(Type)
 
 gt(syn_nonsyn)
+
+# Transition/transversion
+n_ts <- sum(ts_tv$Count[ts_tv$Type == "Transition"])
+n_tv <- sum(ts_tv$Count[ts_tv$Type == "Transversion"])
+ts_tv_ratio <- round(n_ts / n_tv, 2)
+
+# Nonsynonymous/synonymous
+n_syn    <- syn_nonsyn$Count[syn_nonsyn$Type == "Synonymous"]
+n_nonsyn <- syn_nonsyn$Count[syn_nonsyn$Type == "Nonsynonymous"]
+nonsyn_syn_ratio <- round(n_nonsyn / n_syn, 2)
 ```
+
+Besides ensuring sufficient read depth, the transition-transversion ratio as well as the nonsynonymous/synonymous SNP ratio are quality metrics to control for correct variant filtering. Since transitions require less energy, the ratio of transition-transversion is expected to be > 2 which is also reflected in the data presenting a ratio of `r ts_tv_ratio`. Regarding the nonsynonymous/synonymous SNP ratio a 1 to 1.2 ratio is usual. Our data presents a ratio of `r nonsyn_syn_ratio`.
 
 ```{r}
 recessive <- variants |> 
@@ -335,7 +346,7 @@ noncommon <- recessive |>
   filter(is.na(esp6500si_ea)       | esp6500si_ea > 0.05,
          is.na(`1000g2012apr_eur`) | `1000g2012apr_eur` > 0.05)
 
-noncommon |> 
+effective <- noncommon |> 
   filter(Func.refGene == "exonic") |> 
   filter(ExonicFunc.refGene %in% c("nonsynonymous SNV", "frameshift deletion", "frameshift insertion", "stopgain", "stoploss"))
 ```
