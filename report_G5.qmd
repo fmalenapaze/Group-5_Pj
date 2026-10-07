@@ -124,7 +124,7 @@ Next-Generation Sequencing (NGS) data preprocessing was used to refine and align
 
 Using the raw data (.fq) as an input, we can graph and see the organization of the sequences, GC percentage and the quality scores through the FastQC Report (version 0.12.1) in .fqc files. We considerate the Q scores above 30 (Q30), in acordance to the standart Illumina quality trimming sequence [@illumina].
 
-To process the allingments the “Burrows-Wheeler Aligner (bwa mem)”[@li2009fast] tool converts our .fq files into .bam/.sam files by comparig the qualities and positions with a reference genome, for this study it was used the hg19 as the reference. With the binary version (.bam) we can easly acces to special regions calls indexed in our genome, for this the reads of each family memeber ar compressed as markd up bai files. 
+To process the allingments the “Burrows-Wheeler Aligner (bwa mem)”[@li2009fast] tool converts our .fq files into .bam/.sam files by comparig the qualities and positions with a reference genome, for this study it was used the hg19 as the reference. With the binary version (.bam) we can easily access to special regions calls indexed in our genome, for this the reads of each family member ar compressed as markd up bai files. 
 
 A selection of variants is uptake from the comparisson form specific regions identified on the .bai files from the comparision of the hg19 reference genome. To refine the search for possible SNPs, we cross-reference with the dbSNP database for hg19, allowing the algorithm to prevent confusing a real mutation with a sequencing error when recalibrating base qualities. 
 
@@ -334,7 +334,12 @@ n_nonsyn <- syn_nonsyn$Count[syn_nonsyn$Type == "Nonsynonymous"]
 nonsyn_syn_ratio <- round(n_nonsyn / n_syn, 2)
 ```
 
-Besides ensuring sufficient read depth, the transition-transversion ratio as well as the nonsynonymous/synonymous SNP ratio are quality metrics to control for correct variant filtering. Since transitions require less energy, the ratio of transition-transversion is expected to be \> 2 which is also reflected in the data presenting a ratio of `r ts_tv_ratio`. Regarding the nonsynonymous/synonymous SNP ratio a 1 to 1.2 ratio is usual. Our data presents a ratio of `r nonsyn_syn_ratio`.
+Besides ensuring sufficient read depth, the transition-transversion ratio as well as the nonsynonymous/synonymous SNP ratio are quality metrics to control for correct variant calling Since transitions require less energy, the ratio of transition-transversion is expected to be > 2 which is also reflected in the data presenting a ratio of `r ts_tv_ratio`. Regarding the nonsynonymous/synonymous SNP ratio a 1 to 1.2 ratio is usual. Our data presents a ratio of `r nonsyn_syn_ratio`.
+
+The tables below provide further information about the location and effect of the variants. Regarding the location, about two third of the variants are located in intergenic or intronic regions. Exonic variants follow with a sixth of all variants. To get a deeper look in the extronic variants, table 2 shows that almost half of the variants are synonymous meaning that the resulting aminoacid does not change in the protein. 
+
+To identify the disease-causing variant, a comparison with the parental genomes is useful to find a possible recessive pattern. Out of the 5,983 variants, 153 were found to be recessive. Additionally, a filter is applied to discard common variants which in this case in only one. Since exonic variants are the most probable kind of variant to alter the gene product namely the protein, they are of biggest interest in this case report. The next filtering step removes all nonexonic variants and further filtering is applied to remove synonymous variants as well as nonframeshift deletions or insertions.
+
 
 ```{r variant_types}
 variants |> 
@@ -353,9 +358,7 @@ recessive <- variants |>
   filter(corpasome_dad == "01") |> 
   filter(corpasome_mom == "01") |> 
   filter(corpasome_daughter == "11")
-```
 
-```{r}
 noncommon <- recessive |>
   filter(is.na(esp6500si_ea)       | esp6500si_ea > 0.05,
          is.na(`1000g2012apr_eur`) | `1000g2012apr_eur` > 0.05)
@@ -363,6 +366,7 @@ noncommon <- recessive |>
 effective <- noncommon |> 
   filter(Func.refGene == "exonic") |> 
   filter(ExonicFunc.refGene %in% c("nonsynonymous SNV", "frameshift deletion", "frameshift insertion", "stopgain", "stoploss"))
+
 ```
 
 - How many variants were finally called over all samples and annotated using ANNOVAR? How many variants remaining after each filtering step (1 or 2 tables)? Describe impact of each filtering step by number of qualifying variants.
