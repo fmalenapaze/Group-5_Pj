@@ -32,6 +32,7 @@ library(ggplot2)
 library(gt)
 library(quadprog)
 library(kinship2)
+library(knitr)
 
 #for the workflow graphics
 #library(igraph)
@@ -42,6 +43,9 @@ getwd()
 #Table for the complete filtered chromosome
 chromosomes <- read_tsv("data/corpasome.trio.chr22.snps.filtered.annovar.tsv")
 chromosomes
+
+main_folder <- "data/fastqc"
+variants <- read_tsv("data/corpasome.trio.chr22.snps.filtered.annovar.tsv", col_types = cols(clinvar_20140702 = "c"))
 ```
 
 ```{r, include = FALSE}
@@ -60,15 +64,15 @@ variants_ap #just to print it
 
 ## Introduction
 
-Neurocutaneous syndrome, characterized by cerebral dysgenesis, neuropathy, ichthyosis, and keratoderma, or CEDNIK syndrome for short, is a autosomal recessive genetic disorder (Hsu et al. 2017). This disease is caused by a loss-of-function variant in SNAP29 (synaptosomal-associated protein 29), which encodes a SNARE protein, a vesicular membrane fusion protein (Schiller et al. 2016). Symptoms of the disease Microcephaly, Global developmental delay, Ataxia, Ichthyosis, Diffuse palmoplantar hyperkeratosis.
+Neurocutaneous syndrome, characterized by cerebral dysgenesis, neuropathy, ichthyosis, and keratoderma, or CEDNIK syndrome for short, is a autosomal recessive genetic disorder [@hsu2017cednik]. This disease is caused by a loss-of-function variant in SNAP29 (synaptosomal-associated protein 29), which encodes a SNARE protein, a vesicular membrane fusion protein [@schiller2016establishment]. Symptoms of the disease Microcephaly, Global developmental delay, Ataxia, Ichthyosis, Diffuse palmoplantar hyperkeratosis.
 
-This syndrome was first discovered in 2005— within the 22q11.2 region and the SNAP29 gene —using homozygosity mapping on two unrelated families with a history of consanguineous marriage that exhibited similar symptoms (Sprecher et al. 2005). In the subsequent years, up to 2021, nearly 20 variants of this syndrome were discovered. (Mah-Som et al. 2021).
+This syndrome was first discovered in 2005— within the 22q11.2 region and the SNAP29 gene —using homozygosity mapping on two unrelated families with a history of consanguineous marriage that exhibited similar symptoms [@sprecher2005mutation]. In the subsequent years, up to 2021, nearly 20 variants of this syndrome were discovered [@mah2021new].
 
-CEDNIK syndrome is an extremely rare disorder, with an estimated prevalence of less than 1 per 1,000,000 individuals; a reliable population-based incidence has not been established due to the small number of reported cases (Orphanet n.d.).
+CEDNIK syndrome is an extremely rare disorder, with an estimated prevalence of less than 1 per 1,000,000 individuals; a reliable population-based incidence has not been established due to the small number of reported cases [@orphanetcednik].
 
-Variant detection and diagnosis have become much more accessible with the advent of next-generation sequencing (NGS). Unlike earlier sequencing technologies, NGS enables the simultaneous analysis of anything from a few genes to hundreds of genes, the entire exome, or even the whole genome. NGS systems employ approaches such as whole-genome sequencing (WGS) and whole-exome sequencing (WES) (Brancato et al. 2025).
+Variant detection and diagnosis have become much more accessible with the advent of next-generation sequencing (NGS). Unlike earlier sequencing technologies, NGS enables the simultaneous analysis of anything from a few genes to hundreds of genes, the entire exome, or even the whole genome. NGS systems employ approaches such as whole-genome sequencing (WGS) and whole-exome sequencing (WES) [@brancato2025ngs].
 
-In this report, we focus on WES because Sydnik syndrome is a Mendelian monogenic disorder; identifying variations within the exons alone is generally sufficient for its detection. In the case we analyzed, a 3-year-old girl exhibited symptoms of the syndrome while her parents were healthy; therefore, our objective was to perform WES for this family of three and identify the variant by comparing the results against the reference human genome (GRCh37/hg19). This type of analytical method is known as "trio analysis," (Gabriel et al. 2022) and given that this syndrome is an autosomal recessive disorder, we can infer that both parents are heterozygous carriers (Hsu et al. 2017).
+In this report, we focus on WES because Sydnik syndrome is a Mendelian monogenic disorder; identifying variations within the exons alone is generally sufficient for its detection. In the case we analyzed, a 3-year-old girl exhibited symptoms of the syndrome while her parents were healthy; therefore, our objective was to perform WES for this family of three and identify the variant by comparing the results against the reference human genome (GRCh37/hg19). This type of analytical method is known as "trio analysis" [@gabriel2022trio], and given that this syndrome is an autosomal recessive disorder, we can infer that both parents are heterozygous carriers [@hsu2017cednik].
 
 ### Study Participants/Whole exome sequencing
 
@@ -79,7 +83,7 @@ In this report, we focus on WES because Sydnik syndrome is a Mendelian monogenic
   #How was the sequencing data generated, on which machine, using which technology, using which sequencing kit, exome array?
 ```
 
-The base of our work is publicly available genetic data from a Spanish family, consisting of a father, mother and their daughter, referred to as "the Corpasome" [@corpas_crowdsourced_2015]. In our case the genome of the daughter is synthetically altered and a disease phenotype, caused by these alterations, is described. The parental sequencing reads remain unaltered and their phenotype is unremarkable.
+The base of our work is publicly available genetic data from a Spanish family, here consisting of a father, mother and their daughter, referred to as "the Corpasome" [@corpas_crowdsourced_2015]. In our case the genome of the daughter is synthetically altered and a disease phenotype called CEDNIK Syndrome, caused by these alterations, is diagnosed. Main symptoms are developmental delay and skin disorder. The latter mainfasting at the age of two in ichthyosis and thickening of palms and soles. Further, she has been diagnosed with microcephaly and poor motor development as well as impaired coordination. As Cednik Syndrome is an autosomal recessive inheritable disease and the parents are healthy, the father and mother both have one chromosome with the disease-causing variant and one without. After deciding to make their genomes publicly available, the Corpas family bought direct-to-consumer sequencing privately to collect DNA in saliva using Oragene kits. Exomes were captured with Agilent SureSelect Human All Exon (44 Mb design) and sequenced on Illumina HiSeq with an average coverage of about 30x over the target region.
 
 ```{r}
 #| warning: false
@@ -116,13 +120,19 @@ plot(pedi)
 
 ```
 
-Next-Generation Sequencing (NGS) data preprocessing was used to refine and align raw reads prior to downstream Whole-Exome Sequencing (WES) analysis. The input dataset comprised individual raw FASTQ files corresponding to the family trio: mother, father, and affected child, from the Corpasome family. This tools are organized for each person as .fq files as paired-ends reads, 150 bp per read for R1 and R2.
+Next-Generation Sequencing (NGS) data preprocessing was used to refine and align the raw reads given to downstream Whole-Exome Sequencing (WES) analysis. The input dataset comprised individual raw FASTQ (.fq) files corresponding to the family trio: mother, father, and affected child, from the Corpasome family. They are organized for each person as  as paired-ends reads, 150 bp per read for R1 and R2. 
 
-For the Quality evaluation, we access to the "FastQC Report (version 0.12.1)" for each file. Using the raw data (.fq data files) as an input, we can graph and see the organization of the sequences, %GC percentage and the quality scores. We considerate the Q scores above 30 (Q30), in acordance to the standart Illumina quality trimming sequence [@illumina].
+Using the raw data (.fq) as an input, we can graph and see the organization of the sequences, GC percentage and the quality scores through the FastQC Report (version 0.12.1) in .fqc files. We considerate the Q scores above 30 (Q30), in acordance to the standart Illumina quality trimming sequence [@illumina].
 
-After the confirmation of the good quality of the sequences, we proceed with the allignment and trimming of information.
+To process the allingments the “Burrows-Wheeler Aligner (bwa mem)”[@li2009fast] tool converts our .fq files into .bam/.sam files by comparig the qualities and positions with a reference genome, for this study it was used the hg19 as the reference. With the binary version (.bam) we can easily access to special regions calls indexed in our genome, for this the reads of each family member ar compressed as markd up bai files. 
 
-We processed the quantification of bp related to the harmful variants. for finding differential gene expresions.
+A selection of variants is uptake from the comparisson form specific regions identified on the .bai files from the comparision of the hg19 reference genome. To refine the search for possible SNPs, we cross-reference with the dbSNP database for hg19, allowing the algorithm to prevent confusing a real mutation with a sequencing error when recalibrating base qualities. 
+
+Using the refined regions of interest, we call GATK3 (ver 4.1.4.1) to perform variant calling on the BAM files using the HaplotypeCaller function. This tool performs a local de novo assembly of haplotypes in active regions, allowing it to detect both SNPs and complex indels with high precision [@gatk_haplotypecaller]. Finally, the resulting variants are stored as VCF files that could be converted into BCF.
+
+```{r}
+include_graphics("File Organigram.jpeg")
+```
 
 ### Variant annotation and filtering
 
@@ -168,27 +178,218 @@ processed <- read_tsv(str_c(fastqc_base_dir,
   select(Filename, `Total Sequences`, `Total Bases`, `Sequence length`, `%GC`) #keep only wanted samples
 
 gt(processed) #gt formats a tibble as a presentation table for report
+
+
 ```
 
 To begin the WES analysis, it is important to build on raw-read data that fulfills the quality requirements. By assessing the quality of the fastq file, it can be assured that later interpretation is not based on technical errors. Regarding the Corpasome data, the sequence length for all samples is as expected as well as the GC percentage with small variations in the reads of the mother displaying a percentage of 44 compared to 45% in the father and daughter. The number of total sequences as well as the number of bases measured is the same for read 1 and read 2 in each family member, whereas the number varies between different persons. The maximal difference can be found between the father and the daughter where the father has 6.3 Mbp more. These differences, however, lie within the natural range of variation of genome sizes. (check reference!)
 
-- Summarize QC results from Fastqc: (1 paragraph)
-  - one table summarizing read statistics for all three samples and
-  - show one read quality metric for all samples in one figure.
+```{r qc_boxplots}
+#genereate needed qc file with all pb_qual files and their source
+files <- list.files(main_folder, pattern = "fastqc_data.txt",
+                    recursive = TRUE, full.names = TRUE)
+
+qc <- files |>
+  set_names() |>
+  map(\(f) read_tsv(f, skip = 13, n_max = 50, show_col_types = FALSE)) |>
+  list_rbind(names_to = "file") |>
+  mutate(folder      = basename(dirname(file)),
+         read_set    = str_c("Read ", str_extract(folder, "(\\d+)_fastqc$", group = 1)),   
+         sample      = str_remove(folder, "\\.\\d+_fastqc$"),
+         base_factor = factor(`#Base`, levels = unique(`#Base`))) |>
+  select(!file)
+
+qc |>
+  group_by(folder) |> #mutate runs separately for each folder
+  mutate(`#Base` = factor(`#Base`, levels = `#Base`)) |> #turn position in a factor to avoid alphabetical sorting
+  
+  #generate boxplot
+  ggplot(aes(x = base_factor, y = Mean, fill = read_set)) +
+  geom_boxplot(
+    aes(
+      ymin = `10th Percentile`,
+      lower = `Lower Quartile`,
+      middle = `Median`,
+      upper = `Upper Quartile`,
+      ymax = `90th Percentile`), stat = "identity", staplewidth = 0.5) +
+  
+  #add threshold lines
+   geom_hline(aes(yintercept = 28),
+              linetype = "dashed",
+              color = "orange") + # Good quality threshold
+  geom_hline(aes(yintercept = 20),
+             linetype = "dashed",
+             color = "red") +
+   geom_line(aes(x = base_factor, y = Mean, group = read_set),
+              linetype = "solid",
+              color = "blue") +
+  labs(title = "Quality scores across all bases", x = "Position in read (bp)", y = "Mean Quality Score") +
+  theme_minimal() +
+  facet_wrap(vars(folder), ncol = 2) +  #makes one panel per read set
+  # scale_x_discrete(breaks = qc$`#Base`[seq(1, nrow(qc), by = 10)]) +
+  scale_fill_discrete(name = "Folder") + #legend hidden anyways?
+  scale_x_discrete(breaks = seq(1, 100, 5)) + #show every 5th label
+  coord_cartesian(ylim = c(0, 45)) +
+  theme(legend.position = "none")
+
+#qc_graph_all
+```
+
+The boxplot depicts the mean quality score per position in each read separately for read 1 and read 2 in the father, mother and daughter. For each sample the last positions of some reads fall beneath the threshold of a quality score of 30 while the best quality scores are achieved for positions in the middle of the read. Especially in the reads coming from the mother, quality scores beneath 20 are achieved. However, for all positions in all samples the median remains at a quality score above 30 meaning that no reads need to be shortened for the downstream analysis. Nevertheless, it is important to remark that the samples derived from the mother show the lowest quality across different metrics.(which ones)
+
+From the quality control regarding the raw sequencing data, there is no detectable issue that would affect further analysis. Furthermore, in the following steps, more metrics will be assessed to assure correct variant calling.
 
 ### Sample processing
 
-- Table with read statistics (read numbers for each processing step including total number, after initial mapping, after duplicate removal, etc.). What is the outcome of the NGS workflow?
+```{r}
+bam_stats <- read_delim("data/bam_statistics.txt", col_names = c("nreads", "file"),  delim = " ", show_col_types = FALSE)
+
+step_labels <- c(
+  "bam"         = "Aligned and sorted",
+  "markdup.bam" = "Duplicates removal",
+  "realn.bam"   = "Indel realignment",
+  "recal.bam"   = "Base quality recalibration"
+)
+
+bam_base <- bam_stats |>
+  mutate(person   = str_extract(file, "^\\w+"),
+         bam_step = str_extract(file, "\\D+$"),
+         bam_step = str_remove(bam_step, "^\\.")) |>
+  pivot_wider(id_cols = -file, names_from = person, values_from = nreads) |>
+  rename(Filename = bam_step) |>
+  mutate(description = unname(step_labels[Filename]), .after = Filename)
+
+removed_row <- bam_base |>
+  filter(Filename %in% c("bam", "recal.bam")) |>
+  summarise(across(c(dad, mom, daughter),
+                   \(x) x[Filename == "bam"] - x[Filename == "recal.bam"])) |>
+  mutate(Filename = "",
+         description = "Removed (total)",
+         .before = dad)
+
+pct_row <- bam_base |>
+  filter(Filename %in% c("bam", "recal.bam")) |>
+  summarise(across(c(dad, mom, daughter),
+                   \(x) round(100 * (x[Filename == "bam"] - x[Filename == "recal.bam"]) /
+                                x[Filename == "bam"], 1))) |>
+  mutate(Filename = "",
+         description = "Removed (%)",
+         .before = dad)
+
+
+bam_table <- bind_rows(bam_base, removed_row, pct_row) 
+
+gt(bam_table)
+
+#add summary rows below
+removed <- bam_table |> filter(description == "Removed (total)")
+pct     <- bam_table |> filter(description == "Removed (%)")
+
+pct_range <- range(unlist(pct[, c("dad", "mom", "daughter")]))
+
+#to format numbers in text 
+fmt <- \(x) format(x, scientific = FALSE, big.mark = ",", trim = TRUE)
+```
+
+The table displays the different steps of sample processing and the effect on the number of alignments. As expected, only the duplication removal reduces the number of records. In total `r fmt(removed$dad)` alignments have been removed in the sample of the dad, `r fmt(removed$mom)` for the mom and `r fmt(removed$daughter)` for the daughter, which is in a range of `r pct_range[1]`% to `r pct_range[2]`% of all alignments in the unprocessed file.
 
 ### Variant calling/filtering
 
-- How many variants were in the raw sample output and then called in the initial `bcf` files, in the `vcf` file filtered for read depth and finally in the demultiplexed `vcf` file? What means demultiplexing here?
+To begin the variant calling, the raw file includes all covered positions in exons which could potentially contain variants. It includes all three samples and displays 1,418,395 positions. After the variant calling 8,803 of these positions are defined as SNPs in the bcf file which is about 0.62% of the positions in the raw file. To refine the variant calling, positions with a read depth below 20 are removed. 5,898 positions remain in the vcf file. These are 5,983 variants if multi-allelic sites are considered and split in separate rows. This process is also called demultiplexing. Further conversion to tsv and annotation using ANNOVAR, does not change the number of variants. The resulting file with 5,983 variants can now be used for downstream analysis and filtering of possible disease-causing variants.
+
+```{r}
+ts_tv <- variants |> 
+  filter(str_detect(Ref, "^[ACTG]$"), str_detect(Alt, "^[ACTG]$")) |>
+  group_by(Ref, Alt) |> 
+  summarise(Count = n(), .groups = "drop") |> 
+  mutate(Type = case_when(
+    (Ref == "A" & Alt %in% c("G")) | (Ref == "G" & Alt %in% c("A")) | # can silence it
+    (Ref == "C" & Alt %in% c("T")) | (Ref == "T" & Alt %in% c("C")) ~ "Transition",
+    TRUE ~ "Transversion")) |> 
+  arrange(Type, Ref, Alt)
+
+gt(ts_tv)
+
+syn_nonsyn <- variants |> 
+  filter(ExonicFunc.refGene %in% c("synonymous SNV", "nonsynonymous SNV")) |> 
+  group_by(ExonicFunc.refGene) |> 
+  summarise(Count = n()) |> 
+  mutate(Type = case_when(
+    ExonicFunc.refGene == "synonymous SNV" ~ "Synonymous",
+    TRUE                                   ~ "Nonsynonymous")) |> 
+  ungroup() |> 
+  select(Type, Count) |> 
+  arrange(Type)
+
+gt(syn_nonsyn)
+
+# Transition/transversion
+n_ts <- sum(ts_tv$Count[ts_tv$Type == "Transition"])
+n_tv <- sum(ts_tv$Count[ts_tv$Type == "Transversion"])
+ts_tv_ratio <- round(n_ts / n_tv, 2)
+
+# Nonsynonymous/synonymous
+n_syn    <- syn_nonsyn$Count[syn_nonsyn$Type == "Synonymous"]
+n_nonsyn <- syn_nonsyn$Count[syn_nonsyn$Type == "Nonsynonymous"]
+nonsyn_syn_ratio <- round(n_nonsyn / n_syn, 2)
+```
+
+Besides ensuring sufficient read depth, the transition-transversion ratio as well as the nonsynonymous/synonymous SNP ratio are quality metrics to control for correct variant calling Since transitions require less energy, the ratio of transition-transversion is expected to be > 2 which is also reflected in the data presenting a ratio of `r ts_tv_ratio`. Regarding the nonsynonymous/synonymous SNP ratio a 1 to 1.2 ratio is usual. Our data presents a ratio of `r nonsyn_syn_ratio`.
+
+The tables below provide further information about the location and effect of the variants. Regarding the location, about two third of the variants are located in intergenic or intronic regions. Exonic variants follow with a sixth of all variants. To get a deeper look in the extronic variants, table 2 shows that almost half of the variants are synonymous meaning that the resulting aminoacid does not change in the protein. 
+
+
+```{r variant_types}
+variants |> 
+  count(Func.refGene) |> 
+  arrange(desc(n))
+```
+
+```{r exonic_variants}
+variants |> 
+  filter(Func.refGene == "exonic") |> 
+  count(ExonicFunc.refGene)
+```
+To identify the disease-causing variant, a comparison with the parental genomes is useful to find a possible recessive pattern. Out of the 5,983 variants, 153 were found to be recessive. Additionally, a filter is applied to discard common variants which in this case in only one variant. Since exonic variants are the most probable kind of variant to alter the gene product namely the protein, they are of biggest interest in this case report. The next filtering step removes all nonexonic variants and further filtering is applied to remove synonymous variants as well as nonframeshift deletions or insertions because their effect on the protein is usually not pathogenic. Finally, 23 variants in 11 different genes are left.
+
+```{r}
+recessive <- variants |> 
+  filter(corpasome_dad == "01") |> 
+  filter(corpasome_mom == "01") |> 
+  filter(corpasome_daughter == "11")
+
+noncommon <- recessive |>
+  filter(is.na(esp6500si_ea)       | esp6500si_ea > 0.05,
+         is.na(`1000g2012apr_eur`) | `1000g2012apr_eur` > 0.05)
+
+effective <- noncommon |> 
+  filter(Func.refGene == "exonic") |> 
+  filter(ExonicFunc.refGene %in% c("nonsynonymous SNV", "frameshift deletion", "frameshift insertion", "stopgain", "stoploss"))
+
+
+tibble(
+  Filtering = c("All variants", "Recessive", "Noncommon", "Deleterious"),
+  Variants = c(nrow(variants), nrow(recessive), nrow(noncommon), nrow(target_noncommon)),
+  Genes = c(n_distinct(variants$Gene.refGene),
+          n_distinct(recessive$Gene.refGene),
+          n_distinct(noncommon$Gene.refGene),
+          n_distinct(target_noncommon$Gene.refGene))
+) |>
+  gt()
+
+```
+
 - How many variants were finally called over all samples and annotated using ANNOVAR? How many variants remaining after each filtering step (1 or 2 tables)? Describe impact of each filtering step by number of qualifying variants.
 - How many exonic/intronic variants were called? (1-2 sentences, 1 table). Were there any variants related to alternative splicing?
 - How many different exonic variant types (nonsynonymous/synonymous/frameshift/non-frameshiftindels/etc) were called? (1-2 sentences, 1 table).
 - QC measures: calculate and discuss
   - transistion/transversion ratio
   - nonsynonymous/synonymous ratio
+  
+  
+###Analysis of the candidate gene
+
+
 - Were variants found in candidate variants genes? If yes, with how many reads covered, what was the allele frequency of the alternative allele. Discuss quality of the calls. Report sequencing depth for all samples for candidate variant.
 - Report gene coverage for all samples for candidate gene.
 - Show variant in IGV from all three family members. Which mode of inheritance you have found and what is the support for it?

@@ -1,0 +1,12 @@
+898321 dad.chr22.bam
+681478 dad.chr22.markdup.bam
+681478 dad.chr22.realn.bam
+681478 dad.chr22.recal.bam
+785625 mom.chr22.bam
+610207 mom.chr22.markdup.bam
+610207 mom.chr22.realn.bam
+610207 mom.chr22.recal.bam
+756509 daughter.chr22.bam
+551548 daughter.chr22.markdup.bam
+551548 daughter.chr22.realn.bam
+551548 daughter.chr22.recal.bam
