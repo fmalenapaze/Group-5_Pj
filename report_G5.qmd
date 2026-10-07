@@ -293,7 +293,55 @@ The table displays the different steps of sample processing and the effect on th
 
 ### Variant calling/filtering
 
-To begin the variant calling, the raw file includes all covered positions in exons which could potentially contain variants. It includes all three samples and displays 1,418,395 positions. After the variant calling 8,803 of these positions are defined as SNPs in the bcf file which is about 0.62% of the positions in the raw file. To refine the variant calling, positions with a read depth below 20 are removed. 5,898 positions remain in the vcf file. These are 5,983 variants if multi-allelic sites are considered and split in separate rows. This process is also called demultiplexing. Further conversion to tsv and annotation using ANNOVAR, does not change the number of variants. The resulting file with 5,983 variants can now be used for downstream analysis and filtering of possible disease-causing variants.
+To begin the variant calling, the raw file includes all covered positions in exons which could potentially contain variants. It includes all three samples and displays 1,418,395 positions. After the variant calling 8,803 of these positions are defined as SNPs in the bcf file which is about 0.62% of the positions in the raw file. To refine the variant calling, positions with a read depth below 20 are removed. 5,898 positions remain in the vcf file. These are 5,983 variants if multi-allelic sites are considered and split in separate rows. This process is also called demultiplexing. Further conversion to tsv and annotation using ANNOVAR, does not change the number of variants. The resulting file with 5,983 variants can now be used for downstream analysis and filtering of possible disease-causing variants. Besides ensuring sufficient read depth, the transition-transversion ratio as well as the nonsynonymous/synonymous SNP ratio are quality metrics to control for correct variant filtering. 
+
+
+```{r}
+ts_tv <- variants |> 
+  filter(str_detect(Ref, "^[ACTG]$"), str_detect(Alt, "^[ACTG]$")) |>
+  group_by(Ref, Alt) |> 
+  summarise(Count = n()) |> 
+  mutate(Type = case_when(
+    (Ref == "A" & Alt %in% c("G")) | (Ref == "G" & Alt %in% c("A")) | # can silence it
+    (Ref == "C" & Alt %in% c("T")) | (Ref == "T" & Alt %in% c("C")) ~ "Transition",
+    TRUE ~ "Transversion")) |> 
+  ungroup() |>
+  arrange(Type, Ref, Alt)
+
+gt(ts_tv)
+
+syn_nonsyn <- variants |> 
+  filter(ExonicFunc.refGene %in% c("synonymous SNV", "nonsynonymous SNV")) |> 
+  group_by(ExonicFunc.refGene) |> 
+  summarise(Count = n()) |> 
+  mutate(Type = case_when(
+    ExonicFunc.refGene == "synonymous SNV" ~ "Synonymous",
+    TRUE                                   ~ "Nonsynonymous")) |> 
+  ungroup() |> 
+  select(Type, Count) |> 
+  arrange(Type)
+
+gt(syn_nonsyn)
+```
+
+
+```{r}
+recessive <- variants |> 
+  filter(corpasome_dad == "01") |> 
+  filter(corpasome_mom == "01") |> 
+  filter(corpasome_daughter == "11")
+```
+
+
+```{r}
+noncommon <- recessive |>
+  filter(is.na(esp6500si_ea)       | esp6500si_ea > 0.05,
+         is.na(`1000g2012apr_eur`) | `1000g2012apr_eur` > 0.05)
+
+noncommon |> 
+  filter(Func.refGene == "exonic") |> 
+  filter(ExonicFunc.refGene %in% c("nonsynonymous SNV", "frameshift deletion", "frameshift insertion", "stopgain", "stoploss"))
+```
 
 - How many variants were finally called over all samples and annotated using ANNOVAR? How many variants remaining after each filtering step (1 or 2 tables)? Describe impact of each filtering step by number of qualifying variants.
 - How many exonic/intronic variants were called? (1-2 sentences, 1 table). Were there any variants related to alternative splicing?
