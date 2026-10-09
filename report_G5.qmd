@@ -1,6 +1,6 @@
 ---
 title: "Case report: CEDNIK SYNDROME"
-format: html
+format: docx
 autors: "M. Ewen, M.Gezman, F. Paz"
 editor: source
 bibliography: wes.bib
@@ -385,8 +385,8 @@ tibble(
   gt()
 
 ```
-In order to select the disease-causing gene out of these 11 candidate genes, the varsome database is used to evalute related phenotypes. Some of these genes are not associated with a disease phenotype (CCT8L2, ZNF280A) or related with different types of cancer (ATP6V1E1, MED15, RFPL2, XRCC6, NHP2L1, ATP5L2. BRD1, ZBED4). The SNAP29 gene, however, is related to the CEDNIK syndrome - an autosomal recessive inherited disease. Furthermore, related HPO terms, namely ichthyosis, palmoplantar keratoderma and neurophathy, match with the described symptoms of the patient.
 
+In order to select the disease-causing gene out of these 11 candidate genes, the varsome database is used to evalute related phenotypes. Some of these genes are not associated with a disease phenotype (CCT8L2, ZNF280A) or related with different types of cancer (ATP6V1E1, MED15, RFPL2, XRCC6, NHP2L1, ATP5L2. BRD1, ZBED4). The SNAP29 gene, however, is related to the CEDNIK syndrome - an autosomal recessive inherited disease. Furthermore, related HPO terms, namely ichthyosis, palmoplantar keratoderma and neurophathy, match with the described symptoms of the patient.
 
 - How many variants were finally called over all samples and annotated using ANNOVAR? How many variants remaining after each filtering step (1 or 2 tables)? Describe impact of each filtering step by number of qualifying variants.
 - How many exonic/intronic variants were called? (1-2 sentences, 1 table). Were there any variants related to alternative splicing?
@@ -400,14 +400,23 @@ In order to select the disease-causing gene out of these 11 candidate genes, the
 ```{r}
 include_graphics("SNAP29_snp_visualisation.svg")
 ```
+
 The identified variant can be found at position 90 where arginine is exchanged by proline due to a transition from guanine to cytosine at position 21,224,656 in the chromosome 22.
+
+```{r}
+include_graphics("data/igv_variant.png")
+include_graphics("data/igv_coverage_data.png")
+```
+
+At the variant position, the read depth is sufficient for a reliable genotype call in all three samples with 78 reads covering the position in the father, 72 in the mother and 73 in the daughter. Both parents are heterozygous and show a similar allele ratio of about 53 % guanine and 47 % cytosine. The daughter is homozygous for the alternative allele, with 90 % of her reads showing cytosine. This is consistent with a recessive mode of inheritance, because both parents are unaffected carriers and the affected child has two copies of the variant. Remarkably, about 10 % of the daughter’s reads show guanine. This is unlikely to reflect a true second allele, but rather shows a technical artefact, such as sequencing errors, misaligned reads or even a contamination with parental DNA.
+
+
 
 - Were variants found in candidate variants genes? If yes, with how many reads covered, what was the allele frequency of the alternative allele. Discuss quality of the calls. Report sequencing depth for all samples for candidate variant.
 - Report gene coverage for all samples for candidate gene.
 - Show variant in IGV from all three family members. Which mode of inheritance you have found and what is the support for it?
 
-
-The variant 22-21224656-G-C has not been reported in the population database gnomAD which hints towards an extremely rare variant. This finding fits well with the observed phenotype as the CEDNIK syndrome is a very rare disease. At this position, variants of G-A and G-T have been reported, but also with a very rare allele frequency which underlines the hypothesis further. 
+The variant 22-21224656-G-C has not been reported in the population database gnomAD which hints towards an extremely rare variant. This finding fits well with the observed phenotype as the CEDNIK syndrome is a very rare disease. At this position, variants of G-A and G-T have been reported, but also with a very rare allele frequency which underlines the hypothesis further.
 
 - Describe candidate variant and gene using databases.
 - Check the current allele frequencies in gnoMAD for your variants (web)
