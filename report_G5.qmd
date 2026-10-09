@@ -410,6 +410,73 @@ include_graphics("data/igv_coverage_data.png")
 
 At the variant position, the read depth is sufficient for a reliable genotype call in all three samples with 78 reads covering the position in the father, 72 in the mother and 73 in the daughter. Both parents are heterozygous and show a similar allele ratio of about 53 % guanine and 47 % cytosine. The daughter is homozygous for the alternative allele, with 90 % of her reads showing cytosine. This is consistent with a recessive mode of inheritance, because both parents are unaffected carriers and the affected child has two copies of the variant. Remarkably, about 10 % of the daughter’s reads show guanine. This is unlikely to reflect a true second allele, but rather shows a technical artefact, such as sequencing errors, misaligned reads or even a contamination with parental DNA.
 
+```{r}
+samples    <- c("dad", "mom", "daughter")
+chromosome <- "chr22"
+position   <- 21224656      # position for the variant of interest
+gene       <- "SNAP29"      # gene of interest
+
+# read one DepthOfCoverage output type for all samples and stack them
+read_doc <- function(suffix, n_max = Inf) { #n_max partially used to avoid warnings when more than 1 row exists
+  samples |>
+    set_names() |>
+    map(\(s) read_tsv(file.path("data/coverage", str_c(s, ".depthOfCoverage.txt", suffix)),
+                      n_max = n_max,
+                      na = c("", "NA", "N/A"), show_col_types = FALSE) |>
+    rename_with(\(x) str_remove(x, "^corpasome_[a-z]+_"))) |>
+    list_rbind(names_to = "sample")
+}
+
+sample_summary <- read_doc(".sample_summary", n_max = 1) 
+
+gene_summary <- read_doc(".sample_gene_summary") |>
+  rename_with(\(x) str_remove(x, "^corpasome_[a-z]+_")) |>   # same column names for all samples
+  filter(Gene == gene)
+
+interval <- read_doc(".sample_interval_summary") |>
+  mutate(chr   = str_match(Target, "^([^:]+):")[, 2],
+         start = as.integer(str_match(Target, ":(\\d+)")[, 2]),
+         end   = as.integer(str_match(Target, "-(\\d+)$")[, 2]),
+         end   = coalesce(end, start)) |>
+  filter(chr == chromosome, start <= position, position <= end)
+
+depth_at_pos <- samples |>
+  set_names() |>
+  map(\(s) read_tsv(file.path("data/coverage/", str_c(s, ".depthOfCoverage.txt")),
+                    show_col_types = FALSE) |>
+         filter(Locus == str_c(chromosome, ":", position)) |>
+         rename(depth = starts_with("Depth_for_"))) |>
+  list_rbind(names_to = "sample")
+
+sample_summary |>
+  select(sample, chr22_mean = mean) |>
+  left_join(gene_summary |> select(sample, gene_mean = mean_cvg), by = "sample") |>
+  left_join(interval |> select(sample, exon_mean = mean_cvg, exon_pct_20x = `%_above_20`),
+            by = "sample") |>
+  left_join(depth_at_pos |> select(sample, depth_at_position = depth), by = "sample") |> 
+  gt()
+```
+
+The table above summarizes the coverage from the whole chromosome narrowed down to the gene, exon and particular position of the candidate variant. It seems that the coverage of the chromosome and the gene is very little, but since the data is based on WES the high percentage of introns distort the calculated numbers. Thus, it is important to consider exon sequencing only and include the coverage of the particular position. Taking this into account the coverage is .... and especially at the considered position which is in the middle of the exom, the coverage is above 70x allowing further analysis based on the sequenced nucleotides. 
+
+```{r}
+pos_cov <- samples |>
+  set_names() |>
+  map(\(s) read_tsv(file.path("data/coverage/", str_c(s, ".depthOfCoverage.txt")),
+                    col_types = cols(.default = col_character()),
+                    show_col_types = FALSE) |>
+         mutate(pos = as.integer(str_extract(Locus, "(?<=:)\\d+"))) |>
+         filter(between(pos, interval$start[1], interval$end[1])) |>
+         rename(depth = starts_with("Depth_for_")) |>
+         mutate(depth = as.integer(depth))) |>
+  list_rbind(names_to = "sample")
+
+ggplot(pos_cov, aes(pos, depth, colour = sample)) +
+  geom_line() +
+  geom_vline(xintercept = position, linetype = "dashed") +
+  labs(x = "Position on chr22", y = "Depth (x)", colour = NULL)
+```
+
 
 
 - Were variants found in candidate variants genes? If yes, with how many reads covered, what was the allele frequency of the alternative allele. Discuss quality of the calls. Report sequencing depth for all samples for candidate variant.
