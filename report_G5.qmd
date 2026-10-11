@@ -8,23 +8,6 @@ csl: cell.csl
 echo: false
 ---
 
-## Aims
-
-You will receive a set of exome data for a family trio to identify a disease-causing variant using the tools presented in the course. Your task for this case report is to summarize the steps leading to the causal variant and to reflect on how you get there. Your report should be reproducible using RMarkdown and code where possible.
-
-Minimally include two graphs and two computed tables in the Results sections that are purely produced from code. Use computed results in the text at least twice. There are many possibilities in this report.
-
-### Extra efforts, not required
-
-- Use of a bibliography
-- All figures produced from code
-- All numbers produced from code
-
-### Collaboration
-
-- You are free to support each other in programming but do not exchange code blocks. There will be questions on the code you wrote. In exceptional cases you can indicate that code was developed by others.
-- If you are stuck, reach out to the tutors.
-- If you collaborate, please indicate in the report.
 
 ```{r libraries, include = FALSE}
 library(tidyverse)
@@ -401,8 +384,7 @@ In order to select the disease-causing gene out of these 11 candidate genes, the
 include_graphics("SNAP29_snp_visualisation.svg")
 ```
 
-The identified variant can be found at position 90 where arginine is exchanged by proline due to a transition from guanine to cytosine at position 21,224,656 in the chromosome 22.
-
+The identified variant can be found at position 90 where arginine is exchanged by proline due to a transition from guanine to cytosine at position 21,224,656 in the chromosome 22. Using the UCSC liftover tool the variant at the position chr22:21224656 in the hg19 reference genome could be mapped to chr22:20870368 in the hg38 genome [@casper_ucsc_2026]. This is useful to search databases including both genomes to find also newly added findings relying on the hg38 genome.
 ```{r}
 include_graphics("data/igv_variant.png")
 include_graphics("data/igv_coverage_data.png")
@@ -480,19 +462,19 @@ include_graphics("data/igv_whole_region.png")
 ```
 To better visualize the coverage at the relevant interval the graphic above depicts the sequencing depth per position separately for each sample. The dotted line represents the variant position. Interestingly, the interval extracted from annotated file does not represent the exonic region containing the variant but also shows intronic regions where read depth drops to 0x. The highest peak with values above 70x can be observed at the target positions which aligns well with the previous findings in the table. Further the neighboring regions has a good coverage allowing reliable variant calling. Still, this graphic shows that correct annotations of genomic regions are important for correct interpretation and there is the need to control for correct annotation. As a reference the whole region, here using the father's sample, can be observed in igv showing the coverage of the exon containing the variant on the left and a second exon further downstream resulting in the second lower peak of higher coverage values in the diagram. These values reflect the natural range of sequencing depth as there has not been a synthetic alteration.
 
+The variant 22-21224656-G-C has not been reported in the population database gnomAD which hints towards an extremely rare variant [@guez_integrating_2026]. This finding fits well with the observed phenotype as the CEDNIK syndrome is a very rare disease. At this position, variants of G-A and G-T have been reported, but also with a very rare allele frequency which underlines the hypothesis further. In gnomAD, SNAP29 shows no depletion of missense variants (expected: 148.1, observed 178, o/e 1.20, Z = -0.87). For predicted loss-of-function variants, 12.2 SNVs would be expected and 5 have been observed [@guez_integrating_2026]. This could point to weak depletion, but with so few observed variants the estimate is imprecise, and the data do not provide convincing evidence of constraint. This pattern is expected for a gene associated with an autosomal recessive disorder because heterozygous carriers are unaffected meaning that deleterious alleles are not strongly selected against and can persist with a low frequency in the population. In conclusion, these findings do not support nor argue against the candidate gene. Additionally, these metrics conclude on the whole gene and cannot distinguish between different variants. Consequently, further evaluation with data specific for the detected variant is necessary.
 
-- Were variants found in candidate variants genes? If yes, with how many reads covered, what was the allele frequency of the alternative allele. Discuss quality of the calls. Report sequencing depth for all samples for candidate variant.
-- Report gene coverage for all samples for candidate gene.
-- Show variant in IGV from all three family members. Which mode of inheritance you have found and what is the support for it?
+This can be done using varsome [@kopanos_varsome_2019]. Again, the exact variant cannot be found, but predictions done by AlphaMissense and EVE show that this variant is potentially “pathogenic moderate”. Furthermore, the PhastCons100way conservation score of 1.000 and the PhyloP100way score of 4.218 underline that this nucleotide is highly conserved across different vertebras and thereby, probable to be pathogenic if altered.
 
-The variant 22-21224656-G-C has not been reported in the population database gnomAD which hints towards an extremely rare variant. This finding fits well with the observed phenotype as the CEDNIK syndrome is a very rare disease. At this position, variants of G-A and G-T have been reported, but also with a very rare allele frequency which underlines the hypothesis further.
+```{r}
+include_graphics("visualisation_conserved_region.png")
+```
+This visualization from the UCSC Genome Browser [@casper_ucsc_2026] shows how conserved this position and neighboring nucleotides and amino acids are across different species. The database further depicts the different tissues where SNAP29 is expressed. As the protein is related to fusion of cellular membranes for example during autophagy [@the_uniprot_consortium_uniprot_2025], it is expressed in a variety of tissues. Beneath them, brain, skin and skeletal muscle which are affected in the case of the reported child. This enhances SNAP29 being the relevant cause for the observed symptoms. Besides that, other variants within SNAP29 have been reported to be causative for the CEDNIK syndrome [@the_uniprot_consortium_uniprot_2025]. Some examples are a missense variant exchanging glutamate to lysine at position 89, the depletion of leucine at position 119 or methione to valine at position 184. The variant R90P lies within the C-terminus of the Snare region which is anchored in the vesicle membrane [@gao_integrative_2013] [@cerami_cbio_2012] [@de_bruijn_analysis_2023]. This region builds an alpha helix. Since the exchanged amino acid is an arginine which supports alpha helical structures to a proline which is known to be incompatible with helical structures due to its missing NH-structure due to its ring formation [@berg_zusammensetzung_2026]. The protein folding is assumed to be disturbed. The framework of Franklin suggests a classifaction of VUS for the variant naming low frequencies in gnomAD population databases and in-silico predictions supporting deleterious effects [@noauthor_franklin_nodate].
 
-- Describe candidate variant and gene using databases.
-- Check the current allele frequencies in gnoMAD for your variants (web)
 - Annotate your variant with more scores and annotation using [wANNOVAR](http://wannovar.wglab.org/) and discuss if they support the hypothesis that the variant is disease causing
 - Collect data about your variant and gene and the position of your variant from GeneCards, Uniprot, OMIM, GTEX. Is the variant located in a certain protein domain, does it is region where other disease-causing variants are located, is the protein/gene expressed in the tissue that you would expect?
 - Use different tools for variant interpretation like MutationMapper, MuPIT, MTR-viewer, VSranker, ClinVar
-- Have at least one figure that shows the location of the variant on the protein sequence, e.g. using MutationMapper or the R package [G3viz](https://cran.rstudio.com/web/packages/g3viz/vignettes/introduction.html)
+
 
 ## Discussion
 
