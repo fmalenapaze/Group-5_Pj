@@ -16,6 +16,9 @@ library(gt)
 library(quadprog)
 library(kinship2)
 library(knitr)
+#install.packages("NGLVieweR")
+library(NGLVieweR)
+
 
 #for the workflow graphics
 #library(igraph)
@@ -469,7 +472,25 @@ This can be done using varsome [@kopanos_varsome_2019]. Again, the exact variant
 ```{r}
 include_graphics("visualisation_conserved_region.png")
 ```
-This visualization from the UCSC Genome Browser [@casper_ucsc_2026] shows how conserved this position and neighboring nucleotides and amino acids are across different species. The database further depicts the different tissues where SNAP29 is expressed. As the protein is related to fusion of cellular membranes for example during autophagy [@the_uniprot_consortium_uniprot_2025], it is expressed in a variety of tissues. Beneath them, brain, skin and skeletal muscle which are affected in the case of the reported child. This enhances SNAP29 being the relevant cause for the observed symptoms. Besides that, other variants within SNAP29 have been reported to be causative for the CEDNIK syndrome [@the_uniprot_consortium_uniprot_2025]. Some examples are a missense variant exchanging glutamate to lysine at position 89, the depletion of leucine at position 119 or methione to valine at position 184. The variant R90P lies within the C-terminus of the Snare region which is anchored in the vesicle membrane [@gao_integrative_2013] [@cerami_cbio_2012] [@de_bruijn_analysis_2023]. This region builds an alpha helix. Since the exchanged amino acid is an arginine which supports alpha helical structures to a proline which is known to be incompatible with helical structures due to its missing NH-structure due to its ring formation [@berg_zusammensetzung_2026]. The protein folding is assumed to be disturbed. The framework of Franklin suggests a classifaction of VUS for the variant naming low frequencies in gnomAD population databases and in-silico predictions supporting deleterious effects [@noauthor_franklin_nodate].
+This visualization from the UCSC Genome Browser [@casper_ucsc_2026] shows how conserved this position and neighboring nucleotides and amino acids are across different species. The database further depicts the different tissues where SNAP29 is expressed. As the protein is related to fusion of cellular membranes for example during autophagy [@the_uniprot_consortium_uniprot_2025], it is expressed in a variety of tissues. Beneath them, brain, skin and skeletal muscle which are affected in the case of the reported child. This enhances SNAP29 being the relevant cause for the observed symptoms. Besides that, other variants within SNAP29 have been reported to be causative for the CEDNIK syndrome [@the_uniprot_consortium_uniprot_2025]. Some examples are a missense variant exchanging glutamate to lysine at position 89, the depletion of leucine at position 119 or methione to valine at position 184. The variant R90P lies within the C-terminus of the Snare region which is anchored in the vesicle membrane [@gao_integrative_2013] [@cerami_cbio_2012] [@de_bruijn_analysis_2023]. This region builds an alpha helix. Since the exchanged amino acid is an arginine which supports alpha helical structures to a proline which is known to be incompatible with helical structures due to its missing NH-structure due to its ring formation [@berg_zusammensetzung_2026]. The protein folding is assumed to be disturbed. The framework of Franklin suggests a classification of VUS for the variant naming low frequencies in gnomAD population databases and in-silico predictions supporting deleterious effects [@noauthor_franklin_nodate]. 
+
+```{r}
+
+#NGLVieweR("AF-O95721-F1-model_v6.pdb") |>
+ # addRepresentation("cartoon", param = list(colorScheme = "bfactor")) |>
+  #addRepresentation("ball+stick", param = list(sele = "90")) |>
+  #stageParameters(backgroundColor = "white")
+
+include_graphics("structure_SNAP29.png")
+```
+
+
+```{r}
+include_graphics("arg_org.png")
+include_graphics("pro_pred.png")
+```
+The protein structure derived using the AlphaFold Protein Structure Database [@jumper_highly_2021] shows the exact position of Arg90 in the alpha helix in the SNARE region. A predicted model of p.Arg90Pro does not show a break in the helix as expected. However, AlphaFold was not designed to predict effects of single substitutions and in the cell, the structure might still be destabilised or different from the prediction. 
+
 
 - Annotate your variant with more scores and annotation using [wANNOVAR](http://wannovar.wglab.org/) and discuss if they support the hypothesis that the variant is disease causing
 - Collect data about your variant and gene and the position of your variant from GeneCards, Uniprot, OMIM, GTEX. Is the variant located in a certain protein domain, does it is region where other disease-causing variants are located, is the protein/gene expressed in the tissue that you would expect?
