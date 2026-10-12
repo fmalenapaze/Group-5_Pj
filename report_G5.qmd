@@ -488,7 +488,8 @@ In order to select the disease-causing gene out of these 11 candidate genes, the
 include_graphics("SNAP29_snp_visualisation.svg")
 ```
 
-The identified variant can be found at position 90 where arginine is exchanged by proline due to a transition from guanine to cytosine at position 21,224,656 in the chromosome 22. Using the UCSC liftover tool the variant at the position chr22:21224656 in the hg19 reference genome could be mapped to chr22:20870368 in the hg38 genome [@casper_ucsc_2026]. This is useful to search databases including both genomes to find also newly added findings relying on the hg38 genome.
+The identified variant can be found at position 90 where arginine is exchanged by proline due to a transition from guanine to cytosine at position 21,224,656 in the chromosome 22. Using the UCSC liftover tool the variant at the position chr22:21224656 in the hg19 reference genome could be mapped to chr22:20870368 in the hg38 genome [@casper_ucsc_2026]. This is useful to search databases including both genomes to find also newly added findings relying on the hg38 genome. The nomenclature used for database search is chr22:g.21224656G>C on genomic level refering to hg19, c.269G>C on cDNA level and p.Arg90Pro for protein level.
+
 ```{r}
 include_graphics("data/igv_variant.png")
 include_graphics("data/igv_coverage_data.png")
