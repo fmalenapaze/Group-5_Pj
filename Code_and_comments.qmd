@@ -333,7 +333,7 @@ From the quality control regarding the raw sequencing data, there is no detectab
 ```{r}
 bam_stats <- read_delim("data/bam_statistics.txt", col_names = c("nreads", "file"),  delim = " ", show_col_types = FALSE)
 
-step_labels <- c(
+step_labels <- c( #named vector for labels
   "bam"         = "Aligned and sorted",
   "markdup.bam" = "Duplicates removal",
   "realn.bam"   = "Indel realignment",
@@ -341,13 +341,14 @@ step_labels <- c(
 )
 
 bam_base <- bam_stats |>
-  mutate(person   = str_extract(file, "^\\w+"),
-         bam_step = str_extract(file, "\\D+$"),
-         bam_step = str_remove(bam_step, "^\\.")) |>
+  mutate(person   = str_extract(file, "^\\w+"), #take word characters from start of filename until first character which is not a letter
+         bam_step = str_extract(file, "\\D+$"), #takes the last run of non-digit characters
+         bam_step = str_remove(bam_step, "^\\.")) |> #removes the leading dot
   pivot_wider(id_cols = -file, names_from = person, values_from = nreads) |>
   rename(Filename = bam_step) |>
-  mutate(description = unname(step_labels[Filename]), .after = Filename)
+  mutate(description = unname(step_labels[Filename]), .after = Filename) #unname removes names from result
 
+#add calculation rows
 removed_row <- bam_base |>
   filter(Filename %in% c("bam", "recal.bam")) |>
   summarise(across(c(dad, mom, daughter),
