@@ -10,14 +10,14 @@ echo: false
 
 
 ```{r libraries, include = FALSE}
-library(tidyverse)
-library(ggplot2)
-library(gt)
-library(quadprog)
-library(kinship2)
-library(knitr)
+library(tidyverse) #dplyr, tidyr, readr, tibble, mutate --> cleaning and reshaping data
+library(ggplot2) #data visualization
+library(gt) #formats tables
+#library(quadprog) #needed?
+library(kinship2) #pedigree visualization
+library(knitr) #report generation in R, R code in Quarto files to generate clean Word/Pdf documents
 #install.packages("NGLVieweR")
-library(NGLVieweR)
+library(NGLVieweR) #3D molecular visualization
 
 
 #for the workflow graphics
@@ -63,20 +63,24 @@ The base of our work is publicly available genetic data from a Spanish family, h
 
 ```{r}
 #| warning: false
+#ped file stores family pedigree and phenotype data
 ped <- read_table("data/corpasome.ped", #read_table: Read whitespace-separated columns into a tibble
-                  col_names = c("family", "id", "father", "mother", "sex", "phenotype"),
-                  col_types = "ccccii")
-ped2 <- ped |>
-  mutate(across(c(id, father, mother), \(x) str_remove(x, "^corpasome_")),
-         father   = na_if(father, "0"),     # 0 = no parent in the file -> NA
-         mother   = na_if(mother, "0"),
-         affected = as.integer(phenotype == 2))  # 2 = affected -> 1, otherwise 0
+                  col_names = c("family", "id", "father", "mother", "sex", "phenotype"), #assign names to the 6 columns
+                  col_types = "ccccii") #specifies data types for columns in order (character, integer)
 
-pedi <- pedigree(id      = ped2$id,
-                 dadid   = ped2$father,
+#data cleaning and transformation
+ped2 <- ped |>
+  mutate(across(c(id, father, mother), str_remove, pattern = "^corpasome_"), #across() selects columns to mutate, str_remove to remove prefix (^ = start) from strings, as argument in a function
+         father   = na_if(father, "0"),     # 0 = no parent in the file -> NA, important for package to recognize founders
+         mother   = na_if(mother, "0"),
+         affected = as.integer(phenotype == 2))  # 2 = affected (usually in pedigree files), as.integer: TRUE =1, FASLE = 0
+
+#pedigree() = core function from kinship2 package
+pedi <- pedigree(id      = ped2$id,#unique identifier
+                 dadid   = ped2$father, #for each individuals father
                  momid   = ped2$mother,
                  sex     = ped2$sex,          # 1 = male, 2 = female
-                 affected = ped2$affected)
+                 affected = ped2$affected) #binary disease status, defined before
 
 plot(pedi)
 ```
@@ -133,16 +137,16 @@ include_graphics("File Organigram.jpeg")#before changes
 ```{r}
 #| label: "fastqc"
 
-# Example folder, change this 
+# directory for fastqc data
 fastqc_base_dir <- "data/fastqc/"
 
 # the directory fastqc contains other data such as zip and html files
 
-valid_dirs <- str_subset(dir(fastqc_base_dir), "fastqc$") #gets directories for relevant folders (with fastqc at the end)
+valid_dirs <- str_subset(dir(fastqc_base_dir), "fastqc$") #gets directories for relevant folders (with fastqc at the end), dir(fastqc_base_dir) lists all directories in fastqc_base_dir
 
-processed <- read_tsv(str_c(fastqc_base_dir, 
+processed <- read_tsv(str_c(fastqc_base_dir, #str_c constructs vector with file paths
                             valid_dirs, 
-                            "/fastqc_data.txt"), #str_c pastes base dir, each folder in valid dir and txt together --> real all of them and stack together in one table
+                            "/fastqc_data.txt"), #str_c pastes base dir, each folder in valid dir and txt together --> read all of them and stack together in one table
         col_names = TRUE, #use third line as columnnames
         skip = 2, #skips first 2 rows of each file
         n_max = 8,#read only 8 next lines (basic statistics)
@@ -151,12 +155,11 @@ processed <- read_tsv(str_c(fastqc_base_dir,
 #new column before source path, regex extracts file name  
   mutate(file_name = str_extract(file_name_long, "/([^/]+?)_", group = 1), .before = file_name_long) |> #file_name_long is source path, 
   select(!file_name_long) |> #drop this column, file name can be used
-  #long to wide: id_cols = file_name gives one row per sample, table is now filled with characters: / (part we want to keep) [^/] every character but no slash, +? one or more of them (as few as possible, lazy), _ --> from first slash to underscore
+  #long to wide: id_cols = file_name gives one row per sample, table is now filled with characters: / (part we want to keep) [^/] every character but no slash, +? one or more of them (as few as possible, lazy, with ?: stop matching as soon as next rule applies), _ --> from first slash to underscore, group =1 --> only return first match
   pivot_wider(id_cols = file_name, names_from =`#Measure` , values_from = Value) |> 
   select(Filename, `Total Sequences`, `Total Bases`, `Sequence length`, `%GC`) #keep only wanted samples
 
 gt(processed) #gt formats a tibble as a presentation table for report
-
 
 ```
 
@@ -212,11 +215,13 @@ smry |>
 
 #######easier version:
 #Read all summary.txt files into one long table (Status, Metric), "path" records the source file
-smry <- list.files(fastqc_base_dir, pattern = "summary.txt$", recursive = TRUE, full.names = TRUE) |>
-  read_tsv(col_names = c("Status", "Metric", "file"), id = "path", show_col_types = FALSE) |>
-  mutate(sample = path |> dirname() |> basename() |>
-           str_replace("^([^.]+)\\..*\\.(\\d+)_fastqc$", "\\1_\\2"),
-         Metric = fct_rev(fct_inorder(Metric)))    # keep FastQC module order, first module at the top
+smry <- list.files(fastqc_base_dir, pattern = "summary.txt$", recursive = TRUE, full.names = TRUE) |> #recursive: search in all subdirectories, full names: return full path to identify sample belonging to summary.txt (filename same in all subfolders)
+  read_tsv(col_names = c("Status", "Metric", "file"), id = "path", show_col_types = FALSE) |> #reads all summary.txt in one file, assign colnames, create path column
+  mutate(sample = path |> #add sample column
+           dirname() |> #removes summary.txt from path
+           basename() |> #isolates last folder name
+           str_replace("^([^.]+)\\..*\\.(\\d+)_fastqc$", "\\1_\\2"), #first: everything to a dot, second: skip . to . number after, stop at backslash
+         Metric = fct_rev(fct_inorder(Metric)))    # keep FastQC module order, first module at the top, fct_rev(ggplot starts at bottom, fct_inorder keeps original logical order instead of alphabetical sorting)
 
 #Visualize heatmap with one tile per sample and module
 ggplot(smry, aes(x = sample, y = Metric, fill = Status)) +

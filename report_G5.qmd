@@ -14,10 +14,8 @@ echo: false
 library(tidyverse)
 library(ggplot2)
 library(gt)
-library(quadprog)
 library(kinship2)
 library(knitr)
-library(NGLVieweR)
 
 #load table for the variants
 variants <- read_tsv("data/corpasome.trio.chr22.snps.filtered.annovar.tsv", col_types = cols(clinvar_20140702 = "c"))
@@ -48,7 +46,7 @@ ped <- read_table("data/corpasome.ped",
                   col_types = "ccccii")
 
 ped2 <- ped |>
-  mutate(across(c(id, father, mother), \(x) str_remove(x, "^corpasome_")),
+  mutate(across(c(id, father, mother), str_remove, pattern = "^corpasome_"),
          father   = na_if(father, "0"),    
          mother   = na_if(mother, "0"),
          affected = as.integer(phenotype == 2)) 
@@ -123,9 +121,10 @@ To begin the WES analysis, it is important to build on raw-read data that fulfil
 #Read all summary.txt files into one long table (Status, Metric), "path" records the source file
 smry <- list.files(fastqc_base_dir, pattern = "summary.txt$", recursive = TRUE, full.names = TRUE) |>
   read_tsv(col_names = c("Status", "Metric", "file"), id = "path", show_col_types = FALSE) |>
-  mutate(sample = path |> dirname() |> basename() |>
-           str_replace("^([^.]+)\\..*\\.(\\d+)_fastqc$", "\\1_\\2"),
-         Metric = fct_rev(fct_inorder(Metric)))   
+  mutate(sample = path |> 
+           dirname() |> 
+           basename() |>
+           str_replace("^([^.]+)\\..*\\.(\\d+)_fastqc$", "\\1_\\2"), Metric = fct_rev(fct_inorder(Metric)))   
 
 #Visualize heatmap with one tile per sample and module
 ggplot(smry, aes(x = sample, y = Metric, fill = Status)) +
