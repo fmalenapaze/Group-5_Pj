@@ -425,7 +425,7 @@ include_graphics("structure_SNAP29.png")
 
 
 ```{r}
-#zoom. in on structure at variant position
+#zoom in on structure at variant position
 include_graphics("arg_org.png")
 include_graphics("pro_pred.png")
 ```
