@@ -123,7 +123,7 @@ processed <- read_tsv(str_c(fastqc_base_dir,
 gt(processed)
 ```
 
-To begin the WES analysis, it is important to build on raw-read data that fulfills the quality requirements. By assessing the quality of the fastq file, it can be assured that later interpretation is not based on technical errors. Regarding the Corpasome data, the sequence length for all samples is as expected as well as the GC percentage with small variations in the reads of the mother displaying a percentage of 44 compared to 45% in the father and daughter. The number of total sequences as well as the number of bases measured is the same for read 1 and read 2 in each family member, whereas the number varies between different persons. The maximal difference can be found between the father and the daughter where the father has 6.3 Mbp more.
+To begin the WES analysis, it is important to build on raw-read data that fulfills the quality requirements. By assessing the quality of the fastq file, it can be assured that later interpretation is not based on technical errors. Regarding the Corpasome data, the sequence length for all samples is as expected as well as the GC percentage with small variations in the reads of the mother displaying a 44% compared to 45% in the father and daughter. The number of total sequences as well as the number of bases measured is the same for read 1 and read 2 in each family member, whereas the number varies between different persons. The maximal difference can be found between the father and the daughter with 39.9 Megabase pairs (Mbp) for the dad and 33.6 Mbp in the daughter's samples.
 
 ```{r}
 #| label: fig-quality
@@ -150,7 +150,7 @@ ggplot(smry, aes(x = sample, y = Metric, fill = Status)) +
   theme_minimal()
 ```
 
-This heatmap summarizes different quality metrcis across the fastqc files. For most of the metrics the data passes the quality criteria. Regarding the per tile sequence quality, all samples fail which in this case is not unusual because the corpasome data has been sequenced in 2012 [@corpas_crowdsourced_2015] while quality criteria are adapted to modern techniques.
+This heatmap summarizes different quality metrics across the fastqc files. For most of the metrics the data passes the quality criteria. Regarding the per tile sequence quality, all samples fail which in this case is not unexpected because the corpasome data has been sequenced in 2012 [@corpas_crowdsourced_2015]. Besides that, the metric expresses a warning for the "per sequence GC content" which controls the measured sequences for the biologically expected distribution of Guanine and Cytosine.
 ```{r}
 #| label: fig-SequenceEvaluation
 #| fig-cap: "Per-base sequence quality distribution showing acceptable scores across all samples and reads."
@@ -190,7 +190,9 @@ ggplot(gc, aes(`GC Content`, proportion, colour = sample, linetype = read,
        colour = "Sample", linetype = NULL) +
   theme_minimal()
 ```
-This graph further inspects the GC content across the three samples, since the quality metrics expressed a warning. It shows that the peak for GC contents is slightly shifted for samples of the mother. Still the distribution is the same for the two reads and the deviations between the samples are small. 
+This graph further inspects the GC content across the three samples. It shows that the peak for GC contents is slightly shifted for samples of the mother. Still the distribution is the same for the two reads and the deviations between the samples are small. 
+
+Visualization of per-sequence GC content demonstrates consistent profiles across all three family members, showing stable distributions between forward and reverse reads. While a minor peak shift is observed in the maternal sample, the deviations are minimal and do not suggest technical failure.
 
 ```{r qc_boxplots}
 #genereate qc visualization with all pb_qual files
@@ -243,9 +245,9 @@ qc |>
   theme(legend.position = "none")
 ```
 
-The boxplot depicts the mean quality score per position in each read separately for read 1 and read 2 in the father, mother and daughter. For each sample the last positions of some reads fall beneath the threshold of a quality score of 30 while the best quality scores are achieved for positions in the middle of the read. Especially in the reads coming from the mother, quality scores beneath 20 are achieved. However, for all positions in all samples the median remains at a quality score above 30 meaning that no reads need to be shortened for the downstream analysis. Nevertheless, it is important to remark that the samples derived from the mother show the lowest quality across different metrics.(which ones)
+The per-base sequence quality boxplots for forward and reverse reads across the family trio reveal a typical Illumina quality profile showing optimal scores in the center of the reads and a decreasing quality towards the end of the reads. Especially the maternal sample displays lower quality scores for terminal positions dropping below a Phred score of 20. However, median quality scores across all samples and positions remain above a threshold of 30.
 
-From the quality control regarding the raw sequencing data, there is no detectable issue that would affect further analysis. Furthermore, in the following steps, more metrics will be assessed to assure correct variant calling.
+Overall, raw data quality across all three samples is within acceptable range to proceed with downstream analysis. Subsequent evaluation of alignment and coverage metrics will further asses data quality before variant calling.
 
 ### Sample processing
 
@@ -346,9 +348,9 @@ n_nonsyn <- syn_nonsyn$Count[syn_nonsyn$Type == "Nonsynonymous"]
 nonsyn_syn_ratio <- round(n_nonsyn / n_syn, 2)
 ```
 
-Besides ensuring sufficient read depth, the transition-transversion ratio as well as the nonsynonymous/synonymous SNP ratio are quality metrics to control for correct variant calling Since transitions require less energy, the ratio of transition-transversion is expected to be \> 2 which is also reflected in the data presenting a ratio of `r ts_tv_ratio`. Regarding the nonsynonymous/synonymous SNP ratio a 1 to 1.2 ratio is usual. Our data presents a ratio of `r nonsyn_syn_ratio`.
+Besides ensuring sufficient read depth, the transition-transversion ratio as well as the nonsynonymous/synonymous SNP ratio are quality metrics to control for correct variant calling Since transitions require less energy, the ratio of transition-transversion is expected to be \> 2 which is also reflected in the data presenting a ratio of `r ts_tv_ratio`. Regarding the nonsynonymous/synonymous SNP ratio a range of 1 to 1.2 is usual. Our data presents a ratio of `r nonsyn_syn_ratio`.
 
-The tables below provide further information about the location and effect of the variants. Regarding the location, about two third of the variants are located in intergenic or intronic regions. Exonic variants follow with a sixth of all variants. To get a deeper look in the extronic variants, table 2 shows that almost half of the variants are synonymous meaning that the resulting aminoacid does not change in the protein.
+The following tables summarize the genomic distribution and functional impact of the identified variants. Regarding genomic location, approximately two-thirds of the variants reside in intergenic or intronic regions, while exonic variants account for roughly one-sixth. A closer examination of the exonic subset (Table 2) reveals that nearly half are synonymous, resulting in no change to the encoded amino acid sequence.
 
 ```{r variant_types}
 #summarize and count annotated positions of all variants within the genome
@@ -367,7 +369,7 @@ variants |>
   gt()
 ```
 
-To identify the disease-causing variant, a comparison with the parental genomes is useful to find a possible recessive pattern. Out of the 5,983 variants, 153 were found to be recessive. Additionally, a filter is applied to discard common variants which in this case in only one variant. Since exonic variants are the most probable kind of variant to alter the gene product namely the protein, they are of biggest interest in this case report. The next filtering step removes all nonexonic variants and further filtering is applied to remove synonymous variants as well as nonframeshift deletions or insertions because their effect on the protein is usually not pathogenic. Finally, 23 variants in 11 different genes are left.
+To identify the disease-causing variant, a comparison with the parental genomes is useful to search for a recessive inheritance pattern. Out of the 5,983 variants, 153 were found to be recessive. Additionally, a filter is applied to discard common variants which in this case is only one variant. The 1000 Genomes (1000g2012apr_eur) and ESP6500 (esp6500si_ea) databases are used to retain  noncommon gene variants with minor allele frequency below 5% or entirely unlisted. The provided analysis script suggests keeping variants with frequencies above 5% which should be considered to adapt in the future. However, because the majority of the filtered candidates were novel variants absent from both databases, this filtering step did not alter the final variant selection. The next filtering step removes all nonexonic variants as they are not directly affecting the gene product. Further filtering is applied to remove synonymous variants as well as nonframeshift deletions or insertions because their effect on the protein is usually not pathogenic. Finally, 23 variants in 11 different genes are left.
 
 ```{r}
 #filtering of variants
@@ -400,35 +402,25 @@ tibble(
 
 ```
 
+In order to select the disease-causing gene out of these 11 candidate genes, the varsome database [@kopanos_varsome_2019] is used to evalute related phenotypes. Some of these genes are not associated with a disease phenotype (CCT8L2, ZNF280A) or related with different types of cancer (ATP6V1E1, MED15, RFPL2, XRCC6, NHP2L1, ATP5L2. BRD1, ZBED4). The SNAP29 gene, however, is related to the CEDNIK syndrome. Furthermore, related HPO terms, namely ichthyosis, palmoplantar keratoderma and neurophathy, match with the described symptoms of the patient.
+
 ```{r}
 #same for denovo
-# denovo <- variants |> 
-#   filter(corpasome_dad == "00") |> 
-#   filter(corpasome_mom == "00") |> 
-#   filter(corpasome_daughter == "01")
-# 
-# noncommon_dn <- denovo |>
-#   filter(is.na(esp6500si_ea)       | esp6500si_ea > 0.05,
-#          is.na(`1000g2012apr_eur`) | `1000g2012apr_eur` > 0.05)
-# 
-# effective_dn <- noncommon_dn |> 
-#   filter(Func.refGene == "exonic") |> 
-#   filter(ExonicFunc.refGene %in% c("nonsynonymous SNV", "frameshift deletion", "frameshift insertion", "stopgain", "stoploss"))
-# 
-# effective_dn |> 
-#   select(Chr, POS, Ref, Alt, Gene.refGene, ExonicFunc.refGene)|>
-#   gt()
+denovo <- variants |>
+  filter(corpasome_dad == "00") |>
+  filter(corpasome_mom == "00") |>
+  filter(corpasome_daughter == "01")
+
+noncommon_dn <- denovo |>
+  filter(is.na(esp6500si_ea)       | esp6500si_ea > 0.05,
+         is.na(`1000g2012apr_eur`) | `1000g2012apr_eur` > 0.05)
+
+effective_dn <- noncommon_dn |>
+  filter(Func.refGene == "exonic") |>
+  filter(ExonicFunc.refGene %in% c("nonsynonymous SNV", "frameshift deletion", "frameshift insertion", "stopgain", "stoploss"))
 ```
 
-
-In order to select the disease-causing gene out of these 11 candidate genes, the varsome database [@kopanos_varsome_2019] is used to evalute related phenotypes. Some of these genes are not associated with a disease phenotype (CCT8L2, ZNF280A) or related with different types of cancer (ATP6V1E1, MED15, RFPL2, XRCC6, NHP2L1, ATP5L2. BRD1, ZBED4). The SNAP29 gene, however, is related to the CEDNIK syndrome - an autosomal recessive inherited disease. Furthermore, related HPO terms, namely ichthyosis, palmoplantar keratoderma and neurophathy, match with the described symptoms of the patient.
-
-- How many variants were finally called over all samples and annotated using ANNOVAR? How many variants remaining after each filtering step (1 or 2 tables)? Describe impact of each filtering step by number of qualifying variants.
-- How many exonic/intronic variants were called? (1-2 sentences, 1 table). Were there any variants related to alternative splicing?
-- How many different exonic variant types (nonsynonymous/synonymous/frameshift/non-frameshiftindels/etc) were called? (1-2 sentences, 1 table).
-- QC measures: calculate and discuss
-  - transistion/transversion ratio WGS, WES?
-  - nonsynonymous/synonymous ratio
+Although it is known that the CEDNIK syndrome is an autosomal recessive disease, de novo mutations in the daughter's genome should be studied to validate SNAP29 as the most likely disease-causing gene. Applying the same filters as described before except for filtering for alleles that only occur in the daughter, the candidate genes are: `r effective_dn |> distinct(Gene.refGene) |> pull(Gene.refGene) |> paste(collapse = ", ")`. Finally, none of these genes are associated with the disease phenotype [@kopanos_varsome_2019] which supports the selection of SNAP29.
 
 ### Analysis of the candidate gene
 
