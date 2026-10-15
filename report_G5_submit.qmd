@@ -58,6 +58,7 @@ pedi <- pedigree(id      = ped2$id,
                  affected = ped2$affected)
 
 plot(pedi)
+#| fig-cap: "Family trio pedigree"
 ```
 
 ### NGS data preprocessing

@@ -39,6 +39,8 @@ The base of our work is publicly available genetic data from a Spanish family, h
 
 ```{r}
 #| warning: false
+#| label: fig-pedigree
+#| fig-cap: "Family trio pedigree"
 
 #draw pedigree for corpasome family
 ped <- read_table("data/corpasome.ped",
@@ -76,6 +78,8 @@ Finally, to process the detected genetic variants, the ANNOVAR tool helped merge
 
 ```{r}
 #NGS workflow diagram
+#| label: fig-workflow
+#| fig-cap: "Filtering process workflow"
 include_graphics("File Organigram.jpeg")
 ```
 
