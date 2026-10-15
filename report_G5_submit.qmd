@@ -1,6 +1,6 @@
 ---
 title: "Case report: CEDNIK SYNDROME"
-format: html
+format: docx
 autors: "M. Ewen, M.Gezman, F. Paz"
 editor: source
 bibliography: wes.bib

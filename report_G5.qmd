@@ -23,7 +23,7 @@ variants <- read_tsv("data/corpasome.trio.chr22.snps.filtered.annovar.tsv", col_
 
 ## Introduction
 
-Neurocutaneous syndrome, characterized by cerebral dysgenesis, neuropathy, ichthyosis, and keratoderma, or CEDNIK syndrome for short, is a autosomal recessive genetic disorder [@hsu2017cednik]. This disease is caused by a loss-of-function variant in SNAP29 (synaptosomal-associated protein 29), which encodes a SNARE protein, a vesicular membrane fusion protein [@schiller2016establishment]. Symptoms of the disease Microcephaly, Global developmental delay, Ataxia, Ichthyosis, Diffuse palmoplantar hyperkeratosis.
+Neurocutaneous syndrome, characterized by cerebral dysgenesis, neuropathy, ichthyosis, and keratoderma, or CEDNIK syndrome for short, is a autosomal recessive genetic disorder [@hsu2017cednik]. This disease is caused by a loss-of-function variant in SNAP29 (synaptosomal-associated protein 29), which encodes a SNARE protein, a vesicular membrane fusion protein [@schiller2016establishment]. Symptoms of the disease are Microcephaly, Global developmental delay, Ataxia, Ichthyosis, Diffuse palmoplantar hyperkeratosis.
 
 This syndrome was first discovered in 2005— within the 22q11.2 region and the SNAP29 gene —using homozygosity mapping on two unrelated families with a history of consanguineous marriage that exhibited similar symptoms [@sprecher2005mutation]. In the subsequent years, up to 2021, nearly 20 variants of this syndrome were discovered [@mah2021new].
 
@@ -31,7 +31,7 @@ CEDNIK syndrome is an extremely rare disorder, with an estimated prevalence of l
 
 Variant detection and diagnosis have become much more accessible with the advent of next-generation sequencing (NGS). Unlike earlier sequencing technologies, NGS enables the simultaneous analysis of anything from a few genes to hundreds of genes, the entire exome, or even the whole genome. NGS systems employ approaches such as whole-genome sequencing (WGS) and whole-exome sequencing (WES) [@brancato2025ngs].
 
-In this report, we focus on WES because Sydnik syndrome is a Mendelian monogenic disorder; identifying variations within the exons alone is generally sufficient for its detection. In the case we analyzed, a 3-year-old girl exhibited symptoms of the syndrome while her parents were healthy; therefore, our objective was to perform WES for this family of three and identify the variant by comparing the results against the reference human genome (GRCh37/hg19). This type of analytical method is known as "trio analysis" [@gabriel2022trio], and given that this syndrome is an autosomal recessive disorder, we can infer that both parents are heterozygous carriers [@hsu2017cednik].
+In this report, we focus on WES because CEDNIK syndrome is a Mendelian monogenic disorder, which is why identifying variations within the exons alone is generally sufficient for its detection. In the case we analyzed, a 3-year-old girl exhibited symptoms of the syndrome while her parents were healthy. Therefore, our objective was to perform WES for this family of three and identify the variant by comparing the results against the reference human genome (GRCh37/hg19). This type of analytical method is known as "trio analysis" [@gabriel2022trio], and given that this syndrome is an autosomal recessive disorder, we can infer that both parents are heterozygous carriers [@hsu2017cednik].
 
 ### Study Participants/Whole exome sequencing
 
@@ -416,7 +416,7 @@ In order to select the disease-causing gene out of these 11 candidate genes, the
 
 ```{r}
 #show position of variant in the protein
-include_graphics("SNAP29_snp_visualisation.svg")
+include_graphics("visualizations/SNAP29_snp_visualisation.svg")
 ```
 
 The identified variant can be found at position 90 where arginine is exchanged by proline due to a transition from guanine to cytosine at position 21,224,656 in the chromosome 22. Using the UCSC liftover tool the variant at the position chr22:21224656 in the hg19 reference genome could be mapped to chr22:20870368 in the hg38 genome [@casper_ucsc_2026]. This is useful to search databases including both genomes to find also newly added findings relying on the hg38 genome. The nomenclature used for database search is chr22:g.21224656G>C on genomic level refering to hg19, c.269G>C on cDNA level and p.Arg90Pro for protein level.
@@ -510,20 +510,20 @@ This can be done using varsome [@kopanos_varsome_2019]. Again, the exact variant
 
 ```{r}
 #show conservation in the region of the variant
-include_graphics("visualisation_conserved_region.png")
+include_graphics("visualizations/visualisation_conserved_region.png")
 ```
 This visualization from the UCSC Genome Browser [@casper_ucsc_2026] shows how conserved this position and neighboring nucleotides and amino acids are across different species. The database further depicts the different tissues where SNAP29 is expressed. As the protein is related to fusion of cellular membranes for example during autophagy [@the_uniprot_consortium_uniprot_2025], it is expressed in a variety of tissues. Beneath them, brain, skin and skeletal muscle which are affected in the case of the reported child. This enhances SNAP29 being the relevant cause for the observed symptoms. Besides that, other variants within SNAP29 have been reported to be causative for the CEDNIK syndrome [@the_uniprot_consortium_uniprot_2025]. Some examples are a missense variant exchanging glutamate to lysine at position 89, the depletion of leucine at position 119 or methione to valine at position 184. The variant R90P lies within the C-terminus of the Snare region which is anchored in the vesicle membrane [@gao_integrative_2013] [@cerami_cbio_2012] [@de_bruijn_analysis_2023]. This region builds an alpha helix. Since the exchanged amino acid is an arginine which supports alpha helical structures to a proline which is known to be incompatible with helical structures due to its missing NH-structure due to its ring formation [@berg_zusammensetzung_2026]. The protein folding is assumed to be disturbed. The framework of Franklin suggests a classification of VUS for the variant naming low frequencies in gnomAD population databases and in-silico predictions supporting deleterious effects [@noauthor_franklin_nodate]. 
 
 ```{r}
 #show structure of SNAP29
-include_graphics("structure_SNAP29.png")
+include_graphics("visualizations/structure_SNAP29.png")
 ```
 
 
 ```{r}
 #zoom. in on structure at variant position
-include_graphics("arg_org.png")
-include_graphics("pro_pred.png")
+include_graphics("visualizations/arg_org.png")
+include_graphics("visualizations/pro_pred.png")
 ```
 The protein structure derived using the AlphaFold Protein Structure Database [@jumper_highly_2021] shows the exact position of Arg90 in the alpha helix in the SNARE region. A predicted model of p.Arg90Pro does not show a break in the helix as expected. However, AlphaFold was not designed to predict effects of single substitutions and in the cell, the structure might still be destabilised or different from the prediction. 
 
@@ -537,16 +537,20 @@ The protein structure derived using the AlphaFold Protein Structure Database [@j
 
 In this study, Whole Exome Sequencing (WES) trio data from the Corpasome family were processed and analyzed to identify the genetic cause of a severe neurocutaneous disorder observed in a 3-year-old female patient. Following a bioinformatics workflow that included raw FASTQ quality control, alignment to the hg19 reference genome using BWA-MEM, duplicate removal, base quality recalibration, and variant calling with GATK3 HaplotypeCaller, a total of 5,983 variants were identified across all family members and annotated using ANNOVAR. Subsequent functional filtering and inheritance model-based prioritization steps successfully isolated a causative missense variant (p.Arg90Pro) in the SNAP29 gene, located at position 21,224,656 on chromosome 22 (G>C). The mode of inheritance for this variant and the associated CEDNIK syndrome is well-known to be autosomal recessive, which was confirmed by observing that both healthy parents are heterozygous carriers while the affected patient is homozygous for the variant.
 
-To support the hypothesis that we have identified the true causative variant, several lines of converging evidence were established. First, sequential bioinformatic filtering—moving from 5,983 total variants down to 11 candidate genes and 23 variants—isolated the SNAP29 missense variant (p.Arg90Pro) based on an autosomal recessive inheritance model and rarity criteria. Second, the variant is completely absent from the gnomAD population database, confirming its extreme rarity in concordance with the prevalence of CEDNIK syndrome. Third, high-stringency quality metrics and coverage analysis demonstrated that the variant position is exceptionally well-covered (>70x read depth) across all family members, with the affected child being homozygous for the mutant allele and both parents acting as heterozygous carriers, as visualized clearly in IGV. Finally, cross-referencing with HPO terms and VarSome demonstrated that SNAP29 is uniquely linked to CEDNIK syndrome features (such as microcephaly, ichthyosis, and palmoplantar keratoderma), whereas all other candidate genes are either unassociated with disease or linked exclusively to cancer pathways.
+To support the hypothesis that we have identified the true causative variant, several lines of converging evidence were established. First, sequential bioinformatic filtering, moving from 5,983 total variants down to 11 candidate genes and 23 variants, isolated the SNAP29 missense variant (p.Arg90Pro) based on an autosomal recessive inheritance model and rarity criteria. Second, the variant is completely absent from the gnomAD population database, confirming its extreme rarity in concordance with the prevalence of CEDNIK syndrome. Third, high-stringency quality metrics and coverage analysis demonstrated that the variant position is exceptionally well-covered with more than 70x read depth across all family members, with the affected child being homozygous for the variant allele and both parents acting as heterozygous carriers, as visualized clearly in IGV. Finally, cross-referencing with HPO terms and VarSome demonstrated that SNAP29 is uniquely linked to CEDNIK syndrome features such as microcephaly, ichthyosis, and palmoplantar keratoderma, whereas all other candidate genes are either unassociated with disease or linked exclusively to cancer pathways. 
 
-- Summary of analysis results.
+Although the evidence supports SNAP29 p.Arg90Pro as a plausible cause, three points need further discussion. A primary limitation of this case study is the inherent scope of WES, which restricts the analysis to protein-coding regions while entirely omitting non-coding elements such as promoters and enhancers. Consequently, potential regulatory mutations or variants in these regions remain undetected. Subsequent Whole Genome Sequencing (WGS) could clarify whether the identified SNAP29 variant is the only causative factor underlying the disease phenotype. In addition to that, the variant position the daughter's the coverage is high, but out of 73 reads seven are  showing guanine instead of the variant cytosine which rises the question whether the daughter is in fact homozygous or if this observation is due to the artificial nature of the introduced variant. Ideally, the variant position could be confirmed by Sanger sequencing of the daughter and both parents. Besides that, the consequences of the amino acid exchange at the protein and cellular level are unknown, since the variant has not been reported before. Does the proline distort the alpha helical structure within the SNARE region? Is the mutant SNAP29 still able to assemble into SNARE complexes? To what extend does this effect cellular processes resulting in epidermal and neuronal symptoms? 
 
-- Which variant and gene been found?
+To address these open questions, further experiments could be conducted. Building on published work on SNAP29 deficiency, integrin recycling in healthy and SNAP29 p.Arg90PRO cells could be studied. Integrin is important in cell migration and therefore pivotal for epidermal differentiation and neuronal development [@gambardella_multifaceted_2003] [@cayre_cell_2009]. In a pulse-chase experiment, accumulation of β-integrin in SNAP29 deficient cells could be observed which could over time cause the CEDNIK-associated symptoms [@rapaport_loss_2010]. Interestingly, SNAP29-mutated zebrafish have a smaller head size mirroring microcephaly in humans [@mastrodonato_genetic_2019]. This would be a meaningful experiment to see consequences even on the organism level. Another possibility would be to derive primary fibroblasts from the daughter and study SNAP29 protein interaction using immunoprecipitation or an autophagic assay to asses functionality of p.Arg90Pro SNAP29. Performing a rescue experiment would confirm whether the SNAP29 variant is the cause of the observed results.
 
-- Is the mode of inheritance of your variant known or not known?
+In conclusion, the genetic findings are consistent with the clinical picture. The genotype pattern fits autosomal recessive inheritance, SNAP29 is an established CEDNIK gene, and the patient’s symptoms match the syndrome. However, p.Arg90Pro is a missense variant without functional evidence. Within the ACMG framework it is therefore likely to remain a variant of uncertain significance until functional or additional genetic data are available. The experiments outlined above would be the next steps towards clarifying its role.
 
-- What evidence you have found that supports your hypothesis that you have found a causative variant?
 
-- Can you think of experiments that could show that you have found a disease-causing variant?
+
+
+
+
+
+
 
 ## References
