@@ -538,11 +538,6 @@ include_graphics("visualizations/pro_pred.png")
 The protein structure derived using the AlphaFold Protein Structure Database [@jumper_highly_2021] shows the exact position of Arg90 in the alpha helix in the SNARE region. A predicted model of p.Arg90Pro does not show a break in the helix as expected. However, AlphaFold was not designed to predict effects of single substitutions and in the cell, the structure might still be destabilised or different from the prediction. 
 
 
-- Annotate your variant with more scores and annotation using [wANNOVAR](http://wannovar.wglab.org/) and discuss if they support the hypothesis that the variant is disease causing
-- Collect data about your variant and gene and the position of your variant from GeneCards, Uniprot, OMIM, GTEX. Is the variant located in a certain protein domain, does it is region where other disease-causing variants are located, is the protein/gene expressed in the tissue that you would expect?
-- Use different tools for variant interpretation like MutationMapper, MuPIT, MTR-viewer, VSranker, ClinVar
-
-
 ## Discussion
 
 In this study, Whole Exome Sequencing (WES) trio data from the Corpasome family were processed and analyzed to identify the genetic cause of a severe neurocutaneous disorder observed in a 3-year-old female patient. Following a bioinformatics workflow that included raw FASTQ quality control, alignment to the hg19 reference genome using BWA-MEM, duplicate removal, base quality recalibration, and variant calling with GATK3 HaplotypeCaller, a total of 5,983 variants were identified across all family members and annotated using ANNOVAR. Subsequent functional filtering and inheritance model-based prioritization steps successfully isolated a causative missense variant (p.Arg90Pro) in the SNAP29 gene, located at position 21,224,656 on chromosome 22 (G>C). The mode of inheritance for this variant and the associated CEDNIK syndrome is well-known to be autosomal recessive, which was confirmed by observing that both healthy parents are heterozygous carriers while the affected patient is homozygous for the variant.
@@ -554,13 +549,6 @@ Although the evidence supports SNAP29 p.Arg90Pro as a plausible cause, three poi
 To address these open questions, further experiments could be conducted. Building on published work on SNAP29 deficiency, integrin recycling in healthy and SNAP29 p.Arg90PRO cells could be studied. Integrin is important in cell migration and therefore pivotal for epidermal differentiation and neuronal development [@gambardella_multifaceted_2003] [@cayre_cell_2009]. In a pulse-chase experiment, accumulation of β-integrin in SNAP29 deficient cells could be observed which could over time cause the CEDNIK-associated symptoms [@rapaport_loss_2010]. Interestingly, SNAP29-mutated zebrafish have a smaller head size mirroring microcephaly in humans [@mastrodonato_genetic_2019]. This would be a meaningful experiment to see consequences even on the organism level. Another possibility would be to derive primary fibroblasts from the daughter and study SNAP29 protein interaction using immunoprecipitation or an autophagic assay to asses functionality of p.Arg90Pro SNAP29. Performing a rescue experiment would confirm whether the SNAP29 variant is the cause of the observed results.
 
 In conclusion, the genetic findings are consistent with the clinical picture. The genotype pattern fits autosomal recessive inheritance, SNAP29 is an established CEDNIK gene, and the patient’s symptoms match the syndrome. However, p.Arg90Pro is a missense variant without functional evidence. Within the ACMG framework it is therefore likely to remain a variant of uncertain significance until functional or additional genetic data are available. The experiments outlined above would be the next steps towards clarifying its role.
-
-
-
-
-
-
-
 
 
 ## References
