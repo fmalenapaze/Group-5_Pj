@@ -61,6 +61,7 @@ div.csl-indent {
 <link href="report_G5_files/libs/bootstrap/bootstrap-215b371544c282197b31c8aa00ce3677.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="fullcontent quarto-light">
@@ -123,9 +124,14 @@ Figure&nbsp;1: Family trio pedigree
 <p>Finally, to process the detected genetic variants, the ANNOVAR tool helped merge the resulting variant compilation into a readable table. This table in .tsv format contains genetic annotations, known identifiers, predictive scores, clinical relevance, and genomic coordinates<span class="citation" data-cites="wang2010annovar"><sup><a href="#ref-wang2010annovar" role="doc-biblioref">12</a></sup></span>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="File%20Organigram.jpeg" class="img-fluid figure-img"></p>
+<div id="fig-organigram" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Filtering process workflow">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-organigram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="file_organigram.jpeg" class="img-fluid figure-img" style="width:80.0%" alt="Filtering process workflow">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-organigram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Filtering process workflow
+</figcaption>
 </figure>
 </div>
 </div>
@@ -140,24 +146,30 @@ Figure&nbsp;1: Family trio pedigree
 <section id="qc" class="level3">
 <h3 class="anchored" data-anchor-id="qc">QC</h3>
 <div class="cell">
+<div id="tbl-fastqc" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-fastqc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: FastQC Sumarized table for each read in each sample
+</figcaption>
+<div aria-describedby="tbl-fastqc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="mkiztrodqb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mkiztrodqb table {
+<div id="wdjuesnadw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wdjuesnadw table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mkiztrodqb thead, #mkiztrodqb tbody, #mkiztrodqb tfoot, #mkiztrodqb tr, #mkiztrodqb td, #mkiztrodqb th {
+#wdjuesnadw thead, #wdjuesnadw tbody, #wdjuesnadw tfoot, #wdjuesnadw tr, #wdjuesnadw td, #wdjuesnadw th {
   border-style: none;
 }
 
-#mkiztrodqb p {
+#wdjuesnadw p {
   margin: 0;
   padding: 0;
 }
 
-#mkiztrodqb .gt_table {
+#wdjuesnadw .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -183,12 +195,12 @@ Figure&nbsp;1: Family trio pedigree
   border-left-color: #D3D3D3;
 }
 
-#mkiztrodqb .gt_caption {
+#wdjuesnadw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mkiztrodqb .gt_title {
+#wdjuesnadw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -200,7 +212,7 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-width: 0;
 }
 
-#mkiztrodqb .gt_subtitle {
+#wdjuesnadw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -212,7 +224,7 @@ Figure&nbsp;1: Family trio pedigree
   border-top-width: 0;
 }
 
-#mkiztrodqb .gt_heading {
+#wdjuesnadw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -224,13 +236,13 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#mkiztrodqb .gt_bottom_border {
+#wdjuesnadw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mkiztrodqb .gt_col_headings {
+#wdjuesnadw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -245,7 +257,7 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#mkiztrodqb .gt_col_heading {
+#wdjuesnadw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -265,7 +277,7 @@ Figure&nbsp;1: Family trio pedigree
   overflow-x: hidden;
 }
 
-#mkiztrodqb .gt_column_spanner_outer {
+#wdjuesnadw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -277,15 +289,15 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 4px;
 }
 
-#mkiztrodqb .gt_column_spanner_outer:first-child {
+#wdjuesnadw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mkiztrodqb .gt_column_spanner_outer:last-child {
+#wdjuesnadw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mkiztrodqb .gt_column_spanner {
+#wdjuesnadw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -297,11 +309,11 @@ Figure&nbsp;1: Family trio pedigree
   width: 100%;
 }
 
-#mkiztrodqb .gt_spanner_row {
+#wdjuesnadw .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mkiztrodqb .gt_group_heading {
+#wdjuesnadw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -327,7 +339,7 @@ Figure&nbsp;1: Family trio pedigree
   text-align: left;
 }
 
-#mkiztrodqb .gt_empty_group_heading {
+#wdjuesnadw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -342,15 +354,15 @@ Figure&nbsp;1: Family trio pedigree
   vertical-align: middle;
 }
 
-#mkiztrodqb .gt_from_md > :first-child {
+#wdjuesnadw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mkiztrodqb .gt_from_md > :last-child {
+#wdjuesnadw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mkiztrodqb .gt_row {
+#wdjuesnadw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -369,7 +381,7 @@ Figure&nbsp;1: Family trio pedigree
   overflow-x: hidden;
 }
 
-#mkiztrodqb .gt_stub {
+#wdjuesnadw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -382,7 +394,7 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#mkiztrodqb .gt_stub_row_group {
+#wdjuesnadw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -396,15 +408,15 @@ Figure&nbsp;1: Family trio pedigree
   vertical-align: top;
 }
 
-#mkiztrodqb .gt_row_group_first td {
+#wdjuesnadw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mkiztrodqb .gt_row_group_first th {
+#wdjuesnadw .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mkiztrodqb .gt_summary_row {
+#wdjuesnadw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -414,16 +426,16 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#mkiztrodqb .gt_first_summary_row {
+#wdjuesnadw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mkiztrodqb .gt_first_summary_row.thick {
+#wdjuesnadw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mkiztrodqb .gt_last_summary_row {
+#wdjuesnadw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -433,7 +445,7 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-color: #D3D3D3;
 }
 
-#mkiztrodqb .gt_grand_summary_row {
+#wdjuesnadw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -443,7 +455,7 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#mkiztrodqb .gt_first_grand_summary_row {
+#wdjuesnadw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -453,7 +465,7 @@ Figure&nbsp;1: Family trio pedigree
   border-top-color: #D3D3D3;
 }
 
-#mkiztrodqb .gt_last_grand_summary_row_top {
+#wdjuesnadw .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -463,11 +475,11 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-color: #D3D3D3;
 }
 
-#mkiztrodqb .gt_striped {
+#wdjuesnadw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mkiztrodqb .gt_table_body {
+#wdjuesnadw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -476,7 +488,7 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-color: #D3D3D3;
 }
 
-#mkiztrodqb .gt_footnotes {
+#wdjuesnadw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -490,7 +502,7 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#mkiztrodqb .gt_footnote {
+#wdjuesnadw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -499,7 +511,7 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#mkiztrodqb .gt_sourcenotes {
+#wdjuesnadw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -513,7 +525,7 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#mkiztrodqb .gt_sourcenote {
+#wdjuesnadw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -521,77 +533,77 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#mkiztrodqb .gt_left {
+#wdjuesnadw .gt_left {
   text-align: left;
 }
 
-#mkiztrodqb .gt_center {
+#wdjuesnadw .gt_center {
   text-align: center;
 }
 
-#mkiztrodqb .gt_right {
+#wdjuesnadw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mkiztrodqb .gt_font_normal {
+#wdjuesnadw .gt_font_normal {
   font-weight: normal;
 }
 
-#mkiztrodqb .gt_font_bold {
+#wdjuesnadw .gt_font_bold {
   font-weight: bold;
 }
 
-#mkiztrodqb .gt_font_italic {
+#wdjuesnadw .gt_font_italic {
   font-style: italic;
 }
 
-#mkiztrodqb .gt_super {
+#wdjuesnadw .gt_super {
   font-size: 65%;
 }
 
-#mkiztrodqb .gt_footnote_marks {
+#wdjuesnadw .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mkiztrodqb .gt_asterisk {
+#wdjuesnadw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mkiztrodqb .gt_indent_1 {
+#wdjuesnadw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mkiztrodqb .gt_indent_2 {
+#wdjuesnadw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mkiztrodqb .gt_indent_3 {
+#wdjuesnadw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mkiztrodqb .gt_indent_4 {
+#wdjuesnadw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mkiztrodqb .gt_indent_5 {
+#wdjuesnadw .gt_indent_5 {
   text-indent: 25px;
 }
 
-#mkiztrodqb .katex-display {
+#wdjuesnadw .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#mkiztrodqb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#wdjuesnadw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<table class="gt_table cell caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
 <th id="Filename" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Filename</th>
@@ -650,12 +662,20 @@ Figure&nbsp;1: Family trio pedigree
 </div>
 </div>
 </div>
+</figure>
+</div>
+</div>
 <p>To begin the WES analysis, it is important to build on raw-read data that fulfills the quality requirements. By assessing the quality of the fastq file, it can be assured that later interpretation is not based on technical errors. Regarding the Corpasome data, the sequence length for all samples is as expected as well as the GC percentage with small variations in the reads of the mother displaying a percentage of 44 compared to 45% in the father and daughter. The number of total sequences as well as the number of bases measured is the same for read 1 and read 2 in each family member, whereas the number varies between different persons. The maximal difference can be found between the father and the daughter where the father has 6.3 Mbp more.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="report_G5_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<div id="fig-quality" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-quality-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_G5_files/figure-html/fig-quality-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-quality-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Heatmap of the quality control status performed by FastQC tool
+</figcaption>
 </figure>
 </div>
 </div>
@@ -663,9 +683,14 @@ Figure&nbsp;1: Family trio pedigree
 <p>This heatmap summarizes different quality metrcis across the fastqc files. For most of the metrics the data passes the quality criteria. Regarding the per tile sequence quality, all samples fail which in this case is not unusual because the corpasome data has been sequenced in 2012<span class="citation" data-cites="corpas_crowdsourced_2015"><sup><a href="#ref-corpas_crowdsourced_2015" role="doc-biblioref">8</a></sup></span> while quality criteria are adapted to modern techniques.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="report_G5_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<div id="fig-SequenceEvaluation" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-SequenceEvaluation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="report_G5_files/figure-html/fig-SequenceEvaluation-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-SequenceEvaluation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores across all samples and reads.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -687,23 +712,23 @@ Figure&nbsp;1: Family trio pedigree
 <h3 class="anchored" data-anchor-id="sample-processing">Sample processing</h3>
 <div class="cell">
 <div class="cell-output-display">
-<div id="vtsnzqvnyb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vtsnzqvnyb table {
+<div id="hgnvdedlef" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hgnvdedlef table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vtsnzqvnyb thead, #vtsnzqvnyb tbody, #vtsnzqvnyb tfoot, #vtsnzqvnyb tr, #vtsnzqvnyb td, #vtsnzqvnyb th {
+#hgnvdedlef thead, #hgnvdedlef tbody, #hgnvdedlef tfoot, #hgnvdedlef tr, #hgnvdedlef td, #hgnvdedlef th {
   border-style: none;
 }
 
-#vtsnzqvnyb p {
+#hgnvdedlef p {
   margin: 0;
   padding: 0;
 }
 
-#vtsnzqvnyb .gt_table {
+#hgnvdedlef .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -729,12 +754,12 @@ Figure&nbsp;1: Family trio pedigree
   border-left-color: #D3D3D3;
 }
 
-#vtsnzqvnyb .gt_caption {
+#hgnvdedlef .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vtsnzqvnyb .gt_title {
+#hgnvdedlef .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -746,7 +771,7 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-width: 0;
 }
 
-#vtsnzqvnyb .gt_subtitle {
+#hgnvdedlef .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -758,7 +783,7 @@ Figure&nbsp;1: Family trio pedigree
   border-top-width: 0;
 }
 
-#vtsnzqvnyb .gt_heading {
+#hgnvdedlef .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -770,13 +795,13 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#vtsnzqvnyb .gt_bottom_border {
+#hgnvdedlef .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vtsnzqvnyb .gt_col_headings {
+#hgnvdedlef .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -791,7 +816,7 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#vtsnzqvnyb .gt_col_heading {
+#hgnvdedlef .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -811,7 +836,7 @@ Figure&nbsp;1: Family trio pedigree
   overflow-x: hidden;
 }
 
-#vtsnzqvnyb .gt_column_spanner_outer {
+#hgnvdedlef .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -823,15 +848,15 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 4px;
 }
 
-#vtsnzqvnyb .gt_column_spanner_outer:first-child {
+#hgnvdedlef .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vtsnzqvnyb .gt_column_spanner_outer:last-child {
+#hgnvdedlef .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vtsnzqvnyb .gt_column_spanner {
+#hgnvdedlef .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -843,11 +868,11 @@ Figure&nbsp;1: Family trio pedigree
   width: 100%;
 }
 
-#vtsnzqvnyb .gt_spanner_row {
+#hgnvdedlef .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vtsnzqvnyb .gt_group_heading {
+#hgnvdedlef .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -873,7 +898,7 @@ Figure&nbsp;1: Family trio pedigree
   text-align: left;
 }
 
-#vtsnzqvnyb .gt_empty_group_heading {
+#hgnvdedlef .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -888,15 +913,15 @@ Figure&nbsp;1: Family trio pedigree
   vertical-align: middle;
 }
 
-#vtsnzqvnyb .gt_from_md > :first-child {
+#hgnvdedlef .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vtsnzqvnyb .gt_from_md > :last-child {
+#hgnvdedlef .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vtsnzqvnyb .gt_row {
+#hgnvdedlef .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -915,7 +940,7 @@ Figure&nbsp;1: Family trio pedigree
   overflow-x: hidden;
 }
 
-#vtsnzqvnyb .gt_stub {
+#hgnvdedlef .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -928,7 +953,7 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#vtsnzqvnyb .gt_stub_row_group {
+#hgnvdedlef .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -942,15 +967,15 @@ Figure&nbsp;1: Family trio pedigree
   vertical-align: top;
 }
 
-#vtsnzqvnyb .gt_row_group_first td {
+#hgnvdedlef .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vtsnzqvnyb .gt_row_group_first th {
+#hgnvdedlef .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vtsnzqvnyb .gt_summary_row {
+#hgnvdedlef .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -960,16 +985,16 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#vtsnzqvnyb .gt_first_summary_row {
+#hgnvdedlef .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vtsnzqvnyb .gt_first_summary_row.thick {
+#hgnvdedlef .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vtsnzqvnyb .gt_last_summary_row {
+#hgnvdedlef .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -979,7 +1004,7 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-color: #D3D3D3;
 }
 
-#vtsnzqvnyb .gt_grand_summary_row {
+#hgnvdedlef .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -989,7 +1014,7 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#vtsnzqvnyb .gt_first_grand_summary_row {
+#hgnvdedlef .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -999,7 +1024,7 @@ Figure&nbsp;1: Family trio pedigree
   border-top-color: #D3D3D3;
 }
 
-#vtsnzqvnyb .gt_last_grand_summary_row_top {
+#hgnvdedlef .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1009,11 +1034,11 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-color: #D3D3D3;
 }
 
-#vtsnzqvnyb .gt_striped {
+#hgnvdedlef .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vtsnzqvnyb .gt_table_body {
+#hgnvdedlef .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1022,7 +1047,7 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-color: #D3D3D3;
 }
 
-#vtsnzqvnyb .gt_footnotes {
+#hgnvdedlef .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1036,7 +1061,7 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#vtsnzqvnyb .gt_footnote {
+#hgnvdedlef .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1045,7 +1070,7 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#vtsnzqvnyb .gt_sourcenotes {
+#hgnvdedlef .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1059,7 +1084,7 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#vtsnzqvnyb .gt_sourcenote {
+#hgnvdedlef .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1067,72 +1092,72 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#vtsnzqvnyb .gt_left {
+#hgnvdedlef .gt_left {
   text-align: left;
 }
 
-#vtsnzqvnyb .gt_center {
+#hgnvdedlef .gt_center {
   text-align: center;
 }
 
-#vtsnzqvnyb .gt_right {
+#hgnvdedlef .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vtsnzqvnyb .gt_font_normal {
+#hgnvdedlef .gt_font_normal {
   font-weight: normal;
 }
 
-#vtsnzqvnyb .gt_font_bold {
+#hgnvdedlef .gt_font_bold {
   font-weight: bold;
 }
 
-#vtsnzqvnyb .gt_font_italic {
+#hgnvdedlef .gt_font_italic {
   font-style: italic;
 }
 
-#vtsnzqvnyb .gt_super {
+#hgnvdedlef .gt_super {
   font-size: 65%;
 }
 
-#vtsnzqvnyb .gt_footnote_marks {
+#hgnvdedlef .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vtsnzqvnyb .gt_asterisk {
+#hgnvdedlef .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vtsnzqvnyb .gt_indent_1 {
+#hgnvdedlef .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vtsnzqvnyb .gt_indent_2 {
+#hgnvdedlef .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vtsnzqvnyb .gt_indent_3 {
+#hgnvdedlef .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vtsnzqvnyb .gt_indent_4 {
+#hgnvdedlef .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vtsnzqvnyb .gt_indent_5 {
+#hgnvdedlef .gt_indent_5 {
   text-indent: 25px;
 }
 
-#vtsnzqvnyb .katex-display {
+#hgnvdedlef .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#vtsnzqvnyb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#hgnvdedlef div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1203,23 +1228,23 @@ Figure&nbsp;1: Family trio pedigree
 <p>To begin the variant calling, the raw file includes all covered positions in exons which could potentially contain variants. It includes all three samples and displays 1,418,395 positions. After the variant calling 8,803 of these positions are defined as SNPs in the bcf file which is about 0.62% of the positions in the raw file. To refine the variant calling, positions with a read depth below 20 are removed. 5,898 positions remain in the vcf file. These are 5,983 variants if multi-allelic sites are considered and split in separate rows. This process is also called demultiplexing. Further conversion to tsv and annotation using ANNOVAR, does not change the number of variants. The resulting file with 5,983 variants can now be used for downstream analysis and filtering of possible disease-causing variants.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="alpzjghina" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#alpzjghina table {
+<div id="puybyfcass" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#puybyfcass table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#alpzjghina thead, #alpzjghina tbody, #alpzjghina tfoot, #alpzjghina tr, #alpzjghina td, #alpzjghina th {
+#puybyfcass thead, #puybyfcass tbody, #puybyfcass tfoot, #puybyfcass tr, #puybyfcass td, #puybyfcass th {
   border-style: none;
 }
 
-#alpzjghina p {
+#puybyfcass p {
   margin: 0;
   padding: 0;
 }
 
-#alpzjghina .gt_table {
+#puybyfcass .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1245,12 +1270,12 @@ Figure&nbsp;1: Family trio pedigree
   border-left-color: #D3D3D3;
 }
 
-#alpzjghina .gt_caption {
+#puybyfcass .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#alpzjghina .gt_title {
+#puybyfcass .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1262,7 +1287,7 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-width: 0;
 }
 
-#alpzjghina .gt_subtitle {
+#puybyfcass .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1274,7 +1299,7 @@ Figure&nbsp;1: Family trio pedigree
   border-top-width: 0;
 }
 
-#alpzjghina .gt_heading {
+#puybyfcass .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1286,13 +1311,13 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#alpzjghina .gt_bottom_border {
+#puybyfcass .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#alpzjghina .gt_col_headings {
+#puybyfcass .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1307,7 +1332,7 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#alpzjghina .gt_col_heading {
+#puybyfcass .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1327,7 +1352,7 @@ Figure&nbsp;1: Family trio pedigree
   overflow-x: hidden;
 }
 
-#alpzjghina .gt_column_spanner_outer {
+#puybyfcass .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1339,15 +1364,15 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 4px;
 }
 
-#alpzjghina .gt_column_spanner_outer:first-child {
+#puybyfcass .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#alpzjghina .gt_column_spanner_outer:last-child {
+#puybyfcass .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#alpzjghina .gt_column_spanner {
+#puybyfcass .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1359,11 +1384,11 @@ Figure&nbsp;1: Family trio pedigree
   width: 100%;
 }
 
-#alpzjghina .gt_spanner_row {
+#puybyfcass .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#alpzjghina .gt_group_heading {
+#puybyfcass .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1389,7 +1414,7 @@ Figure&nbsp;1: Family trio pedigree
   text-align: left;
 }
 
-#alpzjghina .gt_empty_group_heading {
+#puybyfcass .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1404,15 +1429,15 @@ Figure&nbsp;1: Family trio pedigree
   vertical-align: middle;
 }
 
-#alpzjghina .gt_from_md > :first-child {
+#puybyfcass .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#alpzjghina .gt_from_md > :last-child {
+#puybyfcass .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#alpzjghina .gt_row {
+#puybyfcass .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1431,7 +1456,7 @@ Figure&nbsp;1: Family trio pedigree
   overflow-x: hidden;
 }
 
-#alpzjghina .gt_stub {
+#puybyfcass .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1444,7 +1469,7 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#alpzjghina .gt_stub_row_group {
+#puybyfcass .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1458,15 +1483,15 @@ Figure&nbsp;1: Family trio pedigree
   vertical-align: top;
 }
 
-#alpzjghina .gt_row_group_first td {
+#puybyfcass .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#alpzjghina .gt_row_group_first th {
+#puybyfcass .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#alpzjghina .gt_summary_row {
+#puybyfcass .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1476,16 +1501,16 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#alpzjghina .gt_first_summary_row {
+#puybyfcass .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#alpzjghina .gt_first_summary_row.thick {
+#puybyfcass .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#alpzjghina .gt_last_summary_row {
+#puybyfcass .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1495,7 +1520,7 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-color: #D3D3D3;
 }
 
-#alpzjghina .gt_grand_summary_row {
+#puybyfcass .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1505,7 +1530,7 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#alpzjghina .gt_first_grand_summary_row {
+#puybyfcass .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1515,7 +1540,7 @@ Figure&nbsp;1: Family trio pedigree
   border-top-color: #D3D3D3;
 }
 
-#alpzjghina .gt_last_grand_summary_row_top {
+#puybyfcass .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1525,11 +1550,11 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-color: #D3D3D3;
 }
 
-#alpzjghina .gt_striped {
+#puybyfcass .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#alpzjghina .gt_table_body {
+#puybyfcass .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1538,7 +1563,7 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-color: #D3D3D3;
 }
 
-#alpzjghina .gt_footnotes {
+#puybyfcass .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1552,7 +1577,7 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#alpzjghina .gt_footnote {
+#puybyfcass .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1561,7 +1586,7 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#alpzjghina .gt_sourcenotes {
+#puybyfcass .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1575,7 +1600,7 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#alpzjghina .gt_sourcenote {
+#puybyfcass .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1583,72 +1608,72 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#alpzjghina .gt_left {
+#puybyfcass .gt_left {
   text-align: left;
 }
 
-#alpzjghina .gt_center {
+#puybyfcass .gt_center {
   text-align: center;
 }
 
-#alpzjghina .gt_right {
+#puybyfcass .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#alpzjghina .gt_font_normal {
+#puybyfcass .gt_font_normal {
   font-weight: normal;
 }
 
-#alpzjghina .gt_font_bold {
+#puybyfcass .gt_font_bold {
   font-weight: bold;
 }
 
-#alpzjghina .gt_font_italic {
+#puybyfcass .gt_font_italic {
   font-style: italic;
 }
 
-#alpzjghina .gt_super {
+#puybyfcass .gt_super {
   font-size: 65%;
 }
 
-#alpzjghina .gt_footnote_marks {
+#puybyfcass .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#alpzjghina .gt_asterisk {
+#puybyfcass .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#alpzjghina .gt_indent_1 {
+#puybyfcass .gt_indent_1 {
   text-indent: 5px;
 }
 
-#alpzjghina .gt_indent_2 {
+#puybyfcass .gt_indent_2 {
   text-indent: 10px;
 }
 
-#alpzjghina .gt_indent_3 {
+#puybyfcass .gt_indent_3 {
   text-indent: 15px;
 }
 
-#alpzjghina .gt_indent_4 {
+#puybyfcass .gt_indent_4 {
   text-indent: 20px;
 }
 
-#alpzjghina .gt_indent_5 {
+#puybyfcass .gt_indent_5 {
   text-indent: 25px;
 }
 
-#alpzjghina .katex-display {
+#puybyfcass .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#alpzjghina div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#puybyfcass div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1741,23 +1766,23 @@ Figure&nbsp;1: Family trio pedigree
 </div>
 </div>
 <div class="cell-output-display">
-<div id="ksorkukkgm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ksorkukkgm table {
+<div id="yvuaryggxp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yvuaryggxp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ksorkukkgm thead, #ksorkukkgm tbody, #ksorkukkgm tfoot, #ksorkukkgm tr, #ksorkukkgm td, #ksorkukkgm th {
+#yvuaryggxp thead, #yvuaryggxp tbody, #yvuaryggxp tfoot, #yvuaryggxp tr, #yvuaryggxp td, #yvuaryggxp th {
   border-style: none;
 }
 
-#ksorkukkgm p {
+#yvuaryggxp p {
   margin: 0;
   padding: 0;
 }
 
-#ksorkukkgm .gt_table {
+#yvuaryggxp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1783,12 +1808,12 @@ Figure&nbsp;1: Family trio pedigree
   border-left-color: #D3D3D3;
 }
 
-#ksorkukkgm .gt_caption {
+#yvuaryggxp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ksorkukkgm .gt_title {
+#yvuaryggxp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1800,7 +1825,7 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-width: 0;
 }
 
-#ksorkukkgm .gt_subtitle {
+#yvuaryggxp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1812,7 +1837,7 @@ Figure&nbsp;1: Family trio pedigree
   border-top-width: 0;
 }
 
-#ksorkukkgm .gt_heading {
+#yvuaryggxp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1824,13 +1849,13 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#ksorkukkgm .gt_bottom_border {
+#yvuaryggxp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ksorkukkgm .gt_col_headings {
+#yvuaryggxp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1845,7 +1870,7 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#ksorkukkgm .gt_col_heading {
+#yvuaryggxp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1865,7 +1890,7 @@ Figure&nbsp;1: Family trio pedigree
   overflow-x: hidden;
 }
 
-#ksorkukkgm .gt_column_spanner_outer {
+#yvuaryggxp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1877,15 +1902,15 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 4px;
 }
 
-#ksorkukkgm .gt_column_spanner_outer:first-child {
+#yvuaryggxp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ksorkukkgm .gt_column_spanner_outer:last-child {
+#yvuaryggxp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ksorkukkgm .gt_column_spanner {
+#yvuaryggxp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1897,11 +1922,11 @@ Figure&nbsp;1: Family trio pedigree
   width: 100%;
 }
 
-#ksorkukkgm .gt_spanner_row {
+#yvuaryggxp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ksorkukkgm .gt_group_heading {
+#yvuaryggxp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1927,7 +1952,7 @@ Figure&nbsp;1: Family trio pedigree
   text-align: left;
 }
 
-#ksorkukkgm .gt_empty_group_heading {
+#yvuaryggxp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1942,15 +1967,15 @@ Figure&nbsp;1: Family trio pedigree
   vertical-align: middle;
 }
 
-#ksorkukkgm .gt_from_md > :first-child {
+#yvuaryggxp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ksorkukkgm .gt_from_md > :last-child {
+#yvuaryggxp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ksorkukkgm .gt_row {
+#yvuaryggxp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1969,7 +1994,7 @@ Figure&nbsp;1: Family trio pedigree
   overflow-x: hidden;
 }
 
-#ksorkukkgm .gt_stub {
+#yvuaryggxp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1982,7 +2007,7 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#ksorkukkgm .gt_stub_row_group {
+#yvuaryggxp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1996,15 +2021,15 @@ Figure&nbsp;1: Family trio pedigree
   vertical-align: top;
 }
 
-#ksorkukkgm .gt_row_group_first td {
+#yvuaryggxp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ksorkukkgm .gt_row_group_first th {
+#yvuaryggxp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ksorkukkgm .gt_summary_row {
+#yvuaryggxp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2014,16 +2039,16 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#ksorkukkgm .gt_first_summary_row {
+#yvuaryggxp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ksorkukkgm .gt_first_summary_row.thick {
+#yvuaryggxp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ksorkukkgm .gt_last_summary_row {
+#yvuaryggxp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2033,7 +2058,7 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-color: #D3D3D3;
 }
 
-#ksorkukkgm .gt_grand_summary_row {
+#yvuaryggxp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2043,7 +2068,7 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#ksorkukkgm .gt_first_grand_summary_row {
+#yvuaryggxp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2053,7 +2078,7 @@ Figure&nbsp;1: Family trio pedigree
   border-top-color: #D3D3D3;
 }
 
-#ksorkukkgm .gt_last_grand_summary_row_top {
+#yvuaryggxp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2063,11 +2088,11 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-color: #D3D3D3;
 }
 
-#ksorkukkgm .gt_striped {
+#yvuaryggxp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ksorkukkgm .gt_table_body {
+#yvuaryggxp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2076,7 +2101,7 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-color: #D3D3D3;
 }
 
-#ksorkukkgm .gt_footnotes {
+#yvuaryggxp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2090,7 +2115,7 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#ksorkukkgm .gt_footnote {
+#yvuaryggxp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2099,7 +2124,7 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#ksorkukkgm .gt_sourcenotes {
+#yvuaryggxp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2113,7 +2138,7 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#ksorkukkgm .gt_sourcenote {
+#yvuaryggxp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2121,72 +2146,72 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#ksorkukkgm .gt_left {
+#yvuaryggxp .gt_left {
   text-align: left;
 }
 
-#ksorkukkgm .gt_center {
+#yvuaryggxp .gt_center {
   text-align: center;
 }
 
-#ksorkukkgm .gt_right {
+#yvuaryggxp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ksorkukkgm .gt_font_normal {
+#yvuaryggxp .gt_font_normal {
   font-weight: normal;
 }
 
-#ksorkukkgm .gt_font_bold {
+#yvuaryggxp .gt_font_bold {
   font-weight: bold;
 }
 
-#ksorkukkgm .gt_font_italic {
+#yvuaryggxp .gt_font_italic {
   font-style: italic;
 }
 
-#ksorkukkgm .gt_super {
+#yvuaryggxp .gt_super {
   font-size: 65%;
 }
 
-#ksorkukkgm .gt_footnote_marks {
+#yvuaryggxp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ksorkukkgm .gt_asterisk {
+#yvuaryggxp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ksorkukkgm .gt_indent_1 {
+#yvuaryggxp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ksorkukkgm .gt_indent_2 {
+#yvuaryggxp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ksorkukkgm .gt_indent_3 {
+#yvuaryggxp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ksorkukkgm .gt_indent_4 {
+#yvuaryggxp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ksorkukkgm .gt_indent_5 {
+#yvuaryggxp .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ksorkukkgm .katex-display {
+#yvuaryggxp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ksorkukkgm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#yvuaryggxp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2217,23 +2242,23 @@ Figure&nbsp;1: Family trio pedigree
 <p>The tables below provide further information about the location and effect of the variants. Regarding the location, about two third of the variants are located in intergenic or intronic regions. Exonic variants follow with a sixth of all variants. To get a deeper look in the extronic variants, table 2 shows that almost half of the variants are synonymous meaning that the resulting aminoacid does not change in the protein.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="nhymwrksie" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#nhymwrksie table {
+<div id="tkivkdcpyo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tkivkdcpyo table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#nhymwrksie thead, #nhymwrksie tbody, #nhymwrksie tfoot, #nhymwrksie tr, #nhymwrksie td, #nhymwrksie th {
+#tkivkdcpyo thead, #tkivkdcpyo tbody, #tkivkdcpyo tfoot, #tkivkdcpyo tr, #tkivkdcpyo td, #tkivkdcpyo th {
   border-style: none;
 }
 
-#nhymwrksie p {
+#tkivkdcpyo p {
   margin: 0;
   padding: 0;
 }
 
-#nhymwrksie .gt_table {
+#tkivkdcpyo .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2259,12 +2284,12 @@ Figure&nbsp;1: Family trio pedigree
   border-left-color: #D3D3D3;
 }
 
-#nhymwrksie .gt_caption {
+#tkivkdcpyo .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#nhymwrksie .gt_title {
+#tkivkdcpyo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2276,7 +2301,7 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-width: 0;
 }
 
-#nhymwrksie .gt_subtitle {
+#tkivkdcpyo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2288,7 +2313,7 @@ Figure&nbsp;1: Family trio pedigree
   border-top-width: 0;
 }
 
-#nhymwrksie .gt_heading {
+#tkivkdcpyo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2300,13 +2325,13 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#nhymwrksie .gt_bottom_border {
+#tkivkdcpyo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#nhymwrksie .gt_col_headings {
+#tkivkdcpyo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2321,7 +2346,7 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#nhymwrksie .gt_col_heading {
+#tkivkdcpyo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2341,7 +2366,7 @@ Figure&nbsp;1: Family trio pedigree
   overflow-x: hidden;
 }
 
-#nhymwrksie .gt_column_spanner_outer {
+#tkivkdcpyo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2353,15 +2378,15 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 4px;
 }
 
-#nhymwrksie .gt_column_spanner_outer:first-child {
+#tkivkdcpyo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#nhymwrksie .gt_column_spanner_outer:last-child {
+#tkivkdcpyo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#nhymwrksie .gt_column_spanner {
+#tkivkdcpyo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2373,11 +2398,11 @@ Figure&nbsp;1: Family trio pedigree
   width: 100%;
 }
 
-#nhymwrksie .gt_spanner_row {
+#tkivkdcpyo .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#nhymwrksie .gt_group_heading {
+#tkivkdcpyo .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2403,7 +2428,7 @@ Figure&nbsp;1: Family trio pedigree
   text-align: left;
 }
 
-#nhymwrksie .gt_empty_group_heading {
+#tkivkdcpyo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2418,15 +2443,15 @@ Figure&nbsp;1: Family trio pedigree
   vertical-align: middle;
 }
 
-#nhymwrksie .gt_from_md > :first-child {
+#tkivkdcpyo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#nhymwrksie .gt_from_md > :last-child {
+#tkivkdcpyo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#nhymwrksie .gt_row {
+#tkivkdcpyo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2445,7 +2470,7 @@ Figure&nbsp;1: Family trio pedigree
   overflow-x: hidden;
 }
 
-#nhymwrksie .gt_stub {
+#tkivkdcpyo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2458,7 +2483,7 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#nhymwrksie .gt_stub_row_group {
+#tkivkdcpyo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2472,15 +2497,15 @@ Figure&nbsp;1: Family trio pedigree
   vertical-align: top;
 }
 
-#nhymwrksie .gt_row_group_first td {
+#tkivkdcpyo .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#nhymwrksie .gt_row_group_first th {
+#tkivkdcpyo .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#nhymwrksie .gt_summary_row {
+#tkivkdcpyo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2490,16 +2515,16 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#nhymwrksie .gt_first_summary_row {
+#tkivkdcpyo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#nhymwrksie .gt_first_summary_row.thick {
+#tkivkdcpyo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#nhymwrksie .gt_last_summary_row {
+#tkivkdcpyo .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2509,7 +2534,7 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-color: #D3D3D3;
 }
 
-#nhymwrksie .gt_grand_summary_row {
+#tkivkdcpyo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2519,7 +2544,7 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#nhymwrksie .gt_first_grand_summary_row {
+#tkivkdcpyo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2529,7 +2554,7 @@ Figure&nbsp;1: Family trio pedigree
   border-top-color: #D3D3D3;
 }
 
-#nhymwrksie .gt_last_grand_summary_row_top {
+#tkivkdcpyo .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2539,11 +2564,11 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-color: #D3D3D3;
 }
 
-#nhymwrksie .gt_striped {
+#tkivkdcpyo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#nhymwrksie .gt_table_body {
+#tkivkdcpyo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2552,7 +2577,7 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-color: #D3D3D3;
 }
 
-#nhymwrksie .gt_footnotes {
+#tkivkdcpyo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2566,7 +2591,7 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#nhymwrksie .gt_footnote {
+#tkivkdcpyo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2575,7 +2600,7 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#nhymwrksie .gt_sourcenotes {
+#tkivkdcpyo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2589,7 +2614,7 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#nhymwrksie .gt_sourcenote {
+#tkivkdcpyo .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2597,72 +2622,72 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#nhymwrksie .gt_left {
+#tkivkdcpyo .gt_left {
   text-align: left;
 }
 
-#nhymwrksie .gt_center {
+#tkivkdcpyo .gt_center {
   text-align: center;
 }
 
-#nhymwrksie .gt_right {
+#tkivkdcpyo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#nhymwrksie .gt_font_normal {
+#tkivkdcpyo .gt_font_normal {
   font-weight: normal;
 }
 
-#nhymwrksie .gt_font_bold {
+#tkivkdcpyo .gt_font_bold {
   font-weight: bold;
 }
 
-#nhymwrksie .gt_font_italic {
+#tkivkdcpyo .gt_font_italic {
   font-style: italic;
 }
 
-#nhymwrksie .gt_super {
+#tkivkdcpyo .gt_super {
   font-size: 65%;
 }
 
-#nhymwrksie .gt_footnote_marks {
+#tkivkdcpyo .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#nhymwrksie .gt_asterisk {
+#tkivkdcpyo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#nhymwrksie .gt_indent_1 {
+#tkivkdcpyo .gt_indent_1 {
   text-indent: 5px;
 }
 
-#nhymwrksie .gt_indent_2 {
+#tkivkdcpyo .gt_indent_2 {
   text-indent: 10px;
 }
 
-#nhymwrksie .gt_indent_3 {
+#tkivkdcpyo .gt_indent_3 {
   text-indent: 15px;
 }
 
-#nhymwrksie .gt_indent_4 {
+#tkivkdcpyo .gt_indent_4 {
   text-indent: 20px;
 }
 
-#nhymwrksie .gt_indent_5 {
+#tkivkdcpyo .gt_indent_5 {
   text-indent: 25px;
 }
 
-#nhymwrksie .katex-display {
+#tkivkdcpyo .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#nhymwrksie div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#tkivkdcpyo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2727,23 +2752,23 @@ Figure&nbsp;1: Family trio pedigree
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="nbkzbemoqq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#nbkzbemoqq table {
+<div id="wiqymqwkvc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wiqymqwkvc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#nbkzbemoqq thead, #nbkzbemoqq tbody, #nbkzbemoqq tfoot, #nbkzbemoqq tr, #nbkzbemoqq td, #nbkzbemoqq th {
+#wiqymqwkvc thead, #wiqymqwkvc tbody, #wiqymqwkvc tfoot, #wiqymqwkvc tr, #wiqymqwkvc td, #wiqymqwkvc th {
   border-style: none;
 }
 
-#nbkzbemoqq p {
+#wiqymqwkvc p {
   margin: 0;
   padding: 0;
 }
 
-#nbkzbemoqq .gt_table {
+#wiqymqwkvc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2769,12 +2794,12 @@ Figure&nbsp;1: Family trio pedigree
   border-left-color: #D3D3D3;
 }
 
-#nbkzbemoqq .gt_caption {
+#wiqymqwkvc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#nbkzbemoqq .gt_title {
+#wiqymqwkvc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2786,7 +2811,7 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-width: 0;
 }
 
-#nbkzbemoqq .gt_subtitle {
+#wiqymqwkvc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2798,7 +2823,7 @@ Figure&nbsp;1: Family trio pedigree
   border-top-width: 0;
 }
 
-#nbkzbemoqq .gt_heading {
+#wiqymqwkvc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2810,13 +2835,13 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#nbkzbemoqq .gt_bottom_border {
+#wiqymqwkvc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#nbkzbemoqq .gt_col_headings {
+#wiqymqwkvc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2831,7 +2856,7 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#nbkzbemoqq .gt_col_heading {
+#wiqymqwkvc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2851,7 +2876,7 @@ Figure&nbsp;1: Family trio pedigree
   overflow-x: hidden;
 }
 
-#nbkzbemoqq .gt_column_spanner_outer {
+#wiqymqwkvc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2863,15 +2888,15 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 4px;
 }
 
-#nbkzbemoqq .gt_column_spanner_outer:first-child {
+#wiqymqwkvc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#nbkzbemoqq .gt_column_spanner_outer:last-child {
+#wiqymqwkvc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#nbkzbemoqq .gt_column_spanner {
+#wiqymqwkvc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2883,11 +2908,11 @@ Figure&nbsp;1: Family trio pedigree
   width: 100%;
 }
 
-#nbkzbemoqq .gt_spanner_row {
+#wiqymqwkvc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#nbkzbemoqq .gt_group_heading {
+#wiqymqwkvc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2913,7 +2938,7 @@ Figure&nbsp;1: Family trio pedigree
   text-align: left;
 }
 
-#nbkzbemoqq .gt_empty_group_heading {
+#wiqymqwkvc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2928,15 +2953,15 @@ Figure&nbsp;1: Family trio pedigree
   vertical-align: middle;
 }
 
-#nbkzbemoqq .gt_from_md > :first-child {
+#wiqymqwkvc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#nbkzbemoqq .gt_from_md > :last-child {
+#wiqymqwkvc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#nbkzbemoqq .gt_row {
+#wiqymqwkvc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2955,7 +2980,7 @@ Figure&nbsp;1: Family trio pedigree
   overflow-x: hidden;
 }
 
-#nbkzbemoqq .gt_stub {
+#wiqymqwkvc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2968,7 +2993,7 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#nbkzbemoqq .gt_stub_row_group {
+#wiqymqwkvc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2982,15 +3007,15 @@ Figure&nbsp;1: Family trio pedigree
   vertical-align: top;
 }
 
-#nbkzbemoqq .gt_row_group_first td {
+#wiqymqwkvc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#nbkzbemoqq .gt_row_group_first th {
+#wiqymqwkvc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#nbkzbemoqq .gt_summary_row {
+#wiqymqwkvc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3000,16 +3025,16 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#nbkzbemoqq .gt_first_summary_row {
+#wiqymqwkvc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#nbkzbemoqq .gt_first_summary_row.thick {
+#wiqymqwkvc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#nbkzbemoqq .gt_last_summary_row {
+#wiqymqwkvc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3019,7 +3044,7 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-color: #D3D3D3;
 }
 
-#nbkzbemoqq .gt_grand_summary_row {
+#wiqymqwkvc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3029,7 +3054,7 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#nbkzbemoqq .gt_first_grand_summary_row {
+#wiqymqwkvc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3039,7 +3064,7 @@ Figure&nbsp;1: Family trio pedigree
   border-top-color: #D3D3D3;
 }
 
-#nbkzbemoqq .gt_last_grand_summary_row_top {
+#wiqymqwkvc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3049,11 +3074,11 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-color: #D3D3D3;
 }
 
-#nbkzbemoqq .gt_striped {
+#wiqymqwkvc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#nbkzbemoqq .gt_table_body {
+#wiqymqwkvc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3062,7 +3087,7 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-color: #D3D3D3;
 }
 
-#nbkzbemoqq .gt_footnotes {
+#wiqymqwkvc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3076,7 +3101,7 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#nbkzbemoqq .gt_footnote {
+#wiqymqwkvc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3085,7 +3110,7 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#nbkzbemoqq .gt_sourcenotes {
+#wiqymqwkvc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3099,7 +3124,7 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#nbkzbemoqq .gt_sourcenote {
+#wiqymqwkvc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3107,72 +3132,72 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#nbkzbemoqq .gt_left {
+#wiqymqwkvc .gt_left {
   text-align: left;
 }
 
-#nbkzbemoqq .gt_center {
+#wiqymqwkvc .gt_center {
   text-align: center;
 }
 
-#nbkzbemoqq .gt_right {
+#wiqymqwkvc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#nbkzbemoqq .gt_font_normal {
+#wiqymqwkvc .gt_font_normal {
   font-weight: normal;
 }
 
-#nbkzbemoqq .gt_font_bold {
+#wiqymqwkvc .gt_font_bold {
   font-weight: bold;
 }
 
-#nbkzbemoqq .gt_font_italic {
+#wiqymqwkvc .gt_font_italic {
   font-style: italic;
 }
 
-#nbkzbemoqq .gt_super {
+#wiqymqwkvc .gt_super {
   font-size: 65%;
 }
 
-#nbkzbemoqq .gt_footnote_marks {
+#wiqymqwkvc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#nbkzbemoqq .gt_asterisk {
+#wiqymqwkvc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#nbkzbemoqq .gt_indent_1 {
+#wiqymqwkvc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#nbkzbemoqq .gt_indent_2 {
+#wiqymqwkvc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#nbkzbemoqq .gt_indent_3 {
+#wiqymqwkvc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#nbkzbemoqq .gt_indent_4 {
+#wiqymqwkvc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#nbkzbemoqq .gt_indent_5 {
+#wiqymqwkvc .gt_indent_5 {
   text-indent: 25px;
 }
 
-#nbkzbemoqq .katex-display {
+#wiqymqwkvc .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#nbkzbemoqq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#wiqymqwkvc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3230,23 +3255,23 @@ Figure&nbsp;1: Family trio pedigree
 <p>To identify the disease-causing variant, a comparison with the parental genomes is useful to find a possible recessive pattern. Out of the 5,983 variants, 153 were found to be recessive. Additionally, a filter is applied to discard common variants which in this case in only one variant. Since exonic variants are the most probable kind of variant to alter the gene product namely the protein, they are of biggest interest in this case report. The next filtering step removes all nonexonic variants and further filtering is applied to remove synonymous variants as well as nonframeshift deletions or insertions because their effect on the protein is usually not pathogenic. Finally, 23 variants in 11 different genes are left.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="zlaosdlihc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zlaosdlihc table {
+<div id="xmzyimdpzk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xmzyimdpzk table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#zlaosdlihc thead, #zlaosdlihc tbody, #zlaosdlihc tfoot, #zlaosdlihc tr, #zlaosdlihc td, #zlaosdlihc th {
+#xmzyimdpzk thead, #xmzyimdpzk tbody, #xmzyimdpzk tfoot, #xmzyimdpzk tr, #xmzyimdpzk td, #xmzyimdpzk th {
   border-style: none;
 }
 
-#zlaosdlihc p {
+#xmzyimdpzk p {
   margin: 0;
   padding: 0;
 }
 
-#zlaosdlihc .gt_table {
+#xmzyimdpzk .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3272,12 +3297,12 @@ Figure&nbsp;1: Family trio pedigree
   border-left-color: #D3D3D3;
 }
 
-#zlaosdlihc .gt_caption {
+#xmzyimdpzk .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#zlaosdlihc .gt_title {
+#xmzyimdpzk .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3289,7 +3314,7 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-width: 0;
 }
 
-#zlaosdlihc .gt_subtitle {
+#xmzyimdpzk .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3301,7 +3326,7 @@ Figure&nbsp;1: Family trio pedigree
   border-top-width: 0;
 }
 
-#zlaosdlihc .gt_heading {
+#xmzyimdpzk .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3313,13 +3338,13 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#zlaosdlihc .gt_bottom_border {
+#xmzyimdpzk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zlaosdlihc .gt_col_headings {
+#xmzyimdpzk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3334,7 +3359,7 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#zlaosdlihc .gt_col_heading {
+#xmzyimdpzk .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3354,7 +3379,7 @@ Figure&nbsp;1: Family trio pedigree
   overflow-x: hidden;
 }
 
-#zlaosdlihc .gt_column_spanner_outer {
+#xmzyimdpzk .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3366,15 +3391,15 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 4px;
 }
 
-#zlaosdlihc .gt_column_spanner_outer:first-child {
+#xmzyimdpzk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zlaosdlihc .gt_column_spanner_outer:last-child {
+#xmzyimdpzk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zlaosdlihc .gt_column_spanner {
+#xmzyimdpzk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3386,11 +3411,11 @@ Figure&nbsp;1: Family trio pedigree
   width: 100%;
 }
 
-#zlaosdlihc .gt_spanner_row {
+#xmzyimdpzk .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#zlaosdlihc .gt_group_heading {
+#xmzyimdpzk .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3416,7 +3441,7 @@ Figure&nbsp;1: Family trio pedigree
   text-align: left;
 }
 
-#zlaosdlihc .gt_empty_group_heading {
+#xmzyimdpzk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3431,15 +3456,15 @@ Figure&nbsp;1: Family trio pedigree
   vertical-align: middle;
 }
 
-#zlaosdlihc .gt_from_md > :first-child {
+#xmzyimdpzk .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zlaosdlihc .gt_from_md > :last-child {
+#xmzyimdpzk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zlaosdlihc .gt_row {
+#xmzyimdpzk .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3458,7 +3483,7 @@ Figure&nbsp;1: Family trio pedigree
   overflow-x: hidden;
 }
 
-#zlaosdlihc .gt_stub {
+#xmzyimdpzk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3471,7 +3496,7 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#zlaosdlihc .gt_stub_row_group {
+#xmzyimdpzk .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3485,15 +3510,15 @@ Figure&nbsp;1: Family trio pedigree
   vertical-align: top;
 }
 
-#zlaosdlihc .gt_row_group_first td {
+#xmzyimdpzk .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zlaosdlihc .gt_row_group_first th {
+#xmzyimdpzk .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#zlaosdlihc .gt_summary_row {
+#xmzyimdpzk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3503,16 +3528,16 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#zlaosdlihc .gt_first_summary_row {
+#xmzyimdpzk .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#zlaosdlihc .gt_first_summary_row.thick {
+#xmzyimdpzk .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zlaosdlihc .gt_last_summary_row {
+#xmzyimdpzk .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3522,7 +3547,7 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-color: #D3D3D3;
 }
 
-#zlaosdlihc .gt_grand_summary_row {
+#xmzyimdpzk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3532,7 +3557,7 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#zlaosdlihc .gt_first_grand_summary_row {
+#xmzyimdpzk .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3542,7 +3567,7 @@ Figure&nbsp;1: Family trio pedigree
   border-top-color: #D3D3D3;
 }
 
-#zlaosdlihc .gt_last_grand_summary_row_top {
+#xmzyimdpzk .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3552,11 +3577,11 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-color: #D3D3D3;
 }
 
-#zlaosdlihc .gt_striped {
+#xmzyimdpzk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zlaosdlihc .gt_table_body {
+#xmzyimdpzk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3565,7 +3590,7 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-color: #D3D3D3;
 }
 
-#zlaosdlihc .gt_footnotes {
+#xmzyimdpzk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3579,7 +3604,7 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#zlaosdlihc .gt_footnote {
+#xmzyimdpzk .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3588,7 +3613,7 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#zlaosdlihc .gt_sourcenotes {
+#xmzyimdpzk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3602,7 +3627,7 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#zlaosdlihc .gt_sourcenote {
+#xmzyimdpzk .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3610,72 +3635,72 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#zlaosdlihc .gt_left {
+#xmzyimdpzk .gt_left {
   text-align: left;
 }
 
-#zlaosdlihc .gt_center {
+#xmzyimdpzk .gt_center {
   text-align: center;
 }
 
-#zlaosdlihc .gt_right {
+#xmzyimdpzk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zlaosdlihc .gt_font_normal {
+#xmzyimdpzk .gt_font_normal {
   font-weight: normal;
 }
 
-#zlaosdlihc .gt_font_bold {
+#xmzyimdpzk .gt_font_bold {
   font-weight: bold;
 }
 
-#zlaosdlihc .gt_font_italic {
+#xmzyimdpzk .gt_font_italic {
   font-style: italic;
 }
 
-#zlaosdlihc .gt_super {
+#xmzyimdpzk .gt_super {
   font-size: 65%;
 }
 
-#zlaosdlihc .gt_footnote_marks {
+#xmzyimdpzk .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#zlaosdlihc .gt_asterisk {
+#xmzyimdpzk .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zlaosdlihc .gt_indent_1 {
+#xmzyimdpzk .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zlaosdlihc .gt_indent_2 {
+#xmzyimdpzk .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zlaosdlihc .gt_indent_3 {
+#xmzyimdpzk .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zlaosdlihc .gt_indent_4 {
+#xmzyimdpzk .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zlaosdlihc .gt_indent_5 {
+#xmzyimdpzk .gt_indent_5 {
   text-indent: 25px;
 }
 
-#zlaosdlihc .katex-display {
+#xmzyimdpzk .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#zlaosdlihc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#xmzyimdpzk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3882,23 +3907,23 @@ Figure&nbsp;1: Family trio pedigree
 </div>
 </div>
 <div class="cell-output-display">
-<div id="hnzavhsoez" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#hnzavhsoez table {
+<div id="drslprptkn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#drslprptkn table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#hnzavhsoez thead, #hnzavhsoez tbody, #hnzavhsoez tfoot, #hnzavhsoez tr, #hnzavhsoez td, #hnzavhsoez th {
+#drslprptkn thead, #drslprptkn tbody, #drslprptkn tfoot, #drslprptkn tr, #drslprptkn td, #drslprptkn th {
   border-style: none;
 }
 
-#hnzavhsoez p {
+#drslprptkn p {
   margin: 0;
   padding: 0;
 }
 
-#hnzavhsoez .gt_table {
+#drslprptkn .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3924,12 +3949,12 @@ Figure&nbsp;1: Family trio pedigree
   border-left-color: #D3D3D3;
 }
 
-#hnzavhsoez .gt_caption {
+#drslprptkn .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#hnzavhsoez .gt_title {
+#drslprptkn .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3941,7 +3966,7 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-width: 0;
 }
 
-#hnzavhsoez .gt_subtitle {
+#drslprptkn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3953,7 +3978,7 @@ Figure&nbsp;1: Family trio pedigree
   border-top-width: 0;
 }
 
-#hnzavhsoez .gt_heading {
+#drslprptkn .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3965,13 +3990,13 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#hnzavhsoez .gt_bottom_border {
+#drslprptkn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#hnzavhsoez .gt_col_headings {
+#drslprptkn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3986,7 +4011,7 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#hnzavhsoez .gt_col_heading {
+#drslprptkn .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4006,7 +4031,7 @@ Figure&nbsp;1: Family trio pedigree
   overflow-x: hidden;
 }
 
-#hnzavhsoez .gt_column_spanner_outer {
+#drslprptkn .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4018,15 +4043,15 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 4px;
 }
 
-#hnzavhsoez .gt_column_spanner_outer:first-child {
+#drslprptkn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hnzavhsoez .gt_column_spanner_outer:last-child {
+#drslprptkn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hnzavhsoez .gt_column_spanner {
+#drslprptkn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4038,11 +4063,11 @@ Figure&nbsp;1: Family trio pedigree
   width: 100%;
 }
 
-#hnzavhsoez .gt_spanner_row {
+#drslprptkn .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#hnzavhsoez .gt_group_heading {
+#drslprptkn .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4068,7 +4093,7 @@ Figure&nbsp;1: Family trio pedigree
   text-align: left;
 }
 
-#hnzavhsoez .gt_empty_group_heading {
+#drslprptkn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4083,15 +4108,15 @@ Figure&nbsp;1: Family trio pedigree
   vertical-align: middle;
 }
 
-#hnzavhsoez .gt_from_md > :first-child {
+#drslprptkn .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hnzavhsoez .gt_from_md > :last-child {
+#drslprptkn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hnzavhsoez .gt_row {
+#drslprptkn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4110,7 +4135,7 @@ Figure&nbsp;1: Family trio pedigree
   overflow-x: hidden;
 }
 
-#hnzavhsoez .gt_stub {
+#drslprptkn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4123,7 +4148,7 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#hnzavhsoez .gt_stub_row_group {
+#drslprptkn .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4137,15 +4162,15 @@ Figure&nbsp;1: Family trio pedigree
   vertical-align: top;
 }
 
-#hnzavhsoez .gt_row_group_first td {
+#drslprptkn .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#hnzavhsoez .gt_row_group_first th {
+#drslprptkn .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#hnzavhsoez .gt_summary_row {
+#drslprptkn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4155,16 +4180,16 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#hnzavhsoez .gt_first_summary_row {
+#drslprptkn .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#hnzavhsoez .gt_first_summary_row.thick {
+#drslprptkn .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#hnzavhsoez .gt_last_summary_row {
+#drslprptkn .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4174,7 +4199,7 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-color: #D3D3D3;
 }
 
-#hnzavhsoez .gt_grand_summary_row {
+#drslprptkn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4184,7 +4209,7 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#hnzavhsoez .gt_first_grand_summary_row {
+#drslprptkn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4194,7 +4219,7 @@ Figure&nbsp;1: Family trio pedigree
   border-top-color: #D3D3D3;
 }
 
-#hnzavhsoez .gt_last_grand_summary_row_top {
+#drslprptkn .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4204,11 +4229,11 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-color: #D3D3D3;
 }
 
-#hnzavhsoez .gt_striped {
+#drslprptkn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#hnzavhsoez .gt_table_body {
+#drslprptkn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4217,7 +4242,7 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-color: #D3D3D3;
 }
 
-#hnzavhsoez .gt_footnotes {
+#drslprptkn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4231,7 +4256,7 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#hnzavhsoez .gt_footnote {
+#drslprptkn .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4240,7 +4265,7 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#hnzavhsoez .gt_sourcenotes {
+#drslprptkn .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4254,7 +4279,7 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#hnzavhsoez .gt_sourcenote {
+#drslprptkn .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4262,72 +4287,72 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#hnzavhsoez .gt_left {
+#drslprptkn .gt_left {
   text-align: left;
 }
 
-#hnzavhsoez .gt_center {
+#drslprptkn .gt_center {
   text-align: center;
 }
 
-#hnzavhsoez .gt_right {
+#drslprptkn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hnzavhsoez .gt_font_normal {
+#drslprptkn .gt_font_normal {
   font-weight: normal;
 }
 
-#hnzavhsoez .gt_font_bold {
+#drslprptkn .gt_font_bold {
   font-weight: bold;
 }
 
-#hnzavhsoez .gt_font_italic {
+#drslprptkn .gt_font_italic {
   font-style: italic;
 }
 
-#hnzavhsoez .gt_super {
+#drslprptkn .gt_super {
   font-size: 65%;
 }
 
-#hnzavhsoez .gt_footnote_marks {
+#drslprptkn .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#hnzavhsoez .gt_asterisk {
+#drslprptkn .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#hnzavhsoez .gt_indent_1 {
+#drslprptkn .gt_indent_1 {
   text-indent: 5px;
 }
 
-#hnzavhsoez .gt_indent_2 {
+#drslprptkn .gt_indent_2 {
   text-indent: 10px;
 }
 
-#hnzavhsoez .gt_indent_3 {
+#drslprptkn .gt_indent_3 {
   text-indent: 15px;
 }
 
-#hnzavhsoez .gt_indent_4 {
+#drslprptkn .gt_indent_4 {
   text-indent: 20px;
 }
 
-#hnzavhsoez .gt_indent_5 {
+#drslprptkn .gt_indent_5 {
   text-indent: 25px;
 }
 
-#hnzavhsoez .katex-display {
+#drslprptkn .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#hnzavhsoez div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#drslprptkn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -4410,23 +4435,23 @@ Figure&nbsp;1: Family trio pedigree
 <p>At the variant position, the read depth is sufficient for a reliable genotype call in all three samples with 78 reads covering the position in the father, 72 in the mother and 73 in the daughter. Both parents are heterozygous and show a similar allele ratio of about 53 % guanine and 47 % cytosine. The daughter is homozygous for the alternative allele, with 90 % of her reads showing cytosine. This is consistent with a recessive mode of inheritance, because both parents are unaffected carriers and the affected child has two copies of the variant. Remarkably, about 10 % of the daughter’s reads show guanine. This is unlikely to reflect a true second allele, but rather shows a technical artefact, such as sequencing errors, misaligned reads or even a contamination with parental DNA.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fmaokomcty" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fmaokomcty table {
+<div id="wquqdcqljf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wquqdcqljf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fmaokomcty thead, #fmaokomcty tbody, #fmaokomcty tfoot, #fmaokomcty tr, #fmaokomcty td, #fmaokomcty th {
+#wquqdcqljf thead, #wquqdcqljf tbody, #wquqdcqljf tfoot, #wquqdcqljf tr, #wquqdcqljf td, #wquqdcqljf th {
   border-style: none;
 }
 
-#fmaokomcty p {
+#wquqdcqljf p {
   margin: 0;
   padding: 0;
 }
 
-#fmaokomcty .gt_table {
+#wquqdcqljf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -4452,12 +4477,12 @@ Figure&nbsp;1: Family trio pedigree
   border-left-color: #D3D3D3;
 }
 
-#fmaokomcty .gt_caption {
+#wquqdcqljf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fmaokomcty .gt_title {
+#wquqdcqljf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4469,7 +4494,7 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-width: 0;
 }
 
-#fmaokomcty .gt_subtitle {
+#wquqdcqljf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4481,7 +4506,7 @@ Figure&nbsp;1: Family trio pedigree
   border-top-width: 0;
 }
 
-#fmaokomcty .gt_heading {
+#wquqdcqljf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4493,13 +4518,13 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#fmaokomcty .gt_bottom_border {
+#wquqdcqljf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fmaokomcty .gt_col_headings {
+#wquqdcqljf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4514,7 +4539,7 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#fmaokomcty .gt_col_heading {
+#wquqdcqljf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4534,7 +4559,7 @@ Figure&nbsp;1: Family trio pedigree
   overflow-x: hidden;
 }
 
-#fmaokomcty .gt_column_spanner_outer {
+#wquqdcqljf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4546,15 +4571,15 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 4px;
 }
 
-#fmaokomcty .gt_column_spanner_outer:first-child {
+#wquqdcqljf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fmaokomcty .gt_column_spanner_outer:last-child {
+#wquqdcqljf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fmaokomcty .gt_column_spanner {
+#wquqdcqljf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4566,11 +4591,11 @@ Figure&nbsp;1: Family trio pedigree
   width: 100%;
 }
 
-#fmaokomcty .gt_spanner_row {
+#wquqdcqljf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fmaokomcty .gt_group_heading {
+#wquqdcqljf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4596,7 +4621,7 @@ Figure&nbsp;1: Family trio pedigree
   text-align: left;
 }
 
-#fmaokomcty .gt_empty_group_heading {
+#wquqdcqljf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4611,15 +4636,15 @@ Figure&nbsp;1: Family trio pedigree
   vertical-align: middle;
 }
 
-#fmaokomcty .gt_from_md > :first-child {
+#wquqdcqljf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fmaokomcty .gt_from_md > :last-child {
+#wquqdcqljf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fmaokomcty .gt_row {
+#wquqdcqljf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4638,7 +4663,7 @@ Figure&nbsp;1: Family trio pedigree
   overflow-x: hidden;
 }
 
-#fmaokomcty .gt_stub {
+#wquqdcqljf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4651,7 +4676,7 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#fmaokomcty .gt_stub_row_group {
+#wquqdcqljf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4665,15 +4690,15 @@ Figure&nbsp;1: Family trio pedigree
   vertical-align: top;
 }
 
-#fmaokomcty .gt_row_group_first td {
+#wquqdcqljf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fmaokomcty .gt_row_group_first th {
+#wquqdcqljf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fmaokomcty .gt_summary_row {
+#wquqdcqljf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4683,16 +4708,16 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#fmaokomcty .gt_first_summary_row {
+#wquqdcqljf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fmaokomcty .gt_first_summary_row.thick {
+#wquqdcqljf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fmaokomcty .gt_last_summary_row {
+#wquqdcqljf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4702,7 +4727,7 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-color: #D3D3D3;
 }
 
-#fmaokomcty .gt_grand_summary_row {
+#wquqdcqljf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4712,7 +4737,7 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#fmaokomcty .gt_first_grand_summary_row {
+#wquqdcqljf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4722,7 +4747,7 @@ Figure&nbsp;1: Family trio pedigree
   border-top-color: #D3D3D3;
 }
 
-#fmaokomcty .gt_last_grand_summary_row_top {
+#wquqdcqljf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4732,11 +4757,11 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-color: #D3D3D3;
 }
 
-#fmaokomcty .gt_striped {
+#wquqdcqljf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fmaokomcty .gt_table_body {
+#wquqdcqljf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4745,7 +4770,7 @@ Figure&nbsp;1: Family trio pedigree
   border-bottom-color: #D3D3D3;
 }
 
-#fmaokomcty .gt_footnotes {
+#wquqdcqljf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4759,7 +4784,7 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#fmaokomcty .gt_footnote {
+#wquqdcqljf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4768,7 +4793,7 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#fmaokomcty .gt_sourcenotes {
+#wquqdcqljf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4782,7 +4807,7 @@ Figure&nbsp;1: Family trio pedigree
   border-right-color: #D3D3D3;
 }
 
-#fmaokomcty .gt_sourcenote {
+#wquqdcqljf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4790,72 +4815,72 @@ Figure&nbsp;1: Family trio pedigree
   padding-right: 5px;
 }
 
-#fmaokomcty .gt_left {
+#wquqdcqljf .gt_left {
   text-align: left;
 }
 
-#fmaokomcty .gt_center {
+#wquqdcqljf .gt_center {
   text-align: center;
 }
 
-#fmaokomcty .gt_right {
+#wquqdcqljf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fmaokomcty .gt_font_normal {
+#wquqdcqljf .gt_font_normal {
   font-weight: normal;
 }
 
-#fmaokomcty .gt_font_bold {
+#wquqdcqljf .gt_font_bold {
   font-weight: bold;
 }
 
-#fmaokomcty .gt_font_italic {
+#wquqdcqljf .gt_font_italic {
   font-style: italic;
 }
 
-#fmaokomcty .gt_super {
+#wquqdcqljf .gt_super {
   font-size: 65%;
 }
 
-#fmaokomcty .gt_footnote_marks {
+#wquqdcqljf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fmaokomcty .gt_asterisk {
+#wquqdcqljf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fmaokomcty .gt_indent_1 {
+#wquqdcqljf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fmaokomcty .gt_indent_2 {
+#wquqdcqljf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fmaokomcty .gt_indent_3 {
+#wquqdcqljf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fmaokomcty .gt_indent_4 {
+#wquqdcqljf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fmaokomcty .gt_indent_5 {
+#wquqdcqljf .gt_indent_5 {
   text-indent: 25px;
 }
 
-#fmaokomcty .katex-display {
+#wquqdcqljf .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#fmaokomcty div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#wquqdcqljf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -4907,7 +4932,7 @@ Figure&nbsp;1: Family trio pedigree
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="report_G5_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="report_G5_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>

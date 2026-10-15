@@ -1,6 +1,8 @@
 ---
 title: "Case report: CEDNIK SYNDROME"
-format: html
+format: 
+  html:
+    css: styles.css
 autors: "M. Ewen, M.Gezman, F. Paz"
 editor: source
 bibliography: wes.bib
@@ -77,10 +79,14 @@ Using the refined regions of interest, we call GATK3 (ver 4.1.4.1) to perform va
 Finally, to process the detected genetic variants, the ANNOVAR tool helped merge the resulting variant compilation into a readable table. This table in .tsv format contains genetic annotations, known identifiers, predictive scores, clinical relevance, and genomic coordinates [@wang2010annovar].
 
 ```{r}
-#NGS workflow diagram
-#| label: fig-workflow
+#| label: fig-organigram
 #| fig-cap: "Filtering process workflow"
-include_graphics("File Organigram.jpeg")
+#| fig-alt: "Filtering process workflow"
+#| out.width: "80%"
+#| warning: false
+
+library(knitr)
+include_graphics("file_organigram.jpeg")
 ```
 
 ### Variant annotation and filtering
@@ -91,8 +97,9 @@ include_graphics("File Organigram.jpeg")
 ### QC
 
 ```{r}
-#| label: "fastqc"
-
+#| label: tbl-fastqc
+#| tbl-cap: "FastQC Sumarized table for each read in each sample"
+#| echo: false
 #summarize fastqc data
 
 # save fastqc directory
@@ -119,10 +126,15 @@ gt(processed)
 To begin the WES analysis, it is important to build on raw-read data that fulfills the quality requirements. By assessing the quality of the fastq file, it can be assured that later interpretation is not based on technical errors. Regarding the Corpasome data, the sequence length for all samples is as expected as well as the GC percentage with small variations in the reads of the mother displaying a percentage of 44 compared to 45% in the father and daughter. The number of total sequences as well as the number of bases measured is the same for read 1 and read 2 in each family member, whereas the number varies between different persons. The maximal difference can be found between the father and the daughter where the father has 6.3 Mbp more.
 
 ```{r}
-#Evaluate all QC metrics
-#reads summary file from each fastqc folder and combines them in one table --> returns PASS, WARN or FAIL
+#| label: fig-quality
+#| fig-cap: "Heatmap of the quality control status performed by FastQC tool"
+#| warning: false
+#| echo: false
 
-#Read all summary.txt files into one long table (Status, Metric), "path" records the source file
+# Evaluate all QC metrics
+# reads summary file from each fastqc folder and combines them in one table --> returns PASS, WARN or FAIL
+
+# Read all summary.txt files into one long table (Status, Metric), "path" records the source file
 smry <- list.files(fastqc_base_dir, pattern = "summary.txt$", recursive = TRUE, full.names = TRUE) |>
   read_tsv(col_names = c("Status", "Metric", "file"), id = "path", show_col_types = FALSE) |>
   mutate(sample = path |> 
@@ -140,8 +152,10 @@ ggplot(smry, aes(x = sample, y = Metric, fill = Status)) +
 
 This heatmap summarizes different quality metrcis across the fastqc files. For most of the metrics the data passes the quality criteria. Regarding the per tile sequence quality, all samples fail which in this case is not unusual because the corpasome data has been sequenced in 2012 [@corpas_crowdsourced_2015] while quality criteria are adapted to modern techniques.
 ```{r}
-#Check GC content in more detail
+#| label: fig-SequenceEvaluation
+#| fig-cap: "Per-base sequence quality distribution showing acceptable scores across all samples and reads."
 
+#GC content in more detail
 # read one FastQC module by name
 read_module <- function(file, module) {
   lines <- readLines(file)
