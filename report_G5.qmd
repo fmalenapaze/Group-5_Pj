@@ -3,6 +3,10 @@ title: "Case report: CEDNIK SYNDROME"
 format: 
   html:
     css: styles.css
+    toc: true
+    toc-depth: 3
+    toc-location: right
+    number-sections: true
 autors: "M. Ewen, M.Gezman, F. Paz"
 editor: source
 bibliography: wes.bib
@@ -20,6 +24,21 @@ library(knitr)
 
 #load table for the variants
 variants <- read_tsv("data/corpasome.trio.chr22.snps.filtered.annovar.tsv", col_types = cols(clinvar_20140702 = "c"))
+
+```
+
+```{r}
+#| label: tbl-index
+#| tbl-cap: "Overview of the WES Analysis Pipeline Structure"
+#| echo: false
+
+# Table
+index_df <- data.frame(
+  Section = 
+    c("1. Introduction", "2. Study Participants/Whole exome sequencing", "3. NGS data preprocessing", "4. Variant annotation and filtering", "5. Results")
+)
+
+kable(index_df)
 ```
 
 ## Introduction
@@ -65,21 +84,27 @@ plot(pedi)
 
 ### NGS data preprocessing
 
-Next-Generation Sequencing (NGS) data pre-processing was used to refine and align the raw reads given to downstream Whole-Exome Sequencing (WES) analysis. The general process follows a read of qualities, the reallignment and mapping of the genomes, then the variant callings and finally the analysis of the Candifate Genes, as described in the @fig-organigram .
+Next-Generation Sequencing (NGS) data pre-processing was used to refine and align the raw reads given to downstream Whole-Exome Sequencing (WES) analysis. The general process follows a read of qualities, the realignment and mapping of the genomes, then the variant callings and finally the analysis of the Candidate Genes, as described in the @fig-organigram .
 
-The input data set comprised individual files corresponding to the family trio: mother, father, and affected child, from the Corpasome family. They are organized for each person as as paired-ends reads, 150 bp per read for R1 and R2. The given input is a .fq file form from each member of the trio.To graph and see the organization of the sequences, GC percentage and the quality scores, we search through the FastQC Report (version 0.12.1). This .fqc files graph the Q scores above 30 (Q30) validation, in acordance to the standart Illumina quality trimming sequence logarithm[@illumina].
+The input data set comprised individual files corresponding to the family trio: mother, father, and affected child, from the Corpasome family. They are organized for each person as as paired-ends reads, 150 bp per read for R1 and R2. The given input is a .fq file form from each member of the trio. To graph and see the organization of the sequences, GC percentage and the quality scores, we search through the FastQC Report (version 0.12.1). This .fqc files were significant to identify technical artifact sequencing errors or contamination on the samples and reads. The primary QC metrics perfomed were:
+
+- Per-base sequence quality: The Q-scores graphs above 30x threshold (Q30) validation, in acordance to the standart Illumina quality trimming sequence logarithm[@illumina].
+
+- Reads Lenght: To confirm the expected paired-end bases for each read.
+
+- Overexpressed sequences: To detect residual adapters contamination at the PCR preparation. This helps trimming the sequence to prevent miss-alignments.
+
+- Sequence duplication levels: It estimates the library complexity and detect potencial PCR bottlenecking. This helps to avoid the false-positive identification of heterozygous variants.
 
 To process the alignments, the “Burrows-Wheeler Aligner (bwa mem)”[@li2009fast] tool converts our .fq files into .bam/.sam files by comparing the qualities and positions against a reference genome; which, for this study was hg19. With the binary version (.bam), we can easly access to specific genomic regions using index files (.bai), allowing the reads of each family member to be processed and indexed efficiently in the vcf files.
 
-For each part of the mapping and index findings, we required different tools like gatk3 and samstools. First we mark the duplicates form each read vs the chr22 found in the hg19. This will help us to realign and target indels from miss coding quality scores and correct for mapping errors[@gatk_best_practices]. The given scores are proven by the RealignerTargetCreator and IndelRealigner tools. Finally, the given files were recalibrated based on their basecalling scores (BSQR) for avoifding false positives in the variant calling. The samples for this realignment are taken from the dbsnps of the ch22 of the hg19 and the Mills and Devine y el 1000 Genomes Project indels for the build 37 file in the ch22; taken from the golden standart archives of gatk3.
+For each part of the mapping and index findings, we required different tools like gatk3 and samstools. First we mark the duplicates form each read vs the chr22 found in the hg19. This will help us to realign and target indels from miss coding quality scores and correct for mapping errors[@gatk_best_practices]. The given scores are proven by the RealignerTargetCreator and IndelRealigner tools. The given files were recalibrated based on their basecalling scores (BSQR) for avoifding false positives in the variant calling. The samples for this realignment are taken from the dbsnps of the ch22 of the hg19 and the Mills and Devine y el 1000 Genomes Project indels for the build 37 file in the ch22; taken from the golden standart archives of gatk3.
 
 To prepare for the variant callings, first we proceed to eliminate the reads mistakes by taking in account a Depht of coverage calculation. Using the tool DepthOfCoverage by Gatk3 the analysis assessed target regions form the ch22.bed exons file against our reads .bam file. This step helps to calculate the proportion of target bases on specific depth of coverage thresholds (1x,5x,10x,20x and 50x)[@gatk_depth_of_coverage].
 
-To refine the search for varaint calls, as shown in @fig-organigram, we cross-reference with the dbSNP database for hg19, allowing the algorithm to prevent confusing a real mutation with a sequencing error when re calibrating base qualities.
-
 Using the refined regions of interest, we call the bcftools and samstools to perform variant calling on the BAM files. This tools performs, after pilling up the reads in one file, a calling form the variants based on the "c-g" genotypes into .bcf files. Then, the samstools performs a filtering for a .vcf archive with the variants above the 20x coverage for future analysis[@bcftools_docs].
 
-Finally, to process the detected genetic variants, the ANNOVAR tool helped merge the resulting variant compilation into a readable table. This table in .tsv format contains genetic annotations, known identifiers, predictive scores, clinical relevance, and genomic coordinates [@wang2010annovar].
+To refine the variant selection for functional analysis, as shown in @fig-organigram, variants were cross-referenced with general and clinical databases based on the hg19 reference genome. This annotation process utilizes the ANNOVAR tool to integrate European population frequencies (1000g2012apr_eur and esp6500si_ea), common variant identifiers (snp138), pathogenicity prediction scores (ljb2_stift and ljb2_pp2hvar), and clinical relevance databases (clinvar_20140702). By combining these anotations, the data merges into a readable table in .tsv format that contains genetic annotations, known identifiers, predictive scores, clinical relevance, and genomic coordinates [@wang2010annovar].
 
 ```{r}
 #| label: fig-organigram
@@ -93,6 +118,8 @@ include_graphics("organigram_full_flow.jpg")
 ```
 
 ### Variant annotation and filtering
+
+With the uptake of the resultant .tsv file, we proceed for the variant annotation
 
 ## Results
 
