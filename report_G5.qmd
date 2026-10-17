@@ -30,12 +30,9 @@ variants <- read_tsv("data/corpasome.trio.chr22.snps.filtered.annovar.tsv", col_
 ## Index
 
 ```{r}
-#| label: tbl-index
-#| echo: false
-
 # Table
 index_df <- data.frame(
-  Section = 
+  Contents = 
     c("1. Introduction", "2. Materials and Methods", "3. Results","4. Discussion","5. References")
 )
 
@@ -113,14 +110,13 @@ To refine the variant selection for functional analysis, as shown in @fig-organi
 #| label: fig-organigram
 #| fig-cap: "Precise filtering workflow [Elaborated by the authors]"
 #| fig-alt: "Filtering process workflow"
-#| out.width: "80%"
 #| warning: false
 
 library(knitr)
 include_graphics("organigram_full_flow.jpg")
 ```
 
-Data processing, pipeline execution, and analytical workflows were performed using a custom shell script (runAnalysis.sh) executed within a Bash command-line interface. The computational environment was managed via "Conda" [@conda_docs](an open-source package and environment management system used to ensure reproducible software dependencies and isolated package versions). Operations and remote server connections were conducted using MobaXterm Personal Edition (v26.5), utilizing datasets and reference databases provided by the instructional program.
+Data processing, pipeline execution, and analytical workflows were performed using a custom shell script (runAnalysis.sh) executed within a Bash command-line interface. The computational environment was managed via "Conda" [\@conda_docs](an%20open-source%20package%20and%20environment%20management%20system%20used%20to%20ensure%20reproducible%20software%20dependencies%20and%20isolated%20package%20versions). Operations and remote server connections were conducted using MobaXterm Personal Edition (v26.5), utilizing datasets and reference databases provided by the instructional program.
 
 ### Variant annotation and filtering
 
@@ -128,7 +124,7 @@ With the uptake of the resultant .tsv file, we proceed for the variant annotatio
 
 ```{r}
 #| label: tbl-databases
-#| tbl-cap: "dsdfsf"
+#| tbl-cap: "Reference databases used in the variant filtering by Annovar and perl process"
 #| echo: false
 library(tibble)
 library(knitr)
@@ -164,6 +160,21 @@ f_database <- tibble(
 )
 
 kable(f_database, format = "markdown")
+```
+
+For the recessive inheritance model, variants were filtered using a custom Perl script tool: filterTestvariantForPattern.pl. I will help to find and anexate in our .tsv table a list of mendelian herencies patrons columns from the genotipes of the family (see @fig-organigram2). Both unaffected parents were heterozygous carriers present teh patron “01” and the affected compound heterozygous genotype “11”. With this we will isolate candidate variants following an autosomal recessive mode of inheritance within the family trio. In our trial, after filtering the table in R for the candidate genes, we verify that is a recessive kind of disease.
+
+Surviving candidate genes (11and variants were cross-referenced with disease databases (such as ClinVar and OMIM) and prioritized based on their biological plausibility and compatibility with the patient's clinical description and associated Human Phenotype Ontology (HPO) terms.
+
+```{r}
+#| label: fig-organigram2
+#| fig-cap: "Variant Anotation filters for a recessive model"
+#| fig-alt: "Filtering process workflow"
+#| out-width: "70%"
+#| warning: false
+
+library(knitr)
+include_graphics("variant_filtering.jpeg")
 ```
 
 ## Results
@@ -271,6 +282,8 @@ This graph further inspects the GC content across the three samples. It shows th
 Visualization of per-sequence GC content demonstrates consistent profiles across all three family members, showing stable distributions between forward and reverse reads. While a minor peak shift is observed in the maternal sample, the deviations are minimal and do not suggest technical failure.
 
 ```{r qc_boxplots}
+#| label: tbl-boxplots
+#| tbl-cap: "Per-base sequence quality distribution showing acceptable scores across all samples and reads."
 #genereate qc visualization with all pb_qual files
 
 files <- list.files(fastqc_base_dir, pattern = "fastqc_data.txt",
@@ -519,7 +532,6 @@ include_graphics("data/igv_coverage_data.png")
 
 At the variant position, the read depth is sufficient for a reliable genotype call in all three samples with 78 reads covering the position in the father, 72 in the mother and 73 in the daughter. Both parents are heterozygous and show a similar allele ratio of about 53 % guanine and 47 % cytosine. The daughter is homozygous for the alternative allele, with 90 % of her reads showing cytosine. This is consistent with a recessive mode of inheritance, because both parents are unaffected carriers and the affected child has two copies of the variant. Remarkably, about 10 % of the daughter’s reads show guanine. Rather than representing a true second allele, this observation likely stems from technical artifacts such as sequencing errors or read misalignments. Within the context of this synthetic dataset, the residual guanine signal probably originates from the original reads and appears to have been artificially overwritten by cytosines.
 
-
 ```{r}
 #extract coverage
 
@@ -596,10 +608,9 @@ include_graphics("data/igv_whole_region.png")
 
 To visualize the tabular metrics, the plot above illustrates the sequencing depth per position across the target interval for each family member, with the vertical dotted line indicating the candidate variant locus. Notably, the genomic interval extracted from the annotation file extends beyond the target exon into adjacent intronic regions, where read depth drops to zero. A prominent coverage peak exceeding 70x aligns precisely with the variant position, confirming high coverage. However, this observation underscores the necessity of validating genomic annotations. For external validation, visualization of the father's sample in the Integrative Genomics Viewer confirms the coverage profile across the whole region. It depicts the target exon on the left alongside a second downstream exon, which accounts for the secondary coverage peak in the depth profile. Unlike the artificially inflated target locus, this second exon exhibits a natural coverage distribution representative of endogenous WES data.
 
-The variant 22-21224656-G-C is not reported in the gnomAD population database, suggesting it is extremely rare [@guez_integrating_2026]. This aligns well with the clinical phenotype, as CEDNIK syndrome is an exceptionally rare disorder.  Alternate substitutions at this position (G>A and G>T) are likewise documented at very low frequencies. Constraint metrics for SNAP29 show no missense depletion (expected: 148.1, observed: 178, o/e = 1.20, Z = -0.87) and only a slight, statistically imprecise reduction in loss-of-function variants (12.2 expected vs. 5 observed) [@guez_integrating_2026]. This lack of strong constraint is expected for autosomal recessive conditions, where single-allele carriers face no selective disadvantage. Because gene-wide metrics cannot evaluate individual variants, specific downstream analysis is required.
+The variant 22-21224656-G-C is not reported in the gnomAD population database, suggesting it is extremely rare [@guez_integrating_2026]. This aligns well with the clinical phenotype, as CEDNIK syndrome is an exceptionally rare disorder. Alternate substitutions at this position (G\>A and G\>T) are likewise documented at very low frequencies. Constraint metrics for SNAP29 show no missense depletion (expected: 148.1, observed: 178, o/e = 1.20, Z = -0.87) and only a slight, statistically imprecise reduction in loss-of-function variants (12.2 expected vs. 5 observed) [@guez_integrating_2026]. This lack of strong constraint is expected for autosomal recessive conditions, where single-allele carriers face no selective disadvantage. Because gene-wide metrics cannot evaluate individual variants, specific downstream analysis is required.
 
 To evaluate the specific change, VarSome was consulted [@kopanos_varsome_2019]. Although the exact variant is absent from the database, in silico predictions from AlphaMissense and EVE classify it as potentially 'pathogenic moderate'. Additionally, a PhastCons100way score of 1.000 and a PhyloP100way score of 4.218 show that this nucleotide is highly conserved across vertebrates, indicating that a mutation at this position is likely detrimental.
-
 
 ```{r}
 #show conservation in the region of the variant
@@ -612,7 +623,6 @@ UCSC Genome Browser visualization [@casper_ucsc_2026] highlights strong evolutio
 #show structure of SNAP29 and zoom in on structure at variant position
 include_graphics("visualizations/SNAP29_vis.png")
 ```
-
 
 The structural model retrieved from the AlphaFold Protein Structure Database [@jumper_highly_2021] maps the exact position of Arg90 within the alpha-helix of the SNARE domain. Interestingly, structural prediction of the p.Arg90Pro mutant does not immediately reveal a clear disruption or break in the helix. However, AlphaFold is primarily trained to predict global protein folding rather than the localized consequences of single amino acid substitutions. Consequently, in a cellular environment, the introduction of proline could still induce significant structural destabilization or alter folding dynamics.
 
@@ -627,5 +637,7 @@ Although the evidence supports SNAP29 p.Arg90Pro as a plausible cause, three poi
 To address these open questions, further experiments could be conducted. Building on published work on SNAP29 deficiency, integrin recycling in healthy and SNAP29 p.Arg90PRO cells could be studied. Integrin is important in cell migration and therefore pivotal for epidermal differentiation and neuronal development [@gambardella_multifaceted_2003] [@cayre_cell_2009]. In a pulse-chase experiment, accumulation of β-integrin in SNAP29 deficient cells could be observed which could over time cause the CEDNIK-associated symptoms [@rapaport_loss_2010]. Interestingly, SNAP29-mutated zebrafish have a smaller head size mirroring microcephaly in humans [@mastrodonato_genetic_2019]. This would be a meaningful experiment to see consequences even on the organism level. Another possibility would be to derive primary fibroblasts from the daughter and study SNAP29 protein interaction using immunoprecipitation or an autophagic assay to asses functionality of p.Arg90Pro SNAP29. Performing a rescue experiment would confirm whether the SNAP29 variant is the cause of the observed results.
 
 In conclusion, the genetic findings are consistent with the clinical picture. The genotype pattern fits autosomal recessive inheritance, SNAP29 is an established CEDNIK gene, and the patient’s symptoms match the syndrome. However, p.Arg90Pro is a missense variant without functional evidence. Within the ACMG framework it is therefore likely to remain a variant of uncertain significance until functional or additional genetic data are available. The experiments outlined above would be the next steps towards clarifying its role.
+
+## Annexes
 
 ## References
