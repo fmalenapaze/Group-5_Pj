@@ -27,9 +27,10 @@ variants <- read_tsv("data/corpasome.trio.chr22.snps.filtered.annovar.tsv", col_
 
 ```
 
+## Index
+
 ```{r}
 #| label: tbl-index
-#| tbl-cap: "Overview of the WES Analysis Pipeline Structure"
 #| echo: false
 
 # Table
@@ -100,13 +101,13 @@ The input data set comprised individual files corresponding to the family trio: 
 
 To process the alignments, the “Burrows-Wheeler Aligner (bwa mem)”[@li2009fast] tool converts our .fq files into .bam/.sam files by comparing the qualities and positions against a reference genome; which, for this study was hg19. With the binary version (.bam), we can easly access to specific genomic regions using index files (.bai), allowing the reads of each family member to be processed and indexed efficiently in the vcf files.
 
-For each part of the mapping and index findings, we required different tools like gatk3 and samstools. First we mark the duplicates form each read vs the chr22 found in the hg19. This will help us to realign and target indels from miss coding quality scores and correct for mapping errors[@gatk_best_practices]. The given scores are proven by the RealignerTargetCreator and IndelRealigner tools. The given files were recalibrated based on their basecalling scores (BSQR) for avoifding false positives in the variant calling. The samples for this realignment are taken from the dbsnps of the ch22 of the hg19 and the Mills and Devine y el 1000 Genomes Project indels for the build 37 file in the ch22; taken from the golden standart archives of gatk3.
+For each part of the mapping and index findings, we required different tools like gatk3 and samstools. First we mark the duplicates form each read vs the chr22 found in the hg19. This will help us to realign and target indels from miss coding quality scores and correct for mapping errors[@gatk_best_practices]. The given scores are proven by the RealignerTargetCreator and IndelRealigner tools. The given files were recalibrated based on their basecalling scores (BSQR) for avoifding false positives in the variant calling. The samples for this realignment are taken from the dbsnps of the ch22 of the hg19 and the Mills and Devine y el 1000 Genomes Project indels for the build 37 file in the ch22; taken from the golden standart archives of gatk3 (Resource bundle 2016 version) [@gatk_resource_bundle].
 
 To prepare for the variant callings, first we proceed to eliminate the reads mistakes by taking in account a Depht of coverage calculation. Using the tool DepthOfCoverage by Gatk3 the analysis assessed target regions form the ch22.bed exons file against our reads .bam file. This step helps to calculate the proportion of target bases on specific depth of coverage thresholds (1x,5x,10x,20x and 50x)[@gatk_depth_of_coverage].
 
 Using the refined regions of interest, we call the bcftools and samstools to perform variant calling on the BAM files. This tools performs, after pilling up the reads in one file, a calling form the variants based on the "c-g" genotypes into .bcf files. Then, the samstools performs a filtering for a .vcf archive with the variants above the 20x coverage for future analysis[@bcftools_docs].
 
-To refine the variant selection for functional analysis, as shown in @fig-organigram, variants were cross-referenced with general and clinical databases based on the hg19 reference genome. This annotation process utilizes the ANNOVAR tool to integrate European population frequencies (1000g2012apr_eur and esp6500si_ea), common variant identifiers (snp138), pathogenicity prediction scores (ljb2_stift and ljb2_pp2hvar), and clinical relevance databases (clinvar_20140702). By combining these anotations, the data merges into a readable table in .tsv format that contains genetic annotations, known identifiers, predictive scores, clinical relevance, and genomic coordinates [@wang2010annovar].
+To refine the variant selection for functional analysis, as shown in @fig-organigram, variants were cross-referenced with general and clinical databases based on the hg19 reference genome. This annotation process utilizes the ANNOVAR (v. 2014-07-02) tool to integrate European population frequencies (1000g2012apr_eur and esp6500si_ea), common variant identifiers (snp138), pathogenicity prediction scores (ljb2_stift and ljb2_pp2hvar), and clinical relevance databases (clinvar_20140702). By combining these anotations, the data merges into a readable table in .tsv format that contains genetic annotations, known identifiers, predictive scores, clinical relevance, and genomic coordinates [@wang2010annovar].
 
 ```{r}
 #| label: fig-organigram
@@ -119,9 +120,51 @@ library(knitr)
 include_graphics("organigram_full_flow.jpg")
 ```
 
+Data processing, pipeline execution, and analytical workflows were performed using a custom shell script (runAnalysis.sh) executed within a Bash command-line interface. The computational environment was managed via "Conda" [@conda_docs](an open-source package and environment management system used to ensure reproducible software dependencies and isolated package versions). Operations and remote server connections were conducted using MobaXterm Personal Edition (v26.5), utilizing datasets and reference databases provided by the instructional program.
+
 ### Variant annotation and filtering
 
-With the uptake of the resultant .tsv file, we proceed for the variant annotations.
+With the uptake of the resultant .tsv file, we proceed for the variant annotations. Thorught the ANNOVAR filtering flow seen in the @fig-organigram, we analize the functional consequences and clinical relevance of identified single nucleotide polymorphisms (SNPs) and insertions/deletions (indels). The classification of the variants are listed in the following columns:
+
+```{r}
+#| label: tbl-databases
+#| tbl-cap: "dsdfsf"
+#| echo: false
+library(tibble)
+library(knitr)
+# Table
+f_database <- tibble(
+  Resource = c(
+    "refGene (hg19)", 
+    "1000 Genomes (`1000g2012apr_eur`)", 
+    "ESP6500 (`esp6500si_ea`)", 
+    "dbSNP (`snp138`)", 
+    "SIFT (`ljb2_sift`)",
+    "PolyPhen-2 (`ljb2_pp2hvar`)",
+    "ClinVar (`clinvar_20140702`)"
+    ),
+  Column = c(
+    "col 7",
+    "col 11",
+    "col 12",
+    "col 13",
+    "col 14",
+    "col 15",
+    "col 16"
+    ),
+  Pipeline = c(
+    "Primary software tool for the functional annotation of genetic variants (SNPs and indels).",
+    "Reference transcript database used to determine genomic and exonic context.",
+    "Population allele frequencies (global and European) utilized to filter out common variants and isolate rare ones.",
+    "Complementary population allele frequencies from the NHLBI GO Exome Sequencing Project.",
+    "Standard repository for assigning common variant accession identifiers (rs IDs).",
+    "Bioinformatics tools for predicting protein-level pathogenicity and functional damage.",
+    "Clinical database linking genetic variants to human health conditions and clinical interpretations."
+  )
+)
+
+kable(f_database, format = "markdown")
+```
 
 ## Results
 
@@ -340,7 +383,7 @@ The table displays the different steps of sample processing and the effect on th
 
 ### Variant calling/filtering
 
-To begin the variant calling, the raw file includes all covered positions in exons which could potentially contain variants. It includes all three samples and displays 1,418,395 positions. After the variant calling 8,803 of these positions are defined as SNPs in the bcf file which is about 0.62% of the positions in the raw file. To refine the variant calling, positions with a read depth below 20 are removed. 5,898 positions remain in the vcf file. These are 5,983 variants if multi-allelic sites are considered and split in separate rows. This process is also called demultiplexing. Further conversion to tsv and annotation using ANNOVAR, does not change the number of variants. The resulting file with 5,983 variants can now be used for downstream analysis and filtering of possible disease-causing variants.
+To begin the variant calling, the raw file includes all covered positions in exons which could potentially contain variants. It includes all three samples and displays 1,418,395 positions. After the variant calling 8,803 of these positions are defined as SNPs in the bcf file which is about 0.62% of the positions in the raw file. To refine the variant calling, positions with a read depth below 20 are removed. 5,898 positions remain in the vcf file. These are 5,983 variants if multi-allelic sites are considered and split in separate rows. This process is also called demultiplexing. Further conversion to .tsv and annotation using ANNOVAR, does not change the number of variants. The resulting file with 5,983 variants can now be used for downstream analysis and filtering of possible disease-causing variants.
 
 ```{r}
 #Analyse transition/transversion ratio and nonsynonymous/synonymous ratio
