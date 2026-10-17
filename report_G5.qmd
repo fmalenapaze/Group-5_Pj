@@ -478,6 +478,10 @@ tibble(
 
 ```
 
+```{r}
+include_graphics("visualizations/variant_filtering.png")
+```
+
 In order to select the disease-causing gene out of these 11 candidate genes, the varsome database [@kopanos_varsome_2019] is used to evalute related phenotypes. Some of these genes are not associated with a disease phenotype (CCT8L2, ZNF280A) or related with different types of cancer (ATP6V1E1, MED15, RFPL2, XRCC6, NHP2L1, ATP5L2. BRD1, ZBED4). The SNAP29 gene, however, is related to the CEDNIK syndrome. Furthermore, related HPO terms, namely ichthyosis, palmoplantar keratoderma and neurophathy, match with the described symptoms of the patient.
 
 ```{r}
@@ -605,15 +609,10 @@ include_graphics("visualizations/visualisation_conserved_region.png")
 UCSC Genome Browser visualization [@casper_ucsc_2026] highlights strong evolutionary conservation across species at this nucleotide and amino acid position. SNAP29 is broadly expressed due to its fundamental role in membrane fusion and autophagy [@the_uniprot_consortium_uniprot_2025], with prominent expression in the brain, skin, and skeletal muscle which are directly impacted in this patient. This expression profile aligns well with the clinical findings. Several other SNAP29 mutations are known to cause CEDNIK syndrome [@the_uniprot_consortium_uniprot_2025], including residue changes like E89K, deletion of L119, and M184V. The candidate variant affects a conserved residue within the C-terminal SNARE motif, which normally forms an alpha-helix anchored to the vesicle membrane [@gao_integrative_2013; @cerami_cbio_2012; @de_bruijn_analysis_2023]. Replacing an alpha-helix-favoring arginine with proline which is a well-known 'helix breaker' due to its cyclic side chain and lack of a backbone amide proton, is predicted to severely disrupt local secondary structure and protein folding. Utilizing the Franklin ACMG framework, the variant is classified as a Variant of Uncertain Significance (VUS), reflecting its extreme rarity alongside supportive computational predictions [@noauthor_franklin_nodate].
 
 ```{r}
-#show structure of SNAP29
-include_graphics("visualizations/structure_SNAP29.png")
+#show structure of SNAP29 and zoom in on structure at variant position
+include_graphics("visualizations/SNAP29_vis.png")
 ```
 
-```{r}
-#zoom. in on structure at variant position
-include_graphics("visualizations/arg_org.png")
-include_graphics("visualizations/pro_pred.png")
-```
 
 The structural model retrieved from the AlphaFold Protein Structure Database [@jumper_highly_2021] maps the exact position of Arg90 within the alpha-helix of the SNARE domain. Interestingly, structural prediction of the p.Arg90Pro mutant does not immediately reveal a clear disruption or break in the helix. However, AlphaFold is primarily trained to predict global protein folding rather than the localized consequences of single amino acid substitutions. Consequently, in a cellular environment, the introduction of proline could still induce significant structural destabilization or alter folding dynamics.
 
