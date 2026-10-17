@@ -72,21 +72,22 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
+  <li><a href="#materials-and-methods" id="toc-materials-and-methods" class="nav-link" data-scroll-target="#materials-and-methods"><span class="header-section-number">2</span> Materials and methods</a>
   <ul class="collapse">
-  <li><a href="#study-participantswhole-exome-sequencing" id="toc-study-participantswhole-exome-sequencing" class="nav-link" data-scroll-target="#study-participantswhole-exome-sequencing"><span class="header-section-number">1.1</span> Study Participants/Whole exome sequencing</a></li>
-  <li><a href="#ngs-data-preprocessing" id="toc-ngs-data-preprocessing" class="nav-link" data-scroll-target="#ngs-data-preprocessing"><span class="header-section-number">1.2</span> NGS data preprocessing</a></li>
-  <li><a href="#variant-annotation-and-filtering" id="toc-variant-annotation-and-filtering" class="nav-link" data-scroll-target="#variant-annotation-and-filtering"><span class="header-section-number">1.3</span> Variant annotation and filtering</a></li>
+  <li><a href="#study-participants-whole-exome-sequencing" id="toc-study-participants-whole-exome-sequencing" class="nav-link" data-scroll-target="#study-participants-whole-exome-sequencing"><span class="header-section-number">2.1</span> Study Participants &amp; Whole exome sequencing</a></li>
+  <li><a href="#ngs-data-preprocessing" id="toc-ngs-data-preprocessing" class="nav-link" data-scroll-target="#ngs-data-preprocessing"><span class="header-section-number">2.2</span> NGS data preprocessing</a></li>
+  <li><a href="#variant-annotation-and-filtering" id="toc-variant-annotation-and-filtering" class="nav-link" data-scroll-target="#variant-annotation-and-filtering"><span class="header-section-number">2.3</span> Variant annotation and filtering</a></li>
   </ul></li>
-  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results"><span class="header-section-number">2</span> Results</a>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results"><span class="header-section-number">3</span> Results</a>
   <ul class="collapse">
-  <li><a href="#qc" id="toc-qc" class="nav-link" data-scroll-target="#qc"><span class="header-section-number">2.1</span> QC</a></li>
-  <li><a href="#sample-processing" id="toc-sample-processing" class="nav-link" data-scroll-target="#sample-processing"><span class="header-section-number">2.2</span> Sample processing</a></li>
-  <li><a href="#variant-callingfiltering" id="toc-variant-callingfiltering" class="nav-link" data-scroll-target="#variant-callingfiltering"><span class="header-section-number">2.3</span> Variant calling/filtering</a></li>
-  <li><a href="#analysis-of-the-candidate-gene" id="toc-analysis-of-the-candidate-gene" class="nav-link" data-scroll-target="#analysis-of-the-candidate-gene"><span class="header-section-number">2.4</span> Analysis of the candidate gene</a></li>
+  <li><a href="#qc" id="toc-qc" class="nav-link" data-scroll-target="#qc"><span class="header-section-number">3.1</span> QC</a></li>
+  <li><a href="#sample-processing" id="toc-sample-processing" class="nav-link" data-scroll-target="#sample-processing"><span class="header-section-number">3.2</span> Sample processing</a></li>
+  <li><a href="#variant-callingfiltering" id="toc-variant-callingfiltering" class="nav-link" data-scroll-target="#variant-callingfiltering"><span class="header-section-number">3.3</span> Variant calling/filtering</a></li>
+  <li><a href="#analysis-of-the-candidate-gene" id="toc-analysis-of-the-candidate-gene" class="nav-link" data-scroll-target="#analysis-of-the-candidate-gene"><span class="header-section-number">3.4</span> Analysis of the candidate gene</a></li>
   </ul></li>
-  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="header-section-number">3</span> Discussion</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">4</span> References</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="header-section-number">4</span> Discussion</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">5</span> References</a></li>
   </ul>
 </nav>
 </div>
@@ -130,16 +131,16 @@ Table&nbsp;1: Overview of the WES Analysis Pipeline Structure
 <td style="text-align: left;">1. Introduction</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">2. Study Participants/Whole exome sequencing</td>
+<td style="text-align: left;">2. Materials and Methods</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">3. NGS data preprocessing</td>
+<td style="text-align: left;">3. Results</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">4. Variant annotation and filtering</td>
+<td style="text-align: left;">4. Discussion</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">5. Results</td>
+<td style="text-align: left;">5. References</td>
 </tr>
 </tbody>
 </table>
@@ -155,8 +156,11 @@ Table&nbsp;1: Overview of the WES Analysis Pipeline Structure
 <p>CEDNIK syndrome is an extremely rare disorder, with an estimated prevalence of less than 1 per 1,000,000 individuals; a reliable population-based incidence has not been established due to the small number of reported cases<span class="citation" data-cites="orphanetcednik"><sup><a href="#ref-orphanetcednik" role="doc-biblioref">5</a></sup></span>.</p>
 <p>Variant detection and diagnosis have become much more accessible with the advent of next-generation sequencing (NGS). Unlike earlier sequencing technologies, NGS enables the simultaneous analysis of anything from a few genes to hundreds of genes, the entire exome, or even the whole genome. NGS systems employ approaches such as whole-genome sequencing (WGS) and whole-exome sequencing (WES)<span class="citation" data-cites="brancato2025ngs"><sup><a href="#ref-brancato2025ngs" role="doc-biblioref">6</a></sup></span>.</p>
 <p>In this report, we focus on WES because CEDNIK syndrome is a Mendelian monogenic disorder, which is why identifying variations within the exons alone is generally sufficient for its detection. In the case we analyzed, a 3-year-old girl exhibited symptoms of the syndrome while her parents were healthy. Therefore, our objective was to perform WES for this family of three and identify the variant by comparing the results against the reference human genome (GRCh37/hg19). This type of analytical method is known as “trio analysis”<span class="citation" data-cites="gabriel2022trio"><sup><a href="#ref-gabriel2022trio" role="doc-biblioref">7</a></sup></span>, and given that this syndrome is an autosomal recessive disorder, we can infer that both parents are heterozygous carriers<span class="citation" data-cites="hsu2017cednik"><sup><a href="#ref-hsu2017cednik" role="doc-biblioref">1</a></sup></span>.</p>
-<section id="study-participantswhole-exome-sequencing" class="level3" data-number="1.1">
-<h3 data-number="1.1" class="anchored" data-anchor-id="study-participantswhole-exome-sequencing"><span class="header-section-number">1.1</span> Study Participants/Whole exome sequencing</h3>
+</section>
+<section id="materials-and-methods" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="materials-and-methods"><span class="header-section-number">2</span> Materials and methods</h2>
+<section id="study-participants-whole-exome-sequencing" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="study-participants-whole-exome-sequencing"><span class="header-section-number">2.1</span> Study Participants &amp; Whole exome sequencing</h3>
 <p>The base of our work is publicly available genetic data from a Spanish family, here consisting of a father, mother and their daughter, referred to as “the Corpasome”<span class="citation" data-cites="corpas_crowdsourced_2015"><sup><a href="#ref-corpas_crowdsourced_2015" role="doc-biblioref">8</a></sup></span>. In our case the genome of the daughter is synthetically altered and a disease phenotype called CEDNIK Syndrome, caused by these alterations, is diagnosed. Main symptoms are developmental delay and skin disorder. The latter mainfasting at the age of two in ichthyosis and thickening of palms and soles. Further, she has been diagnosed with microcephaly and poor motor development as well as impaired coordination. As Cednik Syndrome is an autosomal recessive inheritable disease and the parents are healthy, the father and mother both have one chromosome with the disease-causing variant and one without. After deciding to make their genomes publicly available, the Corpas family bought direct-to-consumer sequencing privately to collect DNA in saliva using Oragene kits. Exomes were captured with Agilent SureSelect Human All Exon (44 Mb design) and sequenced on Illumina HiSeq with an average coverage of about 30x over the target region.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -173,8 +177,8 @@ Figure&nbsp;1: Family trio pedigree
 </div>
 </div>
 </section>
-<section id="ngs-data-preprocessing" class="level3" data-number="1.2">
-<h3 data-number="1.2" class="anchored" data-anchor-id="ngs-data-preprocessing"><span class="header-section-number">1.2</span> NGS data preprocessing</h3>
+<section id="ngs-data-preprocessing" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="ngs-data-preprocessing"><span class="header-section-number">2.2</span> NGS data preprocessing</h3>
 <p>Next-Generation Sequencing (NGS) data pre-processing was used to refine and align the raw reads given to downstream Whole-Exome Sequencing (WES) analysis. The general process follows a read of qualities, the realignment and mapping of the genomes, then the variant callings and finally the analysis of the Candidate Genes, as described in the <a href="#fig-organigram" class="quarto-xref">Figure&nbsp;2</a> .</p>
 <p>The input data set comprised individual files corresponding to the family trio: mother, father, and affected child, from the Corpasome family. They are organized for each person as as paired-ends reads, 150 bp per read for R1 and R2. The given input is a .fq file form from each member of the trio. To graph and see the organization of the sequences, GC percentage and the quality scores, we search through the FastQC Report (version 0.12.1). This .fqc files were significant to identify technical artifact sequencing errors or contamination on the samples and reads. The primary QC metrics perfomed were:</p>
 <ul>
@@ -203,15 +207,15 @@ Figure&nbsp;2: Precise filtering workflow [Elaborated by the authors]
 </div>
 </div>
 </section>
-<section id="variant-annotation-and-filtering" class="level3" data-number="1.3">
-<h3 data-number="1.3" class="anchored" data-anchor-id="variant-annotation-and-filtering"><span class="header-section-number">1.3</span> Variant annotation and filtering</h3>
-<p>With the uptake of the resultant .tsv file, we proceed for the variant annotation</p>
+<section id="variant-annotation-and-filtering" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="variant-annotation-and-filtering"><span class="header-section-number">2.3</span> Variant annotation and filtering</h3>
+<p>With the uptake of the resultant .tsv file, we proceed for the variant annotations.</p>
 </section>
 </section>
-<section id="results" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="results"><span class="header-section-number">2</span> Results</h2>
-<section id="qc" class="level3" data-number="2.1">
-<h3 data-number="2.1" class="anchored" data-anchor-id="qc"><span class="header-section-number">2.1</span> QC</h3>
+<section id="results" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="results"><span class="header-section-number">3</span> Results</h2>
+<section id="qc" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="qc"><span class="header-section-number">3.1</span> QC</h3>
 <div class="cell">
 <div id="tbl-fastqc" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -220,23 +224,23 @@ Table&nbsp;2: FastQC Sumarized table for each read in each sample
 </figcaption>
 <div aria-describedby="tbl-fastqc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="thjlfmdvhn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#thjlfmdvhn table {
+<div id="ijirrglhnq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ijirrglhnq table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#thjlfmdvhn thead, #thjlfmdvhn tbody, #thjlfmdvhn tfoot, #thjlfmdvhn tr, #thjlfmdvhn td, #thjlfmdvhn th {
+#ijirrglhnq thead, #ijirrglhnq tbody, #ijirrglhnq tfoot, #ijirrglhnq tr, #ijirrglhnq td, #ijirrglhnq th {
   border-style: none;
 }
 
-#thjlfmdvhn p {
+#ijirrglhnq p {
   margin: 0;
   padding: 0;
 }
 
-#thjlfmdvhn .gt_table {
+#ijirrglhnq .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -262,12 +266,12 @@ Table&nbsp;2: FastQC Sumarized table for each read in each sample
   border-left-color: #D3D3D3;
 }
 
-#thjlfmdvhn .gt_caption {
+#ijirrglhnq .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#thjlfmdvhn .gt_title {
+#ijirrglhnq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -279,7 +283,7 @@ Table&nbsp;2: FastQC Sumarized table for each read in each sample
   border-bottom-width: 0;
 }
 
-#thjlfmdvhn .gt_subtitle {
+#ijirrglhnq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -291,7 +295,7 @@ Table&nbsp;2: FastQC Sumarized table for each read in each sample
   border-top-width: 0;
 }
 
-#thjlfmdvhn .gt_heading {
+#ijirrglhnq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -303,13 +307,13 @@ Table&nbsp;2: FastQC Sumarized table for each read in each sample
   border-right-color: #D3D3D3;
 }
 
-#thjlfmdvhn .gt_bottom_border {
+#ijirrglhnq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#thjlfmdvhn .gt_col_headings {
+#ijirrglhnq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -324,7 +328,7 @@ Table&nbsp;2: FastQC Sumarized table for each read in each sample
   border-right-color: #D3D3D3;
 }
 
-#thjlfmdvhn .gt_col_heading {
+#ijirrglhnq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -344,7 +348,7 @@ Table&nbsp;2: FastQC Sumarized table for each read in each sample
   overflow-x: hidden;
 }
 
-#thjlfmdvhn .gt_column_spanner_outer {
+#ijirrglhnq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -356,15 +360,15 @@ Table&nbsp;2: FastQC Sumarized table for each read in each sample
   padding-right: 4px;
 }
 
-#thjlfmdvhn .gt_column_spanner_outer:first-child {
+#ijirrglhnq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#thjlfmdvhn .gt_column_spanner_outer:last-child {
+#ijirrglhnq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#thjlfmdvhn .gt_column_spanner {
+#ijirrglhnq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -376,11 +380,11 @@ Table&nbsp;2: FastQC Sumarized table for each read in each sample
   width: 100%;
 }
 
-#thjlfmdvhn .gt_spanner_row {
+#ijirrglhnq .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#thjlfmdvhn .gt_group_heading {
+#ijirrglhnq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -406,7 +410,7 @@ Table&nbsp;2: FastQC Sumarized table for each read in each sample
   text-align: left;
 }
 
-#thjlfmdvhn .gt_empty_group_heading {
+#ijirrglhnq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -421,15 +425,15 @@ Table&nbsp;2: FastQC Sumarized table for each read in each sample
   vertical-align: middle;
 }
 
-#thjlfmdvhn .gt_from_md > :first-child {
+#ijirrglhnq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#thjlfmdvhn .gt_from_md > :last-child {
+#ijirrglhnq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#thjlfmdvhn .gt_row {
+#ijirrglhnq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -448,7 +452,7 @@ Table&nbsp;2: FastQC Sumarized table for each read in each sample
   overflow-x: hidden;
 }
 
-#thjlfmdvhn .gt_stub {
+#ijirrglhnq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -461,7 +465,7 @@ Table&nbsp;2: FastQC Sumarized table for each read in each sample
   padding-right: 5px;
 }
 
-#thjlfmdvhn .gt_stub_row_group {
+#ijirrglhnq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -475,15 +479,15 @@ Table&nbsp;2: FastQC Sumarized table for each read in each sample
   vertical-align: top;
 }
 
-#thjlfmdvhn .gt_row_group_first td {
+#ijirrglhnq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#thjlfmdvhn .gt_row_group_first th {
+#ijirrglhnq .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#thjlfmdvhn .gt_summary_row {
+#ijirrglhnq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -493,16 +497,16 @@ Table&nbsp;2: FastQC Sumarized table for each read in each sample
   padding-right: 5px;
 }
 
-#thjlfmdvhn .gt_first_summary_row {
+#ijirrglhnq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#thjlfmdvhn .gt_first_summary_row.thick {
+#ijirrglhnq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#thjlfmdvhn .gt_last_summary_row {
+#ijirrglhnq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -512,7 +516,7 @@ Table&nbsp;2: FastQC Sumarized table for each read in each sample
   border-bottom-color: #D3D3D3;
 }
 
-#thjlfmdvhn .gt_grand_summary_row {
+#ijirrglhnq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -522,7 +526,7 @@ Table&nbsp;2: FastQC Sumarized table for each read in each sample
   padding-right: 5px;
 }
 
-#thjlfmdvhn .gt_first_grand_summary_row {
+#ijirrglhnq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -532,7 +536,7 @@ Table&nbsp;2: FastQC Sumarized table for each read in each sample
   border-top-color: #D3D3D3;
 }
 
-#thjlfmdvhn .gt_last_grand_summary_row_top {
+#ijirrglhnq .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -542,11 +546,11 @@ Table&nbsp;2: FastQC Sumarized table for each read in each sample
   border-bottom-color: #D3D3D3;
 }
 
-#thjlfmdvhn .gt_striped {
+#ijirrglhnq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#thjlfmdvhn .gt_table_body {
+#ijirrglhnq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -555,7 +559,7 @@ Table&nbsp;2: FastQC Sumarized table for each read in each sample
   border-bottom-color: #D3D3D3;
 }
 
-#thjlfmdvhn .gt_footnotes {
+#ijirrglhnq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -569,7 +573,7 @@ Table&nbsp;2: FastQC Sumarized table for each read in each sample
   border-right-color: #D3D3D3;
 }
 
-#thjlfmdvhn .gt_footnote {
+#ijirrglhnq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -578,7 +582,7 @@ Table&nbsp;2: FastQC Sumarized table for each read in each sample
   padding-right: 5px;
 }
 
-#thjlfmdvhn .gt_sourcenotes {
+#ijirrglhnq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -592,7 +596,7 @@ Table&nbsp;2: FastQC Sumarized table for each read in each sample
   border-right-color: #D3D3D3;
 }
 
-#thjlfmdvhn .gt_sourcenote {
+#ijirrglhnq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -600,72 +604,72 @@ Table&nbsp;2: FastQC Sumarized table for each read in each sample
   padding-right: 5px;
 }
 
-#thjlfmdvhn .gt_left {
+#ijirrglhnq .gt_left {
   text-align: left;
 }
 
-#thjlfmdvhn .gt_center {
+#ijirrglhnq .gt_center {
   text-align: center;
 }
 
-#thjlfmdvhn .gt_right {
+#ijirrglhnq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#thjlfmdvhn .gt_font_normal {
+#ijirrglhnq .gt_font_normal {
   font-weight: normal;
 }
 
-#thjlfmdvhn .gt_font_bold {
+#ijirrglhnq .gt_font_bold {
   font-weight: bold;
 }
 
-#thjlfmdvhn .gt_font_italic {
+#ijirrglhnq .gt_font_italic {
   font-style: italic;
 }
 
-#thjlfmdvhn .gt_super {
+#ijirrglhnq .gt_super {
   font-size: 65%;
 }
 
-#thjlfmdvhn .gt_footnote_marks {
+#ijirrglhnq .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#thjlfmdvhn .gt_asterisk {
+#ijirrglhnq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#thjlfmdvhn .gt_indent_1 {
+#ijirrglhnq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#thjlfmdvhn .gt_indent_2 {
+#ijirrglhnq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#thjlfmdvhn .gt_indent_3 {
+#ijirrglhnq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#thjlfmdvhn .gt_indent_4 {
+#ijirrglhnq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#thjlfmdvhn .gt_indent_5 {
+#ijirrglhnq .gt_indent_5 {
   text-indent: 25px;
 }
 
-#thjlfmdvhn .katex-display {
+#ijirrglhnq .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#thjlfmdvhn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ijirrglhnq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -776,27 +780,27 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
 <p>The per-base sequence quality boxplots for forward and reverse reads across the family trio reveal a typical Illumina quality profile showing optimal scores in the center of the reads and a decreasing quality towards the end of the reads. Especially the maternal sample displays lower quality scores for terminal positions dropping below a Phred score of 20. However, median quality scores across all samples and positions remain above a threshold of 30.</p>
 <p>Overall, raw data quality across all three samples is within acceptable range to proceed with downstream analysis. Subsequent evaluation of alignment and coverage metrics will further asses data quality before variant calling.</p>
 </section>
-<section id="sample-processing" class="level3" data-number="2.2">
-<h3 data-number="2.2" class="anchored" data-anchor-id="sample-processing"><span class="header-section-number">2.2</span> Sample processing</h3>
+<section id="sample-processing" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="sample-processing"><span class="header-section-number">3.2</span> Sample processing</h3>
 <div class="cell">
 <div class="cell-output-display">
-<div id="ucztnvghkb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ucztnvghkb table {
+<div id="tgdduwyzqz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tgdduwyzqz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ucztnvghkb thead, #ucztnvghkb tbody, #ucztnvghkb tfoot, #ucztnvghkb tr, #ucztnvghkb td, #ucztnvghkb th {
+#tgdduwyzqz thead, #tgdduwyzqz tbody, #tgdduwyzqz tfoot, #tgdduwyzqz tr, #tgdduwyzqz td, #tgdduwyzqz th {
   border-style: none;
 }
 
-#ucztnvghkb p {
+#tgdduwyzqz p {
   margin: 0;
   padding: 0;
 }
 
-#ucztnvghkb .gt_table {
+#tgdduwyzqz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -822,12 +826,12 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-left-color: #D3D3D3;
 }
 
-#ucztnvghkb .gt_caption {
+#tgdduwyzqz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ucztnvghkb .gt_title {
+#tgdduwyzqz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -839,7 +843,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-width: 0;
 }
 
-#ucztnvghkb .gt_subtitle {
+#tgdduwyzqz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -851,7 +855,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-top-width: 0;
 }
 
-#ucztnvghkb .gt_heading {
+#tgdduwyzqz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -863,13 +867,13 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#ucztnvghkb .gt_bottom_border {
+#tgdduwyzqz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ucztnvghkb .gt_col_headings {
+#tgdduwyzqz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -884,7 +888,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#ucztnvghkb .gt_col_heading {
+#tgdduwyzqz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -904,7 +908,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   overflow-x: hidden;
 }
 
-#ucztnvghkb .gt_column_spanner_outer {
+#tgdduwyzqz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -916,15 +920,15 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 4px;
 }
 
-#ucztnvghkb .gt_column_spanner_outer:first-child {
+#tgdduwyzqz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ucztnvghkb .gt_column_spanner_outer:last-child {
+#tgdduwyzqz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ucztnvghkb .gt_column_spanner {
+#tgdduwyzqz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -936,11 +940,11 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   width: 100%;
 }
 
-#ucztnvghkb .gt_spanner_row {
+#tgdduwyzqz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ucztnvghkb .gt_group_heading {
+#tgdduwyzqz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -966,7 +970,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   text-align: left;
 }
 
-#ucztnvghkb .gt_empty_group_heading {
+#tgdduwyzqz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -981,15 +985,15 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   vertical-align: middle;
 }
 
-#ucztnvghkb .gt_from_md > :first-child {
+#tgdduwyzqz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ucztnvghkb .gt_from_md > :last-child {
+#tgdduwyzqz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ucztnvghkb .gt_row {
+#tgdduwyzqz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1008,7 +1012,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   overflow-x: hidden;
 }
 
-#ucztnvghkb .gt_stub {
+#tgdduwyzqz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1021,7 +1025,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#ucztnvghkb .gt_stub_row_group {
+#tgdduwyzqz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1035,15 +1039,15 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   vertical-align: top;
 }
 
-#ucztnvghkb .gt_row_group_first td {
+#tgdduwyzqz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ucztnvghkb .gt_row_group_first th {
+#tgdduwyzqz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ucztnvghkb .gt_summary_row {
+#tgdduwyzqz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1053,16 +1057,16 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#ucztnvghkb .gt_first_summary_row {
+#tgdduwyzqz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ucztnvghkb .gt_first_summary_row.thick {
+#tgdduwyzqz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ucztnvghkb .gt_last_summary_row {
+#tgdduwyzqz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1072,7 +1076,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-color: #D3D3D3;
 }
 
-#ucztnvghkb .gt_grand_summary_row {
+#tgdduwyzqz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1082,7 +1086,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#ucztnvghkb .gt_first_grand_summary_row {
+#tgdduwyzqz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1092,7 +1096,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-top-color: #D3D3D3;
 }
 
-#ucztnvghkb .gt_last_grand_summary_row_top {
+#tgdduwyzqz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1102,11 +1106,11 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-color: #D3D3D3;
 }
 
-#ucztnvghkb .gt_striped {
+#tgdduwyzqz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ucztnvghkb .gt_table_body {
+#tgdduwyzqz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1115,7 +1119,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-color: #D3D3D3;
 }
 
-#ucztnvghkb .gt_footnotes {
+#tgdduwyzqz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1129,7 +1133,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#ucztnvghkb .gt_footnote {
+#tgdduwyzqz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1138,7 +1142,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#ucztnvghkb .gt_sourcenotes {
+#tgdduwyzqz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1152,7 +1156,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#ucztnvghkb .gt_sourcenote {
+#tgdduwyzqz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1160,72 +1164,72 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#ucztnvghkb .gt_left {
+#tgdduwyzqz .gt_left {
   text-align: left;
 }
 
-#ucztnvghkb .gt_center {
+#tgdduwyzqz .gt_center {
   text-align: center;
 }
 
-#ucztnvghkb .gt_right {
+#tgdduwyzqz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ucztnvghkb .gt_font_normal {
+#tgdduwyzqz .gt_font_normal {
   font-weight: normal;
 }
 
-#ucztnvghkb .gt_font_bold {
+#tgdduwyzqz .gt_font_bold {
   font-weight: bold;
 }
 
-#ucztnvghkb .gt_font_italic {
+#tgdduwyzqz .gt_font_italic {
   font-style: italic;
 }
 
-#ucztnvghkb .gt_super {
+#tgdduwyzqz .gt_super {
   font-size: 65%;
 }
 
-#ucztnvghkb .gt_footnote_marks {
+#tgdduwyzqz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ucztnvghkb .gt_asterisk {
+#tgdduwyzqz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ucztnvghkb .gt_indent_1 {
+#tgdduwyzqz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ucztnvghkb .gt_indent_2 {
+#tgdduwyzqz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ucztnvghkb .gt_indent_3 {
+#tgdduwyzqz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ucztnvghkb .gt_indent_4 {
+#tgdduwyzqz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ucztnvghkb .gt_indent_5 {
+#tgdduwyzqz .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ucztnvghkb .katex-display {
+#tgdduwyzqz .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ucztnvghkb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#tgdduwyzqz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1291,28 +1295,28 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
 </div>
 <p>The table displays the different steps of sample processing and the effect on the number of alignments. As expected, only the duplication removal reduces the number of records. In total 216,843 alignments have been removed in the sample of the dad, 175,418 for the mom and 204,961 for the daughter, which is in a range of 22.3% to 27.1% of all alignments in the unprocessed file.</p>
 </section>
-<section id="variant-callingfiltering" class="level3" data-number="2.3">
-<h3 data-number="2.3" class="anchored" data-anchor-id="variant-callingfiltering"><span class="header-section-number">2.3</span> Variant calling/filtering</h3>
+<section id="variant-callingfiltering" class="level3" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="variant-callingfiltering"><span class="header-section-number">3.3</span> Variant calling/filtering</h3>
 <p>To begin the variant calling, the raw file includes all covered positions in exons which could potentially contain variants. It includes all three samples and displays 1,418,395 positions. After the variant calling 8,803 of these positions are defined as SNPs in the bcf file which is about 0.62% of the positions in the raw file. To refine the variant calling, positions with a read depth below 20 are removed. 5,898 positions remain in the vcf file. These are 5,983 variants if multi-allelic sites are considered and split in separate rows. This process is also called demultiplexing. Further conversion to tsv and annotation using ANNOVAR, does not change the number of variants. The resulting file with 5,983 variants can now be used for downstream analysis and filtering of possible disease-causing variants.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="kfpohclqwn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#kfpohclqwn table {
+<div id="ytbalijenq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ytbalijenq table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#kfpohclqwn thead, #kfpohclqwn tbody, #kfpohclqwn tfoot, #kfpohclqwn tr, #kfpohclqwn td, #kfpohclqwn th {
+#ytbalijenq thead, #ytbalijenq tbody, #ytbalijenq tfoot, #ytbalijenq tr, #ytbalijenq td, #ytbalijenq th {
   border-style: none;
 }
 
-#kfpohclqwn p {
+#ytbalijenq p {
   margin: 0;
   padding: 0;
 }
 
-#kfpohclqwn .gt_table {
+#ytbalijenq .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1338,12 +1342,12 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-left-color: #D3D3D3;
 }
 
-#kfpohclqwn .gt_caption {
+#ytbalijenq .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#kfpohclqwn .gt_title {
+#ytbalijenq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1355,7 +1359,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-width: 0;
 }
 
-#kfpohclqwn .gt_subtitle {
+#ytbalijenq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1367,7 +1371,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-top-width: 0;
 }
 
-#kfpohclqwn .gt_heading {
+#ytbalijenq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1379,13 +1383,13 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#kfpohclqwn .gt_bottom_border {
+#ytbalijenq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#kfpohclqwn .gt_col_headings {
+#ytbalijenq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1400,7 +1404,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#kfpohclqwn .gt_col_heading {
+#ytbalijenq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1420,7 +1424,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   overflow-x: hidden;
 }
 
-#kfpohclqwn .gt_column_spanner_outer {
+#ytbalijenq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1432,15 +1436,15 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 4px;
 }
 
-#kfpohclqwn .gt_column_spanner_outer:first-child {
+#ytbalijenq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#kfpohclqwn .gt_column_spanner_outer:last-child {
+#ytbalijenq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#kfpohclqwn .gt_column_spanner {
+#ytbalijenq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1452,11 +1456,11 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   width: 100%;
 }
 
-#kfpohclqwn .gt_spanner_row {
+#ytbalijenq .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#kfpohclqwn .gt_group_heading {
+#ytbalijenq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1482,7 +1486,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   text-align: left;
 }
 
-#kfpohclqwn .gt_empty_group_heading {
+#ytbalijenq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1497,15 +1501,15 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   vertical-align: middle;
 }
 
-#kfpohclqwn .gt_from_md > :first-child {
+#ytbalijenq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#kfpohclqwn .gt_from_md > :last-child {
+#ytbalijenq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#kfpohclqwn .gt_row {
+#ytbalijenq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1524,7 +1528,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   overflow-x: hidden;
 }
 
-#kfpohclqwn .gt_stub {
+#ytbalijenq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1537,7 +1541,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#kfpohclqwn .gt_stub_row_group {
+#ytbalijenq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1551,15 +1555,15 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   vertical-align: top;
 }
 
-#kfpohclqwn .gt_row_group_first td {
+#ytbalijenq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#kfpohclqwn .gt_row_group_first th {
+#ytbalijenq .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#kfpohclqwn .gt_summary_row {
+#ytbalijenq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1569,16 +1573,16 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#kfpohclqwn .gt_first_summary_row {
+#ytbalijenq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#kfpohclqwn .gt_first_summary_row.thick {
+#ytbalijenq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#kfpohclqwn .gt_last_summary_row {
+#ytbalijenq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1588,7 +1592,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-color: #D3D3D3;
 }
 
-#kfpohclqwn .gt_grand_summary_row {
+#ytbalijenq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1598,7 +1602,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#kfpohclqwn .gt_first_grand_summary_row {
+#ytbalijenq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1608,7 +1612,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-top-color: #D3D3D3;
 }
 
-#kfpohclqwn .gt_last_grand_summary_row_top {
+#ytbalijenq .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1618,11 +1622,11 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-color: #D3D3D3;
 }
 
-#kfpohclqwn .gt_striped {
+#ytbalijenq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#kfpohclqwn .gt_table_body {
+#ytbalijenq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1631,7 +1635,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-color: #D3D3D3;
 }
 
-#kfpohclqwn .gt_footnotes {
+#ytbalijenq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1645,7 +1649,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#kfpohclqwn .gt_footnote {
+#ytbalijenq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1654,7 +1658,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#kfpohclqwn .gt_sourcenotes {
+#ytbalijenq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1668,7 +1672,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#kfpohclqwn .gt_sourcenote {
+#ytbalijenq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1676,72 +1680,72 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#kfpohclqwn .gt_left {
+#ytbalijenq .gt_left {
   text-align: left;
 }
 
-#kfpohclqwn .gt_center {
+#ytbalijenq .gt_center {
   text-align: center;
 }
 
-#kfpohclqwn .gt_right {
+#ytbalijenq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#kfpohclqwn .gt_font_normal {
+#ytbalijenq .gt_font_normal {
   font-weight: normal;
 }
 
-#kfpohclqwn .gt_font_bold {
+#ytbalijenq .gt_font_bold {
   font-weight: bold;
 }
 
-#kfpohclqwn .gt_font_italic {
+#ytbalijenq .gt_font_italic {
   font-style: italic;
 }
 
-#kfpohclqwn .gt_super {
+#ytbalijenq .gt_super {
   font-size: 65%;
 }
 
-#kfpohclqwn .gt_footnote_marks {
+#ytbalijenq .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#kfpohclqwn .gt_asterisk {
+#ytbalijenq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#kfpohclqwn .gt_indent_1 {
+#ytbalijenq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#kfpohclqwn .gt_indent_2 {
+#ytbalijenq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#kfpohclqwn .gt_indent_3 {
+#ytbalijenq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#kfpohclqwn .gt_indent_4 {
+#ytbalijenq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#kfpohclqwn .gt_indent_5 {
+#ytbalijenq .gt_indent_5 {
   text-indent: 25px;
 }
 
-#kfpohclqwn .katex-display {
+#ytbalijenq .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#kfpohclqwn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ytbalijenq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1834,23 +1838,23 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
 </div>
 </div>
 <div class="cell-output-display">
-<div id="odnturnugj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#odnturnugj table {
+<div id="zwzbojurak" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zwzbojurak table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#odnturnugj thead, #odnturnugj tbody, #odnturnugj tfoot, #odnturnugj tr, #odnturnugj td, #odnturnugj th {
+#zwzbojurak thead, #zwzbojurak tbody, #zwzbojurak tfoot, #zwzbojurak tr, #zwzbojurak td, #zwzbojurak th {
   border-style: none;
 }
 
-#odnturnugj p {
+#zwzbojurak p {
   margin: 0;
   padding: 0;
 }
 
-#odnturnugj .gt_table {
+#zwzbojurak .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1876,12 +1880,12 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-left-color: #D3D3D3;
 }
 
-#odnturnugj .gt_caption {
+#zwzbojurak .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#odnturnugj .gt_title {
+#zwzbojurak .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1893,7 +1897,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-width: 0;
 }
 
-#odnturnugj .gt_subtitle {
+#zwzbojurak .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1905,7 +1909,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-top-width: 0;
 }
 
-#odnturnugj .gt_heading {
+#zwzbojurak .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1917,13 +1921,13 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#odnturnugj .gt_bottom_border {
+#zwzbojurak .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#odnturnugj .gt_col_headings {
+#zwzbojurak .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1938,7 +1942,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#odnturnugj .gt_col_heading {
+#zwzbojurak .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1958,7 +1962,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   overflow-x: hidden;
 }
 
-#odnturnugj .gt_column_spanner_outer {
+#zwzbojurak .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1970,15 +1974,15 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 4px;
 }
 
-#odnturnugj .gt_column_spanner_outer:first-child {
+#zwzbojurak .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#odnturnugj .gt_column_spanner_outer:last-child {
+#zwzbojurak .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#odnturnugj .gt_column_spanner {
+#zwzbojurak .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1990,11 +1994,11 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   width: 100%;
 }
 
-#odnturnugj .gt_spanner_row {
+#zwzbojurak .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#odnturnugj .gt_group_heading {
+#zwzbojurak .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2020,7 +2024,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   text-align: left;
 }
 
-#odnturnugj .gt_empty_group_heading {
+#zwzbojurak .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2035,15 +2039,15 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   vertical-align: middle;
 }
 
-#odnturnugj .gt_from_md > :first-child {
+#zwzbojurak .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#odnturnugj .gt_from_md > :last-child {
+#zwzbojurak .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#odnturnugj .gt_row {
+#zwzbojurak .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2062,7 +2066,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   overflow-x: hidden;
 }
 
-#odnturnugj .gt_stub {
+#zwzbojurak .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2075,7 +2079,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#odnturnugj .gt_stub_row_group {
+#zwzbojurak .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2089,15 +2093,15 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   vertical-align: top;
 }
 
-#odnturnugj .gt_row_group_first td {
+#zwzbojurak .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#odnturnugj .gt_row_group_first th {
+#zwzbojurak .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#odnturnugj .gt_summary_row {
+#zwzbojurak .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2107,16 +2111,16 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#odnturnugj .gt_first_summary_row {
+#zwzbojurak .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#odnturnugj .gt_first_summary_row.thick {
+#zwzbojurak .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#odnturnugj .gt_last_summary_row {
+#zwzbojurak .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2126,7 +2130,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-color: #D3D3D3;
 }
 
-#odnturnugj .gt_grand_summary_row {
+#zwzbojurak .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2136,7 +2140,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#odnturnugj .gt_first_grand_summary_row {
+#zwzbojurak .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2146,7 +2150,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-top-color: #D3D3D3;
 }
 
-#odnturnugj .gt_last_grand_summary_row_top {
+#zwzbojurak .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2156,11 +2160,11 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-color: #D3D3D3;
 }
 
-#odnturnugj .gt_striped {
+#zwzbojurak .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#odnturnugj .gt_table_body {
+#zwzbojurak .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2169,7 +2173,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-color: #D3D3D3;
 }
 
-#odnturnugj .gt_footnotes {
+#zwzbojurak .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2183,7 +2187,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#odnturnugj .gt_footnote {
+#zwzbojurak .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2192,7 +2196,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#odnturnugj .gt_sourcenotes {
+#zwzbojurak .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2206,7 +2210,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#odnturnugj .gt_sourcenote {
+#zwzbojurak .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2214,72 +2218,72 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#odnturnugj .gt_left {
+#zwzbojurak .gt_left {
   text-align: left;
 }
 
-#odnturnugj .gt_center {
+#zwzbojurak .gt_center {
   text-align: center;
 }
 
-#odnturnugj .gt_right {
+#zwzbojurak .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#odnturnugj .gt_font_normal {
+#zwzbojurak .gt_font_normal {
   font-weight: normal;
 }
 
-#odnturnugj .gt_font_bold {
+#zwzbojurak .gt_font_bold {
   font-weight: bold;
 }
 
-#odnturnugj .gt_font_italic {
+#zwzbojurak .gt_font_italic {
   font-style: italic;
 }
 
-#odnturnugj .gt_super {
+#zwzbojurak .gt_super {
   font-size: 65%;
 }
 
-#odnturnugj .gt_footnote_marks {
+#zwzbojurak .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#odnturnugj .gt_asterisk {
+#zwzbojurak .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#odnturnugj .gt_indent_1 {
+#zwzbojurak .gt_indent_1 {
   text-indent: 5px;
 }
 
-#odnturnugj .gt_indent_2 {
+#zwzbojurak .gt_indent_2 {
   text-indent: 10px;
 }
 
-#odnturnugj .gt_indent_3 {
+#zwzbojurak .gt_indent_3 {
   text-indent: 15px;
 }
 
-#odnturnugj .gt_indent_4 {
+#zwzbojurak .gt_indent_4 {
   text-indent: 20px;
 }
 
-#odnturnugj .gt_indent_5 {
+#zwzbojurak .gt_indent_5 {
   text-indent: 25px;
 }
 
-#odnturnugj .katex-display {
+#zwzbojurak .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#odnturnugj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#zwzbojurak div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2310,23 +2314,23 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
 <p>The following tables summarize the genomic distribution and functional impact of the identified variants. Regarding genomic location, approximately two-thirds of the variants reside in intergenic or intronic regions, while exonic variants account for roughly one-sixth. A closer examination of the exonic subset (Table 2) reveals that nearly half are synonymous, resulting in no change to the encoded amino acid sequence.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="blixboalde" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#blixboalde table {
+<div id="fhceiczcjh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fhceiczcjh table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#blixboalde thead, #blixboalde tbody, #blixboalde tfoot, #blixboalde tr, #blixboalde td, #blixboalde th {
+#fhceiczcjh thead, #fhceiczcjh tbody, #fhceiczcjh tfoot, #fhceiczcjh tr, #fhceiczcjh td, #fhceiczcjh th {
   border-style: none;
 }
 
-#blixboalde p {
+#fhceiczcjh p {
   margin: 0;
   padding: 0;
 }
 
-#blixboalde .gt_table {
+#fhceiczcjh .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2352,12 +2356,12 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-left-color: #D3D3D3;
 }
 
-#blixboalde .gt_caption {
+#fhceiczcjh .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#blixboalde .gt_title {
+#fhceiczcjh .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2369,7 +2373,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-width: 0;
 }
 
-#blixboalde .gt_subtitle {
+#fhceiczcjh .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2381,7 +2385,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-top-width: 0;
 }
 
-#blixboalde .gt_heading {
+#fhceiczcjh .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2393,13 +2397,13 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#blixboalde .gt_bottom_border {
+#fhceiczcjh .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#blixboalde .gt_col_headings {
+#fhceiczcjh .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2414,7 +2418,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#blixboalde .gt_col_heading {
+#fhceiczcjh .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2434,7 +2438,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   overflow-x: hidden;
 }
 
-#blixboalde .gt_column_spanner_outer {
+#fhceiczcjh .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2446,15 +2450,15 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 4px;
 }
 
-#blixboalde .gt_column_spanner_outer:first-child {
+#fhceiczcjh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#blixboalde .gt_column_spanner_outer:last-child {
+#fhceiczcjh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#blixboalde .gt_column_spanner {
+#fhceiczcjh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2466,11 +2470,11 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   width: 100%;
 }
 
-#blixboalde .gt_spanner_row {
+#fhceiczcjh .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#blixboalde .gt_group_heading {
+#fhceiczcjh .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2496,7 +2500,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   text-align: left;
 }
 
-#blixboalde .gt_empty_group_heading {
+#fhceiczcjh .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2511,15 +2515,15 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   vertical-align: middle;
 }
 
-#blixboalde .gt_from_md > :first-child {
+#fhceiczcjh .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#blixboalde .gt_from_md > :last-child {
+#fhceiczcjh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#blixboalde .gt_row {
+#fhceiczcjh .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2538,7 +2542,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   overflow-x: hidden;
 }
 
-#blixboalde .gt_stub {
+#fhceiczcjh .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2551,7 +2555,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#blixboalde .gt_stub_row_group {
+#fhceiczcjh .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2565,15 +2569,15 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   vertical-align: top;
 }
 
-#blixboalde .gt_row_group_first td {
+#fhceiczcjh .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#blixboalde .gt_row_group_first th {
+#fhceiczcjh .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#blixboalde .gt_summary_row {
+#fhceiczcjh .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2583,16 +2587,16 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#blixboalde .gt_first_summary_row {
+#fhceiczcjh .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#blixboalde .gt_first_summary_row.thick {
+#fhceiczcjh .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#blixboalde .gt_last_summary_row {
+#fhceiczcjh .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2602,7 +2606,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-color: #D3D3D3;
 }
 
-#blixboalde .gt_grand_summary_row {
+#fhceiczcjh .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2612,7 +2616,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#blixboalde .gt_first_grand_summary_row {
+#fhceiczcjh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2622,7 +2626,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-top-color: #D3D3D3;
 }
 
-#blixboalde .gt_last_grand_summary_row_top {
+#fhceiczcjh .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2632,11 +2636,11 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-color: #D3D3D3;
 }
 
-#blixboalde .gt_striped {
+#fhceiczcjh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#blixboalde .gt_table_body {
+#fhceiczcjh .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2645,7 +2649,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-color: #D3D3D3;
 }
 
-#blixboalde .gt_footnotes {
+#fhceiczcjh .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2659,7 +2663,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#blixboalde .gt_footnote {
+#fhceiczcjh .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2668,7 +2672,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#blixboalde .gt_sourcenotes {
+#fhceiczcjh .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2682,7 +2686,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#blixboalde .gt_sourcenote {
+#fhceiczcjh .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2690,72 +2694,72 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#blixboalde .gt_left {
+#fhceiczcjh .gt_left {
   text-align: left;
 }
 
-#blixboalde .gt_center {
+#fhceiczcjh .gt_center {
   text-align: center;
 }
 
-#blixboalde .gt_right {
+#fhceiczcjh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#blixboalde .gt_font_normal {
+#fhceiczcjh .gt_font_normal {
   font-weight: normal;
 }
 
-#blixboalde .gt_font_bold {
+#fhceiczcjh .gt_font_bold {
   font-weight: bold;
 }
 
-#blixboalde .gt_font_italic {
+#fhceiczcjh .gt_font_italic {
   font-style: italic;
 }
 
-#blixboalde .gt_super {
+#fhceiczcjh .gt_super {
   font-size: 65%;
 }
 
-#blixboalde .gt_footnote_marks {
+#fhceiczcjh .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#blixboalde .gt_asterisk {
+#fhceiczcjh .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#blixboalde .gt_indent_1 {
+#fhceiczcjh .gt_indent_1 {
   text-indent: 5px;
 }
 
-#blixboalde .gt_indent_2 {
+#fhceiczcjh .gt_indent_2 {
   text-indent: 10px;
 }
 
-#blixboalde .gt_indent_3 {
+#fhceiczcjh .gt_indent_3 {
   text-indent: 15px;
 }
 
-#blixboalde .gt_indent_4 {
+#fhceiczcjh .gt_indent_4 {
   text-indent: 20px;
 }
 
-#blixboalde .gt_indent_5 {
+#fhceiczcjh .gt_indent_5 {
   text-indent: 25px;
 }
 
-#blixboalde .katex-display {
+#fhceiczcjh .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#blixboalde div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#fhceiczcjh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2820,23 +2824,23 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="xhwycyranz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xhwycyranz table {
+<div id="ojukleydlv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ojukleydlv table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xhwycyranz thead, #xhwycyranz tbody, #xhwycyranz tfoot, #xhwycyranz tr, #xhwycyranz td, #xhwycyranz th {
+#ojukleydlv thead, #ojukleydlv tbody, #ojukleydlv tfoot, #ojukleydlv tr, #ojukleydlv td, #ojukleydlv th {
   border-style: none;
 }
 
-#xhwycyranz p {
+#ojukleydlv p {
   margin: 0;
   padding: 0;
 }
 
-#xhwycyranz .gt_table {
+#ojukleydlv .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2862,12 +2866,12 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-left-color: #D3D3D3;
 }
 
-#xhwycyranz .gt_caption {
+#ojukleydlv .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xhwycyranz .gt_title {
+#ojukleydlv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2879,7 +2883,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-width: 0;
 }
 
-#xhwycyranz .gt_subtitle {
+#ojukleydlv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2891,7 +2895,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-top-width: 0;
 }
 
-#xhwycyranz .gt_heading {
+#ojukleydlv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2903,13 +2907,13 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#xhwycyranz .gt_bottom_border {
+#ojukleydlv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xhwycyranz .gt_col_headings {
+#ojukleydlv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2924,7 +2928,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#xhwycyranz .gt_col_heading {
+#ojukleydlv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2944,7 +2948,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   overflow-x: hidden;
 }
 
-#xhwycyranz .gt_column_spanner_outer {
+#ojukleydlv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2956,15 +2960,15 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 4px;
 }
 
-#xhwycyranz .gt_column_spanner_outer:first-child {
+#ojukleydlv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xhwycyranz .gt_column_spanner_outer:last-child {
+#ojukleydlv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xhwycyranz .gt_column_spanner {
+#ojukleydlv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2976,11 +2980,11 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   width: 100%;
 }
 
-#xhwycyranz .gt_spanner_row {
+#ojukleydlv .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xhwycyranz .gt_group_heading {
+#ojukleydlv .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3006,7 +3010,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   text-align: left;
 }
 
-#xhwycyranz .gt_empty_group_heading {
+#ojukleydlv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3021,15 +3025,15 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   vertical-align: middle;
 }
 
-#xhwycyranz .gt_from_md > :first-child {
+#ojukleydlv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xhwycyranz .gt_from_md > :last-child {
+#ojukleydlv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xhwycyranz .gt_row {
+#ojukleydlv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3048,7 +3052,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   overflow-x: hidden;
 }
 
-#xhwycyranz .gt_stub {
+#ojukleydlv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3061,7 +3065,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#xhwycyranz .gt_stub_row_group {
+#ojukleydlv .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3075,15 +3079,15 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   vertical-align: top;
 }
 
-#xhwycyranz .gt_row_group_first td {
+#ojukleydlv .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xhwycyranz .gt_row_group_first th {
+#ojukleydlv .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xhwycyranz .gt_summary_row {
+#ojukleydlv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3093,16 +3097,16 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#xhwycyranz .gt_first_summary_row {
+#ojukleydlv .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xhwycyranz .gt_first_summary_row.thick {
+#ojukleydlv .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xhwycyranz .gt_last_summary_row {
+#ojukleydlv .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3112,7 +3116,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-color: #D3D3D3;
 }
 
-#xhwycyranz .gt_grand_summary_row {
+#ojukleydlv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3122,7 +3126,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#xhwycyranz .gt_first_grand_summary_row {
+#ojukleydlv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3132,7 +3136,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-top-color: #D3D3D3;
 }
 
-#xhwycyranz .gt_last_grand_summary_row_top {
+#ojukleydlv .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3142,11 +3146,11 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-color: #D3D3D3;
 }
 
-#xhwycyranz .gt_striped {
+#ojukleydlv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xhwycyranz .gt_table_body {
+#ojukleydlv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3155,7 +3159,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-color: #D3D3D3;
 }
 
-#xhwycyranz .gt_footnotes {
+#ojukleydlv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3169,7 +3173,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#xhwycyranz .gt_footnote {
+#ojukleydlv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3178,7 +3182,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#xhwycyranz .gt_sourcenotes {
+#ojukleydlv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3192,7 +3196,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#xhwycyranz .gt_sourcenote {
+#ojukleydlv .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3200,72 +3204,72 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#xhwycyranz .gt_left {
+#ojukleydlv .gt_left {
   text-align: left;
 }
 
-#xhwycyranz .gt_center {
+#ojukleydlv .gt_center {
   text-align: center;
 }
 
-#xhwycyranz .gt_right {
+#ojukleydlv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xhwycyranz .gt_font_normal {
+#ojukleydlv .gt_font_normal {
   font-weight: normal;
 }
 
-#xhwycyranz .gt_font_bold {
+#ojukleydlv .gt_font_bold {
   font-weight: bold;
 }
 
-#xhwycyranz .gt_font_italic {
+#ojukleydlv .gt_font_italic {
   font-style: italic;
 }
 
-#xhwycyranz .gt_super {
+#ojukleydlv .gt_super {
   font-size: 65%;
 }
 
-#xhwycyranz .gt_footnote_marks {
+#ojukleydlv .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xhwycyranz .gt_asterisk {
+#ojukleydlv .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xhwycyranz .gt_indent_1 {
+#ojukleydlv .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xhwycyranz .gt_indent_2 {
+#ojukleydlv .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xhwycyranz .gt_indent_3 {
+#ojukleydlv .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xhwycyranz .gt_indent_4 {
+#ojukleydlv .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xhwycyranz .gt_indent_5 {
+#ojukleydlv .gt_indent_5 {
   text-indent: 25px;
 }
 
-#xhwycyranz .katex-display {
+#ojukleydlv .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#xhwycyranz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ojukleydlv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3323,23 +3327,23 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
 <p>To identify the disease-causing variant, a comparison with the parental genomes is useful to search for a recessive inheritance pattern. Out of the 5,983 variants, 153 were found to be recessive. Additionally, a filter is applied to discard common variants which in this case is only one variant. The 1000 Genomes (1000g2012apr_eur) and ESP6500 (esp6500si_ea) databases are used to retain noncommon gene variants with minor allele frequency below 5% or entirely unlisted. The provided analysis script suggests keeping variants with frequencies above 5% which should be considered to adapt in the future. However, because the majority of the filtered candidates were novel variants absent from both databases, this filtering step did not alter the final variant selection. The next filtering step removes all nonexonic variants as they are not directly affecting the gene product. Further filtering is applied to remove synonymous variants as well as nonframeshift deletions or insertions because their effect on the protein is usually not pathogenic. Finally, 23 variants in 11 different genes are left.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="ootfzelmbr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ootfzelmbr table {
+<div id="rbzpqdswde" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rbzpqdswde table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ootfzelmbr thead, #ootfzelmbr tbody, #ootfzelmbr tfoot, #ootfzelmbr tr, #ootfzelmbr td, #ootfzelmbr th {
+#rbzpqdswde thead, #rbzpqdswde tbody, #rbzpqdswde tfoot, #rbzpqdswde tr, #rbzpqdswde td, #rbzpqdswde th {
   border-style: none;
 }
 
-#ootfzelmbr p {
+#rbzpqdswde p {
   margin: 0;
   padding: 0;
 }
 
-#ootfzelmbr .gt_table {
+#rbzpqdswde .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3365,12 +3369,12 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-left-color: #D3D3D3;
 }
 
-#ootfzelmbr .gt_caption {
+#rbzpqdswde .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ootfzelmbr .gt_title {
+#rbzpqdswde .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3382,7 +3386,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-width: 0;
 }
 
-#ootfzelmbr .gt_subtitle {
+#rbzpqdswde .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3394,7 +3398,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-top-width: 0;
 }
 
-#ootfzelmbr .gt_heading {
+#rbzpqdswde .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3406,13 +3410,13 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#ootfzelmbr .gt_bottom_border {
+#rbzpqdswde .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ootfzelmbr .gt_col_headings {
+#rbzpqdswde .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3427,7 +3431,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#ootfzelmbr .gt_col_heading {
+#rbzpqdswde .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3447,7 +3451,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   overflow-x: hidden;
 }
 
-#ootfzelmbr .gt_column_spanner_outer {
+#rbzpqdswde .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3459,15 +3463,15 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 4px;
 }
 
-#ootfzelmbr .gt_column_spanner_outer:first-child {
+#rbzpqdswde .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ootfzelmbr .gt_column_spanner_outer:last-child {
+#rbzpqdswde .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ootfzelmbr .gt_column_spanner {
+#rbzpqdswde .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3479,11 +3483,11 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   width: 100%;
 }
 
-#ootfzelmbr .gt_spanner_row {
+#rbzpqdswde .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ootfzelmbr .gt_group_heading {
+#rbzpqdswde .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3509,7 +3513,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   text-align: left;
 }
 
-#ootfzelmbr .gt_empty_group_heading {
+#rbzpqdswde .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3524,15 +3528,15 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   vertical-align: middle;
 }
 
-#ootfzelmbr .gt_from_md > :first-child {
+#rbzpqdswde .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ootfzelmbr .gt_from_md > :last-child {
+#rbzpqdswde .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ootfzelmbr .gt_row {
+#rbzpqdswde .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3551,7 +3555,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   overflow-x: hidden;
 }
 
-#ootfzelmbr .gt_stub {
+#rbzpqdswde .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3564,7 +3568,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#ootfzelmbr .gt_stub_row_group {
+#rbzpqdswde .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3578,15 +3582,15 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   vertical-align: top;
 }
 
-#ootfzelmbr .gt_row_group_first td {
+#rbzpqdswde .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ootfzelmbr .gt_row_group_first th {
+#rbzpqdswde .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ootfzelmbr .gt_summary_row {
+#rbzpqdswde .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3596,16 +3600,16 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#ootfzelmbr .gt_first_summary_row {
+#rbzpqdswde .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ootfzelmbr .gt_first_summary_row.thick {
+#rbzpqdswde .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ootfzelmbr .gt_last_summary_row {
+#rbzpqdswde .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3615,7 +3619,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-color: #D3D3D3;
 }
 
-#ootfzelmbr .gt_grand_summary_row {
+#rbzpqdswde .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3625,7 +3629,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#ootfzelmbr .gt_first_grand_summary_row {
+#rbzpqdswde .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3635,7 +3639,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-top-color: #D3D3D3;
 }
 
-#ootfzelmbr .gt_last_grand_summary_row_top {
+#rbzpqdswde .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3645,11 +3649,11 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-color: #D3D3D3;
 }
 
-#ootfzelmbr .gt_striped {
+#rbzpqdswde .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ootfzelmbr .gt_table_body {
+#rbzpqdswde .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3658,7 +3662,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-color: #D3D3D3;
 }
 
-#ootfzelmbr .gt_footnotes {
+#rbzpqdswde .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3672,7 +3676,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#ootfzelmbr .gt_footnote {
+#rbzpqdswde .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3681,7 +3685,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#ootfzelmbr .gt_sourcenotes {
+#rbzpqdswde .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3695,7 +3699,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#ootfzelmbr .gt_sourcenote {
+#rbzpqdswde .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3703,72 +3707,72 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#ootfzelmbr .gt_left {
+#rbzpqdswde .gt_left {
   text-align: left;
 }
 
-#ootfzelmbr .gt_center {
+#rbzpqdswde .gt_center {
   text-align: center;
 }
 
-#ootfzelmbr .gt_right {
+#rbzpqdswde .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ootfzelmbr .gt_font_normal {
+#rbzpqdswde .gt_font_normal {
   font-weight: normal;
 }
 
-#ootfzelmbr .gt_font_bold {
+#rbzpqdswde .gt_font_bold {
   font-weight: bold;
 }
 
-#ootfzelmbr .gt_font_italic {
+#rbzpqdswde .gt_font_italic {
   font-style: italic;
 }
 
-#ootfzelmbr .gt_super {
+#rbzpqdswde .gt_super {
   font-size: 65%;
 }
 
-#ootfzelmbr .gt_footnote_marks {
+#rbzpqdswde .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ootfzelmbr .gt_asterisk {
+#rbzpqdswde .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ootfzelmbr .gt_indent_1 {
+#rbzpqdswde .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ootfzelmbr .gt_indent_2 {
+#rbzpqdswde .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ootfzelmbr .gt_indent_3 {
+#rbzpqdswde .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ootfzelmbr .gt_indent_4 {
+#rbzpqdswde .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ootfzelmbr .gt_indent_5 {
+#rbzpqdswde .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ootfzelmbr .katex-display {
+#rbzpqdswde .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ootfzelmbr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#rbzpqdswde div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3975,23 +3979,23 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
 </div>
 </div>
 <div class="cell-output-display">
-<div id="fqcpbpyosc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fqcpbpyosc table {
+<div id="tkpylqhnuk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tkpylqhnuk table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fqcpbpyosc thead, #fqcpbpyosc tbody, #fqcpbpyosc tfoot, #fqcpbpyosc tr, #fqcpbpyosc td, #fqcpbpyosc th {
+#tkpylqhnuk thead, #tkpylqhnuk tbody, #tkpylqhnuk tfoot, #tkpylqhnuk tr, #tkpylqhnuk td, #tkpylqhnuk th {
   border-style: none;
 }
 
-#fqcpbpyosc p {
+#tkpylqhnuk p {
   margin: 0;
   padding: 0;
 }
 
-#fqcpbpyosc .gt_table {
+#tkpylqhnuk .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -4017,12 +4021,12 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-left-color: #D3D3D3;
 }
 
-#fqcpbpyosc .gt_caption {
+#tkpylqhnuk .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fqcpbpyosc .gt_title {
+#tkpylqhnuk .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4034,7 +4038,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-width: 0;
 }
 
-#fqcpbpyosc .gt_subtitle {
+#tkpylqhnuk .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4046,7 +4050,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-top-width: 0;
 }
 
-#fqcpbpyosc .gt_heading {
+#tkpylqhnuk .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4058,13 +4062,13 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#fqcpbpyosc .gt_bottom_border {
+#tkpylqhnuk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fqcpbpyosc .gt_col_headings {
+#tkpylqhnuk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4079,7 +4083,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#fqcpbpyosc .gt_col_heading {
+#tkpylqhnuk .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4099,7 +4103,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   overflow-x: hidden;
 }
 
-#fqcpbpyosc .gt_column_spanner_outer {
+#tkpylqhnuk .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4111,15 +4115,15 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 4px;
 }
 
-#fqcpbpyosc .gt_column_spanner_outer:first-child {
+#tkpylqhnuk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fqcpbpyosc .gt_column_spanner_outer:last-child {
+#tkpylqhnuk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fqcpbpyosc .gt_column_spanner {
+#tkpylqhnuk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4131,11 +4135,11 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   width: 100%;
 }
 
-#fqcpbpyosc .gt_spanner_row {
+#tkpylqhnuk .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fqcpbpyosc .gt_group_heading {
+#tkpylqhnuk .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4161,7 +4165,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   text-align: left;
 }
 
-#fqcpbpyosc .gt_empty_group_heading {
+#tkpylqhnuk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4176,15 +4180,15 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   vertical-align: middle;
 }
 
-#fqcpbpyosc .gt_from_md > :first-child {
+#tkpylqhnuk .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fqcpbpyosc .gt_from_md > :last-child {
+#tkpylqhnuk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fqcpbpyosc .gt_row {
+#tkpylqhnuk .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4203,7 +4207,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   overflow-x: hidden;
 }
 
-#fqcpbpyosc .gt_stub {
+#tkpylqhnuk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4216,7 +4220,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#fqcpbpyosc .gt_stub_row_group {
+#tkpylqhnuk .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4230,15 +4234,15 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   vertical-align: top;
 }
 
-#fqcpbpyosc .gt_row_group_first td {
+#tkpylqhnuk .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fqcpbpyosc .gt_row_group_first th {
+#tkpylqhnuk .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fqcpbpyosc .gt_summary_row {
+#tkpylqhnuk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4248,16 +4252,16 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#fqcpbpyosc .gt_first_summary_row {
+#tkpylqhnuk .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fqcpbpyosc .gt_first_summary_row.thick {
+#tkpylqhnuk .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fqcpbpyosc .gt_last_summary_row {
+#tkpylqhnuk .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4267,7 +4271,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-color: #D3D3D3;
 }
 
-#fqcpbpyosc .gt_grand_summary_row {
+#tkpylqhnuk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4277,7 +4281,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#fqcpbpyosc .gt_first_grand_summary_row {
+#tkpylqhnuk .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4287,7 +4291,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-top-color: #D3D3D3;
 }
 
-#fqcpbpyosc .gt_last_grand_summary_row_top {
+#tkpylqhnuk .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4297,11 +4301,11 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-color: #D3D3D3;
 }
 
-#fqcpbpyosc .gt_striped {
+#tkpylqhnuk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fqcpbpyosc .gt_table_body {
+#tkpylqhnuk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4310,7 +4314,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-color: #D3D3D3;
 }
 
-#fqcpbpyosc .gt_footnotes {
+#tkpylqhnuk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4324,7 +4328,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#fqcpbpyosc .gt_footnote {
+#tkpylqhnuk .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4333,7 +4337,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#fqcpbpyosc .gt_sourcenotes {
+#tkpylqhnuk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4347,7 +4351,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#fqcpbpyosc .gt_sourcenote {
+#tkpylqhnuk .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4355,72 +4359,72 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#fqcpbpyosc .gt_left {
+#tkpylqhnuk .gt_left {
   text-align: left;
 }
 
-#fqcpbpyosc .gt_center {
+#tkpylqhnuk .gt_center {
   text-align: center;
 }
 
-#fqcpbpyosc .gt_right {
+#tkpylqhnuk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fqcpbpyosc .gt_font_normal {
+#tkpylqhnuk .gt_font_normal {
   font-weight: normal;
 }
 
-#fqcpbpyosc .gt_font_bold {
+#tkpylqhnuk .gt_font_bold {
   font-weight: bold;
 }
 
-#fqcpbpyosc .gt_font_italic {
+#tkpylqhnuk .gt_font_italic {
   font-style: italic;
 }
 
-#fqcpbpyosc .gt_super {
+#tkpylqhnuk .gt_super {
   font-size: 65%;
 }
 
-#fqcpbpyosc .gt_footnote_marks {
+#tkpylqhnuk .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fqcpbpyosc .gt_asterisk {
+#tkpylqhnuk .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fqcpbpyosc .gt_indent_1 {
+#tkpylqhnuk .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fqcpbpyosc .gt_indent_2 {
+#tkpylqhnuk .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fqcpbpyosc .gt_indent_3 {
+#tkpylqhnuk .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fqcpbpyosc .gt_indent_4 {
+#tkpylqhnuk .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fqcpbpyosc .gt_indent_5 {
+#tkpylqhnuk .gt_indent_5 {
   text-indent: 25px;
 }
 
-#fqcpbpyosc .katex-display {
+#tkpylqhnuk .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#fqcpbpyosc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#tkpylqhnuk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -4463,8 +4467,8 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
 <p>In order to select the disease-causing gene out of these 11 candidate genes, the varsome database<span class="citation" data-cites="kopanos_varsome_2019"><sup><a href="#ref-kopanos_varsome_2019" role="doc-biblioref">15</a></sup></span> is used to evalute related phenotypes. Some of these genes are not associated with a disease phenotype (CCT8L2, ZNF280A) or related with different types of cancer (ATP6V1E1, MED15, RFPL2, XRCC6, NHP2L1, ATP5L2. BRD1, ZBED4). The SNAP29 gene, however, is related to the CEDNIK syndrome. Furthermore, related HPO terms, namely ichthyosis, palmoplantar keratoderma and neurophathy, match with the described symptoms of the patient.</p>
 <p>Although it is known that the CEDNIK syndrome is an autosomal recessive disease, de novo mutations in the daughter’s genome should be studied to validate SNAP29 as the most likely disease-causing gene. Applying the same filters as described before except for filtering for alleles that only occur in the daughter, the candidate genes are: OR11H1, GAB4, TSSK2, SLC25A1, YPEL1, PLA2G3, EIF3L, RPL3, ATF4, ST13, XRCC6, NUP50. Finally, none of these genes are associated with the disease phenotype<span class="citation" data-cites="kopanos_varsome_2019"><sup><a href="#ref-kopanos_varsome_2019" role="doc-biblioref">15</a></sup></span> which supports the selection of SNAP29.</p>
 </section>
-<section id="analysis-of-the-candidate-gene" class="level3" data-number="2.4">
-<h3 data-number="2.4" class="anchored" data-anchor-id="analysis-of-the-candidate-gene"><span class="header-section-number">2.4</span> Analysis of the candidate gene</h3>
+<section id="analysis-of-the-candidate-gene" class="level3" data-number="3.4">
+<h3 data-number="3.4" class="anchored" data-anchor-id="analysis-of-the-candidate-gene"><span class="header-section-number">3.4</span> Analysis of the candidate gene</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -4494,23 +4498,23 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
 <p>At the variant position, the read depth is sufficient for a reliable genotype call in all three samples with 78 reads covering the position in the father, 72 in the mother and 73 in the daughter. Both parents are heterozygous and show a similar allele ratio of about 53 % guanine and 47 % cytosine. The daughter is homozygous for the alternative allele, with 90 % of her reads showing cytosine. This is consistent with a recessive mode of inheritance, because both parents are unaffected carriers and the affected child has two copies of the variant. Remarkably, about 10 % of the daughter’s reads show guanine. This is unlikely to reflect a true second allele, but rather shows a technical artefact, such as sequencing errors, misaligned reads or even a contamination with parental DNA.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="xktbyupepm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xktbyupepm table {
+<div id="onhdpupbvc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#onhdpupbvc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xktbyupepm thead, #xktbyupepm tbody, #xktbyupepm tfoot, #xktbyupepm tr, #xktbyupepm td, #xktbyupepm th {
+#onhdpupbvc thead, #onhdpupbvc tbody, #onhdpupbvc tfoot, #onhdpupbvc tr, #onhdpupbvc td, #onhdpupbvc th {
   border-style: none;
 }
 
-#xktbyupepm p {
+#onhdpupbvc p {
   margin: 0;
   padding: 0;
 }
 
-#xktbyupepm .gt_table {
+#onhdpupbvc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -4536,12 +4540,12 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-left-color: #D3D3D3;
 }
 
-#xktbyupepm .gt_caption {
+#onhdpupbvc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xktbyupepm .gt_title {
+#onhdpupbvc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4553,7 +4557,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-width: 0;
 }
 
-#xktbyupepm .gt_subtitle {
+#onhdpupbvc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4565,7 +4569,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-top-width: 0;
 }
 
-#xktbyupepm .gt_heading {
+#onhdpupbvc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4577,13 +4581,13 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#xktbyupepm .gt_bottom_border {
+#onhdpupbvc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xktbyupepm .gt_col_headings {
+#onhdpupbvc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4598,7 +4602,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#xktbyupepm .gt_col_heading {
+#onhdpupbvc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4618,7 +4622,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   overflow-x: hidden;
 }
 
-#xktbyupepm .gt_column_spanner_outer {
+#onhdpupbvc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4630,15 +4634,15 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 4px;
 }
 
-#xktbyupepm .gt_column_spanner_outer:first-child {
+#onhdpupbvc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xktbyupepm .gt_column_spanner_outer:last-child {
+#onhdpupbvc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xktbyupepm .gt_column_spanner {
+#onhdpupbvc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4650,11 +4654,11 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   width: 100%;
 }
 
-#xktbyupepm .gt_spanner_row {
+#onhdpupbvc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xktbyupepm .gt_group_heading {
+#onhdpupbvc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4680,7 +4684,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   text-align: left;
 }
 
-#xktbyupepm .gt_empty_group_heading {
+#onhdpupbvc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4695,15 +4699,15 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   vertical-align: middle;
 }
 
-#xktbyupepm .gt_from_md > :first-child {
+#onhdpupbvc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xktbyupepm .gt_from_md > :last-child {
+#onhdpupbvc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xktbyupepm .gt_row {
+#onhdpupbvc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4722,7 +4726,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   overflow-x: hidden;
 }
 
-#xktbyupepm .gt_stub {
+#onhdpupbvc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4735,7 +4739,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#xktbyupepm .gt_stub_row_group {
+#onhdpupbvc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4749,15 +4753,15 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   vertical-align: top;
 }
 
-#xktbyupepm .gt_row_group_first td {
+#onhdpupbvc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xktbyupepm .gt_row_group_first th {
+#onhdpupbvc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xktbyupepm .gt_summary_row {
+#onhdpupbvc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4767,16 +4771,16 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#xktbyupepm .gt_first_summary_row {
+#onhdpupbvc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xktbyupepm .gt_first_summary_row.thick {
+#onhdpupbvc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xktbyupepm .gt_last_summary_row {
+#onhdpupbvc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4786,7 +4790,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-color: #D3D3D3;
 }
 
-#xktbyupepm .gt_grand_summary_row {
+#onhdpupbvc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4796,7 +4800,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#xktbyupepm .gt_first_grand_summary_row {
+#onhdpupbvc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4806,7 +4810,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-top-color: #D3D3D3;
 }
 
-#xktbyupepm .gt_last_grand_summary_row_top {
+#onhdpupbvc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4816,11 +4820,11 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-color: #D3D3D3;
 }
 
-#xktbyupepm .gt_striped {
+#onhdpupbvc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xktbyupepm .gt_table_body {
+#onhdpupbvc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4829,7 +4833,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-bottom-color: #D3D3D3;
 }
 
-#xktbyupepm .gt_footnotes {
+#onhdpupbvc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4843,7 +4847,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#xktbyupepm .gt_footnote {
+#onhdpupbvc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4852,7 +4856,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#xktbyupepm .gt_sourcenotes {
+#onhdpupbvc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4866,7 +4870,7 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   border-right-color: #D3D3D3;
 }
 
-#xktbyupepm .gt_sourcenote {
+#onhdpupbvc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4874,72 +4878,72 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
   padding-right: 5px;
 }
 
-#xktbyupepm .gt_left {
+#onhdpupbvc .gt_left {
   text-align: left;
 }
 
-#xktbyupepm .gt_center {
+#onhdpupbvc .gt_center {
   text-align: center;
 }
 
-#xktbyupepm .gt_right {
+#onhdpupbvc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xktbyupepm .gt_font_normal {
+#onhdpupbvc .gt_font_normal {
   font-weight: normal;
 }
 
-#xktbyupepm .gt_font_bold {
+#onhdpupbvc .gt_font_bold {
   font-weight: bold;
 }
 
-#xktbyupepm .gt_font_italic {
+#onhdpupbvc .gt_font_italic {
   font-style: italic;
 }
 
-#xktbyupepm .gt_super {
+#onhdpupbvc .gt_super {
   font-size: 65%;
 }
 
-#xktbyupepm .gt_footnote_marks {
+#onhdpupbvc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xktbyupepm .gt_asterisk {
+#onhdpupbvc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xktbyupepm .gt_indent_1 {
+#onhdpupbvc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xktbyupepm .gt_indent_2 {
+#onhdpupbvc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xktbyupepm .gt_indent_3 {
+#onhdpupbvc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xktbyupepm .gt_indent_4 {
+#onhdpupbvc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xktbyupepm .gt_indent_5 {
+#onhdpupbvc .gt_indent_5 {
   text-indent: 25px;
 }
 
-#xktbyupepm .katex-display {
+#onhdpupbvc .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#xktbyupepm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#onhdpupbvc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -5044,20 +5048,20 @@ Figure&nbsp;4: Per-base sequence quality distribution showing acceptable scores 
 <p>The protein structure derived using the AlphaFold Protein Structure Database<span class="citation" data-cites="jumper_highly_2021"><sup><a href="#ref-jumper_highly_2021" role="doc-biblioref">24</a></sup></span> shows the exact position of Arg90 in the alpha helix in the SNARE region. A predicted model of p.Arg90Pro does not show a break in the helix as expected. However, AlphaFold was not designed to predict effects of single substitutions and in the cell, the structure might still be destabilised or different from the prediction.</p>
 </section>
 </section>
-<section id="discussion" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="discussion"><span class="header-section-number">3</span> Discussion</h2>
+<section id="discussion" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="discussion"><span class="header-section-number">4</span> Discussion</h2>
 <p>In this study, Whole Exome Sequencing (WES) trio data from the Corpasome family were processed and analyzed to identify the genetic cause of a severe neurocutaneous disorder observed in a 3-year-old female patient. Following a bioinformatics workflow that included raw FASTQ quality control, alignment to the hg19 reference genome using BWA-MEM, duplicate removal, base quality recalibration, and variant calling with GATK3 HaplotypeCaller, a total of 5,983 variants were identified across all family members and annotated using ANNOVAR. Subsequent functional filtering and inheritance model-based prioritization steps successfully isolated a causative missense variant (p.Arg90Pro) in the SNAP29 gene, located at position 21,224,656 on chromosome 22 (G&gt;C). The mode of inheritance for this variant and the associated CEDNIK syndrome is well-known to be autosomal recessive, which was confirmed by observing that both healthy parents are heterozygous carriers while the affected patient is homozygous for the variant.</p>
 <p>To support the hypothesis that we have identified the true causative variant, several lines of converging evidence were established. First, sequential bioinformatic filtering, moving from 5,983 total variants down to 11 candidate genes and 23 variants, isolated the SNAP29 missense variant (p.Arg90Pro) based on an autosomal recessive inheritance model and rarity criteria. Second, the variant is completely absent from the gnomAD population database, confirming its extreme rarity in concordance with the prevalence of CEDNIK syndrome. Third, high-stringency quality metrics and coverage analysis demonstrated that the variant position is exceptionally well-covered with more than 70x read depth across all family members, with the affected child being homozygous for the variant allele and both parents acting as heterozygous carriers, as visualized clearly in IGV. Finally, cross-referencing with HPO terms and VarSome demonstrated that SNAP29 is uniquely linked to CEDNIK syndrome features such as microcephaly, ichthyosis, and palmoplantar keratoderma, whereas all other candidate genes are either unassociated with disease or linked exclusively to cancer pathways.</p>
 <p>Although the evidence supports SNAP29 p.Arg90Pro as a plausible cause, three points need further discussion. A primary limitation of this case study is the inherent scope of WES, which restricts the analysis to protein-coding regions while entirely omitting non-coding elements such as promoters and enhancers. Consequently, potential regulatory mutations or variants in these regions remain undetected. Subsequent Whole Genome Sequencing (WGS) could clarify whether the identified SNAP29 variant is the only causative factor underlying the disease phenotype. In addition to that, the variant position the daughter’s the coverage is high, but out of 73 reads seven are showing guanine instead of the variant cytosine which rises the question whether the daughter is in fact homozygous or if this observation is due to the artificial nature of the introduced variant. Ideally, the variant position could be confirmed by Sanger sequencing of the daughter and both parents. Besides that, the consequences of the amino acid exchange at the protein and cellular level are unknown, since the variant has not been reported before. Does the proline distort the alpha helical structure within the SNARE region? Is the mutant SNAP29 still able to assemble into SNARE complexes? To what extend does this effect cellular processes resulting in epidermal and neuronal symptoms?</p>
 <p>To address these open questions, further experiments could be conducted. Building on published work on SNAP29 deficiency, integrin recycling in healthy and SNAP29 p.Arg90PRO cells could be studied. Integrin is important in cell migration and therefore pivotal for epidermal differentiation and neuronal development<span class="citation" data-cites="gambardella_multifaceted_2003"><sup><a href="#ref-gambardella_multifaceted_2003" role="doc-biblioref">25</a></sup></span> <span class="citation" data-cites="cayre_cell_2009"><sup><a href="#ref-cayre_cell_2009" role="doc-biblioref">26</a></sup></span>. In a pulse-chase experiment, accumulation of β-integrin in SNAP29 deficient cells could be observed which could over time cause the CEDNIK-associated symptoms<span class="citation" data-cites="rapaport_loss_2010"><sup><a href="#ref-rapaport_loss_2010" role="doc-biblioref">27</a></sup></span>. Interestingly, SNAP29-mutated zebrafish have a smaller head size mirroring microcephaly in humans<span class="citation" data-cites="mastrodonato_genetic_2019"><sup><a href="#ref-mastrodonato_genetic_2019" role="doc-biblioref">28</a></sup></span>. This would be a meaningful experiment to see consequences even on the organism level. Another possibility would be to derive primary fibroblasts from the daughter and study SNAP29 protein interaction using immunoprecipitation or an autophagic assay to asses functionality of p.Arg90Pro SNAP29. Performing a rescue experiment would confirm whether the SNAP29 variant is the cause of the observed results.</p>
 <p>In conclusion, the genetic findings are consistent with the clinical picture. The genotype pattern fits autosomal recessive inheritance, SNAP29 is an established CEDNIK gene, and the patient’s symptoms match the syndrome. However, p.Arg90Pro is a missense variant without functional evidence. Within the ACMG framework it is therefore likely to remain a variant of uncertain significance until functional or additional genetic data are available. The experiments outlined above would be the next steps towards clarifying its role.</p>
 </section>
-<section id="references" class="level2 unnumbered" data-number="4">
+<section id="references" class="level2 unnumbered" data-number="5">
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">4 References</h2><div id="refs" class="references csl-bib-body" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">5 References</h2><div id="refs" class="references csl-bib-body" role="list">
 <div id="ref-hsu2017cednik" class="csl-entry" role="listitem">
 <div class="csl-left-margin">1. </div><div class="csl-right-inline"><span class="nocase">Hsu, T., Coughlin, C.C., Monaghan, K.G., et al.</span> (2017). CEDNIK: Phenotypic and molecular characterization of an additional patient and review of the literature. Child Neurology Open <em>4</em>, 2329048X17733214. <a href="https://doi.org/10.1177/2329048X17733214">https://doi.org/10.1177/2329048X17733214</a>.</div>
 </div>

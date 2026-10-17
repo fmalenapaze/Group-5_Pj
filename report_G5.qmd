@@ -35,7 +35,7 @@ variants <- read_tsv("data/corpasome.trio.chr22.snps.filtered.annovar.tsv", col_
 # Table
 index_df <- data.frame(
   Section = 
-    c("1. Introduction", "2. Study Participants/Whole exome sequencing", "3. NGS data preprocessing", "4. Variant annotation and filtering", "5. Results")
+    c("1. Introduction", "2. Materials and Methods", "3. Results","4. Discussion","5. References")
 )
 
 kable(index_df)
@@ -53,7 +53,9 @@ Variant detection and diagnosis have become much more accessible with the advent
 
 In this report, we focus on WES because CEDNIK syndrome is a Mendelian monogenic disorder, which is why identifying variations within the exons alone is generally sufficient for its detection. In the case we analyzed, a 3-year-old girl exhibited symptoms of the syndrome while her parents were healthy. Therefore, our objective was to perform WES for this family of three and identify the variant by comparing the results against the reference human genome (GRCh37/hg19). This type of analytical method is known as "trio analysis" [@gabriel2022trio], and given that this syndrome is an autosomal recessive disorder, we can infer that both parents are heterozygous carriers [@hsu2017cednik].
 
-### Study Participants/Whole exome sequencing
+## Materials and methods
+
+### Study Participants & Whole exome sequencing
 
 The base of our work is publicly available genetic data from a Spanish family, here consisting of a father, mother and their daughter, referred to as "the Corpasome" [@corpas_crowdsourced_2015]. In our case the genome of the daughter is synthetically altered and a disease phenotype called CEDNIK Syndrome, caused by these alterations, is diagnosed. Main symptoms are developmental delay and skin disorder. The latter mainfasting at the age of two in ichthyosis and thickening of palms and soles. Further, she has been diagnosed with microcephaly and poor motor development as well as impaired coordination. As Cednik Syndrome is an autosomal recessive inheritable disease and the parents are healthy, the father and mother both have one chromosome with the disease-causing variant and one without. After deciding to make their genomes publicly available, the Corpas family bought direct-to-consumer sequencing privately to collect DNA in saliva using Oragene kits. Exomes were captured with Agilent SureSelect Human All Exon (44 Mb design) and sequenced on Illumina HiSeq with an average coverage of about 30x over the target region.
 
@@ -119,7 +121,7 @@ include_graphics("organigram_full_flow.jpg")
 
 ### Variant annotation and filtering
 
-With the uptake of the resultant .tsv file, we proceed for the variant annotation
+With the uptake of the resultant .tsv file, we proceed for the variant annotations.
 
 ## Results
 
