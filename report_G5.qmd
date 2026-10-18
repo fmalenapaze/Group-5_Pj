@@ -33,7 +33,7 @@ variants <- read_tsv("data/corpasome.trio.chr22.snps.filtered.annovar.tsv", col_
 # Table
 index_df <- data.frame(
   Contents = 
-    c("1. Introduction", "2. Materials and Methods", "3. Results","4. Discussion","5. References")
+    c("1. Index", "2. Introduction", "3. Materials and Methods", "4. Results","5. Discussion","6. References", "7. Appendix")
 )
 
 kable(index_df)
@@ -55,12 +55,13 @@ In this report, we focus on WES because CEDNIK syndrome is a Mendelian monogenic
 
 ### Study Participants & Whole exome sequencing
 
-The base of our work is publicly available genetic data from a Spanish family, here consisting of a father, mother and their daughter, referred to as "the Corpasome" [@corpas_crowdsourced_2015]. In our case the genome of the daughter is synthetically altered and a disease phenotype called CEDNIK Syndrome, caused by these alterations, is diagnosed. Main symptoms are developmental delay and skin disorder. The latter mainfasting at the age of two in ichthyosis and thickening of palms and soles. Further, she has been diagnosed with microcephaly and poor motor development as well as impaired coordination. As Cednik Syndrome is an autosomal recessive inheritable disease and the parents are healthy, the father and mother both have one chromosome with the disease-causing variant and one without. After deciding to make their genomes publicly available, the Corpas family bought direct-to-consumer sequencing privately to collect DNA in saliva using Oragene kits. Exomes were captured with Agilent SureSelect Human All Exon (44 Mb design) and sequenced on Illumina HiSeq with an average coverage of about 30x over the target region.
+The base of our work is publicly available genetic data from a Spanish family, here consisting of a father, mother and their daughter, referred to as "the Corpasome" [@corpas_crowdsourced_2015]. In our case the genome of the daughter is synthetically altered and a disease phenotype called CEDNIK Syndrome, caused by these alterations, is diagnosed. Main symptoms are developmental delay and skin disorder. The latter mainfasting at the age of two in ichthyosis and thickening of palms and soles. Further, she has been diagnosed with microcephaly and poor motor development as well as impaired coordination. As CEDNIK Syndrome is an autosomal recessive inheritable disease and the parents are healthy, the father and mother both have one chromosome with the disease-causing variant and one without. After deciding to make their genomes publicly available, the Corpas family bought direct-to-consumer sequencing privately to collect DNA in saliva using Oragene kits. Exomes were captured with Agilent SureSelect Human All Exon (44 Mb design) and sequenced on Illumina HiSeq with an average coverage of about 30x over the target region.
 
 ```{r}
 #| warning: false
 #| label: fig-pedigree
 #| fig-cap: "Family trio pedigree"
+#| out-width: "80%"
 
 #draw pedigree for corpasome family
 ped <- read_table("data/corpasome.ped",
@@ -112,7 +113,6 @@ To refine the variant selection for functional analysis, as shown in @fig-organi
 #| fig-alt: "Filtering process workflow"
 #| warning: false
 
-library(knitr)
 include_graphics("organigram_full_flow.jpg")
 ```
 
@@ -183,7 +183,7 @@ include_graphics("variant_filtering.jpeg")
 
 ```{r}
 #| label: tbl-fastqc
-#| tbl-cap: "FastQC Sumarized table for each read in each sample"
+#| tbl-cap: "FastQC summary for each read in each sample"
 #| echo: false
 #summarize fastqc data
 
@@ -208,7 +208,7 @@ processed <- read_tsv(str_c(fastqc_base_dir,
 gt(processed)
 ```
 
-To begin the WES analysis, it is important to build on raw-read data that fulfills the quality requirements. By assessing the quality of the fastq file, it can be assured that later interpretation is not based on technical errors. Regarding the Corpasome data, the sequence length for all samples is as expected as well as the GC percentage with small variations in the reads of the mother displaying a 44% compared to 45% in the father and daughter. The number of total sequences as well as the number of bases measured is the same for read 1 and read 2 in each family member, whereas the number varies between different persons. The maximal difference can be found between the father and the daughter with 39.9 Megabase pairs (Mbp) for the dad and 33.6 Mbp in the daughter's samples.
+To begin the WES analysis, it is important to build on raw-read data that fulfills the quality requirements. By assessing the quality of the fastq file, it can be assured that later interpretation is not based on technical errors. Regarding the Corpasome data displayed in @tbl-fastqc, the sequence length for all samples is as expected as well as the GC percentage with small variations in the reads of the mother displaying a 44% compared to 45% in the father and daughter. The number of total sequences as well as the number of bases measured is the same for read 1 and read 2 in each family member, whereas the number varies between different persons. The maximal difference can be found between the father and the daughter with 39.9 Megabase pairs (Mbp) for the dad and 33.6 Mbp in the daughter's samples.
 
 ```{r}
 #| label: fig-quality
@@ -235,11 +235,11 @@ ggplot(smry, aes(x = sample, y = Metric, fill = Status)) +
   theme_minimal()
 ```
 
-This heatmap summarizes different quality metrics across the fastqc files. For most of the metrics the data passes the quality criteria. Regarding the per tile sequence quality, all samples fail which in this case is not unexpected because the corpasome data has been sequenced in 2012 [@corpas_crowdsourced_2015]. Besides that, the metric expresses a warning for the "per sequence GC content" which controls the measured sequences for the biologically expected distribution of Guanine and Cytosine.
+@fig-quality summarizes different quality metrics across the fastqc files. For most of the metrics the data passes the quality criteria. Regarding the per tile sequence quality, all samples fail which in this case is not unexpected because the Corpasome data has been sequenced in 2012 [@corpas_crowdsourced_2015]. Besides that, the metric expresses a warning for the "per sequence GC content" which controls the measured sequences for the biologically expected distribution of Guanine and Cytosine.
 
 ```{r}
 #| label: fig-SequenceEvaluation
-#| fig-cap: "Per-base sequence quality distribution showing acceptable scores across all samples and reads."
+#| fig-cap: "Guanine-Cytosine distribution per sequence and sample"
 
 #GC content in more detail
 # read one FastQC module by name
@@ -277,13 +277,14 @@ ggplot(gc, aes(`GC Content`, proportion, colour = sample, linetype = read,
   theme_minimal()
 ```
 
-This graph further inspects the GC content across the three samples. It shows that the peak for GC contents is slightly shifted for samples of the mother. Still the distribution is the same for the two reads and the deviations between the samples are small.
+@fig-SequenceEvaluation further inspects the GC content across the three samples. It shows that the peak for GC contents is slightly shifted for samples of the mother. Still the distribution is the same for the two reads and the deviations between the samples are small.
 
 Visualization of per-sequence GC content demonstrates consistent profiles across all three family members, showing stable distributions between forward and reverse reads. While a minor peak shift is observed in the maternal sample, the deviations are minimal and do not suggest technical failure.
 
 ```{r qc_boxplots}
-#| label: tbl-boxplots
-#| tbl-cap: "Per-base sequence quality distribution showing acceptable scores across all samples and reads."
+#| label: fig-boxplots
+#| fig-cap: "Per-base sequence quality distribution showing acceptable scores across all samples and reads"
+
 #genereate qc visualization with all pb_qual files
 
 files <- list.files(fastqc_base_dir, pattern = "fastqc_data.txt",
@@ -334,13 +335,17 @@ qc |>
   theme(legend.position = "none")
 ```
 
-The per-base sequence quality boxplots for forward and reverse reads across the family trio reveal a typical Illumina quality profile showing optimal scores in the center of the reads and a decreasing quality towards the end of the reads. Especially the maternal sample displays lower quality scores for terminal positions dropping below a Phred score of 20. However, median quality scores across all samples and positions remain above a threshold of 30.
+The per-base sequence quality shown in @fig-boxplots for forward and reverse reads across the family trio reveal a typical Illumina quality profile showing optimal scores in the center of the reads and a decreasing quality towards the end of the reads. Especially the maternal sample displays lower quality scores for terminal positions dropping below a Phred score of 20. However, median quality scores across all samples and positions remain above a threshold of 30.
 
 Overall, raw data quality across all three samples is within acceptable range to proceed with downstream analysis. Subsequent evaluation of alignment and coverage metrics will further asses data quality before variant calling.
 
 ### Sample processing
 
 ```{r}
+#| label: tbl-bamstats
+#| tbl-cap: "Steps of preprocessing and read removal"
+#| echo: false
+
 #summarize preprocessing 
 
 bam_stats <- read_delim("data/bam_statistics.txt", col_names = c("nreads", "file"),  delim = " ", show_col_types = FALSE)
@@ -392,7 +397,7 @@ pct_range <- range(unlist(pct[, c("dad", "mom", "daughter")]))
 fmt <- \(x) format(x, scientific = FALSE, big.mark = ",", trim = TRUE)
 ```
 
-The table displays the different steps of sample processing and the effect on the number of alignments. As expected, only the duplication removal reduces the number of records. In total `r fmt(removed$dad)` alignments have been removed in the sample of the dad, `r fmt(removed$mom)` for the mom and `r fmt(removed$daughter)` for the daughter, which is in a range of `r pct_range[1]`% to `r pct_range[2]`% of all alignments in the unprocessed file.
+@tbl-bamstats displays the different steps of sample processing and the effect on the number of alignments. As expected, only the duplication removal reduces the number of records. In total `r fmt(removed$dad)` alignments have been removed in the sample of the dad, `r fmt(removed$mom)` for the mom and `r fmt(removed$daughter)` for the daughter, which is in a range of `r pct_range[1]`% to `r pct_range[2]`% of all alignments in the unprocessed file.
 
 ### Variant calling/filtering
 
@@ -411,8 +416,6 @@ ts_tv <- variants |>
     TRUE ~ "Transversion")) |> 
   arrange(Type, Ref, Alt)
 
-gt(ts_tv)
-
 syn_nonsyn <- variants |> 
   filter(ExonicFunc.refGene %in% c("synonymous SNV", "nonsynonymous SNV")) |> 
   group_by(ExonicFunc.refGene) |> 
@@ -423,8 +426,6 @@ syn_nonsyn <- variants |>
   ungroup() |> 
   select(Type, Count) |> 
   arrange(Type)
-
-gt(syn_nonsyn)
 
 #Transition/transversion
 n_ts <- sum(ts_tv$Count[ts_tv$Type == "Transition"])
@@ -437,28 +438,39 @@ n_nonsyn <- syn_nonsyn$Count[syn_nonsyn$Type == "Nonsynonymous"]
 nonsyn_syn_ratio <- round(n_nonsyn / n_syn, 2)
 ```
 
-Besides ensuring sufficient read depth, the transition-transversion ratio as well as the nonsynonymous/synonymous SNP ratio are quality metrics to control for correct variant calling Since transitions require less energy, the ratio of transition-transversion is expected to be \> 2 which is also reflected in the data presenting a ratio of `r ts_tv_ratio`. Regarding the nonsynonymous/synonymous SNP ratio a range of 1 to 1.2 is usual. Our data presents a ratio of `r nonsyn_syn_ratio`.
+Besides ensuring sufficient read depth, the transition-transversion ratio as well as the nonsynonymous/synonymous SNP ratio are quality metrics to control for correct variant calling Since transitions require less energy, the ratio of transition-transversion is expected to be \> 2 which is also reflected in the data presenting a ratio of `r ts_tv_ratio` (see @tbl-supp-ts_tv). Regarding the nonsynonymous/synonymous SNP ratio a range of 1 to 1.2 is usual. Our data presents a ratio of `r nonsyn_syn_ratio` (see @tbl-supp-syn).
 
-The following tables summarize the genomic distribution and functional impact of the identified variants. Regarding genomic location, approximately two-thirds of the variants reside in intergenic or intronic regions, while exonic variants account for roughly one-sixth. A closer examination of the exonic subset (Table 2) reveals that nearly half are synonymous, resulting in no change to the encoded amino acid sequence.
+The following tables (@tbl-variants) summarize the genomic distribution and functional impact of the identified variants. Regarding genomic location, approximately two-thirds of the variants reside in intergenic or intronic regions, while exonic variants account for roughly one-sixth. A closer examination of the exonic subset reveals that nearly half are synonymous, resulting in no change to the encoded amino acid sequence.
 
-```{r variant_types}
-#summarize and count annotated positions of all variants within the genome
+```{r}
+#| label: tbl-variants
+#| tbl-cap: "Comprehensive analysis of variant distributions"
+#| tbl-subcap: 
+#|   - "Genomic localisation of variants"
+#|   - "Effects on translation"
+#| layout-ncol: 2
+#| echo: false
+
+#Erste Tabelle
 variants |> 
   count(Func.refGene) |> 
-  arrange(desc(n))|>
-  gt()
-```
+  arrange(desc(n)) |> 
+  gt() |> 
+  tab_options(
+    table.width = pct(90)
+  )
 
-```{r exonic_variants}
-#for exonic variants, summarize effects of variants on gene codons
-
+#Zweite Tabelle
 variants |> 
   filter(Func.refGene == "exonic") |> 
-  count(ExonicFunc.refGene)|>
-  gt()
+  count(ExonicFunc.refGene) |> 
+  gt() |> 
+  tab_options(
+    table.width = pct(90)
+  )
 ```
-
-To identify the disease-causing variant, a comparison with the parental genomes is useful to search for a recessive inheritance pattern. Out of the 5,983 variants, 153 were found to be recessive. Additionally, a filter is applied to discard common variants which in this case is only one variant. The 1000 Genomes (1000g2012apr_eur) and ESP6500 (esp6500si_ea) databases are used to retain noncommon gene variants with minor allele frequency below 5% or entirely unlisted. The provided analysis script suggests keeping variants with frequencies above 5% which should be considered to adapt in the future. However, because the majority of the filtered candidates were novel variants absent from both databases, this filtering step did not alter the final variant selection. The next filtering step removes all nonexonic variants as they are not directly affecting the gene product. Further filtering is applied to remove synonymous variants as well as nonframeshift deletions or insertions because their effect on the protein is usually not pathogenic. Finally, 23 variants in 11 different genes are left.
+  
+To identify the disease-causing variant, a comparison with the parental genomes is useful to search for a recessive inheritance pattern. Out of the 5,983 variants, 153 were found to be recessive. Additionally, a filter is applied to discard common variants which in this case is only one variant. The 1000 Genomes (1000g2012apr_eur) and ESP6500 (esp6500si_ea) databases are used to retain noncommon gene variants with minor allele frequency below 5% or entirely unlisted. The provided analysis script suggests keeping variants with frequencies above 5% which should be considered to adapt in the future. However, because the majority of the filtered candidates were novel variants absent from both databases, this filtering step did not alter the final variant selection. The next filtering step removes all nonexonic variants as they are not directly affecting the gene product. Further filtering is applied to remove synonymous variants as well as nonframeshift deletions or insertions because their effect on the protein is usually not pathogenic. Finally, 23 variants in 11 different genes are left. The described workflow as well as the found candidate genes are shown in @fig-variant_filtering_workflow. Further details on the candidate variants can be found in @tbl-supp-cands.
 
 ```{r}
 #filtering of variants
@@ -475,23 +487,15 @@ effective <- noncommon |>
   filter(Func.refGene == "exonic") |> 
   filter(ExonicFunc.refGene %in% c("nonsynonymous SNV", "frameshift deletion", "frameshift insertion", "stopgain", "stoploss"))
 
-effective |> 
-  select(Chr, POS, Ref, Alt, Gene.refGene, ExonicFunc.refGene)|>
-  gt()
-
-tibble(
-  Filtering = c("All variants", "Recessive", "Noncommon", "Deleterious"),
-  Variants = c(nrow(variants), nrow(recessive), nrow(noncommon), nrow(effective)),
-  Genes = c(n_distinct(variants$Gene.refGene),
-          n_distinct(recessive$Gene.refGene),
-          n_distinct(noncommon$Gene.refGene),
-          n_distinct(effective$Gene.refGene))
-) |>
-  gt()
-
+effective2 <- effective |> 
+  select(Chr, POS, Ref, Alt, Gene.refGene, ExonicFunc.refGene)
 ```
 
 ```{r}
+#| label: fig-variant_filtering_workflow
+#| fig-cap: "Workflow of variant filtering process and final candidate annotation"
+#| echo: false
+
 include_graphics("visualizations/variant_filtering.png")
 ```
 
@@ -518,6 +522,10 @@ Although it is known that the CEDNIK syndrome is an autosomal recessive disease,
 ### Analysis of the candidate gene
 
 ```{r}
+#| label: fig-variant_pos
+#| fig-cap: "Visualization of position of variant in SNAP29"
+#| echo: false
+
 #show position of variant in the protein
 include_graphics("visualizations/SNAP29_snp_visualisation.svg")
 ```
@@ -527,12 +535,24 @@ The identified variant can be found at position 90 where arginine is exchanged b
 ```{r}
 #show variant in igv including coverage metrics
 include_graphics("data/igv_variant.png")
+```
+
+
+```{r}
+#| label: fig-igv
+#| fig-cap: "Variant position and coverage in the Integrative Genomics Viewer"
+#| echo: false
+
 include_graphics("data/igv_coverage_data.png")
 ```
 
-At the variant position, the read depth is sufficient for a reliable genotype call in all three samples with 78 reads covering the position in the father, 72 in the mother and 73 in the daughter. Both parents are heterozygous and show a similar allele ratio of about 53 % guanine and 47 % cytosine. The daughter is homozygous for the alternative allele, with 90 % of her reads showing cytosine. This is consistent with a recessive mode of inheritance, because both parents are unaffected carriers and the affected child has two copies of the variant. Remarkably, about 10 % of the daughter’s reads show guanine. Rather than representing a true second allele, this observation likely stems from technical artifacts such as sequencing errors or read misalignments. Within the context of this synthetic dataset, the residual guanine signal probably originates from the original reads and appears to have been artificially overwritten by cytosines.
+At the variant position, the read depth is sufficient for a reliable genotype call in all three samples with 78 reads covering the position in the father, 72 in the mother and 73 in the daughter (@fig-igv). Both parents are heterozygous and show a similar allele ratio of about 53 % guanine and 47 % cytosine. The daughter is homozygous for the alternative allele, with 90 % of her reads showing cytosine. This is consistent with a recessive mode of inheritance, because both parents are unaffected carriers and the affected child has two copies of the variant. Remarkably, about 10 % of the daughter’s reads show guanine. Rather than representing a true second allele, this observation likely stems from technical artifacts such as sequencing errors or read misalignments. Within the context of this synthetic dataset, the residual guanine signal probably originates from the original reads and appears to have been artificially overwritten by cytosines.
 
 ```{r}
+#| label: tbl-coverage
+#| tbl-cap: "Summary of coverage from chr22 to variant position across three samples"
+#| echo: false
+
 #extract coverage
 
 samples    <- c("dad", "mom", "daughter")
@@ -581,9 +601,10 @@ sample_summary |>
   gt()
 ```
 
-The preceding table summarizes sequencing coverage across progressively restricted genomic intervals, scaling from the whole chromosome down to the candidate gene, target exon, and variant locus. While global chromosomal coverage appears low, this reflects the targeted mode of WES where non-coding intronic and intergenic regions are omitted and thereby artificially reducing chromosome-wide metrics. Focusing on the local interval covering `r -21224626+21225329` nucleotides surrounding the variant, sequencing depth exceeds 12x across all samples, with roughly 21% of positions showing coverage above 20x. At the precise variant position, coverage reaches over 70x. Notably, within this synthetic case study, these high coverage values stem from the artificial introduction of the variant.
+@tbl-coverage summarizes sequencing coverage across progressively restricted genomic intervals, scaling from the whole chromosome down to the candidate gene, target exon, and variant locus. While global chromosomal coverage appears low, this reflects the targeted mode of WES where non-coding intronic and intergenic regions are omitted and thereby artificially reducing chromosome-wide metrics. Focusing on the local interval covering `r -21224626+21225329` nucleotides surrounding the variant, sequencing depth exceeds 12x across all samples, with roughly 21% of positions showing coverage above 20x. At the precise variant position, coverage reaches over 70x. Notably, within this synthetic case study, these high coverage values stem from the artificial introduction of the variant.
 
 ```{r}
+
 #visualize coverage in intervall of the candidate variant
 
 pos_cov <- samples |>
@@ -601,30 +622,48 @@ ggplot(pos_cov, aes(pos, depth, colour = sample)) +
   geom_line() +
   geom_vline(xintercept = position, linetype = "dashed") +
   labs(x = "Position on chr22", y = "Depth (x)", colour = NULL)
+```
+
+
+```{r}
+#| label: fig-coverage_detail
+#| fig-cap: "Visualization of coverage of the variant covering intervall"
+#| echo: false
+#| fig-align: center
 
 #show igv graphic for comparison
 include_graphics("data/igv_whole_region.png")
 ```
 
-To visualize the tabular metrics, the plot above illustrates the sequencing depth per position across the target interval for each family member, with the vertical dotted line indicating the candidate variant locus. Notably, the genomic interval extracted from the annotation file extends beyond the target exon into adjacent intronic regions, where read depth drops to zero. A prominent coverage peak exceeding 70x aligns precisely with the variant position, confirming high coverage. However, this observation underscores the necessity of validating genomic annotations. For external validation, visualization of the father's sample in the Integrative Genomics Viewer confirms the coverage profile across the whole region. It depicts the target exon on the left alongside a second downstream exon, which accounts for the secondary coverage peak in the depth profile. Unlike the artificially inflated target locus, this second exon exhibits a natural coverage distribution representative of endogenous WES data.
+To visualize the tabular metrics, @fig-coverage_detail illustrates the sequencing depth per position across the target interval for each family member, with the vertical dotted line indicating the candidate variant locus. Notably, the genomic interval extracted from the annotation file extends beyond the target exon into adjacent intronic regions, where read depth drops to zero. A prominent coverage peak exceeding 70x aligns precisely with the variant position, confirming high coverage. However, this observation underscores the necessity of validating genomic annotations. For external validation, visualization of the father's sample in the Integrative Genomics Viewer confirms the coverage profile across the whole region. It depicts the target exon on the left alongside a second downstream exon, which accounts for the secondary coverage peak in the depth profile. Unlike the artificially inflated target locus, this second exon exhibits a natural coverage distribution representative of endogenous WES data.
 
 The variant 22-21224656-G-C is not reported in the gnomAD population database, suggesting it is extremely rare [@guez_integrating_2026]. This aligns well with the clinical phenotype, as CEDNIK syndrome is an exceptionally rare disorder. Alternate substitutions at this position (G\>A and G\>T) are likewise documented at very low frequencies. Constraint metrics for SNAP29 show no missense depletion (expected: 148.1, observed: 178, o/e = 1.20, Z = -0.87) and only a slight, statistically imprecise reduction in loss-of-function variants (12.2 expected vs. 5 observed) [@guez_integrating_2026]. This lack of strong constraint is expected for autosomal recessive conditions, where single-allele carriers face no selective disadvantage. Because gene-wide metrics cannot evaluate individual variants, specific downstream analysis is required.
 
 To evaluate the specific change, VarSome was consulted [@kopanos_varsome_2019]. Although the exact variant is absent from the database, in silico predictions from AlphaMissense and EVE classify it as potentially 'pathogenic moderate'. Additionally, a PhastCons100way score of 1.000 and a PhyloP100way score of 4.218 show that this nucleotide is highly conserved across vertebrates, indicating that a mutation at this position is likely detrimental.
 
 ```{r}
+#| label: fig-conservation
+#| fig-cap: "Conservation of the variant nucleotide and aminoacid across different species"
+#| echo: false
+
 #show conservation in the region of the variant
 include_graphics("visualizations/visualisation_conserved_region.png")
 ```
 
-UCSC Genome Browser visualization [@casper_ucsc_2026] highlights strong evolutionary conservation across species at this nucleotide and amino acid position. SNAP29 is broadly expressed due to its fundamental role in membrane fusion and autophagy [@the_uniprot_consortium_uniprot_2025], with prominent expression in the brain, skin, and skeletal muscle which are directly impacted in this patient. This expression profile aligns well with the clinical findings. Several other SNAP29 mutations are known to cause CEDNIK syndrome [@the_uniprot_consortium_uniprot_2025], including residue changes like E89K, deletion of L119, and M184V. The candidate variant affects a conserved residue within the C-terminal SNARE motif, which normally forms an alpha-helix anchored to the vesicle membrane [@gao_integrative_2013; @cerami_cbio_2012; @de_bruijn_analysis_2023]. Replacing an alpha-helix-favoring arginine with proline which is a well-known 'helix breaker' due to its cyclic side chain and lack of a backbone amide proton, is predicted to severely disrupt local secondary structure and protein folding. Utilizing the Franklin ACMG framework, the variant is classified as a Variant of Uncertain Significance (VUS), reflecting its extreme rarity alongside supportive computational predictions [@noauthor_franklin_nodate].
+UCSC Genome Browser visualization [@casper_ucsc_2026] highlights strong evolutionary conservation across species at this nucleotide and amino acid position (@fig-conservation). SNAP29 is broadly expressed due to its fundamental role in membrane fusion and autophagy [@the_uniprot_consortium_uniprot_2025], with prominent expression in the brain, skin, and skeletal muscle which are directly impacted in this patient. This expression profile aligns well with the clinical findings. Several other SNAP29 mutations are known to cause CEDNIK syndrome [@the_uniprot_consortium_uniprot_2025], including residue changes like E89K, deletion of L119, and M184V. The candidate variant affects a conserved residue within the C-terminal SNARE motif, which normally forms an alpha-helix anchored to the vesicle membrane [@gao_integrative_2013; @cerami_cbio_2012; @de_bruijn_analysis_2023]. Replacing an alpha-helix-favoring arginine with proline which is a well-known 'helix breaker' due to its cyclic side chain and lack of a backbone amide proton, is predicted to severely disrupt local secondary structure and protein folding. Utilizing the Franklin ACMG framework, the variant is classified as a Variant of Uncertain Significance (VUS), reflecting its extreme rarity alongside supportive computational predictions [@noauthor_franklin_nodate].
 
 ```{r}
+#| label: fig-SNAP29_struc
+#| fig-cap: "Structure of SNAP29 and predicted conformation for p.Atg90Pro"
+#| echo: false
+#| fig-align: center
+#| out-width: "70%"
+
 #show structure of SNAP29 and zoom in on structure at variant position
 include_graphics("visualizations/SNAP29_vis.png")
 ```
 
-The structural model retrieved from the AlphaFold Protein Structure Database [@jumper_highly_2021] maps the exact position of Arg90 within the alpha-helix of the SNARE domain. Interestingly, structural prediction of the p.Arg90Pro mutant does not immediately reveal a clear disruption or break in the helix. However, AlphaFold is primarily trained to predict global protein folding rather than the localized consequences of single amino acid substitutions. Consequently, in a cellular environment, the introduction of proline could still induce significant structural destabilization or alter folding dynamics.
+The structural model retrieved from the AlphaFold Protein Structure Database [@jumper_highly_2021] maps the exact position of Arg90 within the alpha-helix of the SNARE domain (@fig-SNAP29_struc). Interestingly, structural prediction of the p.Arg90Pro mutant does not immediately reveal a clear disruption or break in the helix. However, AlphaFold is primarily trained to predict global protein folding rather than the localized consequences of single amino acid substitutions. Consequently, in a cellular environment, the introduction of proline could still induce significant structural destabilization or alter folding dynamics.
 
 ## Discussion
 
@@ -638,6 +677,55 @@ To address these open questions, further experiments could be conducted. Buildin
 
 In conclusion, the genetic findings are consistent with the clinical picture. The genotype pattern fits autosomal recessive inheritance, SNAP29 is an established CEDNIK gene, and the patient’s symptoms match the syndrome. However, p.Arg90Pro is a missense variant without functional evidence. Within the ACMG framework it is therefore likely to remain a variant of uncertain significance until functional or additional genetic data are available. The experiments outlined above would be the next steps towards clarifying its role.
 
-## Annexes
-
 ## References
+
+::: {#refs}
+:::
+
+## Appendix
+
+```{r}
+#| label: tbl-supp-ts_tv
+#| tbl-cap: "Transitions and transversions"
+#| echo: false
+
+#table transition-transversions
+gt(ts_tv)
+```
+
+```{r}
+#| label: tbl-supp-syn
+#| tbl-cap: "Ratio of synomymous and nonsynonymous variants"
+#| echo: false
+
+#table syn-nonsyn ratio
+gt(syn_nonsyn)
+```
+
+```{r}
+#| label: tbl-supp-variant_counts
+#| tbl-cap: "Process of variant filtering"
+#| echo: false
+
+#variant filtering process
+tibble(
+  Filtering = c("All variants", "Recessive", "Noncommon", "Deleterious"),
+  Variants = c(nrow(variants), nrow(recessive), nrow(noncommon), nrow(effective)),
+  Genes = c(n_distinct(variants$Gene.refGene),
+          n_distinct(recessive$Gene.refGene),
+          n_distinct(noncommon$Gene.refGene),
+          n_distinct(effective$Gene.refGene))
+) |>
+  gt()
+
+```
+
+```{r}
+#| label: tbl-supp-cands
+#| tbl-cap: "List of candidate genes after variant filtering"
+#| echo: false
+#| 
+#candidate genes
+gt(effective2)
+```
+
