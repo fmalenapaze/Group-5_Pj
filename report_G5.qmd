@@ -112,6 +112,7 @@ To refine the variant selection for functional analysis, as shown in @fig-organi
 #| label: fig-organigram
 #| fig-cap: "Precise filtering workflow [Elaborated by the authors]"
 #| fig-alt: "Filtering process workflow"
+#| out-width: "110%"
 #| warning: false
 
 include_graphics("organigram_full_flow.jpg")
@@ -168,16 +169,16 @@ For the recessive inheritance model, variants were filtered using a custom Perl 
 
 ```{r}
 #| label: fig-organigram2
-#| fig-cap: "Variant Anotation filters for a recessive model"
+#| fig-cap: "Variant Anotation filters for a recessive model [Elaborated by the authors]"
 #| fig-alt: "Filtering process workflow"
-#| out-width: "70%"
+#| out-width: "60%"
 #| warning: false
 
 library(knitr)
 include_graphics("variant_filtering.jpeg")
 ```
 
-The filtering strategy will require to call the high quality and depth databases filtered in the .tsv. obtained by the workflow given in the @fig-organigram . Later, variants were filtered based on Minor Allele Frequencies (MAFs) to exclude common polymorphisms. Specifically, variants with an allele frequency below the 5% (0.05) threshold in our .tsv table were retained. This filtering was performed using the ANNOVAR tool filterAnnovarBySmallerValue.pl, referencing the esp6500si_ea and 1000g2012apr_eur databases to identify and remove common genomic regions (@fig-organigram2).
+The filtering strategy will require to call the high quality and depth databases filtered in the .tsv. obtained by the workflow given in the @fig-organigram . Later, variants were filtered based on Minor Allele Frequencies (MAFs) to exclude common polymorphisms. Specifically, variants with an allele frequency below the 5% (0.05) threshold in our .tsv table were retained. This filtering was performed using the ANNOVAR tool filterAnnovarBySmallerValue.pl, referencing the esp6500si_ea and 1000g2012apr_eur databases to identify and remove common genomic regions.
 
 To narrow down the new selection of genes (already around 60 candidates), the data was filtered in two main steps. First, deleterious variants were identified by retaining alterations causing frameshifts, nonsynonymous changes, stopgains, and stoplosses, using snp138 as a reference. In the second phase, the SIFT and PolyPhen-2 databases will filter out benign variants, thereby retaining only those predicted to be damaging or probably damaging.
 
