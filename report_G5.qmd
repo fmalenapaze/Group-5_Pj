@@ -21,6 +21,7 @@ library(ggplot2)
 library(gt)
 library(kinship2)
 library(knitr)
+library(tibble)
 
 #load table for the variants
 variants <- read_tsv("data/corpasome.trio.chr22.snps.filtered.annovar.tsv", col_types = cols(clinvar_20140702 = "c"))
@@ -126,12 +127,13 @@ With the uptake of the resultant .tsv file, we proceed for the variant annotatio
 #| label: tbl-databases
 #| tbl-cap: "Reference databases used in the variant filtering by Annovar and perl process"
 #| echo: false
-library(tibble)
+
 library(knitr)
+library(tibble)
 # Table
 f_database <- tibble(
   Resource = c(
-    "refGene (hg19)", 
+    "refGene (`hg19`)", 
     "1000 Genomes (`1000g2012apr_eur`)", 
     "ESP6500 (`esp6500si_ea`)", 
     "dbSNP (`snp138`)", 
@@ -175,11 +177,11 @@ library(knitr)
 include_graphics("variant_filtering.jpeg")
 ```
 
-For the second filtering step, variants were filtered based on Minor Allele Frequencies (MAFs) to exclude common polymorphisms. Specifically, we retained variants with an allele frequency below the 5% (0.05) threshold in our .tsv table. This filtering was performed using the ANNOVAR tool filterAnnovarBySmallerValue.pl, referencing the esp6500si_ea and 1000g2012apr_eur databases to identify and remove common genomic regions (@fig-organigram2).
+The filtering strategy will require to call our high quality and depth databases filtered in the .tsv. obtained by the workflow given in the @fig-organigram . Later, variants were filtered based on Minor Allele Frequencies (MAFs) to exclude common polymorphisms. Specifically, we retained variants with an allele frequency below the 5% (0.05) threshold in our .tsv table. This filtering was performed using the ANNOVAR tool filterAnnovarBySmallerValue.pl, referencing the esp6500si_ea and 1000g2012apr_eur databases to identify and remove common genomic regions (@fig-organigram2).
 
 To narrow down the new selection of genes (already around 60 candidates), the data was filtered in two main steps. First, deleterious variants were identified by comparing them against SNP databases to retain regions causing frameshifts, nonsynonymous changes, stopgains, and stoplosses, using snp138 as a reference. In the second phase, the SIFT and PolyPhen-2 databases will filter out benign variants, thereby retaining only those predicted to be damaging or probably damaging.
 
-Finally, surviving Candidate Genes (11 gene variants) were cross-referenced with disease databases (such as ClinVar and OMIM) and prioritized based on their biological plausibility and compatibility with the patient's clinical description and associated Human Phenotype Ontology (HPO) terms.
+Finally, surviving Candidate Genes (11 gene variants) were cross-referenced with disease databases (such as ClinVar) and prioritized based on their biological plausibility and compatibility with the patient's clinical description and associated Human Phenotype Ontology (HPO) terms. As a result, we have a narrowed list of genes highlighting a single significant variant associated with CEDNIK disease within the *SNAP29* gene. Using R-based filtering, we confirmed that our called candidate variant exhibits a biallelic inheritance pattern consistent with the selected disease taking the OMIM references.
 
 ### Reference R Packages
 
@@ -190,47 +192,51 @@ As seen in @fig-organigram2 , the filtering steps could have been pre-selected u
 #| tbl-cap: "R data analyst packages used"
 #| echo: false
 
-# Table
-f_references <- tibble(
-  Resource = c(
-    "tidyverse", 
-    "ggplot2", 
-    "ESP6500 (`esp6500si_ea`)", 
-    "dbSNP (`snp138`)", 
-    "SIFT (`ljb2_sift`)",
-    "PolyPhen-2 (`ljb2_pp2hvar`)",
-    "ClinVar (`clinvar_20140702`)"
-  ),
-  Column = c(
-    "col 7",
-    "col 11",
-    "col 12",
-    "col 13",
-    "col 14",
-    "col 15",
-    "col 16"
-  ),
-  Pipeline = c(
-    "Primary reference genome for the functional annotation of genetic variants (SNPs and indels).",
-    "Reference transcript database used to determine genomic and exonic context.",
-    "Population allele frequencies (global and European) utilized to filter out common variants and isolate rare ones.",
-    "NCBI Standart Catalog of human genetic variations, SNPs polymorphisms.",
-    "Sorting Intolerant From Tolerant, bioinformatic reference for missense and nonsynonnimous mutations identifiers.",
-    "Bioinformatics tools for predicting possible impact of an amino acid substitution on the structure and function of a human protein.",
-    "Clinical database linking genetic variants to human health conditions and clinical interpretations."
-  )
+library(knitr)
+library(tibble)
+#citations
+ppackage = c(
+  "tidyverse", 
+  "ggplot2", 
+  "gt", 
+  "kinship2", 
+  "knitr",
+  "tibble"
 )
 
-kable(f_database, format = "markdown")
+vversion = c(
+  "2.0.0",
+  "4.0.3",
+  "1.3.0",
+  "1.9.6.2",
+  "1.52",
+  "3.3.1"
+)
 
-tidy <- citation("tidyverse")
-print(tidy,
-      bibtex=FALSE)
+#citation("tidyverse")
 #citation("ggplot2")
 #citation("gt")
 #citation("kinship2")
 #citation("knitr")
 #citation("tibble")
+
+# Extraer y formatear la citación principal de cada paquete de forma segura
+citations_text <- sapply(ppackage, function(pkg) {
+  cit <- citation(pkg)
+  # Convierte el objeto bibentry a texto plano de forma segura
+  paste(format(cit, style = "text")[1], collapse = " ")
+})
+
+# Table
+f_references <- tibble(
+  Package = ppackage,
+  Version = vversion,
+  Citation = citations_text
+)
+
+kable(f_references, format = "markdown")
+
+
 ```
 
 ## Results
