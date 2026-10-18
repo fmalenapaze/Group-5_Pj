@@ -2,6 +2,7 @@
 title: "Case report: CEDNIK SYNDROME"
 format: 
   html:
+    embed-resources: true
     css: styles.css
     toc: true
     toc-depth: 3
