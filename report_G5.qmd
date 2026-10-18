@@ -162,9 +162,7 @@ f_database <- tibble(
 kable(f_database, format = "markdown")
 ```
 
-For the recessive inheritance model, variants were filtered using a custom Perl script tool: filterTestvariantForPattern.pl. I will help to find and anexate in our .tsv table a list of mendelian herencies patrons columns from the genotipes of the family (see @fig-organigram2). Both unaffected parents were heterozygous carriers present the patron “01” and the affected compound heterozygous genotype “11”. With this we will isolate candidate variants following an autosomal recessive mode of inheritance within the family trio. In our trial, after filtering the table in R for the candidate genes, we verify that is a recessive kind of disease.
-
-Surviving candidate genes (11 gene variants) were cross-referenced with disease databases (such as ClinVar and OMIM) and prioritized based on their biological plausibility and compatibility with the patient's clinical description and associated Human Phenotype Ontology (HPO) terms.
+For the recessive inheritance model, variants were filtered using a custom Perl script tool: filterTestvariantForPattern.pl. For the Recessive Calling, this tools helps to find and anexate in our .tsv table a list of mendelian herencies patrons columns from the genotipes of the family (see @fig-organigram2). Both unaffected parents were heterozygous carriers present the patron “01” and the affected compound heterozygous genotype “11”. With this we will isolate candidate variants following an autosomal recessive mode of inheritance within the family trio. In our trial, after filtering the table in R for the candidate genes, we verify that is a recessive kind of disease.
 
 ```{r}
 #| label: fig-organigram2
@@ -175,6 +173,64 @@ Surviving candidate genes (11 gene variants) were cross-referenced with disease 
 
 library(knitr)
 include_graphics("variant_filtering.jpeg")
+```
+
+For the second filtering step, variants were filtered based on Minor Allele Frequencies (MAFs) to exclude common polymorphisms. Specifically, we retained variants with an allele frequency below the 5% (0.05) threshold in our .tsv table. This filtering was performed using the ANNOVAR tool filterAnnovarBySmallerValue.pl, referencing the esp6500si_ea and 1000g2012apr_eur databases to identify and remove common genomic regions (@fig-organigram2).
+
+To narrow down the new selection of genes (already around 60 candidates), the data was filtered in two main steps. First, deleterious variants were identified by comparing them against SNP databases to retain regions causing frameshifts, nonsynonymous changes, stopgains, and stoplosses, using snp138 as a reference. In the second phase, the SIFT and PolyPhen-2 databases will filter out benign variants, thereby retaining only those predicted to be damaging or probably damaging.
+
+Finally, surviving Candidate Genes (11 gene variants) were cross-referenced with disease databases (such as ClinVar and OMIM) and prioritized based on their biological plausibility and compatibility with the patient's clinical description and associated Human Phenotype Ontology (HPO) terms.
+
+### Reference R Packages
+
+As seen in @fig-organigram2 , the filtering steps could have been pre-selected using the ANNOVAR tools within the Bash (MobaXterm) environment. However, for the purposes of this project, we performed the database filtering using RStudio and the R programming language on the .tsv dataset. For this implementation, the following R packages were required:
+
+```{r}
+#| label: tbl-packages
+#| tbl-cap: "R data analyst packages used"
+#| echo: false
+
+# Table
+f_references <- tibble(
+  Resource = c(
+    "tidyverse", 
+    "ggplot2", 
+    "ESP6500 (`esp6500si_ea`)", 
+    "dbSNP (`snp138`)", 
+    "SIFT (`ljb2_sift`)",
+    "PolyPhen-2 (`ljb2_pp2hvar`)",
+    "ClinVar (`clinvar_20140702`)"
+  ),
+  Column = c(
+    "col 7",
+    "col 11",
+    "col 12",
+    "col 13",
+    "col 14",
+    "col 15",
+    "col 16"
+  ),
+  Pipeline = c(
+    "Primary reference genome for the functional annotation of genetic variants (SNPs and indels).",
+    "Reference transcript database used to determine genomic and exonic context.",
+    "Population allele frequencies (global and European) utilized to filter out common variants and isolate rare ones.",
+    "NCBI Standart Catalog of human genetic variations, SNPs polymorphisms.",
+    "Sorting Intolerant From Tolerant, bioinformatic reference for missense and nonsynonnimous mutations identifiers.",
+    "Bioinformatics tools for predicting possible impact of an amino acid substitution on the structure and function of a human protein.",
+    "Clinical database linking genetic variants to human health conditions and clinical interpretations."
+  )
+)
+
+kable(f_database, format = "markdown")
+
+tidy <- citation("tidyverse")
+print(tidy,
+      bibtex=FALSE)
+#citation("ggplot2")
+#citation("gt")
+#citation("kinship2")
+#citation("knitr")
+#citation("tibble")
 ```
 
 ## Results
