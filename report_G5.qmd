@@ -99,13 +99,13 @@ The input data set comprised individual files corresponding to the family trio: 
 
 To process the alignments, the “Burrows-Wheeler Aligner (bwa mem)”[@li2009fast] tool converts our .fq files into .bam/.sam files by comparing the qualities and positions against a reference genome; which, for this study was hg19. With the binary version (.bam), we can easly access to specific genomic regions using index files (.bai), allowing the reads of each family member to be processed and indexed efficiently in the vcf files.
 
-For each part of the mapping and index findings, we required different tools like gatk3 and samstools. First we mark the duplicates form each read vs the chr22 found in the hg19. This will help us to realign and target indels from miss coding quality scores and correct for mapping errors[@gatk_best_practices]. The given scores are proven by the RealignerTargetCreator and IndelRealigner tools. The given files were recalibrated based on their basecalling scores (BSQR) for avoifding false positives in the variant calling. The samples for this realignment are taken from the dbsnps of the ch22 of the hg19 and the Mills and Devine y el 1000 Genomes Project indels for the build 37 file in the ch22; taken from the golden standart archives of gatk3 (Resource bundle 2016 version) [@gatk_resource_bundle].
+For each part of the mapping and index findings, we required different tools like gatk3 and samstools. First we mark the duplicates form each read vs the chr22 found in the hg19. This will help us to realign and target indels from miss coding quality scores and correct for mapping errors[@gatk_best_practices]. The given scores are proven by the RealignerTargetCreator and IndelRealigner tools. The given files were recalibrated based on their basecalling scores (BSQR) for avoiding false positives in the variant calling. The samples for this realignment are taken from the dbsnps of the ch22 of the hg19 and the Mills and Devine y el 1000 Genomes Project indels for the build 37 file in the ch22; taken from the golden standart archives of gatk3 (Resource bundle 2016 version) [@gatk_resource_bundle].
 
-To prepare for the variant callings, first we proceed to eliminate the reads mistakes by taking in account a Depht of coverage calculation. Using the tool DepthOfCoverage by Gatk3 the analysis assessed target regions form the ch22.bed exons file against our reads .bam file. This step helps to calculate the proportion of target bases on specific depth of coverage thresholds (1x,5x,10x,20x and 50x)[@gatk_depth_of_coverage].
+To prepare for the variant callings, first we proceed to eliminate the reads mistakes by taking in account a coverage calculation. Using the tool DepthOfCoverage by Gatk3 the analysis assessed target regions form the ch22.bed exons file against our reads .bam file. This step helps to calculate the proportion of target bases on specific depth of coverage thresholds (1x,5x,10x,20x and 50x)[@gatk_depth_of_coverage].
 
 Using the refined regions of interest, we call the bcftools and samstools to perform variant calling on the BAM files. This tools performs, after pilling up the reads in one file, a calling form the variants based on the "c-g" genotypes into .bcf files. Then, the samstools performs a filtering for a .vcf archive with the variants above the 20x coverage for future analysis[@bcftools_docs].
 
-To refine the variant selection for functional analysis, as shown in @fig-organigram, variants were cross-referenced with general and clinical databases based on the hg19 reference genome. This annotation process utilizes the ANNOVAR (v. 2014-07-02) tool to integrate European population frequencies (1000g2012apr_eur and esp6500si_ea), common variant identifiers (snp138), pathogenicity prediction scores (ljb2_stift and ljb2_pp2hvar), and clinical relevance databases (clinvar_20140702). By combining these anotations, the data merges into a readable table in .tsv format that contains genetic annotations, known identifiers, predictive scores, clinical relevance, and genomic coordinates [@wang2010annovar].
+To refine the variant selection for functional analysis, as shown in @fig-organigram, variants were cross-referenced with general and clinical databases based on the hg19 reference genome. This annotation process utilizes the ANNOVAR (v. 2014-07-02) tool to integrate European population frequencies (1000g2012apr_eur and esp6500si_ea), common variant identifiers (snp138), pathogenicity prediction scores (ljb2_stift and ljb2_pp2hvar)[@ng2003sift] [@adzhubei2010method], and clinical relevance databases (clinvar_20140702)[@clinvar_intro];more information in @tbl-databases. By combining these anotations, the data merges into a readable table in .tsv format that contains genetic annotations, known identifiers, predictive scores, clinical relevance, and genomic coordinates [@wang2010annovar].
 
 ```{r}
 #| label: fig-organigram
@@ -116,11 +116,11 @@ To refine the variant selection for functional analysis, as shown in @fig-organi
 include_graphics("organigram_full_flow.jpg")
 ```
 
-Data processing, pipeline execution, and analytical workflows were performed using a custom shell script (runAnalysis.sh) executed within a Bash command-line interface. The computational environment was managed via "Conda" [\@conda_docs](an%20open-source%20package%20and%20environment%20management%20system%20used%20to%20ensure%20reproducible%20software%20dependencies%20and%20isolated%20package%20versions). Operations and remote server connections were conducted using MobaXterm Personal Edition (v26.5), utilizing datasets and reference databases provided by the instructional program.
+Data processing, pipeline execution, and analytical workflows were performed using a custom shell script (runAnalysis.sh) executed within a Bash command-line interface. The computational environment was managed via "Conda" [@conda_docs]. Operations and remote server connections were conducted using MobaXterm Personal Edition (v26.5), utilizing datasets and reference databases provided by the instructional program.
 
 ### Variant annotation and filtering
 
-With the uptake of the resultant .tsv file, we proceed for the variant annotations. Thorught the ANNOVAR filtering flow seen in the @fig-organigram, we analize the functional consequences and clinical relevance of identified single nucleotide polymorphisms (SNPs) and insertions/deletions (indels). The classification of the variants are listed in the following columns:
+With the uptake of the resultant .tsv file, we proceed for the variant annotations. Through the ANNOVAR filtering flow seen in the @fig-organigram, we analize the functional consequences and clinical relevance of identified single nucleotide polymorphisms (SNPs) and insertions/deletions (indels). The classification of the variants are listed in the following columns:
 
 ```{r}
 #| label: tbl-databases
@@ -149,12 +149,12 @@ f_database <- tibble(
     "col 16"
     ),
   Pipeline = c(
-    "Primary software tool for the functional annotation of genetic variants (SNPs and indels).",
+    "Primary reference genome for the functional annotation of genetic variants (SNPs and indels).",
     "Reference transcript database used to determine genomic and exonic context.",
     "Population allele frequencies (global and European) utilized to filter out common variants and isolate rare ones.",
-    "Complementary population allele frequencies from the NHLBI GO Exome Sequencing Project.",
-    "Standard repository for assigning common variant accession identifiers (rs IDs).",
-    "Bioinformatics tools for predicting protein-level pathogenicity and functional damage.",
+    "NCBI Standart Catalog of human genetic variations, SNPs polymorphisms.",
+    "Sorting Intolerant From Tolerant, bioinformatic reference for missense and nonsynonnimous mutations identifiers.",
+    "Bioinformatics tools for predicting possible impact of an amino acid substitution on the structure and function of a human protein.",
     "Clinical database linking genetic variants to human health conditions and clinical interpretations."
   )
 )
@@ -162,9 +162,9 @@ f_database <- tibble(
 kable(f_database, format = "markdown")
 ```
 
-For the recessive inheritance model, variants were filtered using a custom Perl script tool: filterTestvariantForPattern.pl. I will help to find and anexate in our .tsv table a list of mendelian herencies patrons columns from the genotipes of the family (see @fig-organigram2). Both unaffected parents were heterozygous carriers present teh patron “01” and the affected compound heterozygous genotype “11”. With this we will isolate candidate variants following an autosomal recessive mode of inheritance within the family trio. In our trial, after filtering the table in R for the candidate genes, we verify that is a recessive kind of disease.
+For the recessive inheritance model, variants were filtered using a custom Perl script tool: filterTestvariantForPattern.pl. I will help to find and anexate in our .tsv table a list of mendelian herencies patrons columns from the genotipes of the family (see @fig-organigram2). Both unaffected parents were heterozygous carriers present the patron “01” and the affected compound heterozygous genotype “11”. With this we will isolate candidate variants following an autosomal recessive mode of inheritance within the family trio. In our trial, after filtering the table in R for the candidate genes, we verify that is a recessive kind of disease.
 
-Surviving candidate genes (11and variants were cross-referenced with disease databases (such as ClinVar and OMIM) and prioritized based on their biological plausibility and compatibility with the patient's clinical description and associated Human Phenotype Ontology (HPO) terms.
+Surviving candidate genes (11 gene variants) were cross-referenced with disease databases (such as ClinVar and OMIM) and prioritized based on their biological plausibility and compatibility with the patient's clinical description and associated Human Phenotype Ontology (HPO) terms.
 
 ```{r}
 #| label: fig-organigram2
@@ -469,7 +469,7 @@ variants |>
     table.width = pct(90)
   )
 ```
-  
+
 To identify the disease-causing variant, a comparison with the parental genomes is useful to search for a recessive inheritance pattern. Out of the 5,983 variants, 153 were found to be recessive. Additionally, a filter is applied to discard common variants which in this case is only one variant. The 1000 Genomes (1000g2012apr_eur) and ESP6500 (esp6500si_ea) databases are used to retain noncommon gene variants with minor allele frequency below 5% or entirely unlisted. The provided analysis script suggests keeping variants with frequencies above 5% which should be considered to adapt in the future. However, because the majority of the filtered candidates were novel variants absent from both databases, this filtering step did not alter the final variant selection. The next filtering step removes all nonexonic variants as they are not directly affecting the gene product. Further filtering is applied to remove synonymous variants as well as nonframeshift deletions or insertions because their effect on the protein is usually not pathogenic. Finally, 23 variants in 11 different genes are left. The described workflow as well as the found candidate genes are shown in @fig-variant_filtering_workflow. Further details on the candidate variants can be found in @tbl-supp-cands.
 
 ```{r}
@@ -536,7 +536,6 @@ The identified variant can be found at position 90 where arginine is exchanged b
 #show variant in igv including coverage metrics
 include_graphics("data/igv_variant.png")
 ```
-
 
 ```{r}
 #| label: fig-igv
@@ -623,7 +622,6 @@ ggplot(pos_cov, aes(pos, depth, colour = sample)) +
   geom_vline(xintercept = position, linetype = "dashed") +
   labs(x = "Position on chr22", y = "Depth (x)", colour = NULL)
 ```
-
 
 ```{r}
 #| label: fig-coverage_detail
@@ -728,4 +726,3 @@ tibble(
 #candidate genes
 gt(effective2)
 ```
-
