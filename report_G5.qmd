@@ -42,7 +42,7 @@ kable(index_df)
 
 ## Introduction
 
-Neurocutaneous syndrome, characterized by cerebral dysgenesis, neuropathy, ichthyosis, and keratoderma, or CEDNIK syndrome for short, is a autosomal recessive genetic disorder [@hsu2017cednik]. This disease is caused by a loss-of-function variant in SNAP29 (synaptosomal-associated protein 29), which encodes a SNARE protein, a vesicular membrane fusion protein [@schiller2016establishment]. Symptoms of the disease are microcephaly, global developmental delay, ataxia, ichthyosis, diffuse palmoplantar hyperkeratosis.
+Neurocutaneous syndrome, characterized by cerebral dysgenesis, neuropathy, ichthyosis, and keratoderma, or CEDNIK syndrome (Phenotype #609528), is a autosomal recessive genetic disorder [@hsu2017cednik]. This disease is caused by a loss-of-function variant in SNAP29 (synaptosomal-associated protein 29), which encodes a SNARE protein, a vesicular membrane fusion protein [@schiller2016establishment]. Symptoms or the official Human Phenotype Ontologies (HPO) registered are microcephaly, global developmental delay, ataxia, ichthyosis, diffuse palmoplantar hyperkeratosis [@omim_609528].
 
 This syndrome was first discovered in 2005, within the 22q11.2 region and the SNAP29 gene, using homozygosity mapping on two unrelated families with a history of consanguineous marriage that exhibited similar symptoms [@sprecher2005mutation]. In the subsequent years, up to 2021, nearly 20 variants of this syndrome were discovered [@mah2021new].
 
@@ -56,7 +56,7 @@ In this report, we focus on WES because CEDNIK syndrome is a Mendelian monogenic
 
 ### Study Participants & Whole exome sequencing
 
-The base of our work is publicly available genetic data from a Spanish family, here consisting of a father, mother and their daughter, referred to as "the Corpasome" [@corpas_crowdsourced_2015]. After deciding to make their genomes publicly available, the Corpas family bought direct-to-consumer sequencing privately to collect DNA in saliva using Oragene kits. Exomes were captured with Agilent SureSelect Human All Exon (44 Mb design) and sequenced on Illumina HiSeq with an average coverage of about 30x over the target region. In our case the genome of the daughter's genome is synthetically altered and the disease phenotype of the CEDNIK Syndrome, caused by these alterations, is diagnosed. Main symptoms are developmental delay and skin disorder. The latter manifasting at the age of two in ichthyosis and thickening of palms and soles. Further, she has been diagnosed with microcephaly and poor motor development as well as impaired coordination. As CEDNIK Syndrome is an autosomal recessive inheritable disease and the parents are healthy, the father and mother are both heterozygous carriers (@fig-pedigree). 
+The base of our work is publicly available genetic data from a Spanish family, here consisting of a father, mother and their daughter, referred to as "the Corpasome" [@corpas_crowdsourced_2015]. After deciding to make their genomes publicly available, the Corpas family bought direct-to-consumer sequencing privately to collect DNA in saliva using Oragene kits. Exomes were captured with Agilent SureSelect Human All Exon (44 Mb design) and sequenced on Illumina HiSeq with an average coverage of about 30x over the target region. In our case the genome of the daughter's genome is synthetically altered and the disease phenotype of the CEDNIK Syndrome, caused by these alterations, is diagnosed. Main symptoms are developmental delay and skin disorder. The latter manifasting at the age of two in ichthyosis and thickening of palms and soles. Further, she has been diagnosed with microcephaly and poor motor development as well as impaired coordination. As CEDNIK Syndrome is an autosomal recessive inheritable disease and the parents are healthy, the father and mother are both heterozygous carriers (@fig-pedigree).
 
 ```{r}
 #| warning: false
@@ -106,7 +106,7 @@ To prepare for the variant callings, first, read mistakes are eliminated by taki
 
 Using the refined regions of interest, bcftools and samstools are called to perform variant calling on the BAM files. These tools perform, after pilling up the reads in one file, a calling from the variants based on the "c-g" genotypes into .bcf files. Then, samstools performs a filtering for a .vcf archive with the variants above the 20x coverage for future analysis[@bcftools_docs].
 
-To refine the variant selection for functional analysis, as shown in @fig-organigram, variants were cross-referenced with general and clinical databases based on the hg19 reference genome. This annotation process utilizes the ANNOVAR (v. 2014-07-02) tool to integrate European population frequencies (1000g2012apr_eur and esp6500si_ea), common variant identifiers (snp138), pathogenicity prediction scores (ljb2_stift and ljb2_pp2hvar)[@ng2003sift] [@adzhubei2010method], and clinical relevance databases (clinvar_20140702)[@clinvar_intro], more information in @tbl-databases. By combining these annotations, the data merges into a readable table in .tsv format that contains genetic annotations, known identifiers, predictive scores, clinical relevance, and genomic coordinates [@wang2010annovar].
+To refine the variant selection for functional analysis, as shown in @fig-organigram, variants were cross-referenced with general and clinical databases based on the hg19 reference genome. This annotation process utilizes the ANNOVAR (v. 2014-07-02) tool to integrate European population frequencies (1000g2012apr_eur and esp6500si_ea), common variant identifiers (snp138), pathogenic prediction scores (ljb2_stift and ljb2_pp2hvar)[@ng2003sift] [@adzhubei2010method], and clinical relevance databases (clinvar_20140702)[@clinvar_intro], more information in @tbl-databases. By combining these annotations, the data merges into a readable table in .tsv format that contains genetic annotations, known identifiers, predictive scores, clinical relevance, and genomic coordinates [@wang2010annovar].
 
 ```{r}
 #| label: fig-organigram
@@ -164,7 +164,7 @@ f_database <- tibble(
 kable(f_database, format = "markdown")
 ```
 
-For the recessive inheritance model, variants were filtered using a custom Perl script tool: filterTestvariantForPattern.pl. During recessive filtering, the tool analyzes trio genotype data to identify specific Mendelian inheritance patterns in the .tsv file (see @fig-organigram2). Both unaffected parents were heterozygous carriers presenting the pattern “01” while the affected child displays a genotype of “11”. With this, candidate variants can be isolated following an autosomal recessive mode of inheritance within the family trio. 
+For the recessive inheritance model, variants were filtered using a custom Perl script tool: filterTestvariantForPattern.pl. During recessive filtering, the tool analyzes trio genotype data to identify specific Mendelian inheritance patterns in the .tsv file (see @fig-organigram2). Both unaffected parents were heterozygous carriers presenting the pattern “01” while the affected child displays a genotype of “11”. With this, candidate variants can be isolated following an autosomal recessive mode of inheritance within the family trio.
 
 ```{r}
 #| label: fig-organigram2
@@ -181,7 +181,7 @@ The filtering strategy will require to call the high quality and depth databases
 
 To narrow down the new selection of genes (already around 60 candidates), the data was filtered in two main steps. First, deleterious variants were identified by retaining alterations causing frameshifts, nonsynonymous changes, stopgains, and stoplosses, using snp138 as a reference. In the second phase, the SIFT and PolyPhen-2 databases will filter out benign variants, thereby retaining only those predicted to be damaging or probably damaging.
 
-Finally, surviving candidate genes were cross-referenced with disease databases, such as ClinVar, and prioritized based on their biological plausibility and compatibility with the patient's clinical description and associated Human Phenotype Ontology (HPO) terms. As a result, from the list of genes, a single significant variant associated with CEDNIK disease within the *SNAP29* gene is highlighted. Using R-based filtering, we confirmed that our called candidate variant exhibits a biallelic inheritance pattern consistent with the selected disease taking the OMIM references.
+Finally, surviving candidate genes were cross-referenced with disease databases, such as ClinVar, and prioritized based on their biological plausibility and compatibility with the patient's clinical description and associated HPO terms. As a result, from the list of genes, a single significant variant associated with CEDNIK disease within the *SNAP29* gene is highlighted. Using R-based filtering, we confirmed that our called candidate variant exhibits a biallelic inheritance pattern consistent with the selected disease taking the OMIM references [@omim_609528].
 
 ### Reference R Packages
 
@@ -219,20 +219,19 @@ vversion = c(
 #citation("kinship2")
 #citation("knitr")
 #citation("tibble")
-
-# Extraer y formatear la citación principal de cada paquete de forma segura
-citations_text <- sapply(ppackage, function(pkg) {
-  cit <- citation(pkg)
-  # Convierte el objeto bibentry a texto plano de forma segura
-  paste(format(cit, style = "text")[1], collapse = " ")
-})
-
 # Table
-f_references <- tibble(
-  Package = ppackage,
-  Version = vversion,
-  Citation = citations_text
-)
+  f_references <- tibble(
+    Package = ppackage,
+    Version = vversion,
+    Citation = c(
+      "Wickham H,et al (2019). “Welcome to the tidyverse.” Journal of Open Source Software, *4*(43), 1686. doi:10.21105/joss.01686 <https://doi.org/10.21105/joss.01686> [@tidyverse]",
+      "H. Wickham (2016). ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York.<https://ggplot2.tidyverse.org> [@ggplot2]",
+      "Iannone R,et al (2026). gt: Easily Create Presentation-Ready Display Tables. doi:10.32614/CRAN.package.gt <https://doi.org/10.32614/CRAN.package.gt> [@gt]",
+      "Sinnwell J, Therneau T(2025). kinship2: Pedigree Functions. doi:10.32614/CRAN.package.kinship2 <https://doi.org/10.32614/CRAN.package.kinship2> [@kinship2]",
+      "Xie Y (2026). knitr: A General-Purpose Package for Dynamic Report Generation in R. R package version 1.52, <https://yihui.org/knitr/> [@knitr]",
+      "Müller K, Wickham H (2026). Tibble: Simple Data Frames. doi:10.32614/CRAN.package.tibble <https://doi.org/10.32614/CRAN.package.tibble> [@ribble]"
+    )
+  )
 
 kable(f_references, format = "markdown")
 
